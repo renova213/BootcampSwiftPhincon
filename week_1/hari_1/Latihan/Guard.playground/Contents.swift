@@ -3,11 +3,11 @@ import Foundation
 // Guard let adalah penjagaan yang apabila tidak sesuai kondisi maka blok fungsi akan di berhentikan
 let possibleNumber = "123"
 
-func checkGuardLet(){
+func checkGuardLet()-> Int{
     guard let number = Int(possibleNumber)else{
-        fatalError("The number was invalid")
+        return 0
     }
-    print(number)
+    return number
 }
 
-checkGuardLet()
+print(checkGuardLet())

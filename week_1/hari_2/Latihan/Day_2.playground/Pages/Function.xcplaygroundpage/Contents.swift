@@ -8,16 +8,22 @@ func prinData(with name: String){
     print(name)
 }
 
-func printData(with name: String, age: Int){
+func prinData(with name: String,with age: Int = 23){
     print("nama saya \(name), umur saya \(age)")
 }
 
 func add(number: Int) -> (Int, Int, Int) {
-    let added = number + number + number
-    return (added, added, added)
+    let add = number + number
+    let multiply = number * number
+    let pengurangan = number - number
+    
+    return (add, multiply, pengurangan)
 }
 
-add(number: 5)
+print(add(number: 5))
+let (tambah, multiply, pengurangan) = add(number: 6)
+
+print(tambah)
 
 enum DayOfWeek: String {
     case sunday = "Sunday"
@@ -29,8 +35,7 @@ enum DayOfWeek: String {
     case saturday = "Saturday"
 }
 
-func getDayOfWeek() -> DayOfWeek {
-    let today = "Monday"
+func getDayOfWeek(today: String) -> DayOfWeek {
     
     if let day = DayOfWeek(rawValue: today) {
         return day
@@ -38,6 +43,8 @@ func getDayOfWeek() -> DayOfWeek {
         return .sunday
     }
 }
+
+print(getDayOfWeek(today: "asd"))
 
 let currentDay = DayOfWeek.friday
 
@@ -51,7 +58,7 @@ default:
 }
 
 // fungsi yang mereturn fungsi lagi
-func tambah () -> (Int, Int) -> Int {
+func add() -> (Int, Int) -> Int {
     func penjumlahan(a: Int, b: Int) -> Int{
         return a + b
     }
@@ -59,7 +66,7 @@ func tambah () -> (Int, Int) -> Int {
     return penjumlahan
 }
 
-let penjumlahan = tambah()
+let penjumlahan = add()
 print(penjumlahan(5, 3))
 
 

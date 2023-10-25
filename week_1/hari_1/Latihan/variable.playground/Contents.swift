@@ -31,10 +31,6 @@ var red, green, blue : Double
 typealias AudioSample = UInt16
 var maxAmplitudeFound = AudioSample.min
 
-// penggunaan Tuple
-
-/*Tupel mengelompokkan beberapa nilai menjadi satu nilai gabungan. Nilai-nilai dalam tuple bisa bertipe apa saja dan tidak harus bertipe sama satu sama lain.*/
-
 var http404Error = (404, "Not Found")
 
 http404Error.0 = 405
@@ -48,3 +44,6 @@ print("The status message is \(statusMessage)")
 var kelonmpokHewan :[String] = ["tikus","kucing","anjing"]
 print(kelonmpokHewan)
 print(kelonmpokHewan[0])
+
+var optional:String?
+

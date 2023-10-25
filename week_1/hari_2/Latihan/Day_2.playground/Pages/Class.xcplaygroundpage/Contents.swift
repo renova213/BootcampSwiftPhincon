@@ -50,8 +50,9 @@ class Player: Character {
         super.init(name: playerName, hitPoint: hitPoint)
     }
 
-    func takeDamage(from enemy: Enemy) {
+   func takeDamage(from enemy: Enemy) {
         takeDamage(enemy.attackPower)
+        print("asd")
     }
 
     func getItem(from enemy: Enemy) {
