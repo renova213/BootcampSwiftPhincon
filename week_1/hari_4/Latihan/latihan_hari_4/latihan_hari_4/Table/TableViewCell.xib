@@ -18,8 +18,11 @@
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="car" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZB0-Ie-Lt2">
                         <rect key="frame" x="10.000000000000002" y="9.3333333333333321" width="23.666666666666671" height="37.333333333333343"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="23.670000000000002" id="qh9-JZ-VgK"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Toyota" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7n-gs-hrg">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toyota" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7n-gs-hrg">
                         <rect key="frame" x="44" y="8" width="260" height="40"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                         <nil key="textColor"/>
@@ -28,15 +31,19 @@
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="e7n-gs-hrg" firstAttribute="leading" secondItem="ZB0-Ie-Lt2" secondAttribute="trailing" constant="10.33" id="Iq9-I2-Tv3"/>
                     <constraint firstAttribute="trailing" secondItem="e7n-gs-hrg" secondAttribute="trailing" constant="16" id="K5j-V6-FT3"/>
                     <constraint firstItem="ZB0-Ie-Lt2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="NDn-tO-j9E"/>
-                    <constraint firstItem="ZB0-Ie-Lt2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Py1-V1-hY0"/>
                     <constraint firstItem="e7n-gs-hrg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="RHW-Wn-2lz"/>
+                    <constraint firstItem="ZB0-Ie-Lt2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-6" id="Ycr-8g-ItO"/>
+                    <constraint firstItem="ZB0-Ie-Lt2" firstAttribute="centerY" secondItem="e7n-gs-hrg" secondAttribute="centerY" id="eZT-03-9gm"/>
+                    <constraint firstItem="e7n-gs-hrg" firstAttribute="leading" secondItem="ZB0-Ie-Lt2" secondAttribute="trailing" constant="10.333333333333329" id="ivb-e6-2iM"/>
                     <constraint firstAttribute="bottom" secondItem="ZB0-Ie-Lt2" secondAttribute="bottom" constant="8" id="qak-VJ-cqq"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="carLabel" destination="e7n-gs-hrg" id="gch-2O-XfE"/>
+            </connections>
             <point key="canvasLocation" x="117.55725190839694" y="17.605633802816904"/>
         </tableViewCell>
     </objects>

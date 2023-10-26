@@ -10,6 +10,16 @@ import UIKit
 class TableViewController: UIViewController {
     
     @IBOutlet weak var listViewTable: UITableView!
+    
+    let carNames: [String] = [
+    "HYUNDAI",
+    "TOYOTA",
+    "DAIHATSU",
+    "HONDA",
+    "MITSUBISHI",
+    "SUZUKI",
+    "WULING",
+    "CHERY"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +48,14 @@ class TableViewController: UIViewController {
 
 extension TableViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return carNames.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as TableViewCell
+        
+        cell.carLabel.text = carNames[indexPath.item]
+       
         return cell
     }
 }
