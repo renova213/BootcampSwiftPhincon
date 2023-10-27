@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36129B052AEB8C8300F54FCB /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36129B032AEB8C8300F54FCB /* DashboardViewController.swift */; };
+		36129B062AEB8C8300F54FCB /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36129B042AEB8C8300F54FCB /* DashboardViewController.xib */; };
 		3640AE0D2AEA136800ADFB52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3640AE0C2AEA136800ADFB52 /* AppDelegate.swift */; };
 		3640AE0F2AEA136800ADFB52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3640AE0E2AEA136800ADFB52 /* SceneDelegate.swift */; };
 		3640AE142AEA136800ADFB52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3640AE122AEA136800ADFB52 /* Main.storyboard */; };
 		3640AE162AEA136800ADFB52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3640AE152AEA136800ADFB52 /* Assets.xcassets */; };
 		3640AE192AEA136800ADFB52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3640AE172AEA136800ADFB52 /* LaunchScreen.storyboard */; };
-		3640AE212AEA208900ADFB52 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3640AE202AEA208900ADFB52 /* HomeViewController.swift */; };
 		364EB3C22AEA4D1700FC1A41 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364EB3C02AEA4D1700FC1A41 /* TableViewCell.swift */; };
 		364EB3C32AEA4D1700FC1A41 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 364EB3C12AEA4D1700FC1A41 /* TableViewCell.xib */; };
 		364EB3C72AEA529700FC1A41 /* ExTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364EB3C62AEA529700FC1A41 /* ExTableView.swift */; };
-		364EB3CB2AEA55BB00FC1A41 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364EB3C92AEA55BB00FC1A41 /* TableViewController.swift */; };
-		364EB3CC2AEA55BB00FC1A41 /* TableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 364EB3CA2AEA55BB00FC1A41 /* TableViewController.xib */; };
+		364EB3CB2AEA55BB00FC1A41 /* VehicleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364EB3C92AEA55BB00FC1A41 /* VehicleViewController.swift */; };
+		364EB3CC2AEA55BB00FC1A41 /* VehicleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 364EB3CA2AEA55BB00FC1A41 /* VehicleViewController.xib */; };
 		364EB3CE2AEA56A100FC1A41 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364EB3CD2AEA56A100FC1A41 /* LoginViewController.swift */; };
 		367A67802AEB51F10075FFE2 /* VehicleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367A677F2AEB51F10075FFE2 /* VehicleEntity.swift */; };
 		367B32062AEA33C3003B14CE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367B32042AEA33C3003B14CE /* RegisterViewController.swift */; };
@@ -25,19 +26,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3640AE092AEA136800ADFB52 /* latihan_hari_4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = latihan_hari_4.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		36129B032AEB8C8300F54FCB /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		36129B042AEB8C8300F54FCB /* DashboardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
+		3640AE092AEA136800ADFB52 /* latihan_hari_5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = latihan_hari_5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3640AE0C2AEA136800ADFB52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3640AE0E2AEA136800ADFB52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3640AE132AEA136800ADFB52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3640AE152AEA136800ADFB52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3640AE182AEA136800ADFB52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3640AE1A2AEA136800ADFB52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3640AE202AEA208900ADFB52 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		364EB3C02AEA4D1700FC1A41 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		364EB3C12AEA4D1700FC1A41 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		364EB3C62AEA529700FC1A41 /* ExTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExTableView.swift; sourceTree = "<group>"; };
-		364EB3C92AEA55BB00FC1A41 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		364EB3CA2AEA55BB00FC1A41 /* TableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewController.xib; sourceTree = "<group>"; };
+		364EB3C92AEA55BB00FC1A41 /* VehicleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleViewController.swift; sourceTree = "<group>"; };
+		364EB3CA2AEA55BB00FC1A41 /* VehicleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VehicleViewController.xib; sourceTree = "<group>"; };
 		364EB3CD2AEA56A100FC1A41 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		367A677F2AEB51F10075FFE2 /* VehicleEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleEntity.swift; sourceTree = "<group>"; };
 		367B32042AEA33C3003B14CE /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -55,10 +57,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36129B022AEB8C6000F54FCB /* dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				36129B072AEB96D600F54FCB /* dashboard_cell */,
+				36129B032AEB8C8300F54FCB /* DashboardViewController.swift */,
+				36129B042AEB8C8300F54FCB /* DashboardViewController.xib */,
+			);
+			path = dashboard;
+			sourceTree = "<group>";
+		};
+		36129B072AEB96D600F54FCB /* dashboard_cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = dashboard_cell;
+			sourceTree = "<group>";
+		};
 		3640AE002AEA136800ADFB52 = {
 			isa = PBXGroup;
 			children = (
-				3640AE0B2AEA136800ADFB52 /* latihan_hari_4 */,
+				3640AE0B2AEA136800ADFB52 /* latihan_hari_5 */,
 				3640AE0A2AEA136800ADFB52 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,22 +85,22 @@
 		3640AE0A2AEA136800ADFB52 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3640AE092AEA136800ADFB52 /* latihan_hari_4.app */,
+				3640AE092AEA136800ADFB52 /* latihan_hari_5.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3640AE0B2AEA136800ADFB52 /* latihan_hari_4 */ = {
+		3640AE0B2AEA136800ADFB52 /* latihan_hari_5 */ = {
 			isa = PBXGroup;
 			children = (
-				367A67812AEB56E00075FFE2 /* resource */,
+				367A67812AEB56E00075FFE2 /* resources */,
 				367A677E2AEB518C0075FFE2 /* model */,
 				364EB3C82AEA548300FC1A41 /* module */,
 				364EB3C42AEA527F00FC1A41 /* common */,
 				3640AE172AEA136800ADFB52 /* LaunchScreen.storyboard */,
 				3640AE1A2AEA136800ADFB52 /* Info.plist */,
 			);
-			path = latihan_hari_4;
+			path = latihan_hari_5;
 			sourceTree = "<group>";
 		};
 		364EB3BF2AEA4CC700FC1A41 /* Cell */ = {
@@ -112,12 +131,12 @@
 		364EB3C82AEA548300FC1A41 /* module */ = {
 			isa = PBXGroup;
 			children = (
+				36129B022AEB8C6000F54FCB /* dashboard */,
 				367A67822AEB57430075FFE2 /* Vehicle */,
 				367A677D2AEB4D9C0075FFE2 /* Auth */,
 				3640AE122AEA136800ADFB52 /* Main.storyboard */,
 				3640AE0C2AEA136800ADFB52 /* AppDelegate.swift */,
 				3640AE0E2AEA136800ADFB52 /* SceneDelegate.swift */,
-				3640AE202AEA208900ADFB52 /* HomeViewController.swift */,
 			);
 			path = module;
 			sourceTree = "<group>";
@@ -140,20 +159,20 @@
 			path = model;
 			sourceTree = "<group>";
 		};
-		367A67812AEB56E00075FFE2 /* resource */ = {
+		367A67812AEB56E00075FFE2 /* resources */ = {
 			isa = PBXGroup;
 			children = (
 				3640AE152AEA136800ADFB52 /* Assets.xcassets */,
 			);
-			path = resource;
+			path = resources;
 			sourceTree = "<group>";
 		};
 		367A67822AEB57430075FFE2 /* Vehicle */ = {
 			isa = PBXGroup;
 			children = (
 				364EB3BF2AEA4CC700FC1A41 /* Cell */,
-				364EB3C92AEA55BB00FC1A41 /* TableViewController.swift */,
-				364EB3CA2AEA55BB00FC1A41 /* TableViewController.xib */,
+				364EB3C92AEA55BB00FC1A41 /* VehicleViewController.swift */,
+				364EB3CA2AEA55BB00FC1A41 /* VehicleViewController.xib */,
 			);
 			path = Vehicle;
 			sourceTree = "<group>";
@@ -161,9 +180,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3640AE082AEA136800ADFB52 /* latihan_hari_4 */ = {
+		3640AE082AEA136800ADFB52 /* latihan_hari_5 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3640AE1D2AEA136800ADFB52 /* Build configuration list for PBXNativeTarget "latihan_hari_4" */;
+			buildConfigurationList = 3640AE1D2AEA136800ADFB52 /* Build configuration list for PBXNativeTarget "latihan_hari_5" */;
 			buildPhases = (
 				3640AE052AEA136800ADFB52 /* Sources */,
 				3640AE062AEA136800ADFB52 /* Frameworks */,
@@ -173,9 +192,9 @@
 			);
 			dependencies = (
 			);
-			name = latihan_hari_4;
+			name = latihan_hari_5;
 			productName = latihan_hari_4;
-			productReference = 3640AE092AEA136800ADFB52 /* latihan_hari_4.app */;
+			productReference = 3640AE092AEA136800ADFB52 /* latihan_hari_5.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -193,7 +212,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3640AE042AEA136800ADFB52 /* Build configuration list for PBXProject "latihan_hari_4" */;
+			buildConfigurationList = 3640AE042AEA136800ADFB52 /* Build configuration list for PBXProject "latihan_hari_5" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -206,7 +225,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3640AE082AEA136800ADFB52 /* latihan_hari_4 */,
+				3640AE082AEA136800ADFB52 /* latihan_hari_5 */,
 			);
 		};
 /* End PBXProject section */
@@ -217,10 +236,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3640AE192AEA136800ADFB52 /* LaunchScreen.storyboard in Resources */,
+				36129B062AEB8C8300F54FCB /* DashboardViewController.xib in Resources */,
 				364EB3C32AEA4D1700FC1A41 /* TableViewCell.xib in Resources */,
 				3640AE162AEA136800ADFB52 /* Assets.xcassets in Resources */,
 				3640AE142AEA136800ADFB52 /* Main.storyboard in Resources */,
-				364EB3CC2AEA55BB00FC1A41 /* TableViewController.xib in Resources */,
+				364EB3CC2AEA55BB00FC1A41 /* VehicleViewController.xib in Resources */,
 				367B32072AEA33C3003B14CE /* RegisterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,11 +253,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				364EB3C72AEA529700FC1A41 /* ExTableView.swift in Sources */,
+				36129B052AEB8C8300F54FCB /* DashboardViewController.swift in Sources */,
 				367B32062AEA33C3003B14CE /* RegisterViewController.swift in Sources */,
 				3640AE0D2AEA136800ADFB52 /* AppDelegate.swift in Sources */,
 				364EB3C22AEA4D1700FC1A41 /* TableViewCell.swift in Sources */,
-				364EB3CB2AEA55BB00FC1A41 /* TableViewController.swift in Sources */,
-				3640AE212AEA208900ADFB52 /* HomeViewController.swift in Sources */,
+				364EB3CB2AEA55BB00FC1A41 /* VehicleViewController.swift in Sources */,
 				364EB3CE2AEA56A100FC1A41 /* LoginViewController.swift in Sources */,
 				367A67802AEB51F10075FFE2 /* VehicleEntity.swift in Sources */,
 				3640AE0F2AEA136800ADFB52 /* SceneDelegate.swift in Sources */,
@@ -388,7 +408,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = latihan_hari_4/Info.plist;
+				INFOPLIST_FILE = latihan_hari_5/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -415,7 +435,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = latihan_hari_4/Info.plist;
+				INFOPLIST_FILE = latihan_hari_5/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -437,7 +457,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3640AE042AEA136800ADFB52 /* Build configuration list for PBXProject "latihan_hari_4" */ = {
+		3640AE042AEA136800ADFB52 /* Build configuration list for PBXProject "latihan_hari_5" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3640AE1B2AEA136800ADFB52 /* Debug */,
@@ -446,7 +466,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3640AE1D2AEA136800ADFB52 /* Build configuration list for PBXNativeTarget "latihan_hari_4" */ = {
+		3640AE1D2AEA136800ADFB52 /* Build configuration list for PBXNativeTarget "latihan_hari_5" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3640AE1E2AEA136800ADFB52 /* Debug */,
