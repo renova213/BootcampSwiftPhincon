@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36078ACF2AEBC0F100B60537 /* ExtCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36078ACE2AEBC0F100B60537 /* ExtCollectionView.swift */; };
 		36129B052AEB8C8300F54FCB /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36129B032AEB8C8300F54FCB /* DashboardViewController.swift */; };
 		36129B062AEB8C8300F54FCB /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36129B042AEB8C8300F54FCB /* DashboardViewController.xib */; };
+		36129B112AEB99C000F54FCB /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36129B102AEB99C000F54FCB /* UserEntity.swift */; };
+		36129B142AEB9A3A00F54FCB /* DashboardUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36129B122AEB9A3A00F54FCB /* DashboardUserInfo.swift */; };
+		36129B152AEB9A3A00F54FCB /* DashboardUserInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36129B132AEB9A3A00F54FCB /* DashboardUserInfo.xib */; };
 		3640AE0D2AEA136800ADFB52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3640AE0C2AEA136800ADFB52 /* AppDelegate.swift */; };
 		3640AE0F2AEA136800ADFB52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3640AE0E2AEA136800ADFB52 /* SceneDelegate.swift */; };
 		3640AE142AEA136800ADFB52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3640AE122AEA136800ADFB52 /* Main.storyboard */; };
@@ -23,11 +27,21 @@
 		367A67802AEB51F10075FFE2 /* VehicleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367A677F2AEB51F10075FFE2 /* VehicleEntity.swift */; };
 		367B32062AEA33C3003B14CE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367B32042AEA33C3003B14CE /* RegisterViewController.swift */; };
 		367B32072AEA33C3003B14CE /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 367B32052AEA33C3003B14CE /* RegisterViewController.xib */; };
+		3683956A2AEBA807006CB947 /* DashboardChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368395682AEBA807006CB947 /* DashboardChart.swift */; };
+		3683956B2AEBA807006CB947 /* DashboardChart.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368395692AEBA807006CB947 /* DashboardChart.xib */; };
+		3683956E2AEBAAE5006CB947 /* DashboardGasStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3683956C2AEBAAE5006CB947 /* DashboardGasStation.swift */; };
+		3683956F2AEBAAE5006CB947 /* DashboardGasStation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3683956D2AEBAAE5006CB947 /* DashboardGasStation.xib */; };
+		368395742AEBAD38006CB947 /* GasStationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368395722AEBAD38006CB947 /* GasStationCard.swift */; };
+		368395752AEBAD38006CB947 /* GasStationCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368395732AEBAD38006CB947 /* GasStationCard.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		36078ACE2AEBC0F100B60537 /* ExtCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtCollectionView.swift; sourceTree = "<group>"; };
 		36129B032AEB8C8300F54FCB /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		36129B042AEB8C8300F54FCB /* DashboardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
+		36129B102AEB99C000F54FCB /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
+		36129B122AEB9A3A00F54FCB /* DashboardUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardUserInfo.swift; sourceTree = "<group>"; };
+		36129B132AEB9A3A00F54FCB /* DashboardUserInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardUserInfo.xib; sourceTree = "<group>"; };
 		3640AE092AEA136800ADFB52 /* latihan_hari_5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = latihan_hari_5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3640AE0C2AEA136800ADFB52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3640AE0E2AEA136800ADFB52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +58,12 @@
 		367A677F2AEB51F10075FFE2 /* VehicleEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleEntity.swift; sourceTree = "<group>"; };
 		367B32042AEA33C3003B14CE /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		367B32052AEA33C3003B14CE /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		368395682AEBA807006CB947 /* DashboardChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardChart.swift; sourceTree = "<group>"; };
+		368395692AEBA807006CB947 /* DashboardChart.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardChart.xib; sourceTree = "<group>"; };
+		3683956C2AEBAAE5006CB947 /* DashboardGasStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardGasStation.swift; sourceTree = "<group>"; };
+		3683956D2AEBAAE5006CB947 /* DashboardGasStation.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardGasStation.xib; sourceTree = "<group>"; };
+		368395722AEBAD38006CB947 /* GasStationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStationCard.swift; sourceTree = "<group>"; };
+		368395732AEBAD38006CB947 /* GasStationCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GasStationCard.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +77,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36078ACD2AEBC0CE00B60537 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				36078ACE2AEBC0F100B60537 /* ExtCollectionView.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
 		36129B022AEB8C6000F54FCB /* dashboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +98,11 @@
 		36129B072AEB96D600F54FCB /* dashboard_cell */ = {
 			isa = PBXGroup;
 			children = (
+				368395702AEBAC4C006CB947 /* dashboard_gas_station */,
+				36129B122AEB9A3A00F54FCB /* DashboardUserInfo.swift */,
+				36129B132AEB9A3A00F54FCB /* DashboardUserInfo.xib */,
+				368395682AEBA807006CB947 /* DashboardChart.swift */,
+				368395692AEBA807006CB947 /* DashboardChart.xib */,
 			);
 			path = dashboard_cell;
 			sourceTree = "<group>";
@@ -93,6 +126,7 @@
 		3640AE0B2AEA136800ADFB52 /* latihan_hari_5 */ = {
 			isa = PBXGroup;
 			children = (
+				36078ACD2AEBC0CE00B60537 /* extension */,
 				367A67812AEB56E00075FFE2 /* resources */,
 				367A677E2AEB518C0075FFE2 /* model */,
 				364EB3C82AEA548300FC1A41 /* module */,
@@ -155,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				367A677F2AEB51F10075FFE2 /* VehicleEntity.swift */,
+				36129B102AEB99C000F54FCB /* UserEntity.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -175,6 +210,25 @@
 				364EB3CA2AEA55BB00FC1A41 /* VehicleViewController.xib */,
 			);
 			path = Vehicle;
+			sourceTree = "<group>";
+		};
+		368395702AEBAC4C006CB947 /* dashboard_gas_station */ = {
+			isa = PBXGroup;
+			children = (
+				368395712AEBAC63006CB947 /* cell */,
+				3683956C2AEBAAE5006CB947 /* DashboardGasStation.swift */,
+				3683956D2AEBAAE5006CB947 /* DashboardGasStation.xib */,
+			);
+			path = dashboard_gas_station;
+			sourceTree = "<group>";
+		};
+		368395712AEBAC63006CB947 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				368395722AEBAD38006CB947 /* GasStationCard.swift */,
+				368395732AEBAD38006CB947 /* GasStationCard.xib */,
+			);
+			path = cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,12 +290,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				3640AE192AEA136800ADFB52 /* LaunchScreen.storyboard in Resources */,
+				36129B152AEB9A3A00F54FCB /* DashboardUserInfo.xib in Resources */,
 				36129B062AEB8C8300F54FCB /* DashboardViewController.xib in Resources */,
 				364EB3C32AEA4D1700FC1A41 /* TableViewCell.xib in Resources */,
 				3640AE162AEA136800ADFB52 /* Assets.xcassets in Resources */,
+				3683956F2AEBAAE5006CB947 /* DashboardGasStation.xib in Resources */,
 				3640AE142AEA136800ADFB52 /* Main.storyboard in Resources */,
 				364EB3CC2AEA55BB00FC1A41 /* VehicleViewController.xib in Resources */,
 				367B32072AEA33C3003B14CE /* RegisterViewController.xib in Resources */,
+				3683956B2AEBA807006CB947 /* DashboardChart.xib in Resources */,
+				368395752AEBAD38006CB947 /* GasStationCard.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,11 +312,17 @@
 			files = (
 				364EB3C72AEA529700FC1A41 /* ExTableView.swift in Sources */,
 				36129B052AEB8C8300F54FCB /* DashboardViewController.swift in Sources */,
+				36078ACF2AEBC0F100B60537 /* ExtCollectionView.swift in Sources */,
 				367B32062AEA33C3003B14CE /* RegisterViewController.swift in Sources */,
+				36129B142AEB9A3A00F54FCB /* DashboardUserInfo.swift in Sources */,
+				3683956E2AEBAAE5006CB947 /* DashboardGasStation.swift in Sources */,
+				36129B112AEB99C000F54FCB /* UserEntity.swift in Sources */,
 				3640AE0D2AEA136800ADFB52 /* AppDelegate.swift in Sources */,
 				364EB3C22AEA4D1700FC1A41 /* TableViewCell.swift in Sources */,
+				368395742AEBAD38006CB947 /* GasStationCard.swift in Sources */,
 				364EB3CB2AEA55BB00FC1A41 /* VehicleViewController.swift in Sources */,
 				364EB3CE2AEA56A100FC1A41 /* LoginViewController.swift in Sources */,
+				3683956A2AEBA807006CB947 /* DashboardChart.swift in Sources */,
 				367A67802AEB51F10075FFE2 /* VehicleEntity.swift in Sources */,
 				3640AE0F2AEA136800ADFB52 /* SceneDelegate.swift in Sources */,
 			);
