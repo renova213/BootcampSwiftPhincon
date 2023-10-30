@@ -18,7 +18,7 @@ class VehicleViewController: UIViewController {
         listViewTable.dataSource = self
         listViewTable.registerCellWithNib(TableViewCell.self)
         
-        
+        self.navigationItem.setHidesBackButton(true, animated: false)
         // Do any additional setup after loading the view.
     }
     
@@ -57,6 +57,8 @@ extension VehicleViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        tableView.showsVerticalScrollIndicator = false
+        
         let data = VehicleEntity.vehicles[indexPath.section][indexPath.row]
         let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as TableViewCell
         cell.vehicleName.text = data.vehicleName

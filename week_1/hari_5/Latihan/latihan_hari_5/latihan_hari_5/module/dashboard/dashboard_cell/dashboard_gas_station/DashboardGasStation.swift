@@ -8,7 +8,7 @@
 import UIKit
 
 class DashboardGasStation: UITableViewCell {
-
+    
     @IBOutlet weak var gasStationCollection: UICollectionView!
     
     override func awakeFromNib() {
@@ -21,8 +21,6 @@ class DashboardGasStation: UITableViewCell {
         gasStationCollection.dataSource = self
         gasStationCollection.registerCellWithNib(GasStationCard.self)
     }
-    
-    
 }
 
 extension DashboardGasStation: UICollectionViewDelegate, UICollectionViewDataSource{
@@ -31,8 +29,10 @@ extension DashboardGasStation: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = gasStationCollection.dequeueReusableCell(withReuseIdentifier: "GasStationCard", for: indexPath) as!GasStationCard
-        return cell
+        collectionView.showsHorizontalScrollIndicator = false
+        
+        let gasStationCardCell = gasStationCollection.dequeueReusableCell(withReuseIdentifier: "GasStationCard", for: indexPath) as!GasStationCard
+        return gasStationCardCell
     }
 }
 

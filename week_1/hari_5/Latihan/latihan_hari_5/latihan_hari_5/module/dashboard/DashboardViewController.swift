@@ -12,6 +12,9 @@ class DashboardViewController: UIViewController {
     @IBOutlet weak var listTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        
         listTableView.delegate = self
         listTableView.dataSource = self
         
@@ -21,6 +24,8 @@ class DashboardViewController: UIViewController {
     func registerCell(){
         listTableView.registerCellWithNib(DashboardUserInfo.self)
         listTableView.registerCellWithNib(DashboardChart.self)
+        listTableView.registerCellWithNib(DashboardGasStation.self)
+        listTableView.registerCellWithNib(DashboardUsedBBM.self)
     }
     
     
@@ -39,18 +44,34 @@ class DashboardViewController: UIViewController {
 extension DashboardViewController: UITableViewDelegate, UITableViewDataSource{
     
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 4
     }
     
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       
+        let dashBoardUserInfoCell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DashboardUserInfo
+        let dashBoardChartCell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DashboardChart
+        let DashboardGasStationCell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DashboardGasStation
+        let DashboardUsedBBMCell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DashboardUsedBBM
+        
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: tableView.bounds.size.width)
+        tableView.allowsSelection = false
+        
         switch indexPath.row {
         case 0:
-            return  tableView.dequeueReusableCell(forIndexPath: indexPath) as DashboardUserInfo
+            return dashBoardUserInfoCell
         case 1:
-            return  tableView.dequeueReusableCell(forIndexPath: indexPath) as DashboardChart
+            return dashBoardChartCell
+        case 2:
+            return DashboardGasStationCell
+        case 3:
+            return DashboardUsedBBMCell
         default:
-            return  tableView.dequeueReusableCell(forIndexPath: indexPath) as DashboardChart
+            return dashBoardUserInfoCell
         }
         
     }

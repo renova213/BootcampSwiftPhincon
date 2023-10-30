@@ -8,9 +8,10 @@
 import UIKit
 
 class DashboardChart: UITableViewCell {
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    } 
+    }
+    
 }

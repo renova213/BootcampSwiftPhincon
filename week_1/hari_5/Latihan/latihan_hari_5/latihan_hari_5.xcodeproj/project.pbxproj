@@ -24,7 +24,11 @@
 		364EB3CB2AEA55BB00FC1A41 /* VehicleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364EB3C92AEA55BB00FC1A41 /* VehicleViewController.swift */; };
 		364EB3CC2AEA55BB00FC1A41 /* VehicleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 364EB3CA2AEA55BB00FC1A41 /* VehicleViewController.xib */; };
 		364EB3CE2AEA56A100FC1A41 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364EB3CD2AEA56A100FC1A41 /* LoginViewController.swift */; };
+		36697ADB2AEF5318007B06F0 /* FuelTypeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36697AD92AEF5318007B06F0 /* FuelTypeCard.swift */; };
+		36697ADC2AEF5318007B06F0 /* FuelTypeCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36697ADA2AEF5318007B06F0 /* FuelTypeCard.xib */; };
 		367A67802AEB51F10075FFE2 /* VehicleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367A677F2AEB51F10075FFE2 /* VehicleEntity.swift */; };
+		367A73982AEF38260086790D /* DashboardUsedBBM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367A73962AEF38260086790D /* DashboardUsedBBM.swift */; };
+		367A73992AEF38260086790D /* DashboardUsedBBM.xib in Resources */ = {isa = PBXBuildFile; fileRef = 367A73972AEF38260086790D /* DashboardUsedBBM.xib */; };
 		367B32062AEA33C3003B14CE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367B32042AEA33C3003B14CE /* RegisterViewController.swift */; };
 		367B32072AEA33C3003B14CE /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 367B32052AEA33C3003B14CE /* RegisterViewController.xib */; };
 		3683956A2AEBA807006CB947 /* DashboardChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368395682AEBA807006CB947 /* DashboardChart.swift */; };
@@ -55,7 +59,11 @@
 		364EB3C92AEA55BB00FC1A41 /* VehicleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleViewController.swift; sourceTree = "<group>"; };
 		364EB3CA2AEA55BB00FC1A41 /* VehicleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VehicleViewController.xib; sourceTree = "<group>"; };
 		364EB3CD2AEA56A100FC1A41 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		36697AD92AEF5318007B06F0 /* FuelTypeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelTypeCard.swift; sourceTree = "<group>"; };
+		36697ADA2AEF5318007B06F0 /* FuelTypeCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FuelTypeCard.xib; sourceTree = "<group>"; };
 		367A677F2AEB51F10075FFE2 /* VehicleEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleEntity.swift; sourceTree = "<group>"; };
+		367A73962AEF38260086790D /* DashboardUsedBBM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardUsedBBM.swift; sourceTree = "<group>"; };
+		367A73972AEF38260086790D /* DashboardUsedBBM.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardUsedBBM.xib; sourceTree = "<group>"; };
 		367B32042AEA33C3003B14CE /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		367B32052AEA33C3003B14CE /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		368395682AEBA807006CB947 /* DashboardChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardChart.swift; sourceTree = "<group>"; };
@@ -77,14 +85,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		36078ACD2AEBC0CE00B60537 /* extension */ = {
-			isa = PBXGroup;
-			children = (
-				36078ACE2AEBC0F100B60537 /* ExtCollectionView.swift */,
-			);
-			path = extension;
-			sourceTree = "<group>";
-		};
 		36129B022AEB8C6000F54FCB /* dashboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +98,7 @@
 		36129B072AEB96D600F54FCB /* dashboard_cell */ = {
 			isa = PBXGroup;
 			children = (
+				367A73932AEF37B00086790D /* dashboard_used_bbm */,
 				368395702AEBAC4C006CB947 /* dashboard_gas_station */,
 				36129B122AEB9A3A00F54FCB /* DashboardUserInfo.swift */,
 				36129B132AEB9A3A00F54FCB /* DashboardUserInfo.xib */,
@@ -126,7 +127,6 @@
 		3640AE0B2AEA136800ADFB52 /* latihan_hari_5 */ = {
 			isa = PBXGroup;
 			children = (
-				36078ACD2AEBC0CE00B60537 /* extension */,
 				367A67812AEB56E00075FFE2 /* resources */,
 				367A677E2AEB518C0075FFE2 /* model */,
 				364EB3C82AEA548300FC1A41 /* module */,
@@ -157,6 +157,7 @@
 		364EB3C52AEA528500FC1A41 /* extension */ = {
 			isa = PBXGroup;
 			children = (
+				36078ACE2AEBC0F100B60537 /* ExtCollectionView.swift */,
 				364EB3C62AEA529700FC1A41 /* ExTableView.swift */,
 			);
 			path = extension;
@@ -173,6 +174,15 @@
 				3640AE0E2AEA136800ADFB52 /* SceneDelegate.swift */,
 			);
 			path = module;
+			sourceTree = "<group>";
+		};
+		36697AD22AEF5012007B06F0 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				36697AD92AEF5318007B06F0 /* FuelTypeCard.swift */,
+				36697ADA2AEF5318007B06F0 /* FuelTypeCard.xib */,
+			);
+			path = cell;
 			sourceTree = "<group>";
 		};
 		367A677D2AEB4D9C0075FFE2 /* Auth */ = {
@@ -210,6 +220,16 @@
 				364EB3CA2AEA55BB00FC1A41 /* VehicleViewController.xib */,
 			);
 			path = Vehicle;
+			sourceTree = "<group>";
+		};
+		367A73932AEF37B00086790D /* dashboard_used_bbm */ = {
+			isa = PBXGroup;
+			children = (
+				36697AD22AEF5012007B06F0 /* cell */,
+				367A73962AEF38260086790D /* DashboardUsedBBM.swift */,
+				367A73972AEF38260086790D /* DashboardUsedBBM.xib */,
+			);
+			path = dashboard_used_bbm;
 			sourceTree = "<group>";
 		};
 		368395702AEBAC4C006CB947 /* dashboard_gas_station */ = {
@@ -292,12 +312,14 @@
 				3640AE192AEA136800ADFB52 /* LaunchScreen.storyboard in Resources */,
 				36129B152AEB9A3A00F54FCB /* DashboardUserInfo.xib in Resources */,
 				36129B062AEB8C8300F54FCB /* DashboardViewController.xib in Resources */,
+				367A73992AEF38260086790D /* DashboardUsedBBM.xib in Resources */,
 				364EB3C32AEA4D1700FC1A41 /* TableViewCell.xib in Resources */,
 				3640AE162AEA136800ADFB52 /* Assets.xcassets in Resources */,
 				3683956F2AEBAAE5006CB947 /* DashboardGasStation.xib in Resources */,
 				3640AE142AEA136800ADFB52 /* Main.storyboard in Resources */,
 				364EB3CC2AEA55BB00FC1A41 /* VehicleViewController.xib in Resources */,
 				367B32072AEA33C3003B14CE /* RegisterViewController.xib in Resources */,
+				36697ADC2AEF5318007B06F0 /* FuelTypeCard.xib in Resources */,
 				3683956B2AEBA807006CB947 /* DashboardChart.xib in Resources */,
 				368395752AEBAD38006CB947 /* GasStationCard.xib in Resources */,
 			);
@@ -321,7 +343,9 @@
 				364EB3C22AEA4D1700FC1A41 /* TableViewCell.swift in Sources */,
 				368395742AEBAD38006CB947 /* GasStationCard.swift in Sources */,
 				364EB3CB2AEA55BB00FC1A41 /* VehicleViewController.swift in Sources */,
+				367A73982AEF38260086790D /* DashboardUsedBBM.swift in Sources */,
 				364EB3CE2AEA56A100FC1A41 /* LoginViewController.swift in Sources */,
+				36697ADB2AEF5318007B06F0 /* FuelTypeCard.swift in Sources */,
 				3683956A2AEBA807006CB947 /* DashboardChart.swift in Sources */,
 				367A67802AEB51F10075FFE2 /* VehicleEntity.swift in Sources */,
 				3640AE0F2AEA136800ADFB52 /* SceneDelegate.swift in Sources */,

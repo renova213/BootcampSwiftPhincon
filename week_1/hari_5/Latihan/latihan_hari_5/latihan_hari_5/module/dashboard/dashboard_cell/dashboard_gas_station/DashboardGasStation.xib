@@ -17,23 +17,31 @@
                 <rect key="frame" x="0.0" y="0.0" width="392" height="192"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gas" translatesAutoresizingMaskIntoConstraints="NO" id="rtA-Hh-9MC">
-                        <rect key="frame" x="24" y="8" width="20" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="Zha-Ha-pSS"/>
-                            <constraint firstAttribute="width" constant="20" id="ZwP-Ui-CzM"/>
-                        </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SPBU Terdekat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2EQ-OK-jgR">
-                        <rect key="frame" x="48" y="8" width="320" height="17"/>
-                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="b8s-Il-BeU">
+                        <rect key="frame" x="24" y="8" width="344" height="20"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gas" translatesAutoresizingMaskIntoConstraints="NO" id="rtA-Hh-9MC">
+                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Zha-Ha-pSS"/>
+                                    <constraint firstAttribute="width" constant="20" id="ZwP-Ui-CzM"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SPBU Terdekat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2EQ-OK-jgR">
+                                <rect key="frame" x="24" y="0.0" width="320" height="20"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="BWL-s8-auy">
                         <rect key="frame" x="24" y="32" width="344" height="152"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mh0-s8-2tC">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="152" id="Wna-DG-a7G"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mh0-s8-2tC">
                             <size key="itemSize" width="128" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -42,15 +50,13 @@
                     </collectionView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="2EQ-OK-jgR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="448-Oh-BEP"/>
-                    <constraint firstItem="2EQ-OK-jgR" firstAttribute="leading" secondItem="rtA-Hh-9MC" secondAttribute="trailing" constant="4" id="8Fg-5z-UfY"/>
-                    <constraint firstItem="BWL-s8-auy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="EzA-Am-xvT"/>
-                    <constraint firstItem="BWL-s8-auy" firstAttribute="top" secondItem="rtA-Hh-9MC" secondAttribute="bottom" constant="4" id="GP7-Cf-8bI"/>
-                    <constraint firstItem="rtA-Hh-9MC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="H0l-UP-gPe"/>
-                    <constraint firstAttribute="trailing" secondItem="BWL-s8-auy" secondAttribute="trailing" constant="24" id="WUh-aW-zJ0"/>
-                    <constraint firstItem="rtA-Hh-9MC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Zct-Cu-K9m"/>
-                    <constraint firstAttribute="trailing" secondItem="2EQ-OK-jgR" secondAttribute="trailing" constant="24" id="lxn-q2-eDw"/>
-                    <constraint firstAttribute="bottom" secondItem="BWL-s8-auy" secondAttribute="bottom" constant="8" id="zUU-dW-nul"/>
+                    <constraint firstItem="BWL-s8-auy" firstAttribute="top" secondItem="b8s-Il-BeU" secondAttribute="bottom" constant="4" id="58B-TQ-Bfw"/>
+                    <constraint firstItem="BWL-s8-auy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="HT6-5s-mpG"/>
+                    <constraint firstAttribute="trailing" secondItem="BWL-s8-auy" secondAttribute="trailing" constant="24" id="Rc1-uf-ocg"/>
+                    <constraint firstAttribute="trailing" secondItem="b8s-Il-BeU" secondAttribute="trailing" constant="24" id="pCa-XH-PBP"/>
+                    <constraint firstItem="b8s-Il-BeU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="r7r-ZN-6ss"/>
+                    <constraint firstItem="b8s-Il-BeU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="sdv-8O-Xsc"/>
+                    <constraint firstAttribute="bottom" secondItem="BWL-s8-auy" secondAttribute="bottom" constant="8" id="udx-22-b8A"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
