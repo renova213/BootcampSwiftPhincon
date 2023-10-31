@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "stepslider",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/spromicky/StepSlider",
+      "state" : {
+        "branch" : "master",
+        "revision" : "0835ce78cd17c5f1d5c3485fe3f0286b263513bf"
+      }
+    }
+  ],
+  "version" : 2
+}

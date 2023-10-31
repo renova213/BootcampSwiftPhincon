@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="75" id="KGk-i7-Jjw" customClass="VehicleCard" customModule="latihan_hari_1" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="75"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="75"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tXy-lR-II9">
+                        <rect key="frame" x="8" y="8" width="377" height="59"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="car" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="wwP-Fx-YVv">
+                                <rect key="frame" x="8.0000000000000018" y="9.3333333333333321" width="23.666666666666671" height="40.333333333333343"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="23.670000000000002" id="GlP-jV-jXZ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Toyota" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7HH-PW-j1i">
+                                <rect key="frame" x="39.666666666666657" y="8" width="43.333333333333343" height="16"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="FF 123 12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HPX-uu-ZcZ">
+                                <rect key="frame" x="39.666666666666671" y="32" width="53.666666666666671" height="19"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HPX-uu-ZcZ" firstAttribute="leading" secondItem="wwP-Fx-YVv" secondAttribute="trailing" constant="8" id="52Z-8i-EMx"/>
+                            <constraint firstAttribute="bottom" secondItem="wwP-Fx-YVv" secondAttribute="bottom" constant="8" id="5Ku-Pu-BrR"/>
+                            <constraint firstItem="wwP-Fx-YVv" firstAttribute="leading" secondItem="tXy-lR-II9" secondAttribute="leading" constant="8" id="Hsa-RG-hw2"/>
+                            <constraint firstItem="7HH-PW-j1i" firstAttribute="leading" secondItem="wwP-Fx-YVv" secondAttribute="trailing" constant="8" id="OVG-Ab-94U"/>
+                            <constraint firstItem="HPX-uu-ZcZ" firstAttribute="top" secondItem="7HH-PW-j1i" secondAttribute="bottom" constant="8" id="QXC-jZ-Zxi"/>
+                            <constraint firstItem="7HH-PW-j1i" firstAttribute="top" secondItem="tXy-lR-II9" secondAttribute="top" constant="8" id="ehx-oJ-2AF"/>
+                            <constraint firstItem="wwP-Fx-YVv" firstAttribute="top" secondItem="tXy-lR-II9" secondAttribute="top" constant="8" id="rbq-jN-cYn"/>
+                            <constraint firstAttribute="bottom" secondItem="HPX-uu-ZcZ" secondAttribute="bottom" constant="8" id="toM-lC-OiL"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="tXy-lR-II9" secondAttribute="bottom" constant="8" id="0dx-m1-f8v"/>
+                    <constraint firstItem="tXy-lR-II9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="1Kr-3h-RZ5"/>
+                    <constraint firstAttribute="trailing" secondItem="tXy-lR-II9" secondAttribute="trailing" constant="8" id="dKG-lZ-fU0"/>
+                    <constraint firstItem="tXy-lR-II9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="xKT-Je-Huc"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="platNumber" destination="HPX-uu-ZcZ" id="5WO-jF-Q8s"/>
+                <outlet property="vehicleCard" destination="tXy-lR-II9" id="R3B-QF-YmN"/>
+                <outlet property="vehicleName" destination="7HH-PW-j1i" id="z0E-LG-zbr"/>
+            </connections>
+            <point key="canvasLocation" x="106.10687022900763" y="15.140845070422536"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="car" catalog="system" width="128" height="95"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
