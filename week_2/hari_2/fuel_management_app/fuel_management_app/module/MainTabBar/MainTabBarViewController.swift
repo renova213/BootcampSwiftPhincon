@@ -10,7 +10,7 @@ import UIKit
 class MainTabBarViewController: UITabBarController {
     
     let homeVC = UINavigationController(rootViewController: DashboardViewController())
-    let walletViewController = UINavigationController(rootViewController: WalletViewController())
+//    let walletViewController = UINavigationController(rootViewController: WalletViewController())
     let historyViewController = UINavigationController(rootViewController: HistoryViewController())
     let profileViewController = UINavigationController(rootViewController: ProfileViewController())
 
@@ -30,13 +30,13 @@ class MainTabBarViewController: UITabBarController {
     
     func configureTabBarItems(){
         homeVC.tabBarItem = UITabBarItem(title: "Home", image: SFSymbol.homeSymbol, tag: 0)
-        walletViewController.tabBarItem = UITabBarItem(title: "Wallet", image: SFSymbol.walletSymbol, tag: 1)
-        historyViewController.tabBarItem = UITabBarItem(title: "History", image: SFSymbol.historySymbol, tag: 2)
-        profileViewController.tabBarItem = UITabBarItem(title: "Profile", image: SFSymbol.profileSymbol, tag: 3)
+//        historyViewController.tabBarItem = UITabBarItem(title: "Wallet", image: SFSymbol.walletSymbol, tag: 1)
+        historyViewController.tabBarItem = UITabBarItem(title: "History", image: SFSymbol.historySymbol, tag: 1)
+        profileViewController.tabBarItem = UITabBarItem(title: "Profile", image: SFSymbol.profileSymbol, tag: 2)
     }
 
     func configureTabBar(){
-        setViewControllers([homeVC, walletViewController, historyViewController, profileViewController], animated: true)
+        setViewControllers([homeVC, historyViewController, profileViewController], animated: true)
     }
     /*
     // MARK: - Navigation

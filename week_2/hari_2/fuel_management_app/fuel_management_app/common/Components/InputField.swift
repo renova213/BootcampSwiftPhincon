@@ -9,8 +9,8 @@ import UIKit
 
 class InputField: UIView {
     
+    @IBOutlet weak var uiViewTextField: UIView!
     @IBOutlet weak var labelField: UILabel!
-    @IBOutlet weak var uiTextField: UIView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
    
@@ -38,7 +38,11 @@ class InputField: UIView {
 
     func setup(title: String, placeholder: String) {
         labelField.text = title
+        
         textField.placeholder = placeholder
+        
+        errorLabel.tintColor = UIColor.red
+        
     }
 
 }
