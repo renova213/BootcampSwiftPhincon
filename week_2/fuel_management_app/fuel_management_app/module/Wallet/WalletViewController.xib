@@ -16,6 +16,7 @@
                 <outlet property="topContainer" destination="0vb-z7-CR1" id="Ycz-w9-Ugr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="walletContainer" destination="ZLt-2o-ZwL" id="NlL-TE-Tjc"/>
+                <outlet property="walletTable" destination="0Lw-dc-NaU" id="WSL-lu-qld"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

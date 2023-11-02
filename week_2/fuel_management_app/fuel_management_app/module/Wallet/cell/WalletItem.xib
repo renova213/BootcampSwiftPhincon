@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -51,7 +52,7 @@
                                     </constraints>
                                 </imageView>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" name="WalletItemColor"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="gHA-b7-Rtf" secondAttribute="trailing" constant="26" id="20W-ce-Vd1"/>
                                 <constraint firstAttribute="bottom" secondItem="wEd-rC-Aep" secondAttribute="bottom" constant="16" id="CtY-9y-G6C"/>
@@ -63,7 +64,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" name="WalletTipColor"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="eKM-ga-JPw" secondAttribute="trailing" id="1ga-cQ-wSD"/>
                         <constraint firstItem="eKM-ga-JPw" firstAttribute="top" secondItem="XPb-zZ-fHo" secondAttribute="top" id="7Rq-Uj-Qx9"/>
@@ -81,11 +82,20 @@
                 <constraint firstAttribute="trailing" secondItem="XPb-zZ-fHo" secondAttribute="trailing" id="MfE-TA-7Sm"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="walletItemContainer" destination="XPb-zZ-fHo" id="qpY-kJ-MCF"/>
+            </connections>
             <point key="canvasLocation" x="477.09923664122135" y="-340.84507042253523"/>
         </view>
     </objects>
     <resources>
         <image name="down_arrow" width="28" height="28"/>
+        <namedColor name="WalletItemColor">
+            <color red="1" green="0.87450980392156863" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="WalletTipColor">
+            <color red="1" green="0.61960784313725492" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
