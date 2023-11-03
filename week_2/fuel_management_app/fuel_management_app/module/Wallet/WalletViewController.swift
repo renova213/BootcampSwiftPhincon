@@ -21,9 +21,9 @@ class WalletViewController: UIViewController {
         setUpStyleComponent() }
     
     func setUpStyleComponent(){
-        topContainer.roundRadius(topLeft: 20, topRight: 0, bottomLeft: 20, bottomRight: 0)
+        topContainer.roundCornersAll(radius: 20)
        
-        walletContainer.roundRadius(topLeft: 16, topRight: 16, bottomLeft: 16, bottomRight: 16)
+        walletContainer.roundCornersAll(radius: 16)
        
         bubble1.makeCircular()
         bubble1.backgroundColor = UIColor(named: "Main Color")?.withAlphaComponent(0.15)
@@ -58,8 +58,8 @@ extension WalletViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: tableView.bounds.size.width)
-        
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: tableView.bounds.size.width)
+        tableView.showsVerticalScrollIndicator = false
         tableView.allowsSelection = false
         
         let walletItem = tableView.dequeueReusableCell(forIndexPath: indexPath) as WalletItem

@@ -9,7 +9,8 @@ import UIKit
 
 class WalletItem: UITableViewCell {
 
-    @IBOutlet weak var walletItemContainer: UIView!
+    
+    @IBOutlet weak var walletContainer: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -17,7 +18,7 @@ class WalletItem: UITableViewCell {
     }
     
     func setUpComponentStyle(){
-        walletItemContainer.roundRadius(topLeft: 10, topRight: 10, bottomLeft: 10, bottomRight: 10)
+        walletContainer.roundCornersAll(radius: 10)
     }
 
 //    override func setSelected(_ selected: Bool, animated: Bool) {

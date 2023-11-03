@@ -34,7 +34,6 @@
 		36395C232AF38A2700B1B4DA /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36395C212AF38A2700B1B4DA /* WalletViewController.swift */; };
 		36395C242AF38A2700B1B4DA /* WalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36395C222AF38A2700B1B4DA /* WalletViewController.xib */; };
 		36395C272AF39EE700B1B4DA /* WalletItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36395C262AF39EE700B1B4DA /* WalletItem.swift */; };
-		36395C292AF39EF900B1B4DA /* WalletItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36395C282AF39EF900B1B4DA /* WalletItem.xib */; };
 		3640AE0D2AEA136800ADFB52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3640AE0C2AEA136800ADFB52 /* AppDelegate.swift */; };
 		3640AE0F2AEA136800ADFB52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3640AE0E2AEA136800ADFB52 /* SceneDelegate.swift */; };
 		3640AE142AEA136800ADFB52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3640AE122AEA136800ADFB52 /* Main.storyboard */; };
@@ -58,6 +57,7 @@
 		368BB4842AF32AE100AAAB31 /* GasStationCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368BB4832AF32AE100AAAB31 /* GasStationCard.xib */; };
 		36A311232AF23AEB00FCE4BA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A311212AF23AEB00FCE4BA /* RegisterViewController.swift */; };
 		36A311242AF23AEB00FCE4BA /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36A311222AF23AEB00FCE4BA /* RegisterViewController.xib */; };
+		36A832AB2AF491D6005AA185 /* WalletItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36A832AA2AF491D6005AA185 /* WalletItem.xib */; };
 		36AE31EF2AF1F6E100DBAC72 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AE31ED2AF1F6E100DBAC72 /* EditProfileViewController.swift */; };
 		36AE31F02AF1F6E100DBAC72 /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36AE31EE2AF1F6E100DBAC72 /* EditProfileViewController.xib */; };
 		36AE31F22AF20A1700DBAC72 /* ExtImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AE31F12AF20A1700DBAC72 /* ExtImageView.swift */; };
@@ -82,9 +82,11 @@
 		36AE32232AF2313D00DBAC72 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36AE32102AF2313D00DBAC72 /* Poppins-SemiBold.ttf */; };
 		36AE32242AF2313D00DBAC72 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36AE32112AF2313D00DBAC72 /* Poppins-Italic.ttf */; };
 		36AE32252AF2313D00DBAC72 /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36AE32122AF2313D00DBAC72 /* Poppins-MediumItalic.ttf */; };
+		790B296E4E87CBA231B2FFEB /* Pods_fuel_management_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE457C2B149EC6B918CE777C /* Pods_fuel_management_app.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1165C8E6EBF6AE3F036405F8 /* Pods-fuel_management_app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuel_management_app.debug.xcconfig"; path = "Target Support Files/Pods-fuel_management_app/Pods-fuel_management_app.debug.xcconfig"; sourceTree = "<group>"; };
 		3605FD472AF0EC5B00A8133D /* ExtValidasiEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtValidasiEmail.swift; sourceTree = "<group>"; };
 		3605FD4E2AF0FAD100A8133D /* InputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
 		3605FD502AF0FB4100A8133D /* InputField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputField.xib; sourceTree = "<group>"; };
@@ -111,7 +113,6 @@
 		36395C212AF38A2700B1B4DA /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		36395C222AF38A2700B1B4DA /* WalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletViewController.xib; sourceTree = "<group>"; };
 		36395C262AF39EE700B1B4DA /* WalletItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletItem.swift; sourceTree = "<group>"; };
-		36395C282AF39EF900B1B4DA /* WalletItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletItem.xib; sourceTree = "<group>"; };
 		3640AE092AEA136800ADFB52 /* fuel_management_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fuel_management_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3640AE0C2AEA136800ADFB52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3640AE0E2AEA136800ADFB52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +138,7 @@
 		368BB4832AF32AE100AAAB31 /* GasStationCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GasStationCard.xib; sourceTree = "<group>"; };
 		36A311212AF23AEB00FCE4BA /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		36A311222AF23AEB00FCE4BA /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		36A832AA2AF491D6005AA185 /* WalletItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletItem.xib; sourceTree = "<group>"; };
 		36AE31ED2AF1F6E100DBAC72 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		36AE31EE2AF1F6E100DBAC72 /* EditProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
 		36AE31F12AF20A1700DBAC72 /* ExtImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtImageView.swift; sourceTree = "<group>"; };
@@ -158,6 +160,8 @@
 		36AE32102AF2313D00DBAC72 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		36AE32112AF2313D00DBAC72 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		36AE32122AF2313D00DBAC72 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
+		723EF33B5511FD85D85D7458 /* Pods-fuel_management_app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuel_management_app.release.xcconfig"; path = "Target Support Files/Pods-fuel_management_app/Pods-fuel_management_app.release.xcconfig"; sourceTree = "<group>"; };
+		EE457C2B149EC6B918CE777C /* Pods_fuel_management_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fuel_management_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,12 +173,22 @@
 				36AE31F72AF217F500DBAC72 /* FirebaseFirestore in Frameworks */,
 				36AE31F92AF217F500DBAC72 /* FirebaseStorage in Frameworks */,
 				36395C182AF35E3200B1B4DA /* Lottie in Frameworks */,
+				790B296E4E87CBA231B2FFEB /* Pods_fuel_management_app.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		306679A9F2E89A501EC789AC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1165C8E6EBF6AE3F036405F8 /* Pods-fuel_management_app.debug.xcconfig */,
+				723EF33B5511FD85D85D7458 /* Pods-fuel_management_app.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		3605FD492AF0F36900A8133D /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,7 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				36395C262AF39EE700B1B4DA /* WalletItem.swift */,
-				36395C282AF39EF900B1B4DA /* WalletItem.xib */,
+				36A832AA2AF491D6005AA185 /* WalletItem.xib */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -275,6 +289,8 @@
 			children = (
 				3640AE0B2AEA136800ADFB52 /* fuel_management_app */,
 				3640AE0A2AEA136800ADFB52 /* Products */,
+				306679A9F2E89A501EC789AC /* Pods */,
+				EF6ABB442E46206B54F3C23C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -470,6 +486,14 @@
 			path = Poppins;
 			sourceTree = "<group>";
 		};
+		EF6ABB442E46206B54F3C23C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EE457C2B149EC6B918CE777C /* Pods_fuel_management_app.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -477,9 +501,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3640AE1D2AEA136800ADFB52 /* Build configuration list for PBXNativeTarget "fuel_management_app" */;
 			buildPhases = (
+				57567F5246F28C6BF58FBCF9 /* [CP] Check Pods Manifest.lock */,
 				3640AE052AEA136800ADFB52 /* Sources */,
 				3640AE062AEA136800ADFB52 /* Frameworks */,
 				3640AE072AEA136800ADFB52 /* Resources */,
+				463F8E281E1E284F67FC88AD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -545,7 +571,7 @@
 				36AE32192AF2313D00DBAC72 /* Poppins-SemiBoldItalic.ttf in Resources */,
 				36395C102AF335F300B1B4DA /* GoogleService-Info.plist in Resources */,
 				36AE32202AF2313D00DBAC72 /* Poppins-Bold.ttf in Resources */,
-				36395C292AF39EF900B1B4DA /* WalletItem.xib in Resources */,
+				36A832AB2AF491D6005AA185 /* WalletItem.xib in Resources */,
 				36AE32182AF2313D00DBAC72 /* Poppins-Medium.ttf in Resources */,
 				36AE32162AF2313D00DBAC72 /* Poppins-BoldItalic.ttf in Resources */,
 				361262112AEF92BA00ED3D32 /* DetailGasStationViewController.xib in Resources */,
@@ -582,6 +608,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		463F8E281E1E284F67FC88AD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-fuel_management_app/Pods-fuel_management_app-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-fuel_management_app/Pods-fuel_management_app-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-fuel_management_app/Pods-fuel_management_app-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		57567F5246F28C6BF58FBCF9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-fuel_management_app-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3640AE052AEA136800ADFB52 /* Sources */ = {
@@ -752,6 +820,7 @@
 		};
 		3640AE1E2AEA136800ADFB52 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1165C8E6EBF6AE3F036405F8 /* Pods-fuel_management_app.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -779,6 +848,7 @@
 		};
 		3640AE1F2AEA136800ADFB52 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 723EF33B5511FD85D85D7458 /* Pods-fuel_management_app.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
