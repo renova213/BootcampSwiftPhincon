@@ -4,7 +4,9 @@
 target 'fuel_management_app' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  pod 'Alamofire' 
+  pod 'Alamofire'
+  pod 'Kingfisher', '~> 7.0'
+  pod 'SkeletonView'
 
   # Pods for fuel_management_app
 

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class WalletViewController: UIViewController {
     
@@ -18,7 +19,10 @@ class WalletViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
-        setUpStyleComponent() }
+        setUpStyleComponent()
+        
+        
+    }
     
     func setUpStyleComponent(){
         topContainer.roundCornersAll(radius: 20)
@@ -36,7 +40,8 @@ class WalletViewController: UIViewController {
         walletTable.delegate = self
         walletTable.dataSource = self
         
-        walletTable.registerCellWithNib(WalletItem.self)
+        walletTable.registerCellWithNib(OutboundTransaction.self)
+        walletTable.registerCellWithNib(InboundTransaction.self)
     }
     
     /*
@@ -53,18 +58,31 @@ class WalletViewController: UIViewController {
 
 extension WalletViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        9
+        WalletHistoryEntity.listWalletHistory.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let data:WalletHistoryEntity = WalletHistoryEntity.listWalletHistory[indexPath.row]
         
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: tableView.bounds.size.width)
         tableView.showsVerticalScrollIndicator = false
         tableView.allowsSelection = false
         
-        let walletItem = tableView.dequeueReusableCell(forIndexPath: indexPath) as WalletItem
-        
-        return walletItem
+        switch (data.statusTransaction){
+        case 0:
+            let outboundTransaction = tableView.dequeueReusableCell(forIndexPath: indexPath) as OutboundTransaction
+            outboundTransaction.balanceLabel.text = "+\(data.balance)"
+            outboundTransaction.dateLabel.text = data.date
+            return outboundTransaction
+        case 1:
+            let inboundTransaction = tableView.dequeueReusableCell(forIndexPath: indexPath) as InboundTransaction
+            inboundTransaction.balanceLabel.text = "+\(data.balance.formattedString())"
+            inboundTransaction.dateLabel.text = data.date
+            return inboundTransaction
+        default:
+            return UITableViewCell()
+        }
     }
 }
 

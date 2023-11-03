@@ -26,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zac-jA-aQ8">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="818"/>
+                    <rect key="frame" x="0.0" y="29" width="393" height="789"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="8Ih-wK-kvN">
                             <rect key="frame" x="24" y="0.0" width="345" height="100"/>
@@ -64,7 +64,7 @@
                             </subviews>
                         </stackView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1e-rd-A6a">
-                            <rect key="frame" x="75" y="749" width="243" height="45"/>
+                            <rect key="frame" x="75" y="720" width="243" height="45"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="45" id="SWg-7J-CLi"/>
                             </constraints>
@@ -120,7 +120,7 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="Zac-jA-aQ8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="-59" id="0EM-Zn-4cE"/>
+                <constraint firstItem="Zac-jA-aQ8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="-30" id="0EM-Zn-4cE"/>
                 <constraint firstItem="Zac-jA-aQ8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="7Bk-ZQ-hkK"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Zac-jA-aQ8" secondAttribute="bottom" id="HWo-NB-ctU"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Zac-jA-aQ8" secondAttribute="trailing" id="sAf-wZ-Bq7"/>

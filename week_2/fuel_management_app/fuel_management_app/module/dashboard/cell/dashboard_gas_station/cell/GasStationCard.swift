@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol GasStationCardDelegate: AnyObject {
     func didTapGasStationCard()
@@ -33,6 +34,8 @@ class GasStationCard: UICollectionViewCell {
 
         // Mengaktifkan user interaction agar view dapat menerima gesture
         spbuImage.isUserInteractionEnabled = true
+        spbuImage.contentMode = .scaleAspectFit
+        
     }
     
     @objc func handleTap() {

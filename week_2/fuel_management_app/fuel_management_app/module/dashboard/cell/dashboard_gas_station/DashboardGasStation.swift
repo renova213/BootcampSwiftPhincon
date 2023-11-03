@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DashboardGasStation: UITableViewCell {
     var navigationController: UINavigationController?
     
     @IBOutlet weak var gasStationCollection: UICollectionView!
-        
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setup()
@@ -46,15 +47,17 @@ extension DashboardGasStation: UICollectionViewDelegate, UICollectionViewDataSou
         
         
         gasStationCardCell.spbuLabel.text = data.name
-        gasStationCardCell.spbuImage.image = UIImage(named: data.imageAsset)
+        if let imageUrl = URL(string: data.urlImage) {
+            gasStationCardCell.spbuImage.kf.setImage(with: imageUrl, placeholder: UIImage(named: "eraser"))
+        }
         gasStationCardCell.ratingLabel.text = String(data.rating)
         gasStationCardCell.totalReview.text = "(\(data.totalReview)"
         gasStationCardCell.lokasi.text = data.location
         return gasStationCardCell
     }
     
-   
-
+    
+    
 }
 
 

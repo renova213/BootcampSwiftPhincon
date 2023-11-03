@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 extension UIImageView {
     func makeRadius(withRadius radius: CGFloat) {

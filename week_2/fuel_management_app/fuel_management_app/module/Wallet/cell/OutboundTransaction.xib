@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="WalletItem" customModule="fuel_management_app" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="OutboundTransaction" customModule="fuel_management_app" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="393" height="85"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -41,7 +41,7 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="HlP-KM-jpj" secondAttribute="trailing" id="K3l-pt-iFL"/>
+                                                <constraint firstAttribute="trailing" secondItem="HlP-KM-jpj" secondAttribute="trailing" id="fEU-fU-i1Z"/>
                                                 <constraint firstItem="WGI-Am-zDR" firstAttribute="leading" secondItem="hRl-bw-Hgo" secondAttribute="leading" id="mOG-aP-7hZ"/>
                                                 <constraint firstAttribute="trailing" secondItem="WGI-Am-zDR" secondAttribute="trailing" id="rxA-8S-lRp"/>
                                             </constraints>
@@ -93,6 +93,12 @@
                         <constraint firstItem="5Ot-Kl-4C6" firstAttribute="top" secondItem="rcB-zc-VfC" secondAttribute="top" id="xet-qt-rPA"/>
                         <constraint firstAttribute="bottom" secondItem="5Ot-Kl-4C6" secondAttribute="bottom" constant="8" id="y8I-20-ZBo"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                            <real key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -109,7 +115,9 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="walletContainer" destination="5Ot-Kl-4C6" id="uOK-aJ-WsD"/>
+                <outlet property="balanceLabel" destination="HlP-KM-jpj" id="j4Z-fZ-pvI"/>
+                <outlet property="dateLabel" destination="n9C-dy-eNp" id="fdk-WM-qzx"/>
+                <outlet property="walletContainer" destination="5Ot-Kl-4C6" id="FeB-It-r4p"/>
             </connections>
             <point key="canvasLocation" x="52.671755725190835" y="-262.32394366197184"/>
         </view>

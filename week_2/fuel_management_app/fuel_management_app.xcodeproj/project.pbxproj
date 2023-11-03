@@ -33,7 +33,7 @@
 		36395C1F2AF3642A00B1B4DA /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36395C1D2AF3642A00B1B4DA /* OnboardingViewController.xib */; };
 		36395C232AF38A2700B1B4DA /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36395C212AF38A2700B1B4DA /* WalletViewController.swift */; };
 		36395C242AF38A2700B1B4DA /* WalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36395C222AF38A2700B1B4DA /* WalletViewController.xib */; };
-		36395C272AF39EE700B1B4DA /* WalletItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36395C262AF39EE700B1B4DA /* WalletItem.swift */; };
+		36395C272AF39EE700B1B4DA /* OutboundTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36395C262AF39EE700B1B4DA /* OutboundTransaction.swift */; };
 		3640AE0D2AEA136800ADFB52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3640AE0C2AEA136800ADFB52 /* AppDelegate.swift */; };
 		3640AE0F2AEA136800ADFB52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3640AE0E2AEA136800ADFB52 /* SceneDelegate.swift */; };
 		3640AE142AEA136800ADFB52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3640AE122AEA136800ADFB52 /* Main.storyboard */; };
@@ -57,7 +57,8 @@
 		368BB4842AF32AE100AAAB31 /* GasStationCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368BB4832AF32AE100AAAB31 /* GasStationCard.xib */; };
 		36A311232AF23AEB00FCE4BA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A311212AF23AEB00FCE4BA /* RegisterViewController.swift */; };
 		36A311242AF23AEB00FCE4BA /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36A311222AF23AEB00FCE4BA /* RegisterViewController.xib */; };
-		36A832AB2AF491D6005AA185 /* WalletItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36A832AA2AF491D6005AA185 /* WalletItem.xib */; };
+		36A832AB2AF491D6005AA185 /* OutboundTransaction.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36A832AA2AF491D6005AA185 /* OutboundTransaction.xib */; };
+		36A832AD2AF4A1D0005AA185 /* WalletHistoryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A832AC2AF4A1D0005AA185 /* WalletHistoryEntity.swift */; };
 		36AE31EF2AF1F6E100DBAC72 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AE31ED2AF1F6E100DBAC72 /* EditProfileViewController.swift */; };
 		36AE31F02AF1F6E100DBAC72 /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36AE31EE2AF1F6E100DBAC72 /* EditProfileViewController.xib */; };
 		36AE31F22AF20A1700DBAC72 /* ExtImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AE31F12AF20A1700DBAC72 /* ExtImageView.swift */; };
@@ -82,6 +83,11 @@
 		36AE32232AF2313D00DBAC72 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36AE32102AF2313D00DBAC72 /* Poppins-SemiBold.ttf */; };
 		36AE32242AF2313D00DBAC72 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36AE32112AF2313D00DBAC72 /* Poppins-Italic.ttf */; };
 		36AE32252AF2313D00DBAC72 /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36AE32122AF2313D00DBAC72 /* Poppins-MediumItalic.ttf */; };
+		36E72A8F2AF4A90E00E9F838 /* ExtCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E72A8E2AF4A90E00E9F838 /* ExtCurrency.swift */; };
+		36E72A972AF4AB5400E9F838 /* InboundTransaction.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36E72A962AF4AB5400E9F838 /* InboundTransaction.xib */; };
+		36E72A992AF4C0EE00E9F838 /* InboundTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E72A982AF4C0EE00E9F838 /* InboundTransaction.swift */; };
+		36EF8EB82AF4E1CC00A63136 /* HistoryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EF8EB72AF4E1CC00A63136 /* HistoryCard.swift */; };
+		36EF8EBA2AF4E1DA00A63136 /* HistoryCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36EF8EB92AF4E1DA00A63136 /* HistoryCard.xib */; };
 		790B296E4E87CBA231B2FFEB /* Pods_fuel_management_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE457C2B149EC6B918CE777C /* Pods_fuel_management_app.framework */; };
 /* End PBXBuildFile section */
 
@@ -112,7 +118,7 @@
 		36395C1D2AF3642A00B1B4DA /* OnboardingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
 		36395C212AF38A2700B1B4DA /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		36395C222AF38A2700B1B4DA /* WalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletViewController.xib; sourceTree = "<group>"; };
-		36395C262AF39EE700B1B4DA /* WalletItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletItem.swift; sourceTree = "<group>"; };
+		36395C262AF39EE700B1B4DA /* OutboundTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutboundTransaction.swift; sourceTree = "<group>"; };
 		3640AE092AEA136800ADFB52 /* fuel_management_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fuel_management_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3640AE0C2AEA136800ADFB52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3640AE0E2AEA136800ADFB52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,7 +144,8 @@
 		368BB4832AF32AE100AAAB31 /* GasStationCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GasStationCard.xib; sourceTree = "<group>"; };
 		36A311212AF23AEB00FCE4BA /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		36A311222AF23AEB00FCE4BA /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
-		36A832AA2AF491D6005AA185 /* WalletItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletItem.xib; sourceTree = "<group>"; };
+		36A832AA2AF491D6005AA185 /* OutboundTransaction.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OutboundTransaction.xib; sourceTree = "<group>"; };
+		36A832AC2AF4A1D0005AA185 /* WalletHistoryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletHistoryEntity.swift; sourceTree = "<group>"; };
 		36AE31ED2AF1F6E100DBAC72 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		36AE31EE2AF1F6E100DBAC72 /* EditProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
 		36AE31F12AF20A1700DBAC72 /* ExtImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtImageView.swift; sourceTree = "<group>"; };
@@ -160,6 +167,11 @@
 		36AE32102AF2313D00DBAC72 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		36AE32112AF2313D00DBAC72 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		36AE32122AF2313D00DBAC72 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
+		36E72A8E2AF4A90E00E9F838 /* ExtCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtCurrency.swift; sourceTree = "<group>"; };
+		36E72A962AF4AB5400E9F838 /* InboundTransaction.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InboundTransaction.xib; sourceTree = "<group>"; };
+		36E72A982AF4C0EE00E9F838 /* InboundTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboundTransaction.swift; sourceTree = "<group>"; };
+		36EF8EB72AF4E1CC00A63136 /* HistoryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCard.swift; sourceTree = "<group>"; };
+		36EF8EB92AF4E1DA00A63136 /* HistoryCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCard.xib; sourceTree = "<group>"; };
 		723EF33B5511FD85D85D7458 /* Pods-fuel_management_app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuel_management_app.release.xcconfig"; path = "Target Support Files/Pods-fuel_management_app/Pods-fuel_management_app.release.xcconfig"; sourceTree = "<group>"; };
 		EE457C2B149EC6B918CE777C /* Pods_fuel_management_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fuel_management_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -227,6 +239,7 @@
 		361262142AEF939800ED3D32 /* History */ = {
 			isa = PBXGroup;
 			children = (
+				36EF8EB62AF4E14B00A63136 /* cell */,
 				361262152AEF93B600ED3D32 /* HistoryViewController.swift */,
 				361262162AEF93B600ED3D32 /* HistoryViewController.xib */,
 			);
@@ -278,8 +291,10 @@
 		36395C252AF39EBD00B1B4DA /* cell */ = {
 			isa = PBXGroup;
 			children = (
-				36395C262AF39EE700B1B4DA /* WalletItem.swift */,
-				36A832AA2AF491D6005AA185 /* WalletItem.xib */,
+				36395C262AF39EE700B1B4DA /* OutboundTransaction.swift */,
+				36A832AA2AF491D6005AA185 /* OutboundTransaction.xib */,
+				36E72A962AF4AB5400E9F838 /* InboundTransaction.xib */,
+				36E72A982AF4C0EE00E9F838 /* InboundTransaction.swift */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -342,6 +357,7 @@
 				3605FD472AF0EC5B00A8133D /* ExtValidasiEmail.swift */,
 				362D7F922AF1019F000170F6 /* ExtView.swift */,
 				36AE31F12AF20A1700DBAC72 /* ExtImageView.swift */,
+				36E72A8E2AF4A90E00E9F838 /* ExtCurrency.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -382,6 +398,7 @@
 				367A677F2AEB51F10075FFE2 /* VehicleEntity.swift */,
 				36129B102AEB99C000F54FCB /* UserEntity.swift */,
 				361262062AEF708000ED3D32 /* GasStationEntity.swift */,
+				36A832AC2AF4A1D0005AA185 /* WalletHistoryEntity.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -486,6 +503,15 @@
 			path = Poppins;
 			sourceTree = "<group>";
 		};
+		36EF8EB62AF4E14B00A63136 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				36EF8EB72AF4E1CC00A63136 /* HistoryCard.swift */,
+				36EF8EB92AF4E1DA00A63136 /* HistoryCard.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
 		EF6ABB442E46206B54F3C23C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -571,7 +597,7 @@
 				36AE32192AF2313D00DBAC72 /* Poppins-SemiBoldItalic.ttf in Resources */,
 				36395C102AF335F300B1B4DA /* GoogleService-Info.plist in Resources */,
 				36AE32202AF2313D00DBAC72 /* Poppins-Bold.ttf in Resources */,
-				36A832AB2AF491D6005AA185 /* WalletItem.xib in Resources */,
+				36A832AB2AF491D6005AA185 /* OutboundTransaction.xib in Resources */,
 				36AE32182AF2313D00DBAC72 /* Poppins-Medium.ttf in Resources */,
 				36AE32162AF2313D00DBAC72 /* Poppins-BoldItalic.ttf in Resources */,
 				361262112AEF92BA00ED3D32 /* DetailGasStationViewController.xib in Resources */,
@@ -586,6 +612,7 @@
 				3683956F2AEBAAE5006CB947 /* DashboardGasStation.xib in Resources */,
 				36AE321E2AF2313D00DBAC72 /* Poppins-Regular.ttf in Resources */,
 				368BB4842AF32AE100AAAB31 /* GasStationCard.xib in Resources */,
+				36E72A972AF4AB5400E9F838 /* InboundTransaction.xib in Resources */,
 				36AE32142AF2313D00DBAC72 /* Poppins-ThinItalic.ttf in Resources */,
 				36AE32252AF2313D00DBAC72 /* Poppins-MediumItalic.ttf in Resources */,
 				36AE321C2AF2313D00DBAC72 /* Poppins-BlackItalic.ttf in Resources */,
@@ -599,6 +626,7 @@
 				36AE32222AF2313D00DBAC72 /* Poppins-Thin.ttf in Resources */,
 				36AE321B2AF2313D00DBAC72 /* Poppins-ExtraBold.ttf in Resources */,
 				36697ADC2AEF5318007B06F0 /* FuelTypeCard.xib in Resources */,
+				36EF8EBA2AF4E1DA00A63136 /* HistoryCard.xib in Resources */,
 				36AE32232AF2313D00DBAC72 /* Poppins-SemiBold.ttf in Resources */,
 				36395C242AF38A2700B1B4DA /* WalletViewController.xib in Resources */,
 				36A311242AF23AEB00FCE4BA /* RegisterViewController.xib in Resources */,
@@ -668,6 +696,7 @@
 				361262072AEF708000ED3D32 /* GasStationEntity.swift in Sources */,
 				36129B142AEB9A3A00F54FCB /* DashboardUserInfo.swift in Sources */,
 				3683956E2AEBAAE5006CB947 /* DashboardGasStation.swift in Sources */,
+				36A832AD2AF4A1D0005AA185 /* WalletHistoryEntity.swift in Sources */,
 				36129B112AEB99C000F54FCB /* UserEntity.swift in Sources */,
 				36395C1E2AF3642A00B1B4DA /* OnboardingViewController.swift in Sources */,
 				3640AE0D2AEA136800ADFB52 /* AppDelegate.swift in Sources */,
@@ -676,16 +705,19 @@
 				3612620A2AEF810D00ED3D32 /* MainTabBarViewController.swift in Sources */,
 				364EB3CB2AEA55BB00FC1A41 /* VehicleViewController.swift in Sources */,
 				362D7F932AF1019F000170F6 /* ExtView.swift in Sources */,
+				36E72A8F2AF4A90E00E9F838 /* ExtCurrency.swift in Sources */,
 				367A73982AEF38260086790D /* DashboardUsedBBM.swift in Sources */,
 				364EB3CE2AEA56A100FC1A41 /* LoginViewController.swift in Sources */,
 				36697ADB2AEF5318007B06F0 /* FuelTypeCard.swift in Sources */,
 				3683956A2AEBA807006CB947 /* DashboardChart.swift in Sources */,
-				36395C272AF39EE700B1B4DA /* WalletItem.swift in Sources */,
+				36395C272AF39EE700B1B4DA /* OutboundTransaction.swift in Sources */,
 				367A67802AEB51F10075FFE2 /* VehicleEntity.swift in Sources */,
 				3640AE0F2AEA136800ADFB52 /* SceneDelegate.swift in Sources */,
 				3605FD482AF0EC5B00A8133D /* ExtValidasiEmail.swift in Sources */,
+				36EF8EB82AF4E1CC00A63136 /* HistoryCard.swift in Sources */,
 				36AE31EF2AF1F6E100DBAC72 /* EditProfileViewController.swift in Sources */,
 				36A311232AF23AEB00FCE4BA /* RegisterViewController.swift in Sources */,
+				36E72A992AF4C0EE00E9F838 /* InboundTransaction.swift in Sources */,
 				36395C232AF38A2700B1B4DA /* WalletViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

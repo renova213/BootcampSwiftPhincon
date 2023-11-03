@@ -1,16 +1,18 @@
 //
-//  WalletItem.swift
+//  InboundTransaction.swift
 //  fuel_management_app
 //
-//  Created by Phincon on 02/11/23.
+//  Created by Phincon on 03/11/23.
 //
 
 import UIKit
 
-class WalletItem: UITableViewCell {
+class InboundTransaction: UITableViewCell {
 
     
     @IBOutlet weak var walletContainer: UIView!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var balanceLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

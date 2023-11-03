@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DashboardViewController" customModule="latihan_hari_2" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DashboardViewController" customModule="fuel_management_app" customModuleProvider="target">
             <connections>
                 <outlet property="listTableView" destination="hob-X6-ioq" id="r6B-7E-NTR"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -23,7 +23,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="393" height="818"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hob-X6-ioq">
-                            <rect key="frame" x="0.0" y="-60" width="393" height="878"/>
+                            <rect key="frame" x="0.0" y="-65" width="393" height="883"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </tableView>
                     </subviews>
@@ -31,7 +31,7 @@
                     <constraints>
                         <constraint firstItem="hob-X6-ioq" firstAttribute="leading" secondItem="q2K-TW-35z" secondAttribute="leading" id="DgU-HF-pZt"/>
                         <constraint firstAttribute="trailing" secondItem="hob-X6-ioq" secondAttribute="trailing" id="Vtr-hk-htN"/>
-                        <constraint firstItem="hob-X6-ioq" firstAttribute="top" secondItem="q2K-TW-35z" secondAttribute="top" constant="-60" id="cVI-AW-yzV"/>
+                        <constraint firstItem="hob-X6-ioq" firstAttribute="top" secondItem="q2K-TW-35z" secondAttribute="top" constant="-65" id="cVI-AW-yzV"/>
                         <constraint firstAttribute="bottom" secondItem="hob-X6-ioq" secondAttribute="bottom" id="dwW-iQ-6o9"/>
                     </constraints>
                 </view>

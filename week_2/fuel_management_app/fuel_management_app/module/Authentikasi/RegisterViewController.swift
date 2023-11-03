@@ -46,11 +46,7 @@ class RegisterViewController: UIViewController {
                 displayAlert(title: "Register Gagal", message: "Konfirmasi Password Kosong", registerState: false)
                 return
             }
-            
-            guard password != confirmPassword else {
-                displayAlert(title: "Register Gagal", message: "Password Tidak Sama", registerState: false)
-                return
-            }
+         
             
             Auth.auth().createUser(withEmail: emailField.text ?? "", password: passwordField.text ?? "") { authResult, error in
                 if let error = error {
