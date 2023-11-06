@@ -8,7 +8,7 @@
 import Foundation
 enum Endpoint {
     case login(param: LoginEntity)
-    case register
+    case register(param: RegisterEntity)
     
     func path() -> String {
         switch self {
@@ -29,7 +29,7 @@ enum Endpoint {
     var parameters: [String: Any]? {
         switch self {
         case .login:
-           
+            
             return nil
         case .register:
             return nil
@@ -53,9 +53,15 @@ enum Endpoint {
                 "username": param.username,
                 "password": param.password
             ]
-                return try? JSONSerialization.data(withJSONObject: params)
-            case .register:
-                return nil
+            return try? JSONSerialization.data(withJSONObject: params)
+        case .register(let param):
+            let params: [String: Any] = [
+                "username": param.username,
+                "email": param.email,
+                "password": param.password,
+                "confirm_password": param.confirmPassword
+            ]
+            return try? JSONSerialization.data(withJSONObject: params)
         }
     }
     

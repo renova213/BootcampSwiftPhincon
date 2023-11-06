@@ -114,9 +114,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="chQ-Sy-fbn"/>
                     <connections>
-                        <outlet property="emailFormField" destination="Kiq-kJ-fMK" id="cC8-8u-Xr9"/>
                         <outlet property="loginButton" destination="77r-Of-NWJ" id="bx7-kn-fIH"/>
                         <outlet property="passwordFormField" destination="hIZ-dC-Va6" id="kAc-gP-Ewa"/>
+                        <outlet property="usernameFormField" destination="Kiq-kJ-fMK" id="Kfz-PT-qLR"/>
                         <segue destination="0n1-kZ-Nef" kind="show" identifier="homeScreen" id="j0D-9Z-3Jy"/>
                     </connections>
                 </viewController>

@@ -15,8 +15,9 @@
 		360C73212AF8BA2400AB3639 /* endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C73202AF8BA2400AB3639 /* endpoint.swift */; };
 		360C73232AF8BAF900AB3639 /* LoginEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C73222AF8BAF900AB3639 /* LoginEntity.swift */; };
 		360C73252AF8BC7600AB3639 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C73242AF8BC7600AB3639 /* APIManager.swift */; };
-		360C73282AF8BF3700AB3639 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C73272AF8BF3700AB3639 /* LoginViewModel.swift */; };
+		360C73282AF8BF3700AB3639 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C73272AF8BF3700AB3639 /* AuthViewModel.swift */; };
 		360C732A2AF8C69C00AB3639 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C73292AF8C69C00AB3639 /* UserViewModel.swift */; };
+		360C732C2AF8DA0C00AB3639 /* RegisterEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360C732B2AF8DA0C00AB3639 /* RegisterEntity.swift */; };
 		361262072AEF708000ED3D32 /* GasStationEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361262062AEF708000ED3D32 /* GasStationEntity.swift */; };
 		3612620A2AEF810D00ED3D32 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361262092AEF810D00ED3D32 /* MainTabBarViewController.swift */; };
 		3612620C2AEF827F00ED3D32 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612620B2AEF827F00ED3D32 /* constants.swift */; };
@@ -107,8 +108,9 @@
 		360C73202AF8BA2400AB3639 /* endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = endpoint.swift; sourceTree = "<group>"; };
 		360C73222AF8BAF900AB3639 /* LoginEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntity.swift; sourceTree = "<group>"; };
 		360C73242AF8BC7600AB3639 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		360C73272AF8BF3700AB3639 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		360C73272AF8BF3700AB3639 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		360C73292AF8C69C00AB3639 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		360C732B2AF8DA0C00AB3639 /* RegisterEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterEntity.swift; sourceTree = "<group>"; };
 		361262062AEF708000ED3D32 /* GasStationEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStationEntity.swift; sourceTree = "<group>"; };
 		361262092AEF810D00ED3D32 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		3612620B2AEF827F00ED3D32 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
@@ -234,7 +236,7 @@
 		360C73262AF8BF1D00AB3639 /* view_model */ = {
 			isa = PBXGroup;
 			children = (
-				360C73272AF8BF3700AB3639 /* LoginViewModel.swift */,
+				360C73272AF8BF3700AB3639 /* AuthViewModel.swift */,
 				360C73292AF8C69C00AB3639 /* UserViewModel.swift */,
 			);
 			path = view_model;
@@ -432,6 +434,7 @@
 				36A832AC2AF4A1D0005AA185 /* WalletHistoryEntity.swift */,
 				360C731D2AF8B8B800AB3639 /* LoginResponse.swift */,
 				360C73222AF8BAF900AB3639 /* LoginEntity.swift */,
+				360C732B2AF8DA0C00AB3639 /* RegisterEntity.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -719,6 +722,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				361262102AEF92BA00ED3D32 /* DetailGasStationViewController.swift in Sources */,
+				360C732C2AF8DA0C00AB3639 /* RegisterEntity.swift in Sources */,
 				364EB3C72AEA529700FC1A41 /* ExTableView.swift in Sources */,
 				360C731E2AF8B8B800AB3639 /* LoginResponse.swift in Sources */,
 				3605FD4F2AF0FAD100A8133D /* InputField.swift in Sources */,
@@ -747,7 +751,7 @@
 				360C732A2AF8C69C00AB3639 /* UserViewModel.swift in Sources */,
 				36697ADB2AEF5318007B06F0 /* FuelTypeCard.swift in Sources */,
 				3683956A2AEBA807006CB947 /* DashboardChart.swift in Sources */,
-				360C73282AF8BF3700AB3639 /* LoginViewModel.swift in Sources */,
+				360C73282AF8BF3700AB3639 /* AuthViewModel.swift in Sources */,
 				36395C272AF39EE700B1B4DA /* OutboundTransaction.swift in Sources */,
 				367A67802AEB51F10075FFE2 /* VehicleEntity.swift in Sources */,
 				3640AE0F2AEA136800ADFB52 /* SceneDelegate.swift in Sources */,

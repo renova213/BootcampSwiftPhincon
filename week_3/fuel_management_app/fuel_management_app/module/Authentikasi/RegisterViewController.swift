@@ -6,75 +6,94 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 class RegisterViewController: UIViewController {
+    let authViewModel = AuthViewModel()
     
-    @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var registerButton: UIButton!
-    @IBOutlet weak var confirmPasswordField: UITextField!
+    @IBOutlet weak var usernameFormField: InputField!
+    @IBOutlet weak var emailFormField: InputField!
+    @IBOutlet weak var passwordFormField: InputField!
+    @IBOutlet weak var confirmPasswordFormField: InputField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         buttonSetup()
-        fieldSetup()
+        setUpFormField()
     }
+    
+    func setUpFormField() {
+        usernameFormField.setup(title: "Username", placeholder: "Masukkan Username")
+        usernameFormField.errorLabel.isHidden = true
+        
+        emailFormField.setup(title: "Email", placeholder: "Masukkan Email")
+        emailFormField.errorLabel.isHidden = true
+        
+        passwordFormField.errorLabel.isHidden = true
+        passwordFormField.setup(title: "Password", placeholder: "Masukkan Password")
+        passwordFormField.textField.isSecureTextEntry = true
+        
+        confirmPasswordFormField.errorLabel.isHidden = true
+        confirmPasswordFormField.setup(title: "Konfirmasi Password", placeholder: "Masukkan Password Kembali")
+        confirmPasswordFormField.textField.isSecureTextEntry = true
+    }
+    
+    
     
     func buttonSetup(){
         registerButton.addTarget(self, action: #selector(registerTap), for: .touchUpInside)
     }
     
-    func fieldSetup(){
-        passwordField.isSecureTextEntry = true
-        confirmPasswordField.isSecureTextEntry = true
-    }
     
     @objc func registerTap() {
-        // Nonaktifkan tombol login dan tampilkan teks loading
         registerButton.isEnabled = false
         
-        Task {
-            try await Task.sleep(nanoseconds: 2 * 1_000_000_000)
-            
-            guard let password = passwordField.text, !password.isEmpty else {
-                displayAlert(title: "Register Gagal", message: "Password Kosong", registerState: false)
-                return
-            }
-            
-            guard let confirmPassword = confirmPasswordField.text, !confirmPassword.isEmpty else {
-                displayAlert(title: "Register Gagal", message: "Konfirmasi Password Kosong", registerState: false)
-                return
-            }
-         
-            
-            Auth.auth().createUser(withEmail: emailField.text ?? "", password: passwordField.text ?? "") { authResult, error in
-                if let error = error {
-                    self.registerButton.isEnabled = true
-                    self.displayAlert(title: "Register Gagal", message: error.localizedDescription, registerState: false)
-                }else{
-                    self.registerButton.isEnabled = true
-                    self.displayAlert(title: "Register Berhasil", message: "Silahkan login", registerState: true)
+        let username = usernameFormField.textField.text ?? ""
+        let email = emailFormField.textField.text ?? ""
+        let password = passwordFormField.textField.text ?? ""
+        let confirmPassword = confirmPasswordFormField.textField.text ?? ""
+        
+        authViewModel.registerUser(register: RegisterEntity(username: username, email:email, password: password, confirmPassword: confirmPassword)) { [weak self] result in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                
+                switch result {
+                    // Handling success
+                case .success:
+                    self.handleSuccessRegister()
+                    // Handling failure
+                case .failure(let error):
+                    self.handleFailedRegister(with: error)
                 }
             }
         }
     }
     
+    func handleSuccessRegister() {
+        displayAlert(title: "Register Successful", message: "Silahkan login", registerState: true)
+    }
     
+    func handleFailedRegister(with error: APIError) {
+        displayAlert(title: "Register Gagal", message: "\(error.message)", registerState: false)
+    }
     
     func displayAlert(title: String, message: String, registerState: Bool) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default){_ in
-            if(registerState){
-                self.navigationController?.popToRootViewController(animated: true)
-            }else{
-                self.dismiss(animated: true)
-            }
+        let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+            self?.handleAlertAction(registerState)
         }
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
-        registerButton.isEnabled = true
-        registerButton.setTitle("Login", for: .normal)
     }
     
+    func handleAlertAction(_ registerState: Bool) {
+        if registerState {
+            let loginVC = LoginViewController()
+            navigationController?.setViewControllers([loginVC], animated: true)
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
+        registerButton.isEnabled = true
+        registerButton.setTitle("Register", for: .normal)
+    }
 }

@@ -9,27 +9,25 @@ import UIKit
 import FirebaseAuth
 
 class LoginViewController: UIViewController {
-    let loginViewModel = LoginViewModel()
+    let authViewModel = AuthViewModel()
     let userViewModel = UserViewModel()
     
     @IBOutlet weak var loginButton: UIButton!
     
-    @IBOutlet weak var emailFormField: InputField!
+    @IBOutlet weak var usernameFormField: InputField!
     @IBOutlet weak var passwordFormField: InputField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        setUpEmailFormField()
-        setUpPasswordormField()
+        
+        setUpFormField()
         
     }
     
-    func setUpEmailFormField() {
-        emailFormField.setup(title: "Email", placeholder: "Masukkan Email")
-        emailFormField.errorLabel.isHidden = true
-    }
-    func setUpPasswordormField() {
+    func setUpFormField() {
+        usernameFormField.setup(title: "Username", placeholder: "Masukkan Username")
+        usernameFormField.errorLabel.isHidden = true
+        
         passwordFormField.errorLabel.isHidden = true
         passwordFormField.setup(title: "Password", placeholder: "Masukkan Password")
         passwordFormField.textField.isSecureTextEntry = true
@@ -43,39 +41,54 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButton(_ sender: Any)  {
         loginButton.isEnabled = false
-        let username = emailFormField.textField.text ?? ""
+        
+        let username = usernameFormField.textField.text ?? ""
         let password = passwordFormField.textField.text ?? ""
         
-        loginViewModel.loginUser(username: username, password: password) { result in
+        let loginEntity = LoginEntity(username: username, password: password)
+        
+        authViewModel.loginUser(login: loginEntity) { [weak self] result in
             DispatchQueue.main.async {
-                    print(result)
+                guard let self = self else { return }
+                
                 switch result {
+                    // Handling success
                 case .success(let loginResponse):
-                    // Handle successful login
-                    self.userViewModel.setUserFromLoginResponse(loginResponse: loginResponse)
-                    self.displayAlert(title: "Login Sukses", message: "Selamat datang kembali\n\(self.userViewModel.getUser().username)", loginState: true)
-                    self.loginButton.isEnabled = true
+                    self.handleSuccessLogin(loginResponse)
+                    // Handling failure
                 case .failure(let error):
-                    // Handle login failure
-                    self.displayAlert(title: "Login Gagal", message:"\(error.message)", loginState: false)
-                    self.loginButton.isEnabled = true
+                    self.handleFailedLogin(with: error)
                 }
             }
         }
     }
     
+    func handleSuccessLogin(_ loginResponse: LoginResponse) {
+        userViewModel.setUserFromLoginResponse(loginResponse: loginResponse)
+        let username = userViewModel.getUser().username
+        displayAlert(title: "Login Successful", message: "Welcome back\n\(username)", loginState: true)
+    }
+    
+    func handleFailedLogin(with error: APIError) {
+        displayAlert(title: "Login Failed", message: "\(error.message)", loginState: false)
+    }
+    
     func displayAlert(title: String, message: String, loginState: Bool) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default){_ in
-            if(loginState){
-                let vc = VehicleViewController()
-                self.navigationController?.setViewControllers([vc], animated: true)
-            }else{
-                self.dismiss(animated: true)
-            }
+        let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+            self?.handleAlertAction(loginState)
         }
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func handleAlertAction(_ loginState: Bool) {
+        if loginState {
+            let vehicleVC = VehicleViewController()
+            navigationController?.setViewControllers([vehicleVC], animated: true)
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
         loginButton.isEnabled = true
         loginButton.setTitle("Login", for: .normal)
     }
