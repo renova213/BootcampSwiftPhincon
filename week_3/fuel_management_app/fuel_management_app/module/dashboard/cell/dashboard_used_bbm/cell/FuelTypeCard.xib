@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FuelTypeCard" id="gTV-IL-0wX" customClass="FuelTypeCard" customModule="latihan_hari_1" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="99" height="28"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="99" height="28"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ey4-dm-6qm">
+                        <rect key="frame" x="0.0" y="-3.6666666666666661" width="99" height="35.333333333333336"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aSK-BX-gH5">
+                                <rect key="frame" x="0.0" y="0.0" width="91" height="35.333333333333336"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pertalite" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9u0-t2-reo">
+                                        <rect key="frame" x="8" y="12.333333333333332" width="75" height="15"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
+                                        <color key="textColor" name="chip text color"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="chip color"/>
+                                <constraints>
+                                    <constraint firstItem="9u0-t2-reo" firstAttribute="leading" secondItem="aSK-BX-gH5" secondAttribute="leading" constant="8" id="F1c-qd-dqq"/>
+                                    <constraint firstAttribute="height" constant="35" id="G1L-R1-vwV"/>
+                                    <constraint firstAttribute="bottom" secondItem="9u0-t2-reo" secondAttribute="bottom" constant="8" id="JGA-7n-38K"/>
+                                    <constraint firstAttribute="trailing" secondItem="9u0-t2-reo" secondAttribute="trailing" constant="8" id="RIF-pL-Eok"/>
+                                    <constraint firstItem="9u0-t2-reo" firstAttribute="top" secondItem="aSK-BX-gH5" secondAttribute="top" constant="12" id="Vpe-2F-jwR"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aSK-BX-gH5" firstAttribute="leading" secondItem="ey4-dm-6qm" secondAttribute="leading" id="1kO-rc-P9C"/>
+                            <constraint firstAttribute="bottom" secondItem="aSK-BX-gH5" secondAttribute="bottom" id="OnY-az-zru"/>
+                            <constraint firstAttribute="height" constant="35" id="VCY-ff-bXw"/>
+                            <constraint firstItem="aSK-BX-gH5" firstAttribute="top" secondItem="ey4-dm-6qm" secondAttribute="top" id="ZXf-CX-vMN"/>
+                            <constraint firstAttribute="trailing" secondItem="aSK-BX-gH5" secondAttribute="trailing" constant="8" id="jqK-YG-2nI"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="ey4-dm-6qm" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="8rp-iV-Y7V"/>
+                <constraint firstAttribute="trailing" secondItem="ey4-dm-6qm" secondAttribute="trailing" id="X8E-V5-XJi"/>
+                <constraint firstItem="ey4-dm-6qm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="sMr-bp-5DA"/>
+            </constraints>
+            <size key="customSize" width="99" height="28"/>
+            <connections>
+                <outlet property="fuelTypeChip" destination="aSK-BX-gH5" id="he2-Zy-pnL"/>
+            </connections>
+            <point key="canvasLocation" x="177.86259541984731" y="7.746478873239437"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="chip color">
+            <color red="0.89411764705882357" green="0.97647058823529409" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="chip text color">
+            <color red="0.21176470588235294" green="0.81176470588235294" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

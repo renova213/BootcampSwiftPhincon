@@ -1,0 +1,6 @@
+framework module Pods_fuel_management_app {
+  umbrella header "Pods-fuel_management_app-umbrella.h"
+
+  export *
+  module * { export * }
+}

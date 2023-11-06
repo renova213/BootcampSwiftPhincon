@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditProfileViewController" customModule="fuel_management_app" customModuleProvider="target">
+            <connections>
+                <outlet property="cameraButton" destination="rvP-rf-Auh" id="px1-3O-ops"/>
+                <outlet property="emailField" destination="6j6-GV-T4s" id="tjx-kI-QsS"/>
+                <outlet property="galleryButton" destination="HO2-9M-FA7" id="oaW-MM-gEF"/>
+                <outlet property="phoneField" destination="OGW-RC-gxc" id="Svt-gE-3MY"/>
+                <outlet property="profileImage" destination="C4e-ox-6PK" id="jfB-xd-BVb"/>
+                <outlet property="saveButton" destination="N1e-rd-A6a" id="j8e-rl-Bwx"/>
+                <outlet property="usernameField" destination="QXB-AR-uJV" id="jNT-2R-GoV"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zac-jA-aQ8">
+                    <rect key="frame" x="0.0" y="29" width="393" height="789"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="8Ih-wK-kvN">
+                            <rect key="frame" x="24" y="0.0" width="345" height="100"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_profile" translatesAutoresizingMaskIntoConstraints="NO" id="C4e-ox-6PK">
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="100" id="m86-pp-4sQ"/>
+                                        <constraint firstAttribute="width" constant="100" id="wI4-pP-vKa"/>
+                                    </constraints>
+                                </imageView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="ktT-yV-1QA">
+                                    <rect key="frame" x="112" y="0.0" width="233" height="100"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HO2-9M-FA7">
+                                            <rect key="frame" x="0.0" y="0.0" width="233" height="35.666666666666664"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="filled" title="Gallery">
+                                                <color key="baseBackgroundColor" name="Main Color"/>
+                                            </buttonConfiguration>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvP-rf-Auh">
+                                            <rect key="frame" x="0.0" y="65.666666666666671" width="233" height="34.333333333333329"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="filled" title="Camera">
+                                                <color key="baseBackgroundColor" name="Main Color"/>
+                                            </buttonConfiguration>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="HO2-9M-FA7" secondAttribute="trailing" id="Su1-8v-0eL"/>
+                                        <constraint firstAttribute="trailing" secondItem="rvP-rf-Auh" secondAttribute="trailing" id="ylE-Pc-IQj"/>
+                                    </constraints>
+                                </stackView>
+                            </subviews>
+                        </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1e-rd-A6a">
+                            <rect key="frame" x="75" y="720" width="243" height="45"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="45" id="SWg-7J-CLi"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="filled" title="Simpan">
+                                <color key="baseBackgroundColor" name="Main Color"/>
+                            </buttonConfiguration>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6j6-GV-T4s" customClass="InputField" customModule="fuel_management_app" customModuleProvider="target">
+                            <rect key="frame" x="24" y="214" width="345" height="50"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="dxA-63-aoB"/>
+                                <constraint firstAttribute="height" constant="50" id="j6H-w4-kJk"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QXB-AR-uJV" customClass="InputField" customModule="fuel_management_app" customModuleProvider="target">
+                            <rect key="frame" x="24" y="132" width="345" height="50"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="QzD-rf-w08"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OGW-RC-gxc" customClass="InputField" customModule="fuel_management_app" customModuleProvider="target">
+                            <rect key="frame" x="24" y="296" width="345" height="50"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="F5R-zp-wgl"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="K8c-wO-4Ct"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="N1e-rd-A6a" secondAttribute="bottom" constant="24" id="5ZM-47-lQA"/>
+                        <constraint firstItem="6j6-GV-T4s" firstAttribute="top" secondItem="QXB-AR-uJV" secondAttribute="bottom" constant="32" id="6g5-hn-59K"/>
+                        <constraint firstItem="QXB-AR-uJV" firstAttribute="top" secondItem="8Ih-wK-kvN" secondAttribute="bottom" constant="32" id="Dq5-JG-r0A"/>
+                        <constraint firstAttribute="trailing" secondItem="OGW-RC-gxc" secondAttribute="trailing" constant="24" id="QKQ-5Y-ang"/>
+                        <constraint firstItem="6j6-GV-T4s" firstAttribute="leading" secondItem="Zac-jA-aQ8" secondAttribute="leading" constant="24" id="UcX-OJ-Ket"/>
+                        <constraint firstItem="OGW-RC-gxc" firstAttribute="top" secondItem="6j6-GV-T4s" secondAttribute="bottom" constant="32" id="Wd7-XX-A53"/>
+                        <constraint firstAttribute="trailing" secondItem="6j6-GV-T4s" secondAttribute="trailing" constant="24" id="XNw-sF-z04"/>
+                        <constraint firstItem="8Ih-wK-kvN" firstAttribute="top" secondItem="Zac-jA-aQ8" secondAttribute="top" id="YDF-hE-Uou"/>
+                        <constraint firstItem="8Ih-wK-kvN" firstAttribute="leading" secondItem="Zac-jA-aQ8" secondAttribute="leading" constant="24" id="aVK-ap-wqm"/>
+                        <constraint firstItem="N1e-rd-A6a" firstAttribute="leading" secondItem="Zac-jA-aQ8" secondAttribute="leading" constant="75" id="gMs-yv-jDq"/>
+                        <constraint firstAttribute="trailing" secondItem="8Ih-wK-kvN" secondAttribute="trailing" constant="24" id="hJZ-3n-3z7"/>
+                        <constraint firstAttribute="trailing" secondItem="N1e-rd-A6a" secondAttribute="trailing" constant="75" id="kg0-Dg-08O"/>
+                        <constraint firstItem="OGW-RC-gxc" firstAttribute="leading" secondItem="Zac-jA-aQ8" secondAttribute="leading" constant="24" id="qs1-8R-HXQ"/>
+                        <constraint firstAttribute="trailing" secondItem="QXB-AR-uJV" secondAttribute="trailing" constant="24" id="wYq-eX-IN5"/>
+                        <constraint firstItem="QXB-AR-uJV" firstAttribute="leading" secondItem="Zac-jA-aQ8" secondAttribute="leading" constant="24" id="zUd-xx-VJU"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Zac-jA-aQ8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="-30" id="0EM-Zn-4cE"/>
+                <constraint firstItem="Zac-jA-aQ8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="7Bk-ZQ-hkK"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Zac-jA-aQ8" secondAttribute="bottom" id="HWo-NB-ctU"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Zac-jA-aQ8" secondAttribute="trailing" id="sAf-wZ-Bq7"/>
+            </constraints>
+            <point key="canvasLocation" x="138" y="20"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="placeholder_profile" width="600" height="600"/>
+        <namedColor name="Main Color">
+            <color red="0.21199999749660492" green="0.81199997663497925" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
