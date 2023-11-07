@@ -8,6 +8,9 @@
 import Foundation
 
 class AuthViewModel {
+    
+    static let shared = AuthViewModel()
+    
     func loginUser(login: LoginEntity, completion: @escaping(Result<LoginResponse, APIError>) -> Void) {
         let endpoint = Endpoint.login(param: login)
         
@@ -16,16 +19,11 @@ class AuthViewModel {
         }
     }
     
-    func registerUser(register: RegisterEntity, completion: @escaping(Result<Void, APIError>) -> Void) {
+    func registerUser(register: RegisterEntity, completion: @escaping(Result<LoginResponse, APIError>) -> Void) {
         let endpoint = Endpoint.register(param: register)
         
         APIManager.shared.fetchRequest(endpoint: endpoint, expecting: LoginResponse.self) { result in
-            switch result {
-            case .success:
-                completion(.success(()))
-            case .failure(let error):
-                completion(.failure(error))
-            }
+            completion(result)
         }
     }
 }

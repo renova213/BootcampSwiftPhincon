@@ -9,6 +9,8 @@ import Foundation
 enum Endpoint {
     case login(param: LoginEntity)
     case register(param: RegisterEntity)
+    case getVehicles(param: String)
+    case getUser
     
     func path() -> String {
         switch self {
@@ -16,6 +18,10 @@ enum Endpoint {
             return "/auth/login"
         case .register:
             return "/auth/register"
+        case .getVehicles(let param):
+            return "/vehicle/userId=\(param)"
+        case .getUser:
+            return "/user"
         }
     }
     
@@ -23,22 +29,14 @@ enum Endpoint {
         switch self {
         case .login, .register:
             return "POST"
-        }
-    }
-    
-    var parameters: [String: Any]? {
-        switch self {
-        case .login:
-            
-            return nil
-        case .register:
-            return nil
+        case .getVehicles, .getUser:
+            return "GET"
         }
     }
     
     var headers: [String: Any]? {
         switch self {
-        case .login, .register:
+        case .login, .register, .getVehicles, .getUser:
             let params:[String: Any]? = [
                 "Content-Type": "application/json"]
             
@@ -62,7 +60,12 @@ enum Endpoint {
                 "confirm_password": param.confirmPassword
             ]
             return try? JSONSerialization.data(withJSONObject: params)
+        case .getVehicles:
+            return nil
+        case .getUser:
+            return nil
         }
+        
     }
     
     func urlString() -> String {

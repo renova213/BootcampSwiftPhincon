@@ -58,10 +58,8 @@ class RegisterViewController: UIViewController {
                 guard let self = self else { return }
                 
                 switch result {
-                    // Handling success
                 case .success:
                     self.handleSuccessRegister()
-                    // Handling failure
                 case .failure(let error):
                     self.handleFailedRegister(with: error)
                 }

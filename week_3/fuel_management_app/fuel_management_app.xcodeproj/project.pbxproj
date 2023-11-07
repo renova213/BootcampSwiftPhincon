@@ -90,6 +90,7 @@
 		36AE32232AF2313D00DBAC72 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36AE32102AF2313D00DBAC72 /* Poppins-SemiBold.ttf */; };
 		36AE32242AF2313D00DBAC72 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36AE32112AF2313D00DBAC72 /* Poppins-Italic.ttf */; };
 		36AE32252AF2313D00DBAC72 /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36AE32122AF2313D00DBAC72 /* Poppins-MediumItalic.ttf */; };
+		36D16AC02AF9C9B4009DF062 /* VehicleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D16ABF2AF9C9B4009DF062 /* VehicleViewModel.swift */; };
 		36E72A8F2AF4A90E00E9F838 /* ExtCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E72A8E2AF4A90E00E9F838 /* ExtCurrency.swift */; };
 		36E72A972AF4AB5400E9F838 /* InboundTransaction.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36E72A962AF4AB5400E9F838 /* InboundTransaction.xib */; };
 		36E72A992AF4C0EE00E9F838 /* InboundTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E72A982AF4C0EE00E9F838 /* InboundTransaction.swift */; };
@@ -181,6 +182,7 @@
 		36AE32102AF2313D00DBAC72 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		36AE32112AF2313D00DBAC72 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		36AE32122AF2313D00DBAC72 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
+		36D16ABF2AF9C9B4009DF062 /* VehicleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleViewModel.swift; sourceTree = "<group>"; };
 		36E72A8E2AF4A90E00E9F838 /* ExtCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtCurrency.swift; sourceTree = "<group>"; };
 		36E72A962AF4AB5400E9F838 /* InboundTransaction.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InboundTransaction.xib; sourceTree = "<group>"; };
 		36E72A982AF4C0EE00E9F838 /* InboundTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboundTransaction.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			children = (
 				360C73272AF8BF3700AB3639 /* AuthViewModel.swift */,
 				360C73292AF8C69C00AB3639 /* UserViewModel.swift */,
+				36D16ABF2AF9C9B4009DF062 /* VehicleViewModel.swift */,
 			);
 			path = view_model;
 			sourceTree = "<group>";
@@ -729,6 +732,7 @@
 				360C73232AF8BAF900AB3639 /* LoginEntity.swift in Sources */,
 				36129B052AEB8C8300F54FCB /* DashboardViewController.swift in Sources */,
 				36AE31F22AF20A1700DBAC72 /* ExtImageView.swift in Sources */,
+				36D16AC02AF9C9B4009DF062 /* VehicleViewModel.swift in Sources */,
 				36078ACF2AEBC0F100B60537 /* ExtCollectionView.swift in Sources */,
 				3612620C2AEF827F00ED3D32 /* constants.swift in Sources */,
 				361262172AEF93B600ED3D32 /* HistoryViewController.swift in Sources */,

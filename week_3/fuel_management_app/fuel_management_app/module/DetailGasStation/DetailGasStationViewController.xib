@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailGasStationViewController" customModule="latihan_hari_1" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailGasStationViewController" customModule="fuel_management_app" customModuleProvider="target">
             <connections>
                 <outlet property="gasStationImage" destination="ecf-ss-Y6v" id="2iF-Xi-Ai8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -22,7 +22,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ol4-qo-OA6">
                     <rect key="frame" x="0.0" y="59" width="393" height="250"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ecf-ss-Y6v">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GasStation3" translatesAutoresizingMaskIntoConstraints="NO" id="ecf-ss-Y6v">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="250"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="250" id="ZzH-Sd-CsS"/>
@@ -49,6 +49,7 @@
         </view>
     </objects>
     <resources>
+        <image name="GasStation3" width="800" height="596"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

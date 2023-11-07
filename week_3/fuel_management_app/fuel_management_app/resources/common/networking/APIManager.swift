@@ -23,13 +23,12 @@ final class APIManager{
             completion(.failure(APIError(message: "url tidak ditemukan")))
             return }
         
+        
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             guard let httpResponse = response as? HTTPURLResponse, let data = data, error == nil else {
                 completion(.failure(APIError(message: "URL Tidak Ditemukan")))
                 return
             }
-            
-           
             
             switch httpResponse.statusCode {
                 
@@ -58,7 +57,6 @@ final class APIManager{
         var url: URL {
             return URL(string: endpoint.urlString()) ?? URL(string: "")!
         }
-        
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method()
         

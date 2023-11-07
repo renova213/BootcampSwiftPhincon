@@ -66,7 +66,7 @@ class LoginViewController: UIViewController {
     func handleSuccessLogin(_ loginResponse: LoginResponse) {
         userViewModel.setUserFromLoginResponse(loginResponse: loginResponse)
         let username = userViewModel.getUser().username
-        displayAlert(title: "Login Successful", message: "Welcome back\n\(username)", loginState: true)
+        displayAlert(title: "Login Successful", message: "Selamat datang kembali\n\(username)", loginState: true)
     }
     
     func handleFailedLogin(with error: APIError) {
@@ -86,6 +86,7 @@ class LoginViewController: UIViewController {
         if loginState {
             let vehicleVC = VehicleViewController()
             navigationController?.setViewControllers([vehicleVC], animated: true)
+            UINavigationBar.appearance().isHidden = true
         } else {
             dismiss(animated: true, completion: nil)
         }

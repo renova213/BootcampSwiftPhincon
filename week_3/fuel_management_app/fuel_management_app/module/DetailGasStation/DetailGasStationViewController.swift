@@ -15,11 +15,21 @@ protocol DetailGasStationDelegate {
 class DetailGasStationViewController: UIViewController {
 
     @IBOutlet weak var gasStationImage: UIImageView!
+    
+    var selectedId: String?
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         gasStationImage.image = UIImage(named: "GasStation")
+        setUp()
+    }
+    
+    func setUp()  {
+        
+        if let id = selectedId {
+            print(id)
+        }
     }
 
 

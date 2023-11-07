@@ -25,20 +25,13 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpProfileView()
-        setUpGesture()
+        fetchUser()
+        setUp()
+        
     }
     
     
-    func setUpProfileView(){
-        imageProfile.makeRounded()
-    }
-    
-    func setUpGesture(){
-        let logoutGesture = UITapGestureRecognizer(target: self, action: #selector(logoutTapped))
-        logout.addGestureRecognizer(logoutGesture)
-        logout.isUserInteractionEnabled = true
-    }
+
     
    weak var delegate: ProfileViewControllerDelegate?
 
@@ -61,5 +54,29 @@ class ProfileViewController: UIViewController {
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
         }
+    }
+}
+
+extension ProfileViewController {
+    func setUp(){
+        func setUpProfileView(){
+            imageProfile.makeRounded()
+        }
+        
+        func setUpGesture(){
+            let logoutGesture = UITapGestureRecognizer(target: self, action: #selector(logoutTapped))
+            logout.addGestureRecognizer(logoutGesture)
+            logout.isUserInteractionEnabled = true
+        }
+    }
+}
+
+extension ProfileViewController {
+    func fetchUser(){
+        UserViewModel.shared.fetchUser()
+        let user = UserViewModel.shared.getUser()
+        usernameLabel.text = user.username
+        phoneLabel.text = user.phone
+        emailLabel.text = user.email
     }
 }

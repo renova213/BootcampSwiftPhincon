@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DashboardViewController" customModule="fuel_management_app" customModuleProvider="target">
             <connections>
-                <outlet property="listTableView" destination="hob-X6-ioq" id="r6B-7E-NTR"/>
+                <outlet property="listTableView" destination="g9J-so-9Ov" id="LUP-aZ-szg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,30 +19,18 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q2K-TW-35z">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="818"/>
-                    <subviews>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hob-X6-ioq">
-                            <rect key="frame" x="0.0" y="-65" width="393" height="883"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        </tableView>
-                    </subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="g9J-so-9Ov">
+                    <rect key="frame" x="0.0" y="-65" width="393" height="883"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstItem="hob-X6-ioq" firstAttribute="leading" secondItem="q2K-TW-35z" secondAttribute="leading" id="DgU-HF-pZt"/>
-                        <constraint firstAttribute="trailing" secondItem="hob-X6-ioq" secondAttribute="trailing" id="Vtr-hk-htN"/>
-                        <constraint firstItem="hob-X6-ioq" firstAttribute="top" secondItem="q2K-TW-35z" secondAttribute="top" constant="-65" id="cVI-AW-yzV"/>
-                        <constraint firstAttribute="bottom" secondItem="hob-X6-ioq" secondAttribute="bottom" id="dwW-iQ-6o9"/>
-                    </constraints>
-                </view>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="q2K-TW-35z" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="WaM-vc-CgG"/>
-                <constraint firstItem="q2K-TW-35z" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fk6-tI-Dxk"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="q2K-TW-35z" secondAttribute="bottom" id="kHu-vI-22D"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="q2K-TW-35z" secondAttribute="trailing" id="tvd-Ni-uIV"/>
+                <constraint firstItem="g9J-so-9Ov" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-65" id="DO9-WO-7q6"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="g9J-so-9Ov" secondAttribute="trailing" id="WGf-9d-QAm"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="g9J-so-9Ov" secondAttribute="bottom" id="amD-nJ-DUy"/>
+                <constraint firstItem="g9J-so-9Ov" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="tOa-lc-cBF"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="139.69465648854961" y="19.718309859154932"/>

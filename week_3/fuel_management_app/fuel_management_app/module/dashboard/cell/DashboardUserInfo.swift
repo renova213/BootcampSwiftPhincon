@@ -9,6 +9,7 @@ import UIKit
 
 class DashboardUserInfo: UITableViewCell {
 
+    @IBOutlet weak var usernameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

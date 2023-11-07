@@ -43,26 +43,18 @@ class DashboardViewController: UIViewController {
 
 extension DashboardViewController: UITableViewDelegate, UITableViewDataSource{
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("adsdsaads")
-    }
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: tableView.bounds.size.width)
-        tableView.allowsSelection = false
         
         switch indexPath.row {
         case 0:
             let dashBoardUserInfoCell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DashboardUserInfo
-            
+            dashBoardUserInfoCell.usernameLabel.text = UserViewModel.shared.getUser().username
             return dashBoardUserInfoCell
         case 1:
             let dashBoardChartCell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DashboardChart
@@ -70,6 +62,7 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource{
             return dashBoardChartCell
         case 2:
             let DashboardGasStationCell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DashboardGasStation
+            DashboardGasStationCell.delegate = self
             return DashboardGasStationCell
         case 3:
             let DashboardUsedBBMCell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DashboardUsedBBM
@@ -77,7 +70,15 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource{
         default:
             return UITableViewCell()
         }
-        
     }
     
+}
+
+extension DashboardViewController: DashboardGasStationDelegate {
+    func passData(withID id: String) {
+        print(id)
+        let vc = DetailGasStationViewController()
+        vc.selectedId = id
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
