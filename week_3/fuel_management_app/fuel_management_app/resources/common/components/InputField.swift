@@ -41,6 +41,26 @@ class InputField: UIView {
         textField.placeholder = placeholder
         errorLabel.text = error
         errorLabel?.tintColor = UIColor.red
+        errorLabel.isHidden = true
+    }
+    
+    func initialSetup(title: String = "", placeholder: String = "", text: String = ""){
+        labelField.text = title
+        textField.placeholder = placeholder
+        textField.text = text
+        errorLabel.text = ""
+        errorLabel?.tintColor = UIColor.red
+        errorLabel.isHidden = true
+    }
+    
+    func setupDisable(title: String = "", text: String = "") {
+        labelField.text = title
+        textField.placeholder = ""
+        textField.text = text
+        textField.isEnabled = false
+        errorLabel.text = ""
+        errorLabel?.tintColor = UIColor.red
+        errorLabel.isHidden = true
     }
     
 }

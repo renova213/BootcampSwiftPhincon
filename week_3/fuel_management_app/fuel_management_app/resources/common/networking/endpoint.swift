@@ -11,6 +11,8 @@ enum Endpoint {
     case register(param: RegisterEntity)
     case getVehicles(param: String)
     case getUser
+    case getUserByUsername(param: String)
+    case updateUser(param: UserEntity)
     
     func path() -> String {
         switch self {
@@ -22,6 +24,10 @@ enum Endpoint {
             return "/vehicle/userId=\(param)"
         case .getUser:
             return "/user"
+        case .getUserByUsername(let param):
+            return "/user/\(param)"
+        case .updateUser(let param):
+            return "/user/\(param.id)"
         }
     }
     
@@ -29,14 +35,16 @@ enum Endpoint {
         switch self {
         case .login, .register:
             return "POST"
-        case .getVehicles, .getUser:
+        case .getVehicles, .getUser, .getUserByUsername:
             return "GET"
+        case .updateUser:
+            return "PUT"
         }
     }
     
     var headers: [String: Any]? {
         switch self {
-        case .login, .register, .getVehicles, .getUser:
+        case .login, .register, .getVehicles, .getUser, .updateUser, .getUserByUsername:
             let params:[String: Any]? = [
                 "Content-Type": "application/json"]
             
@@ -64,6 +72,15 @@ enum Endpoint {
             return nil
         case .getUser:
             return nil
+        case .getUserByUsername:
+            return nil
+        case .updateUser(let param):
+            let params: [String: Any] = [
+                "email": param.email,
+                "address": param.address,
+                "phone": param.phone,
+            ]
+            return try? JSONSerialization.data(withJSONObject: params)
         }
         
     }

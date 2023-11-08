@@ -1,24 +1,28 @@
 PODS:
-  - Alamofire (5.8.1)
+  - FloatingPanel (2.8.0)
   - Kingfisher (7.10.0)
+  - ReachabilitySwift (5.0.0)
   - SkeletonView (1.30.4)
 
 DEPENDENCIES:
-  - Alamofire
+  - FloatingPanel
   - Kingfisher (~> 7.0)
+  - ReachabilitySwift
   - SkeletonView
 
 SPEC REPOS:
   trunk:
-    - Alamofire
+    - FloatingPanel
     - Kingfisher
+    - ReachabilitySwift
     - SkeletonView
 
 SPEC CHECKSUMS:
-  Alamofire: 3ca42e259043ee0dc5c0cdd76c4bc568b8e42af7
+  FloatingPanel: f585be005983e66f8f4932f93ca46bf9f09dae3a
   Kingfisher: a18f05d3b6d37d8650ee4a3e61d57a28fc6207f6
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SkeletonView: 5a050f6411e697abd4cda0a8d767013399dccd69
 
-PODFILE CHECKSUM: 405d8058a4a82d3109c8ed36a00223290c480fc0
+PODFILE CHECKSUM: 52ac20cead8f414c08ed759d36658031a468f43b
 
 COCOAPODS: 1.14.2

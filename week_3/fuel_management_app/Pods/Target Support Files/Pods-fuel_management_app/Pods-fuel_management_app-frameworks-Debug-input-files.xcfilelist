@@ -1,4 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-fuel_management_app/Pods-fuel_management_app-frameworks.sh
-${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework
 ${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
+${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework
 ${BUILT_PRODUCTS_DIR}/SkeletonView/SkeletonView.framework

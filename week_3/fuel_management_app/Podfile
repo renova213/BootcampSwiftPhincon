@@ -4,11 +4,10 @@
 target 'fuel_management_app' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  pod 'Alamofire'
-  pod 'RxSwift'
-  pod 'RxCocoa'
+  pod 'ReachabilitySwift'
   pod 'Kingfisher', '~> 7.0'
   pod 'SkeletonView'
+  pod 'FloatingPanel'
 
   # Pods for fuel_management_app
 

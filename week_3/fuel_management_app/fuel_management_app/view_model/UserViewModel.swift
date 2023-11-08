@@ -15,21 +15,30 @@ class UserViewModel {
     func setUserFromLoginResponse(loginResponse: LoginResponse) {
         
         self.user = loginResponse.user
-        saveUserToUserDefaults()
+        saveUserToUserDefaults(userData: loginResponse.user!)
     }
     
-    func fetchUser() {
-        let endpoint = Endpoint.getUser
-        
-        APIManager.shared.fetchRequest(endpoint: endpoint, expecting: UserEntity.self) { result in
-            DispatchQueue.main.async {
+    func fetchUserByUsername() {
+        if let username = user?.username {
+            let endpoint = Endpoint.getUserByUsername(param: username)
+            
+            APIManager.shared.fetchRequest(endpoint: endpoint, expecting: UserEntity.self) { result in
                 switch result {
                 case .success(let userData):
                     self.user = userData
+                    self.saveUserToUserDefaults(userData: userData)
                 case .failure(let error):
                     print(error)
                 }
             }
+        }
+    }
+    
+    func updateUser(email: String, phone: String, address: String, completion: @escaping(Result<UserEntity, APIError>)-> Void ) {
+        let endpoint = Endpoint.updateUser(param: UserEntity(id: user!.id, username: user!.username, email: email, address: address, urlImage: user!.urlImage, phone: phone))
+        
+        APIManager.shared.fetchRequest(endpoint: endpoint, expecting: UserEntity.self) { result in
+            completion(result)
         }
     }
     
@@ -38,13 +47,14 @@ class UserViewModel {
         return user ?? UserEntity(id: "0", username: "-", email: "-", address: "-", urlImage: "-", phone: "-")
     }
     
-    private func saveUserToUserDefaults() {
-        if let encodedData = try? JSONEncoder().encode(user) {
+    func saveUserToUserDefaults(userData: UserEntity) {
+        user = userData
+        if let encodedData = try? JSONEncoder().encode(userData) {
             UserDefaults.standard.set(encodedData, forKey: "user")
         }
     }
     
-    private func getUserFromUserDefaults() {
+    func getUserFromUserDefaults() {
         if let savedData = UserDefaults.standard.data(forKey: "user"),
            let decodedUser = try? JSONDecoder().decode(UserEntity.self, from: savedData) {
             self.user = decodedUser

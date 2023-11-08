@@ -16,15 +16,23 @@ class MainTabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
-        self.navigationItem.setHidesBackButton(true, animated: false)
+        // Do any additional setup after loading the view.
         configureTabBar()
         configureTabBarItems()
         self.tabBar.backgroundColor = UIColor.white
         self.tabBar.tintColor = UIColor(named: "Icon Color")
         self.tabBar.unselectedItemTintColor = UIColor(named: "SecondIconColor")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     

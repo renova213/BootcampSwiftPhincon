@@ -10,13 +10,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditProfileViewController" customModule="fuel_management_app" customModuleProvider="target">
             <connections>
+                <outlet property="addressField" destination="u2X-wr-ccO" id="tWZ-ir-RLe"/>
                 <outlet property="cameraButton" destination="rvP-rf-Auh" id="px1-3O-ops"/>
-                <outlet property="emailField" destination="6j6-GV-T4s" id="tjx-kI-QsS"/>
+                <outlet property="emailField" destination="6j6-GV-T4s" id="baq-Dj-9Jp"/>
                 <outlet property="galleryButton" destination="HO2-9M-FA7" id="oaW-MM-gEF"/>
-                <outlet property="phoneField" destination="OGW-RC-gxc" id="Svt-gE-3MY"/>
+                <outlet property="phoneField" destination="OGW-RC-gxc" id="c6w-mg-JSm"/>
                 <outlet property="profileImage" destination="C4e-ox-6PK" id="jfB-xd-BVb"/>
                 <outlet property="saveButton" destination="N1e-rd-A6a" id="j8e-rl-Bwx"/>
-                <outlet property="usernameField" destination="QXB-AR-uJV" id="jNT-2R-GoV"/>
+                <outlet property="usernameField" destination="QXB-AR-uJV" id="2K5-Ym-IK6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -96,19 +97,30 @@
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="K8c-wO-4Ct"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u2X-wr-ccO" customClass="InputField" customModule="fuel_management_app" customModuleProvider="target">
+                            <rect key="frame" x="24" y="378" width="345" height="50"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="cwr-jc-xiE"/>
+                                <constraint firstAttribute="height" constant="50" id="hmi-7A-TYP"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="N1e-rd-A6a" secondAttribute="bottom" constant="24" id="5ZM-47-lQA"/>
                         <constraint firstItem="6j6-GV-T4s" firstAttribute="top" secondItem="QXB-AR-uJV" secondAttribute="bottom" constant="32" id="6g5-hn-59K"/>
+                        <constraint firstAttribute="trailing" secondItem="u2X-wr-ccO" secondAttribute="trailing" constant="24" id="CHT-jD-GSn"/>
                         <constraint firstItem="QXB-AR-uJV" firstAttribute="top" secondItem="8Ih-wK-kvN" secondAttribute="bottom" constant="32" id="Dq5-JG-r0A"/>
                         <constraint firstAttribute="trailing" secondItem="OGW-RC-gxc" secondAttribute="trailing" constant="24" id="QKQ-5Y-ang"/>
                         <constraint firstItem="6j6-GV-T4s" firstAttribute="leading" secondItem="Zac-jA-aQ8" secondAttribute="leading" constant="24" id="UcX-OJ-Ket"/>
                         <constraint firstItem="OGW-RC-gxc" firstAttribute="top" secondItem="6j6-GV-T4s" secondAttribute="bottom" constant="32" id="Wd7-XX-A53"/>
                         <constraint firstAttribute="trailing" secondItem="6j6-GV-T4s" secondAttribute="trailing" constant="24" id="XNw-sF-z04"/>
                         <constraint firstItem="8Ih-wK-kvN" firstAttribute="top" secondItem="Zac-jA-aQ8" secondAttribute="top" id="YDF-hE-Uou"/>
+                        <constraint firstItem="u2X-wr-ccO" firstAttribute="leading" secondItem="Zac-jA-aQ8" secondAttribute="leading" constant="24" id="YsA-aH-bqL"/>
                         <constraint firstItem="8Ih-wK-kvN" firstAttribute="leading" secondItem="Zac-jA-aQ8" secondAttribute="leading" constant="24" id="aVK-ap-wqm"/>
                         <constraint firstItem="N1e-rd-A6a" firstAttribute="leading" secondItem="Zac-jA-aQ8" secondAttribute="leading" constant="75" id="gMs-yv-jDq"/>
+                        <constraint firstItem="u2X-wr-ccO" firstAttribute="top" secondItem="OGW-RC-gxc" secondAttribute="bottom" constant="32" id="hGz-Ou-feb"/>
                         <constraint firstAttribute="trailing" secondItem="8Ih-wK-kvN" secondAttribute="trailing" constant="24" id="hJZ-3n-3z7"/>
                         <constraint firstAttribute="trailing" secondItem="N1e-rd-A6a" secondAttribute="trailing" constant="75" id="kg0-Dg-08O"/>
                         <constraint firstItem="OGW-RC-gxc" firstAttribute="leading" secondItem="Zac-jA-aQ8" secondAttribute="leading" constant="24" id="qs1-8R-HXQ"/>

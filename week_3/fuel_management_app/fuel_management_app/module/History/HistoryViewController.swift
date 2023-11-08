@@ -6,15 +6,34 @@
 //
 
 import UIKit
+import FloatingPanel
 
 class HistoryViewController: UIViewController {
-    
     @IBOutlet weak var historyTable: UITableView!
+    @IBOutlet weak var filterImage: UIImageView!
+    
+    let fpc = FloatingPanelController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerCell()
+        setUp()
+        
+    }
+    @objc func imageTapped() {
+        showFloatingPanel()
+        print("tapped")
     }
     
+    func setUp(){
+        registerCell()
+        setupFloatingPanel()
+        setUpGesture()
+        setupFloatingPanelGesture()
+    }
+    
+}
+
+extension HistoryViewController {
     func registerCell(){
         historyTable.delegate = self
         historyTable.dataSource = self
@@ -22,16 +41,35 @@ class HistoryViewController: UIViewController {
         historyTable.registerCellWithNib(HistoryCard.self)
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    func setUpGesture(){
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        filterImage.isUserInteractionEnabled = true
+        filterImage.addGestureRecognizer(tapGestureRecognizer)
+    }
+}
+
+extension HistoryViewController: FloatingPanelControllerDelegate{
+    func setupFloatingPanel() {
+           fpc.delegate = self
+           
+           let contentVC = FloatingPanelViewController()
+           fpc.set(contentViewController: contentVC)
+           
+        fpc.surfaceView.layer.cornerRadius = 12.0
+       }
+       
+       func showFloatingPanel() {
+           guard fpc.state != .full else { return }
+           fpc.set(contentViewController: FloatingPanelViewController())
+           fpc.show(animated: true, completion: nil)
+           
+       }
+       
+       func setupFloatingPanelGesture() {
+           let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+           filterImage.isUserInteractionEnabled = true
+           filterImage.addGestureRecognizer(tapGestureRecognizer)
+       }
 }
 
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource{
@@ -48,6 +86,5 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource{
         let historyCard = tableView.dequeueReusableCell(forIndexPath: indexPath) as HistoryCard
         return historyCard
     }
-
+    
 }
-

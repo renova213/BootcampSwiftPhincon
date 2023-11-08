@@ -1,15 +1,23 @@
-//
-//  ViewController.swift
-//  latihan_hari_4
-//
-//  Created by Phincon on 26/10/23.
-//
-
 import UIKit
+import RxSwift
 
 class VehicleViewController: UIViewController {
     
     @IBOutlet weak var listViewTable: UITableView!
+    
+    let disposeBag = DisposeBag()
+    let vehicleViewModel = VehicleViewModel()
+    var vehicles:[VehicleEntity]=[]{
+        didSet{
+            listViewTable.reloadData()
+        }
+    }
+    var selectedVehicleId = ""
+    var currentCellIndex: Int = 0 {
+        didSet {
+            listViewTable.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,35 +26,26 @@ class VehicleViewController: UIViewController {
         self.navigationItem.setHidesBackButton(true, animated: false)
     }
     
-    var vehicles: [VehicleEntity] = [] {
-        didSet {
-            listViewTable.reloadData()
-        }
-    }
-    
-    var currentCellIndex: Int = 0 {
-        didSet {
-            listViewTable.reloadData()
-        }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        bindVehicles()
+        bindSelectedVehicle()
     }
     
     @IBAction func chooseVehicleButton(_ sender: Any) {
         
-        self.navigationController?.setViewControllers( [MainTabBarViewController()], animated: true)
-    }
-}
-
-extension VehicleViewController {
-    func getVehicles() -> Void {
-        let userId = UserViewModel.shared.getUser().id
-        
-        VehicleViewModel().getVehicles(userId: userId)
+        if selectedVehicleId.isEmpty {
+            showEmptyVehicleAlert() // Tampilkan popup jika id kosong
+        } else {
+            let mainTabVC = MainTabBarViewController()
+            self.navigationController?.pushViewController(mainTabVC, animated: true)
+        }
     }
 }
 
 extension VehicleViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        vehicles.count
+        return vehicles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,7 +55,7 @@ extension VehicleViewController: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as VehicleCard
         cell.vehicleName.text = data.vehicleName
         cell.platNumber.text = data.platNumber
-
+        
         if currentCellIndex == indexPath.row + 1 {
             if let mainColor = UIColor(named: "Main Color")?.withAlphaComponent(0.6) {
                 cell.vehicleCard.backgroundColor = mainColor
@@ -83,19 +82,46 @@ extension VehicleViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         changeCellCurrentIndex(index: indexPath.row)
-    }
-}
-
-extension VehicleViewController{
-    func changeCellCurrentIndex (index: Int) {
-        currentCellIndex = index + 1;
+        vehicleViewModel.selectedVehicle(id: vehicles[indexPath.row].id)
     }
 }
 
 extension VehicleViewController {
+    
+    func getVehicles() {
+        let userId = UserViewModel.shared.getUser().id
+        vehicleViewModel.getVehicles(userId: userId)
+    }
+    
     func setUpTableView(){
         listViewTable.delegate = self
         listViewTable.dataSource = self
         listViewTable.registerCellWithNib(VehicleCard.self)
+    }
+    
+    func bindVehicles() {
+        vehicleViewModel.vehicles
+            .subscribe(onNext: { [weak self] vehicles in
+                self?.vehicles = vehicles
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func bindSelectedVehicle() {
+        vehicleViewModel.selectedVehicleObservable
+            .subscribe(onNext: { [weak self] selectedVehicle in
+                self?.selectedVehicleId = selectedVehicle
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func changeCellCurrentIndex (index: Int) {
+        currentCellIndex = index + 1;
+    }
+    
+    func showEmptyVehicleAlert() {
+        let alert = UIAlertController(title: "Peringatan", message: "Pilih kendaraan terlebih dahulu..", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }

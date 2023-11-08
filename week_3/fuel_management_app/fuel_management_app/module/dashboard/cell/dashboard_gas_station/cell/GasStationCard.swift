@@ -20,9 +20,7 @@ class GasStationCard: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         spbuImage.layer.cornerRadius = 12
-        spbuImage.contentMode = .scaleAspectFit
         spbuImage.isUserInteractionEnabled = true
-        spbuImage.contentMode = .scaleAspectFit
         
     }
 }
