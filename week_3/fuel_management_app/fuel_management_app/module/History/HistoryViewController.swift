@@ -12,10 +12,20 @@ class HistoryViewController: UIViewController {
     @IBOutlet weak var historyTable: UITableView!
     @IBOutlet weak var filterImage: UIImageView!
     
-    let fpc = FloatingPanelController()
+    var fpc = FloatingPanelController()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        fpc = FloatingPanelController()
+
+             // Assign self as the delegate of the controller.
+             fpc.delegate = self // Optional
+
+             // Set a content view controller.
+             let contentVC = FloatingPanelController()
+             fpc.set(contentViewController: contentVC)
+
+             // Add and show the views managed by the `FloatingPanelController` object to self.view.
+             fpc.addPanel(toParent: self)
         setUp()
         
     }
@@ -26,9 +36,7 @@ class HistoryViewController: UIViewController {
     
     func setUp(){
         registerCell()
-        setupFloatingPanel()
         setUpGesture()
-        setupFloatingPanelGesture()
     }
     
 }
@@ -49,19 +57,14 @@ extension HistoryViewController {
 }
 
 extension HistoryViewController: FloatingPanelControllerDelegate{
-    func setupFloatingPanel() {
-           fpc.delegate = self
-           
-           let contentVC = FloatingPanelViewController()
-           fpc.set(contentViewController: contentVC)
-           
-        fpc.surfaceView.layer.cornerRadius = 12.0
-       }
        
        func showFloatingPanel() {
-           guard fpc.state != .full else { return }
-           fpc.set(contentViewController: FloatingPanelViewController())
-           fpc.show(animated: true, completion: nil)
+           let contentVC = FloatingPanelViewController()
+           fpc.set(contentViewController: contentVC)
+
+           fpc.isRemovalInteractionEnabled = true // Optional: Let it removable by a swipe-down
+
+           self.present(fpc, animated: true, completion: nil)
            
        }
        
