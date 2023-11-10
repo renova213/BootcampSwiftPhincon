@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="DashboardCategoryItem" customModule="AnimeList" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="206" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="206" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l4R-jL-Tpx">
+                        <rect key="frame" x="0.0" y="0.0" width="206" height="50"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qk2-cO-kg7">
+                                <rect key="frame" x="0.0" y="0.0" width="206" height="50"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" image="sparkles.tv" catalog="system" title="Peringkat Anime" imagePadding="8">
+                                    <color key="baseBackgroundColor" name="Main Color"/>
+                                </buttonConfiguration>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="qk2-cO-kg7" secondAttribute="bottom" id="PDO-CJ-W6w"/>
+                            <constraint firstItem="qk2-cO-kg7" firstAttribute="leading" secondItem="l4R-jL-Tpx" secondAttribute="leading" id="d0T-Sg-5tP"/>
+                            <constraint firstAttribute="trailing" secondItem="qk2-cO-kg7" secondAttribute="trailing" id="kKI-aT-VvC"/>
+                            <constraint firstItem="qk2-cO-kg7" firstAttribute="top" secondItem="l4R-jL-Tpx" secondAttribute="top" id="zQh-gR-K97"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="l4R-jL-Tpx" secondAttribute="bottom" id="HO6-ZN-giZ"/>
+                <constraint firstAttribute="trailing" secondItem="l4R-jL-Tpx" secondAttribute="trailing" id="JL9-71-AdF"/>
+                <constraint firstItem="l4R-jL-Tpx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="bEL-kE-Dt1"/>
+                <constraint firstItem="l4R-jL-Tpx" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="hJn-7v-Ibc"/>
+            </constraints>
+            <size key="customSize" width="206" height="50"/>
+            <connections>
+                <outlet property="categoryButton" destination="qk2-cO-kg7" id="NRe-ma-OGg"/>
+                <outlet property="categoryItemView" destination="l4R-jL-Tpx" id="hUu-A5-7wE"/>
+            </connections>
+            <point key="canvasLocation" x="146.56488549618319" y="19.718309859154932"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="sparkles.tv" catalog="system" width="128" height="95"/>
+        <namedColor name="Main Color">
+            <color red="0.21176470588235294" green="0.81176470588235294" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -2,7 +2,7 @@
 //  OtherViewController.swift
 //  AnimeList
 //
-//  Created by Phincon on 09/11/23.
+//  Created by Phincon on 10/11/23.
 //
 
 import UIKit

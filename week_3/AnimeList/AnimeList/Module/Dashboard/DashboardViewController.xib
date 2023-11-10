@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DashboardViewController" customModule="AnimeList" customModuleProvider="target">
             <connections>
-                <outlet property="dashboardTableView" destination="W8m-QK-h8g" id="gBj-8N-E07"/>
+                <outlet property="dashboardTableView" destination="ed9-O9-6P4" id="91O-BE-SEh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,8 +19,8 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="W8m-QK-h8g">
-                    <rect key="frame" x="16" y="59" width="361" height="759"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ed9-O9-6P4">
+                    <rect key="frame" x="16" y="59" width="361" height="743"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                 </tableView>
@@ -28,12 +28,12 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="W8m-QK-h8g" secondAttribute="trailing" constant="16" id="T9s-tq-KeH"/>
-                <constraint firstItem="W8m-QK-h8g" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="aU8-Cx-TrC"/>
-                <constraint firstItem="W8m-QK-h8g" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="jZS-u1-ima"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="W8m-QK-h8g" secondAttribute="bottom" id="y81-Yx-yEb"/>
+                <constraint firstItem="ed9-O9-6P4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="990-Qe-Lrh"/>
+                <constraint firstItem="ed9-O9-6P4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="MIU-3o-00f"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ed9-O9-6P4" secondAttribute="trailing" constant="16" id="Mx8-xd-ciU"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ed9-O9-6P4" secondAttribute="bottom" constant="16" id="Vvh-n3-LEn"/>
             </constraints>
-            <point key="canvasLocation" x="123" y="21"/>
+            <point key="canvasLocation" x="139.69465648854961" y="19.718309859154932"/>
         </view>
     </objects>
     <resources>

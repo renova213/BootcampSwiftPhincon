@@ -1,10 +1,3 @@
-//
-//  extView.swift
-//  AnimeList
-//
-//  Created by Phincon on 09/11/23.
-//
-
 import Foundation
 import UIKit
 

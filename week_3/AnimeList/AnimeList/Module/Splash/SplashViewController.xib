@@ -10,29 +10,31 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SplashViewController" customModule="AnimeList" customModuleProvider="target">
             <connections>
-                <outlet property="lottieSplash" destination="d1i-oz-rgq" id="K9C-dB-uhz"/>
-                <outlet property="view" destination="S0k-pj-CUf" id="OZ5-EV-fpK"/>
+                <outlet property="lottieSplash" destination="lBn-Z4-wDx" id="Rtq-gC-Brz"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="S0k-pj-CUf">
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d1i-oz-rgq" customClass="LottieAnimationView" customModule="Lottie">
-                    <rect key="frame" x="106" y="326" width="181" height="200"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lBn-Z4-wDx" customClass="LottieAnimationView" customModule="Lottie">
+                    <rect key="frame" x="106.66666666666669" y="326" width="180" height="200"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="180" id="SBY-ls-md8"/>
+                        <constraint firstAttribute="height" constant="200" id="hGY-zY-tdc"/>
+                    </constraints>
                 </view>
             </subviews>
-            <viewLayoutGuide key="safeArea" id="4Ls-Gs-gSR"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="d1i-oz-rgq" firstAttribute="top" secondItem="4Ls-Gs-gSR" secondAttribute="top" constant="267" id="bls-fM-rU4"/>
-                <constraint firstItem="4Ls-Gs-gSR" firstAttribute="bottom" secondItem="d1i-oz-rgq" secondAttribute="bottom" constant="292" id="brT-tT-wgZ"/>
-                <constraint firstItem="d1i-oz-rgq" firstAttribute="leading" secondItem="4Ls-Gs-gSR" secondAttribute="leading" constant="106" id="nw4-yr-W4n"/>
-                <constraint firstItem="4Ls-Gs-gSR" firstAttribute="trailing" secondItem="d1i-oz-rgq" secondAttribute="trailing" constant="106" id="tiD-12-h8W"/>
+                <constraint firstItem="lBn-Z4-wDx" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Znt-bj-ifD"/>
+                <constraint firstItem="lBn-Z4-wDx" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="rxo-4Z-Bgb"/>
             </constraints>
-            <point key="canvasLocation" x="968.70229007633588" y="36.619718309859159"/>
+            <point key="canvasLocation" x="102" y="20"/>
         </view>
     </objects>
     <resources>
