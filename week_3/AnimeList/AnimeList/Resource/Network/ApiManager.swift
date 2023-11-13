@@ -1,33 +1,25 @@
-//
-//  ApiManager.swift
-//  AnimeList
-//
-//  Created by Phincon on 10/11/23.
-//
-
 import Foundation
 import Alamofire
 
-class APIManager: NSObject {
+class APIManager {
     static let shared = APIManager()
-    override init() {}
+    private init() {}
     
-    func makeAPICall<T: Codable>(endpoint: Endpoint, completion: @escaping (Result<T, Error>) -> Void) {
-        let headers = endpoint.headers
-        
-        // Add the API key to the headers
+    public func fetchRequest<T: Codable>(endpoint: Endpoint, completion: @escaping(Result<T, Error>)-> Void){
         
         AF.request(endpoint.urlString(),
                    method: endpoint.method(),
                    parameters: endpoint.parameters,
                    encoding: endpoint.encoding,
-                   headers: headers).validate().responseDecodable(of: T.self) { (response) in
+                   headers: endpoint.headers).validate().responseDecodable(of: T.self) { response in
             
-            guard let item = response.value else {
-                completion(.failure(response.error!))
-                return
+            switch response.result {
+            case .success(let decodedObject):
+                completion(.success(decodedObject))
+
+            case .failure(let error):
+                completion(.failure(error))
             }
-            completion(.success(item))
         }
     }
 }

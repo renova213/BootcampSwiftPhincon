@@ -1,10 +1,3 @@
-//
-//  DashboardCategoryEntity.swift
-//  AnimeList
-//
-//  Created by Phincon on 10/11/23.
-//
-
 import Foundation
 import UIKit
 

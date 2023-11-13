@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CurrentSeasonAnimeItem" customModule="AnimeList" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="110" height="205"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="110" height="205"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jfM-2M-oTP">
+                        <rect key="frame" x="0.0" y="0.0" width="110" height="205"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ljZ-CU-fIu">
+                                <rect key="frame" x="0.0" y="0.0" width="110" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="MLa-17-ubq"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jujutsu Kaisen 2nd Season" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c70-2Q-dc6">
+                                <rect key="frame" x="0.0" y="162" width="110" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="110" id="0xM-Wf-eF7"/>
+                            <constraint firstAttribute="trailing" secondItem="ljZ-CU-fIu" secondAttribute="trailing" id="5C3-UF-PIW"/>
+                            <constraint firstAttribute="trailing" secondItem="c70-2Q-dc6" secondAttribute="trailing" id="Dv9-VE-jC0"/>
+                            <constraint firstItem="c70-2Q-dc6" firstAttribute="top" secondItem="ljZ-CU-fIu" secondAttribute="bottom" constant="12" id="ImD-V2-ch6"/>
+                            <constraint firstAttribute="bottom" secondItem="c70-2Q-dc6" secondAttribute="bottom" id="OYd-G0-fi3"/>
+                            <constraint firstItem="c70-2Q-dc6" firstAttribute="leading" secondItem="jfM-2M-oTP" secondAttribute="leading" id="P3e-cB-rev"/>
+                            <constraint firstItem="ljZ-CU-fIu" firstAttribute="top" secondItem="jfM-2M-oTP" secondAttribute="top" id="gZ0-45-zlE"/>
+                            <constraint firstItem="ljZ-CU-fIu" firstAttribute="leading" secondItem="jfM-2M-oTP" secondAttribute="leading" id="gvT-3W-q8Q"/>
+                            <constraint firstAttribute="height" constant="205" id="nC8-f1-s7y"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="jfM-2M-oTP" secondAttribute="bottom" id="IXR-3u-IaT"/>
+                <constraint firstItem="jfM-2M-oTP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Pyv-YW-oRY"/>
+                <constraint firstAttribute="trailing" secondItem="jfM-2M-oTP" secondAttribute="trailing" id="RCE-8F-N3X"/>
+                <constraint firstItem="jfM-2M-oTP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="jlO-Sy-lJc"/>
+            </constraints>
+            <size key="customSize" width="110" height="205"/>
+            <connections>
+                <outlet property="title" destination="c70-2Q-dc6" id="ogo-m9-Q19"/>
+                <outlet property="urlImage" destination="ljZ-CU-fIu" id="JWe-pI-AOw"/>
+            </connections>
+            <point key="canvasLocation" x="62.595419847328245" y="139.08450704225353"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

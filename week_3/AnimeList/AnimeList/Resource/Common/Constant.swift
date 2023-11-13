@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 struct BaseConstant{
-    static let baseURL = "https://spring-bud-swallow-coat.cyclic.app"
+    static let baseURL = "https://api.jikan.moe/v4"
     static let userDefaults = UserDefaults.standard
 }
 

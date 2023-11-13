@@ -1,34 +1,39 @@
-//
-//  Endpoint.swift
-//  AnimeList
-//
-//  Created by Phincon on 10/11/23.
-//
-
 import Foundation
 import Alamofire
 
-
-
 enum Endpoint {
-    case getAnime
+    case getScheduledAnime(params: ScheduleParam)
+    case getSeasonNow(page: String, limit: String)
     
     func path() -> String {
         switch self {
-        case .getAnime:
-            return "/anime"
+        case .getScheduledAnime:
+            return "/schedules"
+        case .getSeasonNow:
+            return "/seasons/now"
             
         }
     }
     
     func method() -> HTTPMethod {
-        return .get
+        switch self {
+        case .getScheduledAnime, .getSeasonNow:
+            return .get
+        }
     }
     
     var parameters: [String: Any]? {
         switch self {
-        case .getAnime:
-            return nil
+        case .getScheduledAnime(let param):
+            return [
+                "filter":param.filter,
+                "page":param.page,
+                "limit":param.limit
+            ]
+        case .getSeasonNow(let page, let limit):
+            return [
+                "page": page,
+                "limit": limit]
         }
     }
     
@@ -45,8 +50,8 @@ enum Endpoint {
     
     var encoding: ParameterEncoding {
         switch self {
-        case .getAnime:
-            return URLEncoding.queryString
+        case .getScheduledAnime, .getSeasonNow:
+            return URLEncoding.default
         }
     }
 }
