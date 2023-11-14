@@ -2,14 +2,15 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class DashboardViewModel {
-    static let shared = DashboardViewModel()
+class AnimeViewModel {
+    static let shared = AnimeViewModel()
     
     let currentAnime = BehaviorRelay<[AnimeEntity]>(value: [])
     let currentSeasonAnime = BehaviorRelay<[AnimeEntity]>(value: [])
+    let filterAnime = BehaviorRelay<[AnimeEntity]>(value: [])
+    let currentIndex = BehaviorRelay<Int>(value: 0)
     
     func getCurrentAnime() {
-        
         let endpoint = Endpoint.getScheduledAnime(params: ScheduleParam(filter: getCurrentDay().lowercased(), page: "1", limit: "6"))
         APIManager.shared.fetchRequest(endpoint: endpoint){[weak self] (result: Result<AnimeData, Error>) in
             guard let self = self else { return }
@@ -17,7 +18,19 @@ class DashboardViewModel {
             case .success(let data):
                 self.currentAnime.accept(data.data)
             case .failure(let err):
-                self.currentAnime.accept([])
+                print(err)
+            }
+        }
+    }
+    
+    func getFilterAnime(filterParam: FilterAnimeParam) {
+        let endpoint = Endpoint.filterAnime(params: filterParam)
+        APIManager.shared.fetchRequest(endpoint: endpoint){[weak self] (result: Result<AnimeData, Error>) in
+            guard let self = self else { return }
+            switch result {
+            case .success(let data):
+                self.filterAnime.accept(data.data)
+            case .failure(let err):
                 print(err)
             }
         }
@@ -32,7 +45,6 @@ class DashboardViewModel {
             case .success(let data):
                 self.currentSeasonAnime.accept(data.data)
             case .failure(let err):
-                self.currentSeasonAnime.accept([])
                 print(err)
             }
         }
@@ -71,5 +83,9 @@ class DashboardViewModel {
         let convertedTime = dateFormatter.string(from: sourceDate)
         
         return convertedTime
+    }
+    
+    func changeCurrentIndex(index: Int){
+        self.currentIndex.accept(index)
     }
 }

@@ -9,6 +9,7 @@ target 'AnimeList' do
   pod 'Kingfisher'
   pod 'RxSwift', '6.6.0'
   pod 'RxCocoa', '6.6.0'
+  pod 'RxGesture'
 
   # Pods for AnimeList
 

@@ -36,7 +36,7 @@ extension TodayAnime: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TodayAnimeItem", for: indexPath) as! TodayAnimeItem
         
-        cell.setUpComponent(title: data.title ?? "", date: "Ditayangkan pada pukul \(DashboardViewModel.shared.convertTime(from: data.broadcast?.time ?? "00:00", fromTimeZone: data.broadcast?.timezone ?? "Asia/Tokyo", to: "Asia/Jakarta" ) ?? "-")", urlImage: data.images?.jpg?.imageUrl ?? "", rating: data.score ?? 0.0 )
+        cell.setUpComponent(title: data.title ?? "", date: "Ditayangkan pada pukul \(AnimeViewModel.shared.convertTime(from: data.broadcast?.time ?? "00:00", fromTimeZone: data.broadcast?.timezone ?? "Asia/Tokyo", to: "Asia/Jakarta" ) ?? "-")", urlImage: data.images?.jpg?.imageUrl ?? "", rating: data.score ?? 0.0 )
         
         return cell
     }

@@ -1,10 +1,6 @@
 import UIKit
 import RxSwift
 
-protocol DashboardViewControllerDelegate: AnyObject {
-    func passNavigation(navigation: UINavigationController)
-}
-
 class DashboardViewController: UIViewController {
     
     @IBOutlet weak var dashboardTableView: UITableView!
@@ -19,8 +15,6 @@ class DashboardViewController: UIViewController {
         super.viewDidAppear(animated)
         bindFetchViewModel()
     }
-    
-    weak var delegate: DashboardViewControllerDelegate?
     
     let disposeBag = DisposeBag()
     var currentAnime: [AnimeEntity] = []{
@@ -38,19 +32,19 @@ class DashboardViewController: UIViewController {
 extension DashboardViewController {
     
     func getFetchViewModel(){
-        DashboardViewModel.shared.getCurrentAnime()
-        DashboardViewModel.shared.getCurrentSeasonAnime()
+        AnimeViewModel.shared.getCurrentAnime()
+        AnimeViewModel.shared.getCurrentSeasonAnime()
     }
     
     func bindFetchViewModel() {
-        DashboardViewModel.shared.currentAnime
+        AnimeViewModel.shared.currentAnime
             .subscribe(onNext: { [weak self] i in
                 
                 self?.currentAnime = i
             })
             .disposed(by: disposeBag)
         
-        DashboardViewModel.shared.currentSeasonAnime
+        AnimeViewModel.shared.currentSeasonAnime
             .subscribe(onNext: { [weak self] i in
                 
                 self?.currentSeasonAnime = i
@@ -59,8 +53,8 @@ extension DashboardViewController {
     }
 }
 
-extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
-    
+extension DashboardViewController: UITableViewDelegate, UITableViewDataSource, DashboardSearchDelegate {
+   
     func configureTableView(){
         dashboardTableView.delegate = self
         dashboardTableView.dataSource = self
@@ -84,8 +78,7 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             let dashboardSearch = tableView.dequeueReusableCell(forIndexPath: indexPath) as DashboardSearch
 
-            self.delegate?.passNavigation(navigation: navigationController!)
-            dashboardSearch.delegate = delegate
+            dashboardSearch.delegate = self
 
             return dashboardSearch
         case 1:
@@ -102,6 +95,15 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             return UITableViewCell()
         }
+    }
+    
+    func didSelectCell(text: String) {
+        
+        let searchViewController = SearchViewController()
+
+    
+        navigationController?.pushViewController(searchViewController, animated: true)
+        searchViewController.navigationController?.isNavigationBarHidden = true
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

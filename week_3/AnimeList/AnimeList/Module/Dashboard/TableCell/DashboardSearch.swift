@@ -7,6 +7,13 @@
 
 
 import UIKit
+import RxSwift
+import RxCocoa
+import RxGesture
+
+protocol DashboardSearchDelegate: AnyObject {
+    func didSelectCell(text: String)
+}
 
 class DashboardSearch: UITableViewCell {
     
@@ -15,32 +22,27 @@ class DashboardSearch: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        dashboardSearchField.delegate = self
-        viewStyle()
-        searchFieldStyle()
-    }
-
-    weak var delegate: DashboardViewControllerDelegate?
-    var navigateClosure: (() -> Void)?
-
-    func searchFieldStyle(){
-        dashboardSearchField.borderStyle = .none
+        configureComponentStyle()
+        textFieldEvent()
     }
     
-    func viewStyle(){
+    weak var delegate: DashboardSearchDelegate?
+    let disposeBag = DisposeBag()
+    
+    func configureComponentStyle(){
+        dashboardSearchField.borderStyle = .none
+
         dashboardSearchView.roundCornersAll(radius: 15)
         dashboardSearchView.layer.borderWidth = 1
         dashboardSearchView.layer.borderColor = UIColor.init(named: "Main Color")?.cgColor
     }
-}
-
-extension DashboardSearch: UITextFieldDelegate {
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        print("Text entered: \(textField.text ?? "")")
-        textField.text = ""
-        return true
+    
+    private func textFieldEvent() {
+        dashboardSearchField.rx.controlEvent(.editingDidEndOnExit)
+            .bind { [weak self] in
+                self?.delegate?.didSelectCell(text: self?.dashboardSearchField.text ?? "")
+                self?.dashboardSearchField.text = ""
+            }
+            .disposed(by: disposeBag)
     }
 }
-

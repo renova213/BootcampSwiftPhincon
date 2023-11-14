@@ -6,7 +6,7 @@ class CurrentSeasonAnime: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        configureTableView()
+        configureCollectionView()
     }
     
     var currentSeasonAnime: [AnimeEntity] = []{
@@ -17,11 +17,11 @@ class CurrentSeasonAnime: UITableViewCell {
 }
 
 extension CurrentSeasonAnime: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func configureTableView(){
+    
+    func configureCollectionView(){
         animeCategoryCollection.delegate = self
         animeCategoryCollection.dataSource = self
         animeCategoryCollection.registerCellWithNib(CurrentSeasonAnimeItem.self)
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

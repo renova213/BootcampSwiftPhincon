@@ -3,7 +3,6 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -33,21 +32,10 @@
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0iB-6i-neU">
-                                        <rect key="frame" x="36.000000000000014" y="0.0" width="206.33333333333337" height="32"/>
+                                        <rect key="frame" x="36" y="0.0" width="268" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCq-UT-Jqx">
-                                        <rect key="frame" x="254.33333333333329" y="0.0" width="49.666666666666657" height="32"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="28" id="RFj-PJ-C2P"/>
-                                        </constraints>
-                                        <color key="tintColor" name="Main Color"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain">
-                                            <imageReference key="image" image="person.circle.fill" catalog="system" symbolScale="large"/>
-                                        </buttonConfiguration>
-                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -78,9 +66,8 @@
     </objects>
     <resources>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
-        <image name="person.circle.fill" catalog="system" width="128" height="123"/>
         <namedColor name="Main Color">
-            <color red="0.21176470588235294" green="0.81176470588235294" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63529411764705879" green="0.69803921568627447" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

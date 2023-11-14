@@ -11,6 +11,10 @@ struct AnimeEntity: Codable{
     var images: AnimeImageType?
     var score: Double?
     var broadcast: AnimeBroadcast?
+    var type: String?
+    var episodes: Int?
+    var season: String?
+    var aired: Aired?
     
     enum CodingKeys: String, CodingKey {
         case malId = "mal_id"
@@ -18,6 +22,10 @@ struct AnimeEntity: Codable{
         case images = "images"
         case score = "score"
         case broadcast = "broadcast"
+        case type = "type"
+        case episodes = "episodes"
+        case season = "season"
+        case aired = "aired"
     }
 }
 
@@ -42,4 +50,19 @@ struct AnimeBroadcast:Codable{
     var time: String?
     var timezone: String?
     var dateTime: String?
+}
+
+struct Aired: Codable {
+    let from: String?
+    let to: String?
+    let prop: Prop?
+    let string: String?
+}
+
+struct Prop: Codable {
+    let from, to: From?
+}
+
+struct From: Codable {
+    let day, month, year: Int?
 }
