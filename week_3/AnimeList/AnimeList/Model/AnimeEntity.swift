@@ -15,6 +15,7 @@ struct AnimeEntity: Codable{
     var season: String?
     var aired: Aired?
     var status: String?
+    var synopsis: String?
     
     enum CodingKeys: String, CodingKey {
         case malId = "mal_id"
@@ -27,6 +28,7 @@ struct AnimeEntity: Codable{
         case season = "season"
         case aired = "aired"
         case status = "status"
+        case synopsis = "synopsis"
     }
 }
 

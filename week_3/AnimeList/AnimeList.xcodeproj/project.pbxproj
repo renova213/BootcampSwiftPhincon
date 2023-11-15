@@ -56,6 +56,8 @@
 		369C55F42B0481E100B982AF /* DetailAnimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 369C55F22B0481E100B982AF /* DetailAnimeViewController.xib */; };
 		36A79AB92B04836900471D5B /* AnimeDetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A79AB72B04836900471D5B /* AnimeDetailInfo.swift */; };
 		36A79ABA2B04836900471D5B /* AnimeDetailInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36A79AB82B04836900471D5B /* AnimeDetailInfo.xib */; };
+		36A79ABE2B04AD6400471D5B /* AnimeGenreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A79ABC2B04AD6400471D5B /* AnimeGenreItem.swift */; };
+		36A79ABF2B04AD6400471D5B /* AnimeGenreItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36A79ABD2B04AD6400471D5B /* AnimeGenreItem.xib */; };
 		36D643CD2B01B97800EF554E /* SchedulesParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D643CC2B01B97800EF554E /* SchedulesParam.swift */; };
 		36D643CF2B01BF8300EF554E /* AnimeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D643CE2B01BF8300EF554E /* AnimeEntity.swift */; };
 		36D643D22B01C4BB00EF554E /* AnimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D643D12B01C4BB00EF554E /* AnimeViewModel.swift */; };
@@ -118,6 +120,8 @@
 		369C55F22B0481E100B982AF /* DetailAnimeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailAnimeViewController.xib; sourceTree = "<group>"; };
 		36A79AB72B04836900471D5B /* AnimeDetailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeDetailInfo.swift; sourceTree = "<group>"; };
 		36A79AB82B04836900471D5B /* AnimeDetailInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimeDetailInfo.xib; sourceTree = "<group>"; };
+		36A79ABC2B04AD6400471D5B /* AnimeGenreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeGenreItem.swift; sourceTree = "<group>"; };
+		36A79ABD2B04AD6400471D5B /* AnimeGenreItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimeGenreItem.xib; sourceTree = "<group>"; };
 		36D643CC2B01B97800EF554E /* SchedulesParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesParam.swift; sourceTree = "<group>"; };
 		36D643CE2B01BF8300EF554E /* AnimeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeEntity.swift; sourceTree = "<group>"; };
 		36D643D12B01C4BB00EF554E /* AnimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeViewModel.swift; sourceTree = "<group>"; };
@@ -387,10 +391,20 @@
 		36A79AB62B0482AF00471D5B /* TableCell */ = {
 			isa = PBXGroup;
 			children = (
+				36A79ABB2B04AD3400471D5B /* CollectionCell */,
 				36A79AB72B04836900471D5B /* AnimeDetailInfo.swift */,
 				36A79AB82B04836900471D5B /* AnimeDetailInfo.xib */,
 			);
 			path = TableCell;
+			sourceTree = "<group>";
+		};
+		36A79ABB2B04AD3400471D5B /* CollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				36A79ABC2B04AD6400471D5B /* AnimeGenreItem.swift */,
+				36A79ABD2B04AD6400471D5B /* AnimeGenreItem.xib */,
+			);
+			path = CollectionCell;
 			sourceTree = "<group>";
 		};
 		36D60F2B2B0478AD00800D88 /* DetailAnime */ = {
@@ -529,6 +543,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36231CD62AFE041A008257C8 /* Assets.xcassets in Resources */,
+				36A79ABF2B04AD6400471D5B /* AnimeGenreItem.xib in Resources */,
 				36569ED92AFE05B700EDB6B9 /* DashboardViewController.xib in Resources */,
 				36569EED2AFE0E6F00EDB6B9 /* DashboardCategory.xib in Resources */,
 				36569EE22AFE091B00EDB6B9 /* DashboardSearch.xib in Resources */,
@@ -623,6 +638,7 @@
 				36569EC82AFE055900EDB6B9 /* OtherViewController.swift in Sources */,
 				36569EF42AFE0FE500EDB6B9 /* DashboardCategoryEntity.swift in Sources */,
 				36D643CD2B01B97800EF554E /* SchedulesParam.swift in Sources */,
+				36A79ABE2B04AD6400471D5B /* AnimeGenreItem.swift in Sources */,
 				365F9BCB2B045581001D05AE /* SearchViewModel.swift in Sources */,
 				36569EE52AFE0C8B00EDB6B9 /* ExtTableView.swift in Sources */,
 				36231CCD2AFE041A008257C8 /* AppDelegate.swift in Sources */,

@@ -1,5 +1,9 @@
 import UIKit
 
+protocol CurrentAnimeDelegate: AnyObject {
+    func didTapCurrentAnime(data: AnimeEntity)
+}
+
 class CurrentSeasonAnime: UITableViewCell {
 
     @IBOutlet weak var animeCategoryCollection: UICollectionView!
@@ -14,6 +18,7 @@ class CurrentSeasonAnime: UITableViewCell {
             animeCategoryCollection.reloadData()
         }
     }
+    weak var delegate: CurrentAnimeDelegate?
 }
 
 extension CurrentSeasonAnime: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -41,5 +46,10 @@ extension CurrentSeasonAnime: UICollectionViewDelegate, UICollectionViewDataSour
 
         return CGSize(width: 110, height: 205)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let data = currentSeasonAnime[indexPath.row]
 
+        delegate?.didTapCurrentAnime(data: data)
+    }
 }

@@ -16,7 +16,9 @@ class DashboardViewController: UIViewController {
         bindFetchViewModel()
     }
     
-    weak var delegate: TodayAnimeDelegate?
+    weak var delegateTodayAnime: TodayAnimeDelegate?
+    weak var delegateCurrentAnime: CurrentAnimeDelegate?
+    
     let disposeBag = DisposeBag()
     var currentAnime: [AnimeEntity] = []{
         didSet{
@@ -93,6 +95,7 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
         case 3:
             let currentSeason = tableView.dequeueReusableCell(forIndexPath: indexPath) as CurrentSeasonAnime
             currentSeason.currentSeasonAnime = currentSeasonAnime
+            currentSeason.delegate = self
             return currentSeason
         default:
             return UITableViewCell()
@@ -113,7 +116,7 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension DashboardViewController: TodayAnimeDelegate{
-    func didTap(data: AnimeEntity) {
+    func didTapTodayAnime(data: AnimeEntity) {
         let vc = DetailAnimeViewController()
         vc.animeData = data
         vc.hidesBottomBarWhenPushed = true
@@ -126,6 +129,16 @@ extension DashboardViewController: DashboardSearchDelegate {
     func didSelectCell() {
         let vc = SearchViewController()
         
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+        vc.navigationController?.isNavigationBarHidden = true
+    }
+}
+
+extension DashboardViewController: CurrentAnimeDelegate {
+    func didTapCurrentAnime(data: AnimeEntity) {
+        let vc = DetailAnimeViewController()
+        vc.animeData = data
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
         vc.navigationController?.isNavigationBarHidden = true

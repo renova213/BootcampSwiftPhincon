@@ -6,17 +6,39 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class DetailAnimeViewController: UIViewController {
-
+    
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet var screenView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTableView()
+        configureUI()
+        screenView.backgroundColor = UIColor(named: "Main Color")
     }
     
     var animeData:AnimeEntity?
+    private let disposeBag = DisposeBag()
+}
+
+extension DetailAnimeViewController{
+    private func configureUI() {
+        backButtonGesture()
+        configureTableView()
+    }
+    
+    private func backButtonGesture(){
+        backButton.rx.tap.subscribe(onNext: { [weak self] in
+            self?.navigationController?.popToRootViewController(animated: true)
+        }
+        ).disposed(by: disposeBag)
+    }
 }
 
 extension DetailAnimeViewController: UITableViewDataSource, UITableViewDelegate {
@@ -28,11 +50,11 @@ extension DetailAnimeViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-       return 1
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return 1
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

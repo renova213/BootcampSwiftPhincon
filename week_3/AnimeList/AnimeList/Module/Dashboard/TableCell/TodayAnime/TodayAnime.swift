@@ -2,7 +2,7 @@ import UIKit
 
 
 protocol TodayAnimeDelegate: AnyObject {
-    func didTap(data: AnimeEntity)
+    func didTapTodayAnime(data: AnimeEntity)
 }
 
 class TodayAnime: UITableViewCell {
@@ -55,6 +55,6 @@ extension TodayAnime: UICollectionViewDelegate, UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let data = currentAnime[indexPath.row]
 
-        delegate?.didTap(data: data)
+        delegate?.didTapTodayAnime(data: data)
     }
 }
