@@ -25,7 +25,7 @@ class SearchCategories: UITableViewCell {
 }
 
 extension SearchCategories: UICollectionViewDelegate, UICollectionViewDataSource {
-
+    
     
     func configureCollectionView(){
         searchCollectionView.delegate = self
@@ -35,18 +35,21 @@ extension SearchCategories: UICollectionViewDelegate, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return SearchViewModel.shared.searchCategoryItem.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    
+        
+        let data = SearchViewModel.shared.searchCategoryItem[indexPath.row]
         
         switch currentIndex == indexPath.row{
         case true:
             let selectedCategoryItem = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSearchCategoryItem", for: indexPath) as! SelectedSearchCategoryItem
+            selectedCategoryItem.searchCategoryButton.setTitle(data, for: .normal)
             return selectedCategoryItem
         case false:
             let unselectedCategoryItem = collectionView.dequeueReusableCell(withReuseIdentifier: "UnselectedSearchCategoryItem", for: indexPath) as! UnselectedSearchCategoryItem
+            unselectedCategoryItem.searchCategoryButton.setTitle(data, for: .normal)
             return unselectedCategoryItem
         }
     }
@@ -58,6 +61,6 @@ extension SearchCategories: UICollectionViewDelegate, UICollectionViewDataSource
 
 extension SearchCategories{
     func bindViewModel (){
-        AnimeViewModel.shared.currentIndex.subscribe(onNext: { self.currentIndex = $0 }).disposed(by: disposeBag)
+        SearchViewModel.shared.currentIndex.subscribe(onNext: { self.currentIndex = $0 }).disposed(by: disposeBag)
     }
 }

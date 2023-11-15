@@ -8,7 +8,6 @@ class AnimeViewModel {
     let currentAnime = BehaviorRelay<[AnimeEntity]>(value: [])
     let currentSeasonAnime = BehaviorRelay<[AnimeEntity]>(value: [])
     let filterAnime = BehaviorRelay<[AnimeEntity]>(value: [])
-    let currentIndex = BehaviorRelay<Int>(value: 0)
     
     func getCurrentAnime() {
         let endpoint = Endpoint.getScheduledAnime(params: ScheduleParam(filter: getCurrentDay().lowercased(), page: "1", limit: "6"))
@@ -17,19 +16,6 @@ class AnimeViewModel {
             switch result {
             case .success(let data):
                 self.currentAnime.accept(data.data)
-            case .failure(let err):
-                print(err)
-            }
-        }
-    }
-    
-    func getFilterAnime(filterParam: FilterAnimeParam) {
-        let endpoint = Endpoint.filterAnime(params: filterParam)
-        APIManager.shared.fetchRequest(endpoint: endpoint){[weak self] (result: Result<AnimeData, Error>) in
-            guard let self = self else { return }
-            switch result {
-            case .success(let data):
-                self.filterAnime.accept(data.data)
             case .failure(let err):
                 print(err)
             }
@@ -83,9 +69,5 @@ class AnimeViewModel {
         let convertedTime = dateFormatter.string(from: sourceDate)
         
         return convertedTime
-    }
-    
-    func changeCurrentIndex(index: Int){
-        self.currentIndex.accept(index)
     }
 }

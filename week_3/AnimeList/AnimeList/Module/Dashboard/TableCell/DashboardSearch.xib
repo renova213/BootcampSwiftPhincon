@@ -60,6 +60,7 @@
             <connections>
                 <outlet property="dashboardSearchField" destination="0iB-6i-neU" id="V3j-u9-cpO"/>
                 <outlet property="dashboardSearchView" destination="DcG-8j-DEn" id="zJb-MZ-9Yq"/>
+                <outlet property="gestureStackView" destination="8Nu-HE-YjF" id="P4s-Cc-48l"/>
             </connections>
             <point key="canvasLocation" x="135.87786259541986" y="6.3380281690140849"/>
         </tableViewCell>

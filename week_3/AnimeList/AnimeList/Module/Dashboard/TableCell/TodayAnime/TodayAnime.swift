@@ -1,5 +1,10 @@
 import UIKit
 
+
+protocol TodayAnimeDelegate: AnyObject {
+    func didTap(data: AnimeEntity)
+}
+
 class TodayAnime: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -11,6 +16,7 @@ class TodayAnime: UITableViewCell {
         configureTableView()
     }
     
+    weak var delegate: TodayAnimeDelegate?
     var currentAnime: [AnimeEntity] = []{
         didSet{
             currentAnimeCollection.reloadData()
@@ -35,7 +41,7 @@ extension TodayAnime: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         let data = currentAnime[indexPath.row]
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TodayAnimeItem", for: indexPath) as! TodayAnimeItem
-        
+                
         cell.setUpComponent(title: data.title ?? "", date: "Ditayangkan pada pukul \(AnimeViewModel.shared.convertTime(from: data.broadcast?.time ?? "00:00", fromTimeZone: data.broadcast?.timezone ?? "Asia/Tokyo", to: "Asia/Jakarta" ) ?? "-")", urlImage: data.images?.jpg?.imageUrl ?? "", rating: data.score ?? 0.0 )
         
         return cell
@@ -46,4 +52,9 @@ extension TodayAnime: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         return CGSize(width: 280, height: 150)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let data = currentAnime[indexPath.row]
+
+        delegate?.didTap(data: data)
+    }
 }

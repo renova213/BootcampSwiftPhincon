@@ -12,37 +12,43 @@ import RxCocoa
 import RxGesture
 
 protocol DashboardSearchDelegate: AnyObject {
-    func didSelectCell(text: String)
+    func didSelectCell()
 }
 
 class DashboardSearch: UITableViewCell {
     
+    @IBOutlet weak var gestureStackView: UIStackView!
     @IBOutlet weak var dashboardSearchView: UIView!
     @IBOutlet weak var dashboardSearchField: UITextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         configureComponentStyle()
-        textFieldEvent()
+        configureGesture()
     }
     
     weak var delegate: DashboardSearchDelegate?
     let disposeBag = DisposeBag()
     
     func configureComponentStyle(){
+        gestureStackView.isUserInteractionEnabled = true
+        
         dashboardSearchField.borderStyle = .none
 
         dashboardSearchView.roundCornersAll(radius: 15)
         dashboardSearchView.layer.borderWidth = 1
         dashboardSearchView.layer.borderColor = UIColor.init(named: "Main Color")?.cgColor
+        
+        dashboardSearchField.isEnabled = false
     }
     
-    private func textFieldEvent() {
-        dashboardSearchField.rx.controlEvent(.editingDidEndOnExit)
-            .bind { [weak self] in
-                self?.delegate?.didSelectCell(text: self?.dashboardSearchField.text ?? "")
-                self?.dashboardSearchField.text = ""
-            }
-            .disposed(by: disposeBag)
+    func configureGesture(){
+        gestureStackView.rx
+                    .tapGesture()
+                    .when(.recognized)
+                    .subscribe(onNext: { [weak self] _ in
+                        self?.delegate?.didSelectCell()
+                    })
+                    .disposed(by: disposeBag)
     }
 }

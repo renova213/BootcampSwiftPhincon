@@ -16,7 +16,7 @@ class SearchResult: UITableViewCell {
     
     func configureStyleComponent(){
         searchView.roundCornersAll(radius: 12)
-        searchView.backgroundColor = UIColor(named: "Main Color")?.withAlphaComponent(0.5)
+        searchView.backgroundColor = UIColor(named: "Main Color")?.withAlphaComponent(0.8)
         
         urlImage.roundCornersAll(radius: 12)
     }

@@ -2,7 +2,6 @@ import Foundation
 
 struct AnimeData: Codable {
     var data: [AnimeEntity]
-    
 }
 
 struct AnimeEntity: Codable{
@@ -15,6 +14,7 @@ struct AnimeEntity: Codable{
     var episodes: Int?
     var season: String?
     var aired: Aired?
+    var status: String?
     
     enum CodingKeys: String, CodingKey {
         case malId = "mal_id"
@@ -26,6 +26,7 @@ struct AnimeEntity: Codable{
         case episodes = "episodes"
         case season = "season"
         case aired = "aired"
+        case status = "status"
     }
 }
 

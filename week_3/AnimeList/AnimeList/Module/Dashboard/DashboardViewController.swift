@@ -16,6 +16,7 @@ class DashboardViewController: UIViewController {
         bindFetchViewModel()
     }
     
+    weak var delegate: TodayAnimeDelegate?
     let disposeBag = DisposeBag()
     var currentAnime: [AnimeEntity] = []{
         didSet{
@@ -53,8 +54,8 @@ extension DashboardViewController {
     }
 }
 
-extension DashboardViewController: UITableViewDelegate, UITableViewDataSource, DashboardSearchDelegate {
-   
+extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func configureTableView(){
         dashboardTableView.delegate = self
         dashboardTableView.dataSource = self
@@ -77,9 +78,9 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource, D
         switch indexPath.section {
         case 0:
             let dashboardSearch = tableView.dequeueReusableCell(forIndexPath: indexPath) as DashboardSearch
-
+            
             dashboardSearch.delegate = self
-
+            
             return dashboardSearch
         case 1:
             let dashboardCategory = tableView.dequeueReusableCell(forIndexPath: indexPath) as DashboardCategory
@@ -87,6 +88,7 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource, D
         case 2:
             let todayAnime = tableView.dequeueReusableCell(forIndexPath: indexPath) as TodayAnime
             todayAnime.currentAnime = currentAnime
+            todayAnime.delegate = self
             return todayAnime
         case 3:
             let currentSeason = tableView.dequeueReusableCell(forIndexPath: indexPath) as CurrentSeasonAnime
@@ -95,15 +97,6 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource, D
         default:
             return UITableViewCell()
         }
-    }
-    
-    func didSelectCell(text: String) {
-        
-        let searchViewController = SearchViewController()
-
-    
-        navigationController?.pushViewController(searchViewController, animated: true)
-        searchViewController.navigationController?.isNavigationBarHidden = true
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -119,3 +112,22 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource, D
     }
 }
 
+extension DashboardViewController: TodayAnimeDelegate{
+    func didTap(data: AnimeEntity) {
+        let vc = DetailAnimeViewController()
+        vc.animeData = data
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+        vc.navigationController?.isNavigationBarHidden = true
+    }
+}
+
+extension DashboardViewController: DashboardSearchDelegate {
+    func didSelectCell() {
+        let vc = SearchViewController()
+        
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+        vc.navigationController?.isNavigationBarHidden = true
+    }
+}

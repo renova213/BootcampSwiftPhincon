@@ -5,6 +5,7 @@ enum Endpoint {
     case getScheduledAnime(params: ScheduleParam)
     case getSeasonNow(page: String, limit: String)
     case filterAnime(params: FilterAnimeParam)
+    case filterManga(params: FilterMangaParam)
     
     func path() -> String {
         switch self {
@@ -14,12 +15,14 @@ enum Endpoint {
             return "/seasons/now"
         case .filterAnime:
             return "/anime"
+        case .filterManga:
+            return "/manga"
         }
     }
     
     func method() -> HTTPMethod {
         switch self {
-        case .getScheduledAnime, .getSeasonNow, .filterAnime:
+        case .getScheduledAnime, .getSeasonNow, .filterAnime, .filterManga:
             return .get
         }
     }
@@ -51,6 +54,26 @@ enum Endpoint {
             if let page = param.page {
                 params["page"] = page
             }
+            params["sfw"] = "true"
+            
+            return params
+            
+        case .filterManga(let param):
+            var params = [String: Any]()
+            
+            if let query = param.q {
+                params["q"] = query
+            }
+            
+            if let limit = param.limit {
+                params["limit"] = limit
+            }
+            
+            if let page = param.page {
+                params["page"] = page
+            }
+            
+            params["sfw"] = "true"
             
             return params
         }
@@ -69,7 +92,7 @@ enum Endpoint {
     
     var encoding: ParameterEncoding {
         switch self {
-        case .getScheduledAnime, .getSeasonNow, .filterAnime:
+        case .getScheduledAnime, .getSeasonNow, .filterAnime, .filterManga:
             return URLEncoding.default
         }
     }
