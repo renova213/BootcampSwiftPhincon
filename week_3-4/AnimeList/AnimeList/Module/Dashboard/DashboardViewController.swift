@@ -123,6 +123,13 @@ extension DashboardViewController: TodayAnimeDelegate{
         navigationController?.pushViewController(vc, animated: true)
         vc.navigationController?.isNavigationBarHidden = true
     }
+    
+    func didTapNavigation() {
+        let vc = ShowMoreViewController()
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+        vc.navigationController?.isNavigationBarHidden = true
+    }
 }
 
 extension DashboardViewController: DashboardSearchDelegate {

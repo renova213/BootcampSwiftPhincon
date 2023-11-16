@@ -75,7 +75,7 @@ class AnimeDetailInfo: UITableViewCell {
         }
         
         if let popularity = data.popularity {
-            popularityLabel.text = "$\(String(popularity))"
+            popularityLabel.text = "#\(String(popularity))"
         }else{
             popularityLabel.text = "-"
         }

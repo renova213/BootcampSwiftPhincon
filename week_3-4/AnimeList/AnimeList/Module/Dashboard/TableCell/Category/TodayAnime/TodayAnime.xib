@@ -17,29 +17,28 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="219"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="243" translatesAutoresizingMaskIntoConstraints="NO" id="Xtf-UX-YWS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="34.333333333333336"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="120" translatesAutoresizingMaskIntoConstraints="NO" id="Xtf-UX-YWS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="41"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hari ini" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yl4-AC-YQR">
-                                <rect key="frame" x="0.0" y="0.0" width="53" height="34.333333333333336"/>
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="5td-RR-QZX"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f35-DL-QIF">
-                                <rect key="frame" x="296" y="0.0" width="24" height="34.333333333333336"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="qwY-qo-gb7"/>
-                                    <constraint firstAttribute="width" constant="24" id="vr6-KG-ajd"/>
-                                </constraints>
-                                <color key="tintColor" systemColor="labelColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="arrow.right" catalog="system"/>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lainnya" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xi-Hk-JuR">
+                                <rect key="frame" x="220" y="0.0" width="100" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" systemColor="linkColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                     </stackView>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="K2v-2d-Jhr">
-                        <rect key="frame" x="0.0" y="50.333333333333343" width="320" height="150"/>
+                        <rect key="frame" x="0.0" y="57" width="320" height="150"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="150" id="LG4-eO-AOp"/>
@@ -65,16 +64,15 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="currentAnimeCollection" destination="K2v-2d-Jhr" id="1qz-b9-cMy"/>
-                <outlet property="showButtonAll" destination="f35-DL-QIF" id="FYZ-lD-aTA"/>
+                <outlet property="otherLabel" destination="8xi-Hk-JuR" id="0V3-d5-57p"/>
                 <outlet property="titleLabel" destination="Yl4-AC-YQR" id="5tw-LP-krV"/>
             </connections>
             <point key="canvasLocation" x="138.93129770992365" y="84.154929577464799"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="arrow.right" catalog="system" width="128" height="95"/>
-        <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

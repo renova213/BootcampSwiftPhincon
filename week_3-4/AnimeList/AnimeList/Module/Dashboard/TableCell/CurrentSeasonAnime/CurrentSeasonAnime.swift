@@ -6,11 +6,13 @@ protocol CurrentAnimeDelegate: AnyObject {
 
 class CurrentSeasonAnime: UITableViewCell {
 
+    @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var animeCategoryCollection: UICollectionView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         configureCollectionView()
+        configureComponentStyle()
     }
     
     var currentSeasonAnime: [AnimeEntity] = []{
@@ -19,6 +21,10 @@ class CurrentSeasonAnime: UITableViewCell {
         }
     }
     weak var delegate: CurrentAnimeDelegate?
+    
+    @IBAction func tapMoreButton(_ sender: Any) {
+        print("sdadsdasdsa")
+    }
 }
 
 extension CurrentSeasonAnime: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -51,5 +57,11 @@ extension CurrentSeasonAnime: UICollectionViewDelegate, UICollectionViewDataSour
         let data = currentSeasonAnime[indexPath.row]
 
         delegate?.didTapCurrentAnime(data: data)
+    }
+}
+
+extension CurrentSeasonAnime {
+    func configureComponentStyle(){
+        moreButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
     }
 }

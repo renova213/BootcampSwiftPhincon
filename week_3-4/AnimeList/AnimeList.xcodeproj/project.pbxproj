@@ -11,6 +11,10 @@
 		36231CCD2AFE041A008257C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36231CCC2AFE041A008257C8 /* AppDelegate.swift */; };
 		36231CCF2AFE041A008257C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36231CCE2AFE041A008257C8 /* SceneDelegate.swift */; };
 		36231CD62AFE041A008257C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36231CD52AFE041A008257C8 /* Assets.xcassets */; };
+		36259ED72B06140300FE89BC /* AppBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36259ED62B06140300FE89BC /* AppBar.xib */; };
+		36259EDA2B0617D800FE89BC /* ShowMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36259ED82B0617D800FE89BC /* ShowMoreViewController.swift */; };
+		36259EDB2B0617D800FE89BC /* ShowMoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36259ED92B0617D800FE89BC /* ShowMoreViewController.xib */; };
+		36259EDD2B06188500FE89BC /* AppBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36259EDC2B06188500FE89BC /* AppBar.swift */; };
 		3644D0C62B034E580064B692 /* FilterAnimeParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3644D0C52B034E580064B692 /* FilterAnimeParam.swift */; };
 		36569EC32AFE04FE00EDB6B9 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36569EC12AFE04FE00EDB6B9 /* SplashViewController.swift */; };
 		36569EC42AFE04FE00EDB6B9 /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36569EC22AFE04FE00EDB6B9 /* SplashViewController.xib */; };
@@ -77,6 +81,10 @@
 		36231CCE2AFE041A008257C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		36231CD52AFE041A008257C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36231CDA2AFE041A008257C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36259ED62B06140300FE89BC /* AppBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppBar.xib; sourceTree = "<group>"; };
+		36259ED82B0617D800FE89BC /* ShowMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMoreViewController.swift; sourceTree = "<group>"; };
+		36259ED92B0617D800FE89BC /* ShowMoreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowMoreViewController.xib; sourceTree = "<group>"; };
+		36259EDC2B06188500FE89BC /* AppBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBar.swift; sourceTree = "<group>"; };
 		3644D0C52B034E580064B692 /* FilterAnimeParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterAnimeParam.swift; sourceTree = "<group>"; };
 		36569EC12AFE04FE00EDB6B9 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		36569EC22AFE04FE00EDB6B9 /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
@@ -187,6 +195,7 @@
 		36231CE02AFE0422008257C8 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				367DBBBF2B060E47005D0C14 /* ShowMore */,
 				36D60F2B2B0478AD00800D88 /* DetailAnime */,
 				36F46C1F2B021B12002FFC78 /* SearchScreen */,
 				36231CE92AFE0479008257C8 /* Splash */,
@@ -274,9 +283,19 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
+		36259ED32B0613DE00FE89BC /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				36259ED62B06140300FE89BC /* AppBar.xib */,
+				36259EDC2B06188500FE89BC /* AppBar.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		36569EC52AFE053300EDB6B9 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				36259ED32B0613DE00FE89BC /* Components */,
 				36569EE32AFE0C7700EDB6B9 /* Extension */,
 				36569EDA2AFE06AC00EDB6B9 /* Constant.swift */,
 			);
@@ -288,7 +307,6 @@
 			children = (
 				36F46C132B020EFF002FFC78 /* CurrentSeasonAnime */,
 				36569EDE2AFE08D400EDB6B9 /* Category */,
-				36569EDD2AFE08C000EDB6B9 /* TodayAnime */,
 				36569EDF2AFE091B00EDB6B9 /* DashboardSearch.swift */,
 				36569EE02AFE091B00EDB6B9 /* DashboardSearch.xib */,
 			);
@@ -308,6 +326,7 @@
 		36569EDE2AFE08D400EDB6B9 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				36569EDD2AFE08C000EDB6B9 /* TodayAnime */,
 				36569EEE2AFE0F6E00EDB6B9 /* CollectionCell */,
 				36569EEA2AFE0E6F00EDB6B9 /* DashboardCategory.swift */,
 				36569EEB2AFE0E6F00EDB6B9 /* DashboardCategory.xib */,
@@ -390,6 +409,15 @@
 				36671F7D2B031F7100EB7083 /* UnselectedSearchCategoryItem.xib */,
 			);
 			path = CollectionCell;
+			sourceTree = "<group>";
+		};
+		367DBBBF2B060E47005D0C14 /* ShowMore */ = {
+			isa = PBXGroup;
+			children = (
+				36259ED82B0617D800FE89BC /* ShowMoreViewController.swift */,
+				36259ED92B0617D800FE89BC /* ShowMoreViewController.xib */,
+			);
+			path = ShowMore;
 			sourceTree = "<group>";
 		};
 		36A79AB62B0482AF00471D5B /* TableCell */ = {
@@ -557,11 +585,13 @@
 				365F9BC92B044A9E001D05AE /* SearchResult.xib in Resources */,
 				36671F7B2B031DEE00EB7083 /* SelectedSearchCategoryItem.xib in Resources */,
 				36A09BA22B05D4DF00778CD3 /* DetailAnimeTrailer.xib in Resources */,
+				36259ED72B06140300FE89BC /* AppBar.xib in Resources */,
 				36F46C1C2B02108B002FFC78 /* CurrentSeasonAnimeItem.xib in Resources */,
 				36569ED12AFE057300EDB6B9 /* AnimeViewController.xib in Resources */,
 				36569EFA2AFE117500EDB6B9 /* TodayAnime.xib in Resources */,
 				369C55F42B0481E100B982AF /* DetailAnimeViewController.xib in Resources */,
 				36A79ABA2B04836900471D5B /* AnimeDetailInfo.xib in Resources */,
+				36259EDB2B0617D800FE89BC /* ShowMoreViewController.xib in Resources */,
 				36671F872B03262D00EB7083 /* SearchCategories.xib in Resources */,
 				36F46C232B021B5C002FFC78 /* SearchViewController.xib in Resources */,
 				36569ED52AFE058500EDB6B9 /* MainTabBarViewController.xib in Resources */,
@@ -624,6 +654,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36569ECC2AFE056700EDB6B9 /* MangaViewController.swift in Sources */,
+				36259EDA2B0617D800FE89BC /* ShowMoreViewController.swift in Sources */,
 				36D643D22B01C4BB00EF554E /* AnimeViewModel.swift in Sources */,
 				36569EF12AFE0F8C00EDB6B9 /* DashboardCategoryItem.swift in Sources */,
 				369C55F32B0481E100B982AF /* DetailAnimeViewController.swift in Sources */,
@@ -651,6 +682,7 @@
 				36231CCD2AFE041A008257C8 /* AppDelegate.swift in Sources */,
 				36671F7E2B031F7100EB7083 /* UnselectedSearchCategoryItem.swift in Sources */,
 				36569F042AFE269D00EDB6B9 /* Endpoint.swift in Sources */,
+				36259EDD2B06188500FE89BC /* AppBar.swift in Sources */,
 				36569F022AFE264C00EDB6B9 /* ApiManager.swift in Sources */,
 				36231CCF2AFE041A008257C8 /* SceneDelegate.swift in Sources */,
 				36671F742B031CC100EB7083 /* SearchResult.swift in Sources */,

@@ -20,8 +20,9 @@ struct AnimeEntity: Codable{
     let popularity: Int?
     let members: Int?
     let favorite: Int?
-    var url: String?
-    var duration: String?
+    let url: String?
+    let duration: String?
+    let trailer: AnimeTrailer
     
     enum CodingKeys: String, CodingKey {
         case malId = "mal_id"
@@ -41,6 +42,7 @@ struct AnimeEntity: Codable{
         case favorite = "favorite"
         case url = "url"
         case duration = "duration"
+        case trailer = "trailer"
     }
 }
 
@@ -80,4 +82,16 @@ struct Prop: Codable {
 
 struct From: Codable {
     let day, month, year: Int?
+}
+
+struct AnimeTrailer: Codable {
+    let youtubeId: String?
+    let url: String?
+    let embedUrl: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case youtubeId = "youtube_id"
+        case url = "url"
+        case embedUrl = "embed_url"
+    }
 }

@@ -56,10 +56,11 @@ extension DetailAnimeViewController: UITableViewDataSource, UITableViewDelegate 
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerCellWithNib(AnimeDetailInfo.self)
+        tableView.registerCellWithNib(DetailAnimeTrailer.self)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -76,6 +77,12 @@ extension DetailAnimeViewController: UITableViewDataSource, UITableViewDelegate 
             }
             
             return animeDetailInfo
+        case 1:
+            
+            let animeDetailTrailer = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeTrailer
+            animeDetailTrailer.initialYoutubeId(youtubeId: animeData?.trailer.youtubeId ?? "")
+            return animeDetailTrailer
+            
         default:
             return UITableViewCell()
         }

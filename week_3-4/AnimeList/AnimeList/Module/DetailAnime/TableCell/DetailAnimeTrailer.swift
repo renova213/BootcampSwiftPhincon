@@ -1,23 +1,26 @@
-//
-//  DetailAnimeTrailer.swift
-//  AnimeList
-//
-//  Created by Phincon on 16/11/23.
-//
-
 import UIKit
+import YouTubePlayer
 
 class DetailAnimeTrailer: UITableViewCell {
-
+    
+    @IBOutlet weak var youtubePlayer: YouTubePlayerView!
+    var youtubeId: String?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        loadVideoPlayer()
+    }
+    
+    func loadVideoPlayer(){
+        youtubePlayer.loadVideoID(youtubeId ?? "")
+    }
+    
+    func initialYoutubeId(youtubeId: String){
+        self.youtubeId = youtubeId
+    }
 }

@@ -18,26 +18,26 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="150" translatesAutoresizingMaskIntoConstraints="NO" id="Lyr-yD-noX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="20.333333333333332"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="16"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Musim ini" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xge-Qa-450">
-                                <rect key="frame" x="0.0" y="0.0" width="146" height="20.333333333333332"/>
+                                <rect key="frame" x="0.0" y="0.0" width="72" height="16"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Xxv-mK-v4D">
-                                <rect key="frame" x="296" y="3" width="24" height="14.666666666666664"/>
-                                <color key="tintColor" systemColor="labelColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="OVy-xu-DY3"/>
-                                    <constraint firstAttribute="width" constant="24" id="dVd-eE-FPG"/>
-                                </constraints>
-                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oRt-3d-ebN">
+                                <rect key="frame" x="222" y="0.0" width="98" height="16"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Lainnya"/>
+                                <connections>
+                                    <action selector="tapMoreButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="TrL-d1-Hcl"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </stackView>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Gia-Oj-YaZ">
-                        <rect key="frame" x="0.0" y="36.333333333333343" width="320" height="205"/>
+                        <rect key="frame" x="0.0" y="32" width="320" height="205"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="205" id="R2B-OX-mx5"/>
@@ -63,15 +63,12 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="animeCategoryCollection" destination="Gia-Oj-YaZ" id="7t5-sv-DMK"/>
+                <outlet property="moreButton" destination="oRt-3d-ebN" id="Mla-OI-Z1N"/>
             </connections>
             <point key="canvasLocation" x="122.13740458015266" y="92.605633802816911"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="arrow.right" catalog="system" width="128" height="95"/>
-        <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
