@@ -15,6 +15,7 @@ class DetailAnimeViewController: UIViewController {
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var sourceButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addToListButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,7 @@ extension DetailAnimeViewController{
         backButtonGesture()
         sourceButtonGesture()
         configureTableView()
+        addToListButton.roundCornersAll(radius: 10)
     }
     
     private func backButtonGesture(){
@@ -57,10 +59,11 @@ extension DetailAnimeViewController: UITableViewDataSource, UITableViewDelegate 
         tableView.dataSource = self
         tableView.registerCellWithNib(AnimeDetailInfo.self)
         tableView.registerCellWithNib(DetailAnimeTrailer.self)
+        tableView.registerCellWithNib(DetailAnimeMoreInfo.self)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -78,10 +81,13 @@ extension DetailAnimeViewController: UITableViewDataSource, UITableViewDelegate 
             
             return animeDetailInfo
         case 1:
-            
             let animeDetailTrailer = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeTrailer
             animeDetailTrailer.initialYoutubeId(youtubeId: animeData?.trailer.youtubeId ?? "")
             return animeDetailTrailer
+        
+        case 2:
+            let detailAnimeMoreInfo = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeMoreInfo
+            return detailAnimeMoreInfo
             
         default:
             return UITableViewCell()

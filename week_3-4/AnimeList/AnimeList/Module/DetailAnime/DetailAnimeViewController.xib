@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailAnimeViewController" customModule="AnimeList" customModuleProvider="target">
             <connections>
+                <outlet property="addToListButton" destination="sAj-v0-ods" id="6Nk-y6-3fH"/>
                 <outlet property="backButton" destination="3U9-oq-fAt" id="mDa-YR-IwL"/>
                 <outlet property="favoriteButton" destination="CO5-8p-K7g" id="uoC-iK-NEB"/>
                 <outlet property="sourceButton" destination="JoI-RV-qEj" id="xcb-7k-M4Y"/>
@@ -98,12 +99,26 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sAj-v0-ods">
+                            <rect key="frame" x="234" y="673" width="135" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="135" id="Hld-wF-dc5"/>
+                                <constraint firstAttribute="height" constant="50" id="Wab-7m-6j1"/>
+                            </constraints>
+                            <color key="tintColor" name="Main Color"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="filled" image="plus" catalog="system" title="Tambah" imagePadding="16">
+                                <color key="baseBackgroundColor" name="Main Color"/>
+                            </buttonConfiguration>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="sAj-v0-ods" secondAttribute="trailing" constant="24" id="1ID-4V-YyU"/>
                         <constraint firstItem="ocu-HJ-9a7" firstAttribute="top" secondItem="OSU-MH-7hh" secondAttribute="bottom" id="2A0-oo-w6m"/>
                         <constraint firstAttribute="trailing" secondItem="ocu-HJ-9a7" secondAttribute="trailing" id="9tZ-ny-uAr"/>
                         <constraint firstAttribute="bottom" secondItem="ocu-HJ-9a7" secondAttribute="bottom" constant="16" id="BNO-H4-Dt9"/>
+                        <constraint firstAttribute="bottom" secondItem="sAj-v0-ods" secondAttribute="bottom" constant="70" id="Mfc-O2-O87"/>
                         <constraint firstItem="OSU-MH-7hh" firstAttribute="top" secondItem="u36-a9-IWQ" secondAttribute="top" id="Nyd-HS-nHo"/>
                         <constraint firstAttribute="trailing" secondItem="OSU-MH-7hh" secondAttribute="trailing" id="gb6-BQ-Ib7"/>
                         <constraint firstItem="ocu-HJ-9a7" firstAttribute="leading" secondItem="u36-a9-IWQ" secondAttribute="leading" id="loX-iS-qvF"/>
@@ -125,6 +140,7 @@
     <resources>
         <image name="arrow.backward" catalog="system" width="128" height="95"/>
         <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <namedColor name="Main Color">
             <color red="0.63529411764705879" green="0.69803921568627447" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
