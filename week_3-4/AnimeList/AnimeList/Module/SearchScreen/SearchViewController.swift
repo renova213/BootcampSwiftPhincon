@@ -34,6 +34,17 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.registerCellWithNib(SearchResult.self)
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(currentIndex == 0 && indexPath.section == 1){
+            
+            let data = filteredAnime[indexPath.row]
+            let vc = DetailAnimeViewController()
+            vc.animeData = data
+            navigationController?.pushViewController(vc, animated: true)
+            
+        }
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -80,11 +91,15 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             let data = filteredAnime[indexPath.row]
             let searchResult = tableView.dequeueReusableCell(forIndexPath: indexPath) as SearchResult
             searchResult.initialSetupAnime(data: data)
+            searchResult.selectionStyle = .none
+            
             return searchResult
         }else{
             let data = filteredManga[indexPath.row]
             let searchResult = tableView.dequeueReusableCell(forIndexPath: indexPath) as SearchResult
             searchResult.initialSetupManga(data: data)
+            searchResult.selectionStyle = .none
+            
             return searchResult
         }
     }

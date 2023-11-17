@@ -29,9 +29,9 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="ed9-O9-6P4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="990-Qe-Lrh"/>
-                <constraint firstItem="ed9-O9-6P4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="MIU-3o-00f"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ed9-O9-6P4" secondAttribute="trailing" constant="16" id="Mx8-xd-ciU"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ed9-O9-6P4" secondAttribute="bottom" constant="16" id="Vvh-n3-LEn"/>
+                <constraint firstItem="ed9-O9-6P4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="i5n-Gu-Xke"/>
             </constraints>
             <point key="canvasLocation" x="139.69465648854961" y="19.718309859154932"/>
         </view>

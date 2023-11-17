@@ -35,8 +35,8 @@ class DashboardViewController: UIViewController {
 extension DashboardViewController {
     
     func getFetchViewModel(){
-        AnimeViewModel.shared.getCurrentAnime()
-        AnimeViewModel.shared.getCurrentSeasonAnime()
+        AnimeViewModel.shared.getCurrentAnime(limit: "6", page: "1")
+        AnimeViewModel.shared.getCurrentSeasonAnime(limit: "6", page: "1")
     }
     
     func bindFetchViewModel() {
@@ -126,6 +126,7 @@ extension DashboardViewController: TodayAnimeDelegate{
     
     func didTapNavigation() {
         let vc = ShowMoreViewController()
+        vc.typeGet = "currentAnime"
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
         vc.navigationController?.isNavigationBarHidden = true
@@ -146,6 +147,14 @@ extension DashboardViewController: CurrentAnimeDelegate {
     func didTapCurrentAnime(data: AnimeEntity) {
         let vc = DetailAnimeViewController()
         vc.animeData = data
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+        vc.navigationController?.isNavigationBarHidden = true
+    }
+    
+    func didTapShowMoreCurrentAnime() {
+        let vc = ShowMoreViewController()
+        vc.typeGet = "seasonNow"
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
         vc.navigationController?.isNavigationBarHidden = true

@@ -31,7 +31,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Lainnya"/>
                                 <connections>
-                                    <action selector="tapMoreButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="TrL-d1-Hcl"/>
+                                    <action selector="tapMoreButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MPU-lp-kvy"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -63,7 +63,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="animeCategoryCollection" destination="Gia-Oj-YaZ" id="7t5-sv-DMK"/>
-                <outlet property="moreButton" destination="oRt-3d-ebN" id="Mla-OI-Z1N"/>
+                <outlet property="moreButton" destination="oRt-3d-ebN" id="maC-fv-Fif"/>
             </connections>
             <point key="canvasLocation" x="122.13740458015266" y="92.605633802816911"/>
         </tableViewCell>

@@ -11,22 +11,22 @@ class TodayAnime: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var currentAnimeCollection: UICollectionView!
-    @IBOutlet weak var otherLabel: UILabel!
+    @IBOutlet weak var showMoreButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         configureTableView()
-        configureGesture()
+        tapMoreButton()
+        configureComponentStyle()
     }
     
+    private let disposeBag = DisposeBag()
     weak var delegate: TodayAnimeDelegate?
     var currentAnime: [AnimeEntity] = []{
         didSet{
             currentAnimeCollection.reloadData()
         }
     }
-    
-    
 }
 
 
@@ -65,14 +65,16 @@ extension TodayAnime: UICollectionViewDelegate, UICollectionViewDataSource, UICo
 }
 
 extension TodayAnime {
-    func configureGesture(){
-        otherLabel.rx
-            .tapGesture()
-            .when(.recognized)
+    func tapMoreButton(){
+        showMoreButton.rx
+            .tap
             .subscribe(onNext: { [weak self] _ in
-                print("dasdsads")
                 self?.delegate?.didTapNavigation()
             })
-            .disposed(by: DisposeBag())
+            .disposed(by: disposeBag)
+    }
+    
+    func configureComponentStyle(){
+        showMoreButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
     }
 }

@@ -38,7 +38,6 @@ class SearchViewModel {
                 switch result {
                 case .success(let data):
                     self.filteredManga.accept(data.data)
-                    print(self.filteredManga.value)
                 case .failure(let err):
                     print(err)
                 }

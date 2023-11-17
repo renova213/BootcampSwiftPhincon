@@ -40,7 +40,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TV (500 episode)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vmt-d5-QxW">
-                                    <rect key="frame" x="122" y="43.333333333333336" width="259" height="27.333333333333336"/>
+                                    <rect key="frame" x="122" y="43.333333333333336" width="259" height="19.333333333333336"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -49,7 +49,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Musim Dingin 2007" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ApG-mO-nhf">
-                                    <rect key="frame" x="122" y="82.666666666666671" width="259" height="19.333333333333329"/>
+                                    <rect key="frame" x="122" y="74.666666666666671" width="259" height="19.333333333333329"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -57,63 +57,42 @@
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                     </userDefinedRuntimeAttributes>
                                 </label>
-                                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="etp-uF-t5l">
-                                    <rect key="frame" x="122" y="114" width="259" height="24"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="FTf-Zr-QXB">
+                                    <rect key="frame" x="122" y="106" width="259" height="14"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="FTf-Zr-QXB">
-                                            <rect key="frame" x="0.0" y="0.0" width="227" height="14"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mup-Rx-U6U">
-                                                    <rect key="frame" x="0.0" y="-0.33333333333333215" width="14" height="13.666666666666666"/>
-                                                    <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="14" id="WuV-Cn-EtP"/>
-                                                        <constraint firstAttribute="height" constant="14" id="Z4Z-Xx-98A"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7.79" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zLf-iN-jaa">
-                                                    <rect key="frame" x="20" y="0.0" width="207" height="14"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                            </userDefinedRuntimeAttributes>
-                                        </stackView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BPS-0n-FMW">
-                                            <rect key="frame" x="235" y="0.0" width="24" height="24"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mup-Rx-U6U">
+                                            <rect key="frame" x="0.0" y="-0.33333333333333215" width="14" height="13.666666666666666"/>
+                                            <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="24" id="bDh-WY-vCa"/>
-                                                <constraint firstAttribute="height" constant="24" id="xlT-0q-2TD"/>
+                                                <constraint firstAttribute="width" constant="14" id="WuV-Cn-EtP"/>
+                                                <constraint firstAttribute="height" constant="14" id="Z4Z-Xx-98A"/>
                                             </constraints>
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="plain" image="text.badge.plus" catalog="system"/>
-                                        </button>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7.79" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zLf-iN-jaa">
+                                            <rect key="frame" x="20" y="0.0" width="239" height="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="BPS-0n-FMW" secondAttribute="bottom" id="D6c-e4-zKO"/>
-                                        <constraint firstItem="BPS-0n-FMW" firstAttribute="top" secondItem="etp-uF-t5l" secondAttribute="top" id="qX7-BE-ZE2"/>
-                                        <constraint firstAttribute="trailing" secondItem="BPS-0n-FMW" secondAttribute="trailing" id="rSO-Va-Mz6"/>
-                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
                                 </stackView>
                             </subviews>
                             <color key="backgroundColor" name="Main Color"/>
                             <constraints>
                                 <constraint firstItem="ApG-mO-nhf" firstAttribute="leading" secondItem="cu3-aT-11S" secondAttribute="trailing" constant="12" id="0OB-zb-utn"/>
+                                <constraint firstItem="FTf-Zr-QXB" firstAttribute="top" secondItem="ApG-mO-nhf" secondAttribute="bottom" constant="12" id="3x4-xP-fOB"/>
                                 <constraint firstItem="cu3-aT-11S" firstAttribute="top" secondItem="qTC-Jr-87d" secondAttribute="top" id="4mP-Xe-Zii"/>
-                                <constraint firstAttribute="trailing" secondItem="etp-uF-t5l" secondAttribute="trailing" constant="12" id="5RP-mc-oZw"/>
                                 <constraint firstItem="HqQ-nJ-7db" firstAttribute="top" secondItem="qTC-Jr-87d" secondAttribute="top" constant="12" id="DIm-N9-5bS"/>
-                                <constraint firstAttribute="bottom" secondItem="etp-uF-t5l" secondAttribute="bottom" constant="12" id="ItW-mm-Fbb"/>
+                                <constraint firstAttribute="trailing" secondItem="FTf-Zr-QXB" secondAttribute="trailing" constant="12" id="KtJ-D0-MIG"/>
                                 <constraint firstItem="vmt-d5-QxW" firstAttribute="leading" secondItem="cu3-aT-11S" secondAttribute="trailing" constant="12" id="QK5-dc-zxi"/>
-                                <constraint firstItem="etp-uF-t5l" firstAttribute="leading" secondItem="cu3-aT-11S" secondAttribute="trailing" constant="12" id="Qbe-eT-mEV"/>
                                 <constraint firstAttribute="bottom" secondItem="cu3-aT-11S" secondAttribute="bottom" id="Vwx-9H-BUP"/>
                                 <constraint firstItem="vmt-d5-QxW" firstAttribute="top" secondItem="HqQ-nJ-7db" secondAttribute="bottom" constant="12" id="beu-Ff-MMe"/>
                                 <constraint firstItem="ApG-mO-nhf" firstAttribute="top" secondItem="vmt-d5-QxW" secondAttribute="bottom" constant="12" id="c9w-TH-Exg"/>
                                 <constraint firstAttribute="trailing" secondItem="ApG-mO-nhf" secondAttribute="trailing" constant="12" id="ebj-fL-PKs"/>
-                                <constraint firstItem="etp-uF-t5l" firstAttribute="top" secondItem="ApG-mO-nhf" secondAttribute="bottom" constant="12" id="lwY-fs-OCk"/>
+                                <constraint firstItem="FTf-Zr-QXB" firstAttribute="leading" secondItem="cu3-aT-11S" secondAttribute="trailing" constant="12" id="f9S-5G-UT6"/>
                                 <constraint firstAttribute="trailing" secondItem="HqQ-nJ-7db" secondAttribute="trailing" constant="12" id="mGu-S3-f7t"/>
                                 <constraint firstItem="cu3-aT-11S" firstAttribute="leading" secondItem="qTC-Jr-87d" secondAttribute="leading" id="pj1-yG-FJj"/>
                                 <constraint firstAttribute="trailing" secondItem="vmt-d5-QxW" secondAttribute="trailing" constant="12" id="qde-Yo-bg9"/>
@@ -152,7 +131,6 @@
     </objects>
     <resources>
         <image name="star.fill" catalog="system" width="128" height="116"/>
-        <image name="text.badge.plus" catalog="system" width="128" height="107"/>
         <namedColor name="Main Color">
             <color red="0.63529411764705879" green="0.69803921568627447" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

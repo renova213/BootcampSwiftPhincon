@@ -34,7 +34,7 @@ extension DetailAnimeViewController{
     
     private func backButtonGesture(){
         backButton.rx.tap.subscribe(onNext: { [weak self] in
-            self?.navigationController?.popToRootViewController(animated: true)
+            self?.navigationController?.popViewController(animated: true)
         }
         ).disposed(by: disposeBag)
     }

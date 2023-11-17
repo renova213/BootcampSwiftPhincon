@@ -10,35 +10,31 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CurrentSeasonAnimeItem" customModule="AnimeList" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="120" height="200"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ShowMoreItem" customModule="AnimeList" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="364" height="393"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="120" height="200"/>
+                <rect key="frame" x="0.0" y="0.0" width="364" height="393"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vFl-SR-s9f" customClass="AnimeCardItem" customModule="AnimeList" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="120" height="200"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qOx-Ra-mud" customClass="AnimeCardItem" customModule="AnimeList" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="364" height="393"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="120" id="Gfb-wl-3b3"/>
-                            <constraint firstAttribute="height" constant="200" id="aeq-s5-bau"/>
-                        </constraints>
                     </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="vFl-SR-s9f" secondAttribute="trailing" id="FTc-fj-xbs"/>
-                <constraint firstItem="vFl-SR-s9f" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ntN-Zc-ojQ"/>
-                <constraint firstItem="vFl-SR-s9f" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="sDy-1h-mEn"/>
-                <constraint firstAttribute="bottom" secondItem="vFl-SR-s9f" secondAttribute="bottom" id="vFx-Vx-cpC"/>
+                <constraint firstItem="qOx-Ra-mud" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="HPH-gh-5oe"/>
+                <constraint firstItem="qOx-Ra-mud" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Mw7-2B-OGW"/>
+                <constraint firstAttribute="bottom" secondItem="qOx-Ra-mud" secondAttribute="bottom" id="Rug-kX-Z3s"/>
+                <constraint firstAttribute="trailing" secondItem="qOx-Ra-mud" secondAttribute="trailing" id="hk5-Ee-VHw"/>
             </constraints>
-            <size key="customSize" width="124" height="205"/>
+            <size key="customSize" width="364" height="393"/>
             <connections>
-                <outlet property="animeCardItem" destination="vFl-SR-s9f" id="vZk-VH-t3s"/>
+                <outlet property="animeCardItem" destination="qOx-Ra-mud" id="nTb-G0-OiU"/>
             </connections>
-            <point key="canvasLocation" x="73.282442748091597" y="138.73239436619718"/>
+            <point key="canvasLocation" x="378.62595419847327" y="97.535211267605632"/>
         </collectionViewCell>
     </objects>
     <resources>
