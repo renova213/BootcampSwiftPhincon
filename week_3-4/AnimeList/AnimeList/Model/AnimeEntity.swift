@@ -13,16 +13,8 @@ struct AnimeEntity: Codable{
     let type: String?
     let episodes: Int?
     let season: String?
-    let aired: Aired?
-    let status: String?
-    let synopsis: String?
+    let aired: AnimeAired?
     let rank: Int?
-    let popularity: Int?
-    let members: Int?
-    let favorite: Int?
-    let url: String?
-    let duration: String?
-    let trailer: AnimeTrailer
     
     enum CodingKeys: String, CodingKey {
         case malId = "mal_id"
@@ -34,15 +26,7 @@ struct AnimeEntity: Codable{
         case episodes = "episodes"
         case season = "season"
         case aired = "aired"
-        case status = "status"
-        case synopsis = "synopsis"
         case rank = "rank"
-        case popularity = "popularity"
-        case members = "members"
-        case favorite = "favorite"
-        case url = "url"
-        case duration = "duration"
-        case trailer = "trailer"
     }
 }
 
@@ -69,29 +53,17 @@ struct AnimeBroadcast:Codable{
     let dateTime: String?
 }
 
-struct Aired: Codable {
+struct AnimeAired: Codable {
     let from: String?
     let to: String?
-    let prop: Prop?
+    let prop: AnimeProp?
     let string: String?
 }
 
-struct Prop: Codable {
-    let from, to: From?
+struct AnimeProp: Codable {
+    let from, to: AnimeFrom?
 }
 
-struct From: Codable {
+struct AnimeFrom: Codable {
     let day, month, year: Int?
-}
-
-struct AnimeTrailer: Codable {
-    let youtubeId: String?
-    let url: String?
-    let embedUrl: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case youtubeId = "youtube_id"
-        case url = "url"
-        case embedUrl = "embed_url"
-    }
 }

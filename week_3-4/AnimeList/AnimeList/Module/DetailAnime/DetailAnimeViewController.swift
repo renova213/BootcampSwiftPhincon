@@ -1,10 +1,3 @@
-//
-//  DetailAnimeViewController.swift
-//  AnimeList
-//
-//  Created by Phincon on 15/11/23.
-//
-
 import UIKit
 import RxSwift
 import RxCocoa
@@ -20,9 +13,36 @@ class DetailAnimeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        getFetchViewModel()
     }
     
-    var animeData:AnimeEntity?
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        bindFetchViewModel()
+    }
+    
+    var malId: Int?
+    var animeDetail: AnimeDetailData? {
+        didSet{
+            tableView.reloadData()
+        }
+    }
+    var animeCharacter: [AnimeCharacterEntity] = [] {
+        didSet{
+            tableView.reloadData()
+        }
+    }
+    var animeStaff: [AnimeStaffEntity] = [] {
+        didSet{
+            tableView.reloadData()
+        }
+    }
+    var animeRecommendation: [AnimeRecommendationEntity] = [] {
+        didSet{
+            tableView.reloadData()
+        }
+    }
+    
     private let disposeBag = DisposeBag()
 }
 
@@ -43,12 +63,50 @@ extension DetailAnimeViewController{
     
     private func sourceButtonGesture(){
         sourceButton.rx.tap.subscribe(onNext: {_ in
-            if let urlData = self.animeData?.url{
+            if let urlData = self.animeDetail?.url{
                 if let url = URL(string: urlData) {
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 }
             }
         }).disposed(by: disposeBag)
+    }
+}
+
+extension DetailAnimeViewController {
+    func getFetchViewModel(){
+        if let id = malId{
+            AnimeViewModel.shared.getDetailAnime(malId: id)
+            AnimeViewModel.shared.getAnimeCharacter(malId: id)
+            AnimeViewModel.shared.getAnimeStaff(malId: id)
+            AnimeViewModel.shared.getAnimeRecommendations(malId: id)
+        }
+    }
+    
+    func bindFetchViewModel() {
+        AnimeViewModel.shared.animeDetail
+            .subscribe(onNext: { [weak self] i in
+                
+                self?.animeDetail = i
+            })
+            .disposed(by: disposeBag)
+        AnimeViewModel.shared.animeCharacter
+            .subscribe(onNext: { [weak self] i in
+                
+                self?.animeCharacter = i
+            })
+            .disposed(by: disposeBag)
+        AnimeViewModel.shared.animeStaff
+            .subscribe(onNext: { [weak self] i in
+                
+                self?.animeStaff = i
+            })
+            .disposed(by: disposeBag)
+        AnimeViewModel.shared.animeRecommendations
+            .subscribe(onNext: { [weak self] i in
+                
+                self?.animeRecommendation = i
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -60,10 +118,14 @@ extension DetailAnimeViewController: UITableViewDataSource, UITableViewDelegate 
         tableView.registerCellWithNib(AnimeDetailInfo.self)
         tableView.registerCellWithNib(DetailAnimeTrailer.self)
         tableView.registerCellWithNib(DetailAnimeMoreInfo.self)
+        tableView.registerCellWithNib(DetailAnimeCharacter.self)
+        tableView.registerCellWithNib(DetailAnimeStaff.self)
+        tableView.registerCellWithNib(DetailAnimeTheme.self)
+        tableView.registerCellWithNib(DetailAnimeRecommendation.self)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 7
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -73,24 +135,64 @@ extension DetailAnimeViewController: UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let animeDetailInfo = tableView.dequeueReusableCell(forIndexPath: indexPath) as AnimeDetailInfo
+            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as AnimeDetailInfo
             
-            if let data = animeData {
-                animeDetailInfo.initialSetup(data: data)
+            if let data = animeDetail {
+                cell.initialSetup(data: data)
             }
-            
-            return animeDetailInfo
+            cell.selectionStyle = .none
+            return cell
         case 1:
-            let animeDetailTrailer = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeTrailer
-            animeDetailTrailer.initialYoutubeId(youtubeId: animeData?.trailer.youtubeId ?? "")
-            return animeDetailTrailer
-        
+            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeTrailer
+            cell.initialYoutubeId(youtubeId: animeDetail?.trailer?.youtubeID ?? "")
+            cell.selectionStyle = .none
+            return cell
         case 2:
-            let detailAnimeMoreInfo = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeMoreInfo
-            return detailAnimeMoreInfo
-            
+            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeMoreInfo
+            if let data = animeDetail {
+                cell.initialSetup(data: data)
+            }
+            cell.selectionStyle = .none
+            return cell
+        case 3:
+            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeCharacter
+            cell.initialSetup(data: animeCharacter)
+            cell.selectionStyle = .none
+            return cell
+        case 4:
+            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeStaff
+            cell.initialSetup(data: animeStaff)
+            cell.selectionStyle = .none
+            return cell
+        case 5:
+            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeTheme
+            if let data = animeDetail{
+                cell.initialSetup(data: data)
+            }
+            cell.selectionStyle = .none
+            return cell
+        case 6:
+            if(animeRecommendation.isEmpty){
+                return UITableViewCell()
+            }else{
+                let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeRecommendation
+                cell.initialSetup(data: animeRecommendation)
+                cell.selectionStyle = .none
+                cell.delegate = self
+                return cell
+            }
         default:
             return UITableViewCell()
         }
+    }
+}
+
+extension DetailAnimeViewController: DetailAnimeRecommendationDelegate{
+    func didTapNavigation(malId: Int) {
+        let vc = DetailAnimeViewController()
+        vc.malId = malId
+        navigationController?.pushViewController(vc, animated: true)
+        navigationController?.popViewController(animated: false)
+        vc.navigationController?.isNavigationBarHidden = true
     }
 }

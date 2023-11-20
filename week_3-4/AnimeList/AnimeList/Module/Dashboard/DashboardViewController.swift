@@ -116,9 +116,9 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension DashboardViewController: TodayAnimeDelegate{
-    func didTapTodayAnime(data: AnimeEntity) {
+    func didTapTodayAnime(malId: Int) {
         let vc = DetailAnimeViewController()
-        vc.animeData = data
+        vc.malId = malId
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
         vc.navigationController?.isNavigationBarHidden = true
@@ -144,9 +144,9 @@ extension DashboardViewController: DashboardSearchDelegate {
 }
 
 extension DashboardViewController: CurrentAnimeDelegate {
-    func didTapCurrentAnime(data: AnimeEntity) {
+    func didTapCurrentAnime(malId: Int) {
         let vc = DetailAnimeViewController()
-        vc.animeData = data
+        vc.malId = malId
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
         vc.navigationController?.isNavigationBarHidden = true

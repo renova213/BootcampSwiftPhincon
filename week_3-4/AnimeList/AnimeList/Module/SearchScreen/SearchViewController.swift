@@ -39,7 +39,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             
             let data = filteredAnime[indexPath.row]
             let vc = DetailAnimeViewController()
-            vc.animeData = data
+            vc.malId = data.malId
             navigationController?.pushViewController(vc, animated: true)
             
         }

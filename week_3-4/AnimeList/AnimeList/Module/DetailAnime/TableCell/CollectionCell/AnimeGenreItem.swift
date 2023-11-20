@@ -9,13 +9,13 @@ class AnimeGenreItem: UICollectionViewCell {
         configureComponentView()
     }
     
-    func initialSetup(genre: String){
-        genreLabel.text = genre
+    func initialSetup(genre: AnimeDetailGenre){
+        genreLabel.text = genre.name
     }
     
     func configureComponentView(){
         genreView.layer.borderWidth = 1.0
-        genreView.layer.borderColor = UIColor.tintColor.cgColor
+        genreView.layer.borderColor = UIColor(named: "Main Color")?.cgColor
         genreView.roundCornersAll(radius: 8)
     }
 }

@@ -1,68 +1,72 @@
 import Foundation
 
-struct AnimeCharacterEntity: Codable {
-    let character: Character
-    let role: String
-    let favorites: Int
-    let voiceActors: [VoiceActor]
+struct AnimeCharacterData: Codable{
+    var data: [AnimeCharacterEntity]
+}
 
+struct AnimeCharacterEntity: Codable {
+    let character: AnimeCharacter?
+    let role: String?
+    let favorites: Int?
+    let voiceActors: [AnimeVoiceActor]?
+    
     enum CodingKeys: String, CodingKey {
         case character, role, favorites
-        case voiceActors
+        case voiceActors = "voice_actors"
     }
 }
 
-struct Character: Codable {
-    let malID: Int
-    let url: String
-    let images: CharacterImages
-    let name: String
-
+struct AnimeCharacter: Codable {
+    let malID: Int?
+    let url: String?
+    let images: CharacterImages?
+    let name: String?
+    
     enum CodingKeys: String, CodingKey {
-        case malID
+        case malID = "mal_id"
         case url, images, name
     }
 }
 
 struct CharacterImages: Codable {
-    let jpg: Jpg
-    let webp: Webp
+    let jpg: Jpg?
+    let webp: Webp?
 }
 
 struct Jpg: Codable {
-    let imageURL: String
-
+    let imageURL: String?
+    
     enum CodingKeys: String, CodingKey {
-        case imageURL
+        case imageURL = "image_url"
     }
 }
 
 struct Webp: Codable {
-    let imageURL, smallImageURL: String
-
+    let imageURL, smallImageURL: String?
+    
     enum CodingKeys: String, CodingKey {
-        case imageURL
-        case smallImageURL
+        case imageURL = "image_url"
+        case smallImageURL = "small_image_url"
     }
 }
 
-struct VoiceActor: Codable {
-    let person: Person
-    let language: String
+struct AnimeVoiceActor: Codable {
+    let person: Person?
+    let language: String?
 }
 
 struct Person: Codable {
-    let malID: Int
-    let url: String
-    let images: PersonImages
-    let name: String
-
+    let malID: Int?
+    let url: String?
+    let images: PersonImages?
+    let name: String?
+    
     enum CodingKeys: String, CodingKey {
-        case malID
+        case malID = "mal_id"
         case url, images, name
     }
 }
 
 struct PersonImages: Codable {
-    let jpg: Jpg
+    let jpg: Jpg?
 }

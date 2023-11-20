@@ -3,7 +3,7 @@ import RxSwift
 import RxCocoa
 
 protocol TodayAnimeDelegate: AnyObject {
-    func didTapTodayAnime(data: AnimeEntity)
+    func didTapTodayAnime(malId: Int)
     func didTapNavigation()
 }
 
@@ -47,7 +47,7 @@ extension TodayAnime: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TodayAnimeItem", for: indexPath) as! TodayAnimeItem
         
-        cell.setUpComponent(title: data.title ?? "", date: "Ditayangkan pada pukul \(AnimeViewModel.shared.convertTime(from: data.broadcast?.time ?? "00:00", fromTimeZone: data.broadcast?.timezone ?? "Asia/Tokyo", to: "Asia/Jakarta" ) ?? "-")", urlImage: data.images?.jpg?.imageUrl ?? "", rating: data.score )
+        cell.setUpComponent(title: data.title ?? "", date: "Ditayangkan pada pukul \(DateFormatter.convertTime(from: data.broadcast?.time ?? "00:00", fromTimeZone: data.broadcast?.timezone ?? "Asia/Tokyo", to: "Asia/Jakarta" ) ?? "-")", urlImage: data.images?.jpg?.imageUrl ?? "", rating: data.score )
         
         return cell
     }
@@ -60,7 +60,7 @@ extension TodayAnime: UICollectionViewDelegate, UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let data = currentAnime[indexPath.row]
         
-        delegate?.didTapTodayAnime(data: data)
+        delegate?.didTapTodayAnime(malId: data.malId ?? 0)
     }
 }
 

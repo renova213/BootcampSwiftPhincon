@@ -3,9 +3,13 @@ import Alamofire
 
 enum Endpoint {
     case getScheduledAnime(params: ScheduleParam)
+    case getDetailAnime(malId: Int)
     case getSeasonNow(page: String, limit: String)
     case filterAnime(params: FilterAnimeParam)
     case filterManga(params: FilterMangaParam)
+    case getAnimeCharacter(malId: Int)
+    case getAnimeStaff(malId: Int)
+    case getRecommendationAnime(malId: Int)
     
     func path() -> String {
         switch self {
@@ -17,12 +21,20 @@ enum Endpoint {
             return "/anime"
         case .filterManga:
             return "/manga"
+        case .getDetailAnime(let malId):
+            return "/anime/\(malId)/full"
+        case .getAnimeCharacter(let malId):
+            return "/anime/\(malId)/characters"
+        case .getAnimeStaff(let malId):
+            return "/anime/\(malId)/staff"
+        case .getRecommendationAnime(let malId):
+            return "/anime/\(malId)/recommendations"
         }
     }
     
     func method() -> HTTPMethod {
         switch self {
-        case .getScheduledAnime, .getSeasonNow, .filterAnime, .filterManga:
+        case .getScheduledAnime, .getSeasonNow, .filterAnime, .filterManga, .getDetailAnime, .getAnimeCharacter, .getAnimeStaff, .getRecommendationAnime:
             return .get
         }
     }
@@ -76,6 +88,8 @@ enum Endpoint {
             params["sfw"] = "true"
             
             return params
+        case .getDetailAnime, .getAnimeStaff, .getAnimeCharacter, .getRecommendationAnime:
+            return nil
         }
     }
     
@@ -93,6 +107,8 @@ enum Endpoint {
     var encoding: ParameterEncoding {
         switch self {
         case .getScheduledAnime, .getSeasonNow, .filterAnime, .filterManga:
+            return URLEncoding.queryString
+        case .getDetailAnime, .getAnimeCharacter, .getAnimeStaff, .getRecommendationAnime:
             return URLEncoding.default
         }
     }

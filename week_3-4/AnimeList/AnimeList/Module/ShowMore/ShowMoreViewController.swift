@@ -62,7 +62,7 @@ extension ShowMoreViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let data = animeData[indexPath.row]
         let vc = DetailAnimeViewController()
-        vc.animeData = data
+        vc.malId = data.malId
 
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -86,7 +86,7 @@ extension ShowMoreViewController {
                 case "seasonNow":
                     AnimeViewModel.shared.getShowMoreAnime(endpoint: Endpoint.getSeasonNow(page: "1", limit: "25"))
                 case "currentAnime":
-                    AnimeViewModel.shared.getShowMoreAnime(endpoint: Endpoint.getScheduledAnime(params: ScheduleParam(filter: AnimeViewModel.shared.getCurrentDay().lowercased(), page: "1", limit: "25")))
+                    AnimeViewModel.shared.getShowMoreAnime(endpoint: Endpoint.getScheduledAnime(params: ScheduleParam(filter: Date.getCurrentDay().lowercased(), page: "1", limit: "25")))
                 default:
                     animeData = []
                 }

@@ -36,7 +36,7 @@
             </constraints>
             <size key="customSize" width="124" height="205"/>
             <connections>
-                <outlet property="animeCardItem" destination="vFl-SR-s9f" id="vZk-VH-t3s"/>
+                <outlet property="animeCardItem" destination="vFl-SR-s9f" id="ciE-hb-bKv"/>
             </connections>
             <point key="canvasLocation" x="73.282442748091597" y="138.73239436619718"/>
         </collectionViewCell>

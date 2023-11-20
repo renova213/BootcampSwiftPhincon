@@ -1,7 +1,7 @@
 import UIKit
 
 protocol CurrentAnimeDelegate: AnyObject {
-    func didTapCurrentAnime(data: AnimeEntity)
+    func didTapCurrentAnime(malId: Int)
     func didTapShowMoreCurrentAnime()
 }
 
@@ -57,7 +57,7 @@ extension CurrentSeasonAnime: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let data = currentSeasonAnime[indexPath.row]
 
-        delegate?.didTapCurrentAnime(data: data)
+        delegate?.didTapCurrentAnime(malId: data.malId ?? 0)
     }
 }
 

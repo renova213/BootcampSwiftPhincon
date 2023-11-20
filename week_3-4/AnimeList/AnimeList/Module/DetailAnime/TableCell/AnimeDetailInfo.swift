@@ -37,14 +37,18 @@ class AnimeDetailInfo: UITableViewCell {
     var fullDescription = ""
     var isExpanded = BehaviorRelay<Bool>(value: false)
     let disposeBag = DisposeBag()
-    let genres = ["Drama", "Romance", "Supernatural", "School"]
+    var animeGenre:[AnimeDetailGenre] = [] {
+        didSet {
+            genreCollectionView.reloadData()
+        }
+    }
     
     func configureStyleComponent(){
         imageBorderView.layer.borderWidth = 1.0
         imageBorderView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
     }
     
-    func initialSetup(data: AnimeEntity){
+    func initialSetup(data: AnimeDetailData){
         
         if let imageURL = URL(string: data.images?.jpg?.imageUrl ?? "") {
             self.urlImage.kf.setImage(with: imageURL, placeholder: UIImage(named: "ImagePlaceholder"))
@@ -53,8 +57,12 @@ class AnimeDetailInfo: UITableViewCell {
         titleLabel.text = data.title ?? "-"
         
         statusLabel.text = data.status ?? "-"
-        
+
         durationLabel.text = data.duration ?? "-"
+        
+        if let releaseYear = data.aired?.prop?.from?.year{
+            releaseDateLabel.text = String(releaseYear)
+        }
         
         if let score = data.score {
             scoreLabel.text = String(score)
@@ -79,17 +87,21 @@ class AnimeDetailInfo: UITableViewCell {
         }else{
             popularityLabel.text = "-"
         }
-        
+
         if let members = data.members {
             membersLabel.text = String(members)
         }else{
             membersLabel.text = "-"
         }
-        
-        if let favorite = data.favorite {
+
+        if let favorite = data.favorites {
             favoriteLabel.text = String(favorite)
         }else{
             favoriteLabel.text = "-"
+        }
+        
+        if let genreData = data.genres {
+            animeGenre = genreData
         }
     }
 }
@@ -103,14 +115,14 @@ extension AnimeDetailInfo: UICollectionViewDataSource, UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return genres.count
+        return animeGenre.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AnimeGenreItem", for: indexPath) as! AnimeGenreItem
         
-        cell.initialSetup(genre: genres[indexPath.row])
+        cell.initialSetup(genre: animeGenre[indexPath.row])
         
         return cell
     }
@@ -118,7 +130,7 @@ extension AnimeDetailInfo: UICollectionViewDataSource, UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let label = UILabel()
-        label.text = genres[indexPath.row]
+        label.text = animeGenre[indexPath.row].name
         label.sizeToFit()
         let extraSpacing: CGFloat = 12
         

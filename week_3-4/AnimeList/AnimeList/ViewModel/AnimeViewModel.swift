@@ -9,9 +9,13 @@ class AnimeViewModel {
     let currentAnime = BehaviorRelay<[AnimeEntity]>(value: [])
     let currentSeasonAnime = BehaviorRelay<[AnimeEntity]>(value: [])
     let filterAnime = BehaviorRelay<[AnimeEntity]>(value: [])
+    let animeDetail = BehaviorRelay<AnimeDetailData?>(value: nil)
+    let animeCharacter = BehaviorRelay<[AnimeCharacterEntity]>(value: [])
+    let animeStaff = BehaviorRelay<[AnimeStaffEntity]>(value: [])
+    let animeRecommendations = BehaviorRelay<[AnimeRecommendationEntity]>(value: [])
     
     func getCurrentAnime(limit: String, page: String) {
-        let endpoint = Endpoint.getScheduledAnime(params: ScheduleParam(filter: getCurrentDay().lowercased(), page: page, limit: limit))
+        let endpoint = Endpoint.getScheduledAnime(params: ScheduleParam(filter: Date.getCurrentDay().lowercased(), page: page, limit: limit))
         APIManager.shared.fetchRequest(endpoint: endpoint){[weak self] (result: Result<AnimeData, Error>) in
             guard let self = self else { return }
             switch result {
@@ -50,38 +54,54 @@ class AnimeViewModel {
         }
     }
     
-    func getCurrentDay ()-> String {
-        let currentDate = Date()
+    func getDetailAnime(malId: Int) {
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE"
-        
-        let dayOfWeekString = dateFormatter.string(from: currentDate)
-        return dayOfWeekString
+        APIManager.shared.fetchRequest(endpoint: Endpoint.getDetailAnime(malId: malId)){[weak self] (result: Result<AnimeDetailEntity, Error>) in
+            guard let self = self else { return }
+            switch result {
+            case .success(let data):
+                self.animeDetail.accept(data.data)
+            case .failure(let err):
+                print(err)
+            }
+        }
     }
     
-    func convertTime(from time: String, fromTimeZone: String, to toTimeZone: String) -> String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
+    func getAnimeCharacter(malId: Int) {
         
-        if let fromTimeZoneObj = TimeZone(identifier: fromTimeZone) {
-            dateFormatter.timeZone = fromTimeZoneObj
-        } else {
-            return nil
+        APIManager.shared.fetchRequest(endpoint: Endpoint.getAnimeCharacter(malId: malId)){[weak self] (result: Result<AnimeCharacterData, Error>) in
+            guard let self = self else { return }
+            switch result {
+            case .success(let data):
+                self.animeCharacter.accept(data.data)
+            case .failure(let err):
+                print(err)
+            }
         }
+    }
+    
+    func getAnimeStaff(malId: Int) {
         
-        guard let sourceDate = dateFormatter.date(from: time) else {
-            return nil
+        APIManager.shared.fetchRequest(endpoint: Endpoint.getAnimeStaff(malId: malId)){[weak self] (result: Result<AnimeStaffData, Error>) in
+            guard let self = self else { return }
+            switch result {
+            case .success(let data):
+                self.animeStaff.accept(data.data)
+            case .failure(let err):
+                print(err)
+            }
         }
-        
-        if let toTimeZoneObj = TimeZone(identifier: toTimeZone) {
-            dateFormatter.timeZone = toTimeZoneObj
-        } else {
-            return nil
+    }
+    
+    func getAnimeRecommendations(malId: Int) {
+        APIManager.shared.fetchRequest(endpoint: Endpoint.getRecommendationAnime(malId: malId)){[weak self] (result: Result<AnimeRecommendationData, Error>) in
+            guard let self = self else { return }
+            switch result {
+            case .success(let data):
+                self.animeRecommendations.accept(data.data)
+            case .failure(let err):
+                print(err)
+            }
         }
-        
-        let convertedTime = dateFormatter.string(from: sourceDate)
-        
-        return convertedTime
     }
 }

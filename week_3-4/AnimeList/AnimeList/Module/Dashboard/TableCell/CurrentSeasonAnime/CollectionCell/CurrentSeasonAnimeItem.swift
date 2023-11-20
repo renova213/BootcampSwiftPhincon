@@ -4,7 +4,7 @@ import Kingfisher
 class CurrentSeasonAnimeItem: UICollectionViewCell {
 
     @IBOutlet weak var animeCardItem: AnimeCardItem!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         animeCardItem.configureView()
