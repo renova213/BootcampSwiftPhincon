@@ -20,6 +20,9 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qOx-Ra-mud" customClass="AnimeCardItem" customModule="AnimeList" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="364" height="393"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
             </view>
@@ -31,6 +34,9 @@
                 <constraint firstAttribute="trailing" secondItem="qOx-Ra-mud" secondAttribute="trailing" id="hk5-Ee-VHw"/>
             </constraints>
             <size key="customSize" width="364" height="393"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="animeCardItem" destination="qOx-Ra-mud" id="nTb-G0-OiU"/>
             </connections>

@@ -67,12 +67,18 @@
                                                 <constraint firstAttribute="width" constant="14" id="WuV-Cn-EtP"/>
                                                 <constraint firstAttribute="height" constant="14" id="Z4Z-Xx-98A"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7.79" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zLf-iN-jaa">
                                             <rect key="frame" x="20" y="0.0" width="239" height="14"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
                                         </label>
                                     </subviews>
                                     <userDefinedRuntimeAttributes>
@@ -98,6 +104,9 @@
                                 <constraint firstAttribute="trailing" secondItem="vmt-d5-QxW" secondAttribute="trailing" constant="12" id="qde-Yo-bg9"/>
                                 <constraint firstItem="HqQ-nJ-7db" firstAttribute="leading" secondItem="cu3-aT-11S" secondAttribute="trailing" constant="12" id="zQQ-Xd-GsD"/>
                             </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
                         </view>
                     </subviews>
                     <constraints>
@@ -107,6 +116,9 @@
                         <constraint firstItem="qTC-Jr-87d" firstAttribute="top" secondItem="vkJ-3c-1dU" secondAttribute="top" id="Mkn-7f-czP"/>
                         <constraint firstAttribute="trailing" secondItem="qTC-Jr-87d" secondAttribute="trailing" id="RLk-7A-t8T"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="PJR-uu-jtG"/>
@@ -118,6 +130,9 @@
                 <constraint firstItem="vkJ-3c-1dU" firstAttribute="leading" secondItem="PJR-uu-jtG" secondAttribute="leading" id="XJy-zb-Q8Q"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="episode" destination="vmt-d5-QxW" id="6HO-TL-Cbr"/>
                 <outlet property="rating" destination="zLf-iN-jaa" id="5KP-NR-I7N"/>

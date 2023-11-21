@@ -1,13 +1,7 @@
-//
-//  AnimeDetailInfo.swift
-//  AnimeList
-//
-//  Created by Phincon on 15/11/23.
-//
-
 import UIKit
 import RxSwift
 import RxCocoa
+import SkeletonView
 
 class AnimeDetailInfo: UITableViewCell {
     
@@ -37,7 +31,7 @@ class AnimeDetailInfo: UITableViewCell {
     var fullDescription = ""
     var isExpanded = BehaviorRelay<Bool>(value: false)
     let disposeBag = DisposeBag()
-    var animeGenre:[AnimeDetailGenre] = [] {
+    var animeGenre:[AnimeDetailGenre]? {
         didSet {
             genreCollectionView.reloadData()
         }
@@ -57,7 +51,7 @@ class AnimeDetailInfo: UITableViewCell {
         titleLabel.text = data.title ?? "-"
         
         statusLabel.text = data.status ?? "-"
-
+        
         durationLabel.text = data.duration ?? "-"
         
         if let releaseYear = data.aired?.prop?.from?.year{
@@ -87,13 +81,13 @@ class AnimeDetailInfo: UITableViewCell {
         }else{
             popularityLabel.text = "-"
         }
-
+        
         if let members = data.members {
             membersLabel.text = String(members)
         }else{
             membersLabel.text = "-"
         }
-
+        
         if let favorite = data.favorites {
             favoriteLabel.text = String(favorite)
         }else{
@@ -106,7 +100,14 @@ class AnimeDetailInfo: UITableViewCell {
     }
 }
 
-extension AnimeDetailInfo: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+extension AnimeDetailInfo: SkeletonCollectionViewDataSource, SkeletonCollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> SkeletonView.ReusableCellIdentifier {
+        return String(describing: AnimeGenreItem.self)
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 6
+    }
     
     func configureCollection(){
         genreCollectionView.delegate = self
@@ -115,14 +116,16 @@ extension AnimeDetailInfo: UICollectionViewDataSource, UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return animeGenre.count
+        return animeGenre?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AnimeGenreItem", for: indexPath) as! AnimeGenreItem
         
-        cell.initialSetup(genre: animeGenre[indexPath.row])
+        if let data = animeGenre{
+            cell.initialSetup(genre: data[indexPath.row])
+        }
         
         return cell
     }
@@ -130,10 +133,14 @@ extension AnimeDetailInfo: UICollectionViewDataSource, UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let label = UILabel()
-        label.text = animeGenre[indexPath.row].name
-        label.sizeToFit()
-        let extraSpacing: CGFloat = 12
+        if let data = animeGenre{
+            label.text = data[indexPath.row].name
+            label.sizeToFit()
+            let extraSpacing: CGFloat = 12
+            
+            return CGSize(width: label.frame.width + extraSpacing, height: 40)
+        }
         
-        return CGSize(width: label.frame.width + extraSpacing, height: 40)
+        return CGSize(width: 70, height: 40)
     }
 }

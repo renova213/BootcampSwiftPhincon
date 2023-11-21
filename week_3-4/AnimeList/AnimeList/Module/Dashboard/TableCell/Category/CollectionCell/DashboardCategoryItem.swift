@@ -1,10 +1,3 @@
-//
-//  DashboardCategoryItem.swift
-//  AnimeList
-//
-//  Created by Phincon on 10/11/23.
-//
-
 import UIKit
 
 class DashboardCategoryItem: UICollectionViewCell {
@@ -19,6 +12,9 @@ class DashboardCategoryItem: UICollectionViewCell {
     
     func configureComponentStyle(){
         categoryItemView.roundCornersAll(radius: 12)
+        categoryButton.isEnabled = false
+        categoryButton.backgroundColor = UIColor(named: "Main Color")
+        categoryButton.setTitleColor(UIColor.white, for: .disabled)
     }
     
     func setUpButton(title: String, icon: UIImage){

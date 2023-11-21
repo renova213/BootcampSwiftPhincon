@@ -1,7 +1,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
-
+import SkeletonView
 
 class ShowMoreViewController: UIViewController {
     
@@ -13,10 +13,10 @@ class ShowMoreViewController: UIViewController {
         configureTableView()
         setUpComponent()
         clearAnimeData()
+        getFetchViewModel(typeGet: typeGet ?? "")
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        getFetchViewModel(typeGet: typeGet ?? "")
         bindFetchViewModel()
     }
     
@@ -30,7 +30,16 @@ class ShowMoreViewController: UIViewController {
     let disposeBag = DisposeBag()
 }
 
-extension ShowMoreViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ShowMoreViewController: SkeletonCollectionViewDelegate, SkeletonCollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
+    func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 12
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> SkeletonView.ReusableCellIdentifier {
+        return "ShowMoreItem"
+    }
+    
     func configureTableView(){
         showMoreCollection.delegate = self
         showMoreCollection.dataSource = self
@@ -45,7 +54,7 @@ extension ShowMoreViewController: UICollectionViewDelegate, UICollectionViewData
         let data = animeData[indexPath.row]
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShowMoreItem", for: indexPath) as! ShowMoreItem
-        
+        cell.animeCardItem.rankView.backgroundColor = UIColor.lightGray
         cell.initialSetupAnime(data: data)
         
         return cell
@@ -63,7 +72,7 @@ extension ShowMoreViewController: UICollectionViewDelegate, UICollectionViewData
         let data = animeData[indexPath.row]
         let vc = DetailAnimeViewController()
         vc.malId = data.malId
-
+        
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -81,15 +90,24 @@ extension ShowMoreViewController {
     }
     
     func getFetchViewModel(typeGet: String){
-        
-                switch typeGet {
-                case "seasonNow":
-                    AnimeViewModel.shared.getShowMoreAnime(endpoint: Endpoint.getSeasonNow(page: "1", limit: "25"))
-                case "currentAnime":
-                    AnimeViewModel.shared.getShowMoreAnime(endpoint: Endpoint.getScheduledAnime(params: ScheduleParam(filter: Date.getCurrentDay().lowercased(), page: "1", limit: "25")))
-                default:
-                    animeData = []
+        self.showMoreCollection.showAnimatedGradientSkeleton()
+
+        switch typeGet {
+        case "seasonNow":
+            AnimeViewModel.shared.getShowMoreAnime(endpoint: Endpoint.getSeasonNow(page: "1", limit: "25")){ finish in
+                if (finish){
+                    self.showMoreCollection.hideSkeleton()
                 }
+            }
+        case "currentAnime":
+            AnimeViewModel.shared.getShowMoreAnime(endpoint: Endpoint.getScheduledAnime(params: ScheduleParam(filter: Date.getCurrentDay().lowercased(), page: "1", limit: "25"))){ finish in
+                if (finish){
+                    self.showMoreCollection.hideSkeleton()
+                }
+            }
+        default:
+            animeData = []
+        }
     }
     
     func bindFetchViewModel() {

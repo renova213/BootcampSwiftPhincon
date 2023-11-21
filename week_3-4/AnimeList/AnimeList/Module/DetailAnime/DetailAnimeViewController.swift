@@ -1,6 +1,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SkeletonView
 
 class DetailAnimeViewController: UIViewController {
     
@@ -19,6 +20,10 @@ class DetailAnimeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         bindFetchViewModel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.showAnimatedGradientSkeleton()
     }
     
     var malId: Int?
@@ -75,7 +80,11 @@ extension DetailAnimeViewController{
 extension DetailAnimeViewController {
     func getFetchViewModel(){
         if let id = malId{
-            AnimeViewModel.shared.getDetailAnime(malId: id)
+            AnimeViewModel.shared.getDetailAnime(malId: id){finish in
+                if(finish){
+                    self.tableView.hideSkeleton()
+                }
+            }
             AnimeViewModel.shared.getAnimeCharacter(malId: id)
             AnimeViewModel.shared.getAnimeStaff(malId: id)
             AnimeViewModel.shared.getAnimeRecommendations(malId: id)
@@ -110,7 +119,7 @@ extension DetailAnimeViewController {
     }
 }
 
-extension DetailAnimeViewController: UITableViewDataSource, UITableViewDelegate {
+extension DetailAnimeViewController: SkeletonTableViewDataSource, UITableViewDelegate {
     
     func configureTableView() {
         tableView.delegate = self
@@ -122,6 +131,33 @@ extension DetailAnimeViewController: UITableViewDataSource, UITableViewDelegate 
         tableView.registerCellWithNib(DetailAnimeStaff.self)
         tableView.registerCellWithNib(DetailAnimeTheme.self)
         tableView.registerCellWithNib(DetailAnimeRecommendation.self)
+    }
+    
+    func numSections(in collectionSkeletonView: UITableView) -> Int {
+        return 7
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        switch indexPath.section {
+        case 0:
+            return String(describing: AnimeDetailInfo.self)
+        case 1:
+            return String(describing: DetailAnimeTrailer.self)
+        case 2:
+            return String(describing: DetailAnimeMoreInfo.self)
+        case 3:
+            return String(describing: DetailAnimeCharacter.self)
+        case 4:
+            return String(describing: DetailAnimeStaff.self)
+        case 5:
+            return String(describing: DetailAnimeTheme.self)
+        default:
+            return String(describing: DetailAnimeRecommendation.self)
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

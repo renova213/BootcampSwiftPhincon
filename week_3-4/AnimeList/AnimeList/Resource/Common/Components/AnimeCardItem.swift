@@ -11,6 +11,7 @@ class AnimeCardItem: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var urlImage: UIImageView!
+    @IBOutlet weak var scoreStackView: UIStackView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,6 +32,7 @@ class AnimeCardItem: UIView {
     
     func configureView(){
         cardView.roundCornersAll(radius: 10)
+        rankView.backgroundColor = UIColor.clear
     }
     
     func initialSetup(urlImage: String, type: String, rank: Int?, title: String, score: Double?){

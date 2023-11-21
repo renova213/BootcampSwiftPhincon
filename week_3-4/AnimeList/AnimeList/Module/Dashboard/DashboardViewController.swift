@@ -1,5 +1,6 @@
 import UIKit
 import RxSwift
+import SkeletonView
 
 class DashboardViewController: UIViewController {
     
@@ -7,8 +8,13 @@ class DashboardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getFetchViewModel()
         configureTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getFetchViewModel()
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -30,12 +36,30 @@ class DashboardViewController: UIViewController {
             dashboardTableView.reloadData()
         }
     }
+    
+    func configureTableView(){
+        DispatchQueue.main.async {
+            self.dashboardTableView.isSkeletonable = true
+        }
+        dashboardTableView.delegate = self
+        dashboardTableView.dataSource = self
+        dashboardTableView.registerCellWithNib(DashboardSearch.self)
+        dashboardTableView.registerCellWithNib(DashboardCategory.self)
+        dashboardTableView.registerCellWithNib(TodayAnime.self)
+        dashboardTableView.registerCellWithNib(CurrentSeasonAnime.self)
+    }
 }
 
 extension DashboardViewController {
     
     func getFetchViewModel(){
-        AnimeViewModel.shared.getCurrentAnime(limit: "6", page: "1")
+        self.dashboardTableView.showAnimatedGradientSkeleton()
+
+        AnimeViewModel.shared.getCurrentAnime(limit: "6", page: "1"){ finish in
+            if (finish){
+                self.dashboardTableView.hideSkeleton()
+            }
+        }
         AnimeViewModel.shared.getCurrentSeasonAnime(limit: "6", page: "1")
     }
     
@@ -56,19 +80,32 @@ extension DashboardViewController {
     }
 }
 
-extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
+extension DashboardViewController: UITableViewDelegate, SkeletonTableViewDataSource {
+    func numSections(in collectionSkeletonView: UITableView) -> Int {
+        return 4
+    }
     
-    func configureTableView(){
-        dashboardTableView.delegate = self
-        dashboardTableView.dataSource = self
-        dashboardTableView.registerCellWithNib(DashboardSearch.self)
-        dashboardTableView.registerCellWithNib(DashboardCategory.self)
-        dashboardTableView.registerCellWithNib(TodayAnime.self)
-        dashboardTableView.registerCellWithNib(CurrentSeasonAnime.self)
+    func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       return 1
+     }
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        switch indexPath.section {
+        case 0:
+            return String(describing: DashboardSearch.self)
+        case 1:
+            return String(describing: DashboardCategory.self)
+        case 2:
+            return String(describing: TodayAnime.self)
+        case 3:
+            return String(describing: CurrentSeasonAnime.self)
+        default:
+            return ""
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -86,6 +123,7 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             return dashboardSearch
         case 1:
             let dashboardCategory = tableView.dequeueReusableCell(forIndexPath: indexPath) as DashboardCategory
+            dashboardCategory.delegate = self
             return dashboardCategory
         case 2:
             let todayAnime = tableView.dequeueReusableCell(forIndexPath: indexPath) as TodayAnime
@@ -155,6 +193,16 @@ extension DashboardViewController: CurrentAnimeDelegate {
     func didTapShowMoreCurrentAnime() {
         let vc = ShowMoreViewController()
         vc.typeGet = "seasonNow"
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+        vc.navigationController?.isNavigationBarHidden = true
+    }
+}
+
+extension DashboardViewController: DashboardCategoryDelegate{
+    func didTapNavigateRankAnime() {
+        print("dsadsdasdas")
+        let vc = RankAnimeViewController()
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
         vc.navigationController?.isNavigationBarHidden = true

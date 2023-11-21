@@ -1,6 +1,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SkeletonView
 
 protocol TodayAnimeDelegate: AnyObject {
     func didTapTodayAnime(malId: Int)
@@ -30,7 +31,11 @@ class TodayAnime: UITableViewCell {
 }
 
 
-extension TodayAnime: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension TodayAnime: SkeletonCollectionViewDelegate, SkeletonCollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> SkeletonView.ReusableCellIdentifier {
+        return String(describing: TodayAnimeItem.self)
+    }
+    
     func configureTableView(){
         currentAnimeCollection.delegate = self
         currentAnimeCollection.dataSource = self

@@ -14,15 +14,18 @@ class AnimeViewModel {
     let animeStaff = BehaviorRelay<[AnimeStaffEntity]>(value: [])
     let animeRecommendations = BehaviorRelay<[AnimeRecommendationEntity]>(value: [])
     
-    func getCurrentAnime(limit: String, page: String) {
+    func getCurrentAnime(limit: String, page: String, completion: @escaping(Bool) -> Void) {
         let endpoint = Endpoint.getScheduledAnime(params: ScheduleParam(filter: Date.getCurrentDay().lowercased(), page: page, limit: limit))
         APIManager.shared.fetchRequest(endpoint: endpoint){[weak self] (result: Result<AnimeData, Error>) in
             guard let self = self else { return }
             switch result {
             case .success(let data):
-                self.currentAnime.accept(data.data)
-            case .failure(let err):
-                print(err)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                    self.currentAnime.accept(data.data)
+                    completion(true)
+                }
+            case .failure:
+                completion(false)
             }
         }
     }
@@ -41,28 +44,35 @@ class AnimeViewModel {
         }
     }
     
-    func getShowMoreAnime(endpoint: Endpoint) {
+    func getShowMoreAnime(endpoint: Endpoint, completion: @escaping(Bool)-> Void) {
         
         APIManager.shared.fetchRequest(endpoint: endpoint){[weak self] (result: Result<AnimeData, Error>) in
             guard let self = self else { return }
             switch result {
             case .success(let data):
-                self.showMoreAnime.accept(data.data)
-            case .failure(let err):
-                print(err)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                    self.showMoreAnime.accept(data.data)
+                    completion(true)
+                }
+            case .failure:
+                completion(false)
             }
         }
     }
     
-    func getDetailAnime(malId: Int) {
+    func getDetailAnime(malId: Int, completion: @escaping(Bool) -> Void) {
         
         APIManager.shared.fetchRequest(endpoint: Endpoint.getDetailAnime(malId: malId)){[weak self] (result: Result<AnimeDetailEntity, Error>) in
             guard let self = self else { return }
-            switch result {
-            case .success(let data):
-                self.animeDetail.accept(data.data)
-            case .failure(let err):
-                print(err)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                switch result {
+                case .success(let data):
+                    self.animeDetail.accept(data.data)
+                    completion(true)
+                case .failure:
+                    completion(false)
+                }
             }
         }
     }

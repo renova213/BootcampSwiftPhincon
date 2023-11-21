@@ -24,6 +24,9 @@
                             <constraint firstAttribute="width" constant="120" id="Gfb-wl-3b3"/>
                             <constraint firstAttribute="height" constant="200" id="aeq-s5-bau"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
             </view>
@@ -35,6 +38,9 @@
                 <constraint firstAttribute="bottom" secondItem="vFl-SR-s9f" secondAttribute="bottom" id="vFx-Vx-cpC"/>
             </constraints>
             <size key="customSize" width="124" height="205"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="animeCardItem" destination="vFl-SR-s9f" id="ciE-hb-bKv"/>
             </connections>

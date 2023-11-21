@@ -1,11 +1,8 @@
-//
-//  DashboardCategory.swift
-//  AnimeList
-//
-//  Created by Phincon on 10/11/23.
-//
-
 import UIKit
+
+protocol DashboardCategoryDelegate: AnyObject{
+    func didTapNavigateRankAnime()
+}
 
 class DashboardCategory: UITableViewCell {
     @IBOutlet weak var categoryCollection: UICollectionView!
@@ -14,6 +11,8 @@ class DashboardCategory: UITableViewCell {
         super.awakeFromNib()
         configureTableView()
     }
+    
+    weak var delegate: DashboardCategoryDelegate?
 }
 
 extension DashboardCategory: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -32,9 +31,18 @@ extension DashboardCategory: UICollectionViewDelegate, UICollectionViewDataSourc
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DashboardCategoryItem", for: indexPath) as! DashboardCategoryItem
         
-        cell.setUpButton(title: categoryItem.title, icon: categoryItem.icon)
+        cell.setUpButton(title: categoryItem.title, icon: categoryItem.icon.withTintColor(UIColor.white))
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            delegate?.didTapNavigateRankAnime()
+        default:
+            delegate?.didTapNavigateRankAnime()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

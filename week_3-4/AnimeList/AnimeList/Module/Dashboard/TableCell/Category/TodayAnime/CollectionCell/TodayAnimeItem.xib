@@ -26,18 +26,27 @@
                                     <constraint firstAttribute="height" constant="150" id="4ak-5h-Tbo"/>
                                     <constraint firstAttribute="width" constant="110" id="9at-cW-aMY"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jujutsu Kaisen 2nd Season" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBf-dY-UyR">
                                 <rect key="frame" x="122" y="12" width="160" height="38.333333333333336"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ditayangkan 6 jam lalu" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUR-mj-nhV">
                                 <rect key="frame" x="122" y="58.333333333333343" width="160" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Q7f-g2-xfc">
                                 <rect key="frame" x="122" y="83.333333333333329" width="160" height="12"/>
@@ -49,14 +58,23 @@
                                             <constraint firstAttribute="height" constant="12" id="nxx-2B-cgN"/>
                                             <constraint firstAttribute="width" constant="12" id="tZb-eb-MLv"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8.82" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyg-bF-qjo">
                                         <rect key="frame" x="18" y="0.0" width="142" height="12"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -74,6 +92,9 @@
                             <constraint firstItem="EUR-mj-nhV" firstAttribute="top" secondItem="oBf-dY-UyR" secondAttribute="bottom" constant="8" id="oIp-FQ-8et"/>
                             <constraint firstItem="2Xu-R8-7kd" firstAttribute="top" secondItem="zsi-kj-ope" secondAttribute="top" id="uxo-Jg-W6e"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
             </view>
@@ -85,6 +106,9 @@
                 <constraint firstItem="zsi-kj-ope" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="W8r-P1-q2K"/>
             </constraints>
             <size key="customSize" width="163" height="159"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="animeTitle" destination="oBf-dY-UyR" id="ITB-tD-xwF"/>
                 <outlet property="dateRelease" destination="EUR-mj-nhV" id="1XE-hg-bcg"/>

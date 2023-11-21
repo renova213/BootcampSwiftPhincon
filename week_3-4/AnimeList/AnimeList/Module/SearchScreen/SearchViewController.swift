@@ -1,6 +1,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SkeletonView
 
 class SearchViewController: UIViewController {
     
@@ -25,28 +26,21 @@ class SearchViewController: UIViewController {
     }
 }
 
-extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func configureTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.registerCellWithNib(SearchCategories.self)
-        tableView.registerCellWithNib(SearchResult.self)
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(currentIndex == 0 && indexPath.section == 1){
-            
-            let data = filteredAnime[indexPath.row]
-            let vc = DetailAnimeViewController()
-            vc.malId = data.malId
-            navigationController?.pushViewController(vc, animated: true)
-            
-        }
-    }
-    
+extension SearchViewController: UITableViewDelegate, SkeletonTableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
+    }
+    func numSections(in collectionSkeletonView: UITableView) -> Int {
+        return 2
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return 1
+        default:
+            return 10
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -64,6 +58,15 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        switch indexPath.section {
+        case 0:
+            return String(describing: SearchCategories.self)
+        default:
+            return String(describing: SearchResult.self)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
@@ -72,6 +75,17 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             return configureSearchResultCell(for: indexPath)
         default:
             return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(currentIndex == 0 && indexPath.section == 1){
+            
+            let data = filteredAnime[indexPath.row]
+            let vc = DetailAnimeViewController()
+            vc.malId = data.malId
+            navigationController?.pushViewController(vc, animated: true)
+            
         }
     }
     
@@ -113,6 +127,13 @@ extension SearchViewController {
         resetViewModel()
     }
     
+    func configureTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.registerCellWithNib(SearchCategories.self)
+        tableView.registerCellWithNib(SearchResult.self)
+    }
+    
     private func backButtonGesture() {
         backButton.rx.tap
             .subscribe(onNext: { [weak self] in
@@ -147,7 +168,13 @@ extension SearchViewController {
         
         searchField.rx.controlEvent(.editingDidEndOnExit)
             .bind { [weak self] in
-                self?.getFilteredData()
+                self?.filteredAnime = []
+                self?.filteredManga = []
+                
+                self?.tableView.showAnimatedGradientSkeleton()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                    self?.getFilteredData()
+                }
             }
             .disposed(by: disposeBag)
     }
@@ -160,9 +187,13 @@ extension SearchViewController {
     
     private func getFilteredData() {
         if(self.currentIndex == 0){
-            SearchViewModel.shared.getFilterAnime(filterParam: FilterAnimeParam(page: "1", limit: "16", q: self.searchField.text))
+            SearchViewModel.shared.getFilterAnime(filterParam: FilterAnimeParam(page: "1", limit: "16", q: self.searchField.text)){ finish in
+                self.tableView.hideSkeleton()
+            }
         }else {
-            SearchViewModel.shared.getFilterManga(filterParam: FilterMangaParam(page: "1", limit: "16", q: self.searchField.text))
+            SearchViewModel.shared.getFilterManga(filterParam: FilterMangaParam(page: "1", limit: "16", q: self.searchField.text)){ finish in
+                self.tableView.hideSkeleton()
+            }
         }
     }
 }

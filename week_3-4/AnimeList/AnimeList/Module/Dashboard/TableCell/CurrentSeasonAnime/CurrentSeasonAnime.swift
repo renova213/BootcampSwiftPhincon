@@ -1,4 +1,5 @@
 import UIKit
+import SkeletonView
 
 protocol CurrentAnimeDelegate: AnyObject {
     func didTapCurrentAnime(malId: Int)
@@ -28,7 +29,10 @@ class CurrentSeasonAnime: UITableViewCell {
     }
 }
 
-extension CurrentSeasonAnime: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension CurrentSeasonAnime: SkeletonCollectionViewDataSource, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return String(describing: CurrentSeasonAnimeItem.self)
+    }
     
     func configureCollectionView(){
         animeCategoryCollection.delegate = self
@@ -44,6 +48,8 @@ extension CurrentSeasonAnime: UICollectionViewDelegate, UICollectionViewDataSour
         let data = currentSeasonAnime[indexPath.row]
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentSeasonAnimeItem", for: indexPath) as! CurrentSeasonAnimeItem
+        
+        cell.animeCardItem.rankView.backgroundColor = UIColor.lightGray
         
         cell.initialSetup(data: data)
         

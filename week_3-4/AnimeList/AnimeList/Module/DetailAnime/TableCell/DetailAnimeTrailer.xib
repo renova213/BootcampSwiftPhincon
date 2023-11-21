@@ -23,6 +23,9 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="250" id="x2C-ti-SQ3"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <constraints>
@@ -31,8 +34,14 @@
                     <constraint firstAttribute="trailing" secondItem="Qcg-An-712" secondAttribute="trailing" constant="16" id="ghf-gN-Ia8"/>
                     <constraint firstAttribute="bottom" secondItem="Qcg-An-712" secondAttribute="bottom" constant="16" id="wp4-6Y-gZ1"/>
                 </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="youtubePlayer" destination="Qcg-An-712" id="Cxv-s5-GCn"/>
             </connections>

@@ -25,6 +25,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" name="Main Color"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -34,6 +37,9 @@
                             <constraint firstAttribute="bottom" secondItem="uaT-OB-kI6" secondAttribute="bottom" constant="8" id="nsZ-Oi-EIl"/>
                             <constraint firstItem="uaT-OB-kI6" firstAttribute="top" secondItem="G8o-Tj-9Dy" secondAttribute="top" constant="8" id="qIR-vH-k8M"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
             </view>
@@ -45,6 +51,9 @@
                 <constraint firstAttribute="trailing" secondItem="G8o-Tj-9Dy" secondAttribute="trailing" id="hvF-hJ-Gmp"/>
             </constraints>
             <size key="customSize" width="101" height="40"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="genreLabel" destination="uaT-OB-kI6" id="8Gg-SY-uzh"/>
                 <outlet property="genreView" destination="G8o-Tj-9Dy" id="6U9-QC-ERW"/>

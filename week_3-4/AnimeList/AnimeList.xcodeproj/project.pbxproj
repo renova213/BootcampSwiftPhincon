@@ -13,6 +13,8 @@
 		36231CD62AFE041A008257C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36231CD52AFE041A008257C8 /* Assets.xcassets */; };
 		36259EDA2B0617D800FE89BC /* ShowMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36259ED82B0617D800FE89BC /* ShowMoreViewController.swift */; };
 		36259EDB2B0617D800FE89BC /* ShowMoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36259ED92B0617D800FE89BC /* ShowMoreViewController.xib */; };
+		362B1FEF2B0CA38A009BACDB /* RankAnimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B1FED2B0CA38A009BACDB /* RankAnimeViewController.swift */; };
+		362B1FF02B0CA38A009BACDB /* RankAnimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 362B1FEE2B0CA38A009BACDB /* RankAnimeViewController.xib */; };
 		3644D0C62B034E580064B692 /* FilterAnimeParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3644D0C52B034E580064B692 /* FilterAnimeParam.swift */; };
 		364EB4FD2B076C5F0012022C /* DetailAnimeCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364EB4FB2B076C5F0012022C /* DetailAnimeCharacter.swift */; };
 		364EB4FE2B076C5F0012022C /* DetailAnimeCharacter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 364EB4FC2B076C5F0012022C /* DetailAnimeCharacter.xib */; };
@@ -91,6 +93,8 @@
 		36D643CD2B01B97800EF554E /* SchedulesParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D643CC2B01B97800EF554E /* SchedulesParam.swift */; };
 		36D643CF2B01BF8300EF554E /* AnimeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D643CE2B01BF8300EF554E /* AnimeEntity.swift */; };
 		36D643D22B01C4BB00EF554E /* AnimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D643D12B01C4BB00EF554E /* AnimeViewModel.swift */; };
+		36F0711A2B0CB3C10016587E /* RankAnimeFilterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F071182B0CB3C10016587E /* RankAnimeFilterItem.swift */; };
+		36F0711B2B0CB3C10016587E /* RankAnimeFilterItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F071192B0CB3C10016587E /* RankAnimeFilterItem.xib */; };
 		36F46C162B020F1E002FFC78 /* CurrentSeasonAnime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F46C142B020F1E002FFC78 /* CurrentSeasonAnime.swift */; };
 		36F46C172B020F1E002FFC78 /* CurrentSeasonAnime.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F46C152B020F1E002FFC78 /* CurrentSeasonAnime.xib */; };
 		36F46C1B2B02108B002FFC78 /* CurrentSeasonAnimeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F46C192B02108B002FFC78 /* CurrentSeasonAnimeItem.swift */; };
@@ -107,6 +111,8 @@
 		36231CDA2AFE041A008257C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36259ED82B0617D800FE89BC /* ShowMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMoreViewController.swift; sourceTree = "<group>"; };
 		36259ED92B0617D800FE89BC /* ShowMoreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowMoreViewController.xib; sourceTree = "<group>"; };
+		362B1FED2B0CA38A009BACDB /* RankAnimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankAnimeViewController.swift; sourceTree = "<group>"; };
+		362B1FEE2B0CA38A009BACDB /* RankAnimeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RankAnimeViewController.xib; sourceTree = "<group>"; };
 		3644D0C52B034E580064B692 /* FilterAnimeParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterAnimeParam.swift; sourceTree = "<group>"; };
 		364EB4FB2B076C5F0012022C /* DetailAnimeCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAnimeCharacter.swift; sourceTree = "<group>"; };
 		364EB4FC2B076C5F0012022C /* DetailAnimeCharacter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailAnimeCharacter.xib; sourceTree = "<group>"; };
@@ -185,6 +191,8 @@
 		36D643CC2B01B97800EF554E /* SchedulesParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesParam.swift; sourceTree = "<group>"; };
 		36D643CE2B01BF8300EF554E /* AnimeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeEntity.swift; sourceTree = "<group>"; };
 		36D643D12B01C4BB00EF554E /* AnimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeViewModel.swift; sourceTree = "<group>"; };
+		36F071182B0CB3C10016587E /* RankAnimeFilterItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankAnimeFilterItem.swift; sourceTree = "<group>"; };
+		36F071192B0CB3C10016587E /* RankAnimeFilterItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RankAnimeFilterItem.xib; sourceTree = "<group>"; };
 		36F46C142B020F1E002FFC78 /* CurrentSeasonAnime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSeasonAnime.swift; sourceTree = "<group>"; };
 		36F46C152B020F1E002FFC78 /* CurrentSeasonAnime.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentSeasonAnime.xib; sourceTree = "<group>"; };
 		36F46C192B02108B002FFC78 /* CurrentSeasonAnimeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSeasonAnimeItem.swift; sourceTree = "<group>"; };
@@ -243,6 +251,7 @@
 		36231CE02AFE0422008257C8 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				362B1FEC2B0CA36E009BACDB /* RankAnime */,
 				367DBBBF2B060E47005D0C14 /* ShowMore */,
 				36D60F2B2B0478AD00800D88 /* DetailAnime */,
 				36F46C1F2B021B12002FFC78 /* SearchScreen */,
@@ -342,6 +351,16 @@
 				36942E462B0708B2006A38CE /* AnimeCardItem.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		362B1FEC2B0CA36E009BACDB /* RankAnime */ = {
+			isa = PBXGroup;
+			children = (
+				36F071172B0CB3970016587E /* CollectionCell */,
+				362B1FED2B0CA38A009BACDB /* RankAnimeViewController.swift */,
+				362B1FEE2B0CA38A009BACDB /* RankAnimeViewController.xib */,
+			);
+			path = RankAnime;
 			sourceTree = "<group>";
 		};
 		36569EC52AFE053300EDB6B9 /* Common */ = {
@@ -550,6 +569,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		36F071172B0CB3970016587E /* CollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				36F071182B0CB3C10016587E /* RankAnimeFilterItem.swift */,
+				36F071192B0CB3C10016587E /* RankAnimeFilterItem.xib */,
+			);
+			path = CollectionCell;
+			sourceTree = "<group>";
+		};
 		36F46C132B020EFF002FFC78 /* CurrentSeasonAnime */ = {
 			isa = PBXGroup;
 			children = (
@@ -690,6 +718,8 @@
 				36F46C172B020F1E002FFC78 /* CurrentSeasonAnime.xib in Resources */,
 				36569ECD2AFE056700EDB6B9 /* MangaViewController.xib in Resources */,
 				36569EFF2AFE128100EDB6B9 /* TodayAnimeItem.xib in Resources */,
+				362B1FF02B0CA38A009BACDB /* RankAnimeViewController.xib in Resources */,
+				36F0711B2B0CB3C10016587E /* RankAnimeFilterItem.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -757,6 +787,7 @@
 				36C9C5352B0767A7009E907C /* AnimeCharacterEntity.swift in Sources */,
 				3660224D2B0AE49D00099DE3 /* AnimeDetailEntity.swift in Sources */,
 				36F46C162B020F1E002FFC78 /* CurrentSeasonAnime.swift in Sources */,
+				36F0711A2B0CB3C10016587E /* RankAnimeFilterItem.swift in Sources */,
 				36569EE92AFE0CA700EDB6B9 /* ExtView.swift in Sources */,
 				365F9BCD2B045BA1001D05AE /* FilterMangaParam.swift in Sources */,
 				36569EEC2AFE0E6F00EDB6B9 /* DashboardCategory.swift in Sources */,
@@ -795,6 +826,7 @@
 				364EB4FD2B076C5F0012022C /* DetailAnimeCharacter.swift in Sources */,
 				36569ED82AFE05B700EDB6B9 /* DashboardViewController.swift in Sources */,
 				36A09BA12B05D4DF00778CD3 /* DetailAnimeTrailer.swift in Sources */,
+				362B1FEF2B0CA38A009BACDB /* RankAnimeViewController.swift in Sources */,
 				36569EFE2AFE128100EDB6B9 /* TodayAnimeItem.swift in Sources */,
 				36671F822B03233200EB7083 /* SearchCategories.swift in Sources */,
 			);
