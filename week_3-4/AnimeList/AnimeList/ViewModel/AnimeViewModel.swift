@@ -64,17 +64,14 @@ class AnimeViewModel {
         
         APIManager.shared.fetchRequest(endpoint: Endpoint.getDetailAnime(malId: malId)){[weak self] (result: Result<AnimeDetailEntity, Error>) in
             guard let self = self else { return }
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
                 switch result {
                 case .success(let data):
                     self.animeDetail.accept(data.data)
                     completion(true)
-                case .failure:
+                case .failure:  
                     completion(false)
                 }
             }
-        }
     }
     
     func getAnimeCharacter(malId: Int) {

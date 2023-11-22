@@ -2,6 +2,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SkeletonView
+import Hero
 
 class DetailAnimeViewController: UIViewController {
     
@@ -14,16 +15,17 @@ class DetailAnimeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        getFetchViewModel()
+        tableView.showAnimatedGradientSkeleton()
+        addToListButton.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        getFetchViewModel()
         bindFetchViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tableView.showAnimatedGradientSkeleton()
     }
     
     var malId: Int?
@@ -53,20 +55,24 @@ class DetailAnimeViewController: UIViewController {
 
 extension DetailAnimeViewController{
     private func configureUI() {
-        backButtonGesture()
-        sourceButtonGesture()
+        buttonGesture()
         configureTableView()
         addToListButton.roundCornersAll(radius: 10)
     }
     
-    private func backButtonGesture(){
+    private func buttonGesture(){
+        addToListButton.rx.tap.subscribe(onNext: { [weak self] in
+            let bottomSheetVC = addToListBottomSheet()
+            bottomSheetVC.setContentHeight(bottomSheetVC.view.bounds.height)
+            self?.presentBottomSheet(contentViewController: bottomSheetVC)
+        }
+        ).disposed(by: disposeBag)
+        
         backButton.rx.tap.subscribe(onNext: { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
         ).disposed(by: disposeBag)
-    }
-    
-    private func sourceButtonGesture(){
+        
         sourceButton.rx.tap.subscribe(onNext: {_ in
             if let urlData = self.animeDetail?.url{
                 if let url = URL(string: urlData) {
@@ -82,7 +88,10 @@ extension DetailAnimeViewController {
         if let id = malId{
             AnimeViewModel.shared.getDetailAnime(malId: id){finish in
                 if(finish){
-                    self.tableView.hideSkeleton()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                        self.tableView.hideSkeleton()
+                        self.addToListButton.isHidden = false
+                    }
                 }
             }
             AnimeViewModel.shared.getAnimeCharacter(malId: id)
@@ -172,10 +181,14 @@ extension DetailAnimeViewController: SkeletonTableViewDataSource, UITableViewDel
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as AnimeDetailInfo
+            if let id = malId{
+                cell.urlImage.hero.id = String(id)
+            }
             
             if let data = animeDetail {
                 cell.initialSetup(data: data)
             }
+            
             cell.selectionStyle = .none
             return cell
         case 1:
@@ -229,6 +242,7 @@ extension DetailAnimeViewController: DetailAnimeRecommendationDelegate{
         vc.malId = malId
         navigationController?.pushViewController(vc, animated: true)
         navigationController?.popViewController(animated: false)
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
         vc.navigationController?.isNavigationBarHidden = true
     }
 }

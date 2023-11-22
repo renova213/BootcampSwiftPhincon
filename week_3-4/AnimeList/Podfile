@@ -12,6 +12,7 @@ target 'AnimeList' do
   pod 'RxGesture'
   pod 'SkeletonView'
   pod 'YouTubePlayer'
+  pod 'Hero'
 
   # Pods for AnimeList
 

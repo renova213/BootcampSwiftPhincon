@@ -51,7 +51,9 @@ extension TodayAnime: SkeletonCollectionViewDelegate, SkeletonCollectionViewData
         let data = currentAnime[indexPath.row]
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TodayAnimeItem", for: indexPath) as! TodayAnimeItem
-        
+        if let id = data.malId{
+            cell.urlImage.hero.id = String(id)
+        }
         cell.setUpComponent(title: data.title ?? "", date: "Ditayangkan pada pukul \(DateFormatter.convertTime(from: data.broadcast?.time ?? "00:00", fromTimeZone: data.broadcast?.timezone ?? "Asia/Tokyo", to: "Asia/Jakarta" ) ?? "-")", urlImage: data.images?.jpg?.imageUrl ?? "", rating: data.score )
         
         return cell
@@ -65,7 +67,9 @@ extension TodayAnime: SkeletonCollectionViewDelegate, SkeletonCollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let data = currentAnime[indexPath.row]
         
-        delegate?.didTapTodayAnime(malId: data.malId ?? 0)
+        if let id = data.malId{
+            delegate?.didTapTodayAnime(malId: id)
+        }
     }
 }
 

@@ -14,7 +14,6 @@ class SearchCategories: UITableViewCell {
         configureCollectionView()
         bindViewModel()
     }
-    
     let disposeBag = DisposeBag()
     var currentIndex: Int = 0{
         didSet{

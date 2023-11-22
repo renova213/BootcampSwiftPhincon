@@ -8,7 +8,7 @@ class SearchViewModel {
     let filteredAnime = BehaviorRelay<[AnimeEntity]>(value: [])
     let filteredManga = BehaviorRelay<[MangaEntity]>(value: [])
     let currentIndex = BehaviorRelay<Int>(value: 0)
-    let searchCategoryItem: [String] = ["Anime", "Maga"]
+    let searchCategoryItem: [String] = ["Anime", "Manga"]
     
     func getFilterAnime(filterParam: FilterAnimeParam, completion: @escaping(Bool) -> Void) {
         let endpoint = Endpoint.filterAnime(params: filterParam)

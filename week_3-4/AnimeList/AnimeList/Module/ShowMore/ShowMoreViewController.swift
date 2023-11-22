@@ -2,6 +2,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SkeletonView
+import Hero
 
 class ShowMoreViewController: UIViewController {
     
@@ -71,6 +72,7 @@ extension ShowMoreViewController: SkeletonCollectionViewDelegate, SkeletonCollec
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let data = animeData[indexPath.row]
         let vc = DetailAnimeViewController()
+        navigationController?.hero.isEnabled = true
         vc.malId = data.malId
         
         navigationController?.pushViewController(vc, animated: true)

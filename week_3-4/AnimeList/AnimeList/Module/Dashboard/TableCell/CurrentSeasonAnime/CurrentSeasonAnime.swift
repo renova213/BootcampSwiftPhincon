@@ -1,5 +1,6 @@
 import UIKit
 import SkeletonView
+import Hero
 
 protocol CurrentAnimeDelegate: AnyObject {
     func didTapCurrentAnime(malId: Int)
@@ -7,7 +8,7 @@ protocol CurrentAnimeDelegate: AnyObject {
 }
 
 class CurrentSeasonAnime: UITableViewCell {
-
+    
     @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var animeCategoryCollection: UICollectionView!
     
@@ -50,20 +51,25 @@ extension CurrentSeasonAnime: SkeletonCollectionViewDataSource, UICollectionView
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentSeasonAnimeItem", for: indexPath) as! CurrentSeasonAnimeItem
         
         cell.animeCardItem.rankView.backgroundColor = UIColor.lightGray
+        if let id = data.malId{
+            cell.animeCardItem.urlImage.hero.id = String(id)
+        }
         
         cell.initialSetup(data: data)
         
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+        
         return CGSize(width: 130, height: 205)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let data = currentSeasonAnime[indexPath.row]
-
-        delegate?.didTapCurrentAnime(malId: data.malId ?? 0)
+        
+        if let id = data.malId{
+            delegate?.didTapCurrentAnime(malId: id)
+        }
     }
 }
 

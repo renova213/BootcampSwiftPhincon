@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		20BAD3DCF4ACCA21E2BAAB3C /* Pods_AnimeList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D5DF5FA6C38D0963D8C00F7 /* Pods_AnimeList.framework */; };
+		360E82802B0D98630011D844 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360E827F2B0D98630011D844 /* DashboardViewModel.swift */; };
+		360E82822B0DA5960011D844 /* ExtBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360E82812B0DA5960011D844 /* ExtBottomSheet.swift */; };
+		360E82862B0DA8150011D844 /* addToListBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360E82842B0DA8150011D844 /* addToListBottomSheet.swift */; };
+		360E82872B0DA8150011D844 /* addToListBottomSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360E82852B0DA8150011D844 /* addToListBottomSheet.xib */; };
+		360E82892B0DD4B70011D844 /* DetailAnimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360E82882B0DD4B70011D844 /* DetailAnimeViewModel.swift */; };
+		360E828D2B0DD56E0011D844 /* RatingScoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360E828B2B0DD56E0011D844 /* RatingScoreItem.swift */; };
+		360E828E2B0DD56E0011D844 /* RatingScoreItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360E828C2B0DD56E0011D844 /* RatingScoreItem.xib */; };
+		360E82952B0DF20C0011D844 /* WatchStatusBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360E82932B0DF20C0011D844 /* WatchStatusBottomSheet.swift */; };
+		360E82962B0DF20C0011D844 /* WatchStatusBottomSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360E82942B0DF20C0011D844 /* WatchStatusBottomSheet.xib */; };
+		360E829A2B0DF7E10011D844 /* WatchStatusItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360E82982B0DF7E10011D844 /* WatchStatusItem.swift */; };
+		360E829B2B0DF7E10011D844 /* WatchStatusItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360E82992B0DF7E10011D844 /* WatchStatusItem.xib */; };
 		36231CCD2AFE041A008257C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36231CCC2AFE041A008257C8 /* AppDelegate.swift */; };
 		36231CCF2AFE041A008257C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36231CCE2AFE041A008257C8 /* SceneDelegate.swift */; };
 		36231CD62AFE041A008257C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36231CD52AFE041A008257C8 /* Assets.xcassets */; };
@@ -104,6 +115,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		360E827F2B0D98630011D844 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		360E82812B0DA5960011D844 /* ExtBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtBottomSheet.swift; sourceTree = "<group>"; };
+		360E82842B0DA8150011D844 /* addToListBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addToListBottomSheet.swift; sourceTree = "<group>"; };
+		360E82852B0DA8150011D844 /* addToListBottomSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = addToListBottomSheet.xib; sourceTree = "<group>"; };
+		360E82882B0DD4B70011D844 /* DetailAnimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAnimeViewModel.swift; sourceTree = "<group>"; };
+		360E828B2B0DD56E0011D844 /* RatingScoreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingScoreItem.swift; sourceTree = "<group>"; };
+		360E828C2B0DD56E0011D844 /* RatingScoreItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingScoreItem.xib; sourceTree = "<group>"; };
+		360E82932B0DF20C0011D844 /* WatchStatusBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStatusBottomSheet.swift; sourceTree = "<group>"; };
+		360E82942B0DF20C0011D844 /* WatchStatusBottomSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WatchStatusBottomSheet.xib; sourceTree = "<group>"; };
+		360E82982B0DF7E10011D844 /* WatchStatusItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStatusItem.swift; sourceTree = "<group>"; };
+		360E82992B0DF7E10011D844 /* WatchStatusItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WatchStatusItem.xib; sourceTree = "<group>"; };
 		36231CC92AFE041A008257C8 /* AnimeList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimeList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36231CCC2AFE041A008257C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36231CCE2AFE041A008257C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -216,6 +238,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		360E82832B0DA7CE0011D844 /* BottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				360E82972B0DF7B50011D844 /* CellTable */,
+				360E828A2B0DD5360011D844 /* CollectionCell */,
+				360E82842B0DA8150011D844 /* addToListBottomSheet.swift */,
+				360E82852B0DA8150011D844 /* addToListBottomSheet.xib */,
+				360E82932B0DF20C0011D844 /* WatchStatusBottomSheet.swift */,
+				360E82942B0DF20C0011D844 /* WatchStatusBottomSheet.xib */,
+			);
+			path = BottomSheet;
+			sourceTree = "<group>";
+		};
+		360E828A2B0DD5360011D844 /* CollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				360E828B2B0DD56E0011D844 /* RatingScoreItem.swift */,
+				360E828C2B0DD56E0011D844 /* RatingScoreItem.xib */,
+			);
+			path = CollectionCell;
+			sourceTree = "<group>";
+		};
+		360E82972B0DF7B50011D844 /* CellTable */ = {
+			isa = PBXGroup;
+			children = (
+				360E82982B0DF7E10011D844 /* WatchStatusItem.swift */,
+				360E82992B0DF7E10011D844 /* WatchStatusItem.xib */,
+			);
+			path = CellTable;
+			sourceTree = "<group>";
+		};
 		36231CC02AFE041A008257C8 = {
 			isa = PBXGroup;
 			children = (
@@ -413,6 +466,7 @@
 				36569EE82AFE0CA700EDB6B9 /* ExtView.swift */,
 				3660224E2B0AF76F00099DE3 /* ExtDateFormatter.swift */,
 				366022502B0B044100099DE3 /* ExtDate.swift */,
+				360E82812B0DA5960011D844 /* ExtBottomSheet.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -543,6 +597,7 @@
 		36D60F2B2B0478AD00800D88 /* DetailAnime */ = {
 			isa = PBXGroup;
 			children = (
+				360E82832B0DA7CE0011D844 /* BottomSheet */,
 				36A79AB62B0482AF00471D5B /* TableCell */,
 				369C55F12B0481E100B982AF /* DetailAnimeViewController.swift */,
 				369C55F22B0481E100B982AF /* DetailAnimeViewController.xib */,
@@ -565,6 +620,8 @@
 			children = (
 				36D643D12B01C4BB00EF554E /* AnimeViewModel.swift */,
 				365F9BCA2B045581001D05AE /* SearchViewModel.swift */,
+				360E827F2B0D98630011D844 /* DashboardViewModel.swift */,
+				360E82882B0DD4B70011D844 /* DetailAnimeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -698,6 +755,7 @@
 				36671F7B2B031DEE00EB7083 /* SelectedSearchCategoryItem.xib in Resources */,
 				36942E452B0704B2006A38CE /* AnimeCardItem.xib in Resources */,
 				36A09BA22B05D4DF00778CD3 /* DetailAnimeTrailer.xib in Resources */,
+				360E829B2B0DF7E10011D844 /* WatchStatusItem.xib in Resources */,
 				364EB4FE2B076C5F0012022C /* DetailAnimeCharacter.xib in Resources */,
 				36F46C1C2B02108B002FFC78 /* CurrentSeasonAnimeItem.xib in Resources */,
 				36569ED12AFE057300EDB6B9 /* AnimeViewController.xib in Resources */,
@@ -708,13 +766,16 @@
 				36259EDB2B0617D800FE89BC /* ShowMoreViewController.xib in Resources */,
 				36671F872B03262D00EB7083 /* SearchCategories.xib in Resources */,
 				366022672B0B445100099DE3 /* DetailAnimeTheme.xib in Resources */,
+				360E828E2B0DD56E0011D844 /* RatingScoreItem.xib in Resources */,
 				36F46C232B021B5C002FFC78 /* SearchViewController.xib in Resources */,
+				360E82872B0DA8150011D844 /* addToListBottomSheet.xib in Resources */,
 				36569ED52AFE058500EDB6B9 /* MainTabBarViewController.xib in Resources */,
 				36569EF22AFE0F8C00EDB6B9 /* DashboardCategoryItem.xib in Resources */,
 				36671F7F2B031F7100EB7083 /* UnselectedSearchCategoryItem.xib in Resources */,
 				366022552B0B07B800099DE3 /* AnimeCharacterItem.xib in Resources */,
 				36569EC42AFE04FE00EDB6B9 /* SplashViewController.xib in Resources */,
 				36942E4B2B073682006A38CE /* ShowMoreItem.xib in Resources */,
+				360E82962B0DF20C0011D844 /* WatchStatusBottomSheet.xib in Resources */,
 				36F46C172B020F1E002FFC78 /* CurrentSeasonAnime.xib in Resources */,
 				36569ECD2AFE056700EDB6B9 /* MangaViewController.xib in Resources */,
 				36569EFF2AFE128100EDB6B9 /* TodayAnimeItem.xib in Resources */,
@@ -773,6 +834,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36569ECC2AFE056700EDB6B9 /* MangaViewController.swift in Sources */,
+				360E82802B0D98630011D844 /* DashboardViewModel.swift in Sources */,
 				36259EDA2B0617D800FE89BC /* ShowMoreViewController.swift in Sources */,
 				366022512B0B044100099DE3 /* ExtDate.swift in Sources */,
 				36D643D22B01C4BB00EF554E /* AnimeViewModel.swift in Sources */,
@@ -797,6 +859,7 @@
 				365F9BCF2B045C05001D05AE /* MangaEntity.swift in Sources */,
 				36569EDB2AFE06AC00EDB6B9 /* Constant.swift in Sources */,
 				366022582B0B16AC00099DE3 /* DetailAnimeStaff.swift in Sources */,
+				360E828D2B0DD56E0011D844 /* RatingScoreItem.swift in Sources */,
 				36569EC32AFE04FE00EDB6B9 /* SplashViewController.swift in Sources */,
 				36569EE12AFE091B00EDB6B9 /* DashboardSearch.swift in Sources */,
 				36569ED42AFE058500EDB6B9 /* MainTabBarViewController.swift in Sources */,
@@ -805,14 +868,17 @@
 				36569EF42AFE0FE500EDB6B9 /* DashboardCategoryEntity.swift in Sources */,
 				36D643CD2B01B97800EF554E /* SchedulesParam.swift in Sources */,
 				36942E4A2B073682006A38CE /* ShowMoreItem.swift in Sources */,
+				360E82822B0DA5960011D844 /* ExtBottomSheet.swift in Sources */,
 				36A79ABE2B04AD6400471D5B /* AnimeGenreItem.swift in Sources */,
 				3660225E2B0B1AC200099DE3 /* AnimeStaffItem.swift in Sources */,
 				36942E4E2B0758BC006A38CE /* DetailAnimeMoreInfo.swift in Sources */,
 				365F9BCB2B045581001D05AE /* SearchViewModel.swift in Sources */,
 				36569EE52AFE0C8B00EDB6B9 /* ExtTableView.swift in Sources */,
+				360E82952B0DF20C0011D844 /* WatchStatusBottomSheet.swift in Sources */,
 				3660226A2B0B4A3100099DE3 /* DetailAnimeRecommendation.swift in Sources */,
 				3660224F2B0AF76F00099DE3 /* ExtDateFormatter.swift in Sources */,
 				36231CCD2AFE041A008257C8 /* AppDelegate.swift in Sources */,
+				360E82862B0DA8150011D844 /* addToListBottomSheet.swift in Sources */,
 				36671F7E2B031F7100EB7083 /* UnselectedSearchCategoryItem.swift in Sources */,
 				36569F042AFE269D00EDB6B9 /* Endpoint.swift in Sources */,
 				36569F022AFE264C00EDB6B9 /* ApiManager.swift in Sources */,
@@ -822,8 +888,10 @@
 				36942E472B0708B2006A38CE /* AnimeCardItem.swift in Sources */,
 				3644D0C62B034E580064B692 /* FilterAnimeParam.swift in Sources */,
 				3660226E2B0B4B1900099DE3 /* AnimeRecommendationItem.swift in Sources */,
+				360E82892B0DD4B70011D844 /* DetailAnimeViewModel.swift in Sources */,
 				36D643CF2B01BF8300EF554E /* AnimeEntity.swift in Sources */,
 				364EB4FD2B076C5F0012022C /* DetailAnimeCharacter.swift in Sources */,
+				360E829A2B0DF7E10011D844 /* WatchStatusItem.swift in Sources */,
 				36569ED82AFE05B700EDB6B9 /* DashboardViewController.swift in Sources */,
 				36A09BA12B05D4DF00778CD3 /* DetailAnimeTrailer.swift in Sources */,
 				362B1FEF2B0CA38A009BACDB /* RankAnimeViewController.swift in Sources */,

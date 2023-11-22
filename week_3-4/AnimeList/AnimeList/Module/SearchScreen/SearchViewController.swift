@@ -84,6 +84,7 @@ extension SearchViewController: UITableViewDelegate, SkeletonTableViewDataSource
             let data = filteredAnime[indexPath.row]
             let vc = DetailAnimeViewController()
             vc.malId = data.malId
+            navigationController?.hero.isEnabled = true
             navigationController?.pushViewController(vc, animated: true)
             
         }

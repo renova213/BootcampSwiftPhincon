@@ -42,17 +42,19 @@ class AnimeDetailInfo: UITableViewCell {
         imageBorderView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
     }
     
+    func initialSetupImage(urlImage: String){
+    }
+    
     func initialSetup(data: AnimeDetailData){
-        
-        if let imageURL = URL(string: data.images?.jpg?.imageUrl ?? "") {
-            self.urlImage.kf.setImage(with: imageURL, placeholder: UIImage(named: "ImagePlaceholder"))
-        }
-        
         titleLabel.text = data.title ?? "-"
         
         statusLabel.text = data.status ?? "-"
         
         durationLabel.text = data.duration ?? "-"
+        
+        if let imageURL = URL(string: data.images?.jpg?.imageUrl ?? "") {
+            self.urlImage.kf.setImage(with: imageURL, placeholder: UIImage(named: "ImagePlaceholder"))
+        }
         
         if let releaseYear = data.aired?.prop?.from?.year{
             releaseDateLabel.text = String(releaseYear)
@@ -134,7 +136,12 @@ extension AnimeDetailInfo: SkeletonCollectionViewDataSource, SkeletonCollectionV
         
         let label = UILabel()
         if let data = animeGenre{
-            label.text = data[indexPath.row].name
+            if indexPath.row < data.count {
+                label.text = data[indexPath.row].name
+            } else {
+                label.text = ""
+            }
+            
             label.sizeToFit()
             let extraSpacing: CGFloat = 12
             

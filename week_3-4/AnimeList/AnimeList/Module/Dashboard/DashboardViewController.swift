@@ -1,6 +1,7 @@
 import UIKit
 import RxSwift
 import SkeletonView
+import Hero
 
 class DashboardViewController: UIViewController {
     
@@ -11,15 +12,10 @@ class DashboardViewController: UIViewController {
         configureTableView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        getFetchViewModel()
-
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         bindFetchViewModel()
+        getFetchViewModel()
     }
     
     weak var delegateTodayAnime: TodayAnimeDelegate?
@@ -53,14 +49,17 @@ class DashboardViewController: UIViewController {
 extension DashboardViewController {
     
     func getFetchViewModel(){
-        self.dashboardTableView.showAnimatedGradientSkeleton()
-
-        AnimeViewModel.shared.getCurrentAnime(limit: "6", page: "1"){ finish in
-            if (finish){
-                self.dashboardTableView.hideSkeleton()
+        if(DashboardViewModel.shared.isFirstFetchData.value){
+            DashboardViewModel.shared.changeFirstFetchData(bool: false)
+            self.dashboardTableView.showAnimatedGradientSkeleton()
+            
+            AnimeViewModel.shared.getCurrentAnime(limit: "6", page: "1"){ finish in
+                if (finish){
+                    self.dashboardTableView.hideSkeleton()
+                }
             }
+            AnimeViewModel.shared.getCurrentSeasonAnime(limit: "6", page: "1")
         }
-        AnimeViewModel.shared.getCurrentSeasonAnime(limit: "6", page: "1")
     }
     
     func bindFetchViewModel() {
@@ -86,8 +85,8 @@ extension DashboardViewController: UITableViewDelegate, SkeletonTableViewDataSou
     }
     
     func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return 1
-     }
+        return 1
+    }
     
     func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
         switch indexPath.section {
@@ -157,6 +156,7 @@ extension DashboardViewController: TodayAnimeDelegate{
     func didTapTodayAnime(malId: Int) {
         let vc = DetailAnimeViewController()
         vc.malId = malId
+        navigationController?.hero.isEnabled = true
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
         vc.navigationController?.isNavigationBarHidden = true
@@ -186,6 +186,7 @@ extension DashboardViewController: CurrentAnimeDelegate {
         let vc = DetailAnimeViewController()
         vc.malId = malId
         vc.hidesBottomBarWhenPushed = true
+        navigationController?.hero.isEnabled = true
         navigationController?.pushViewController(vc, animated: true)
         vc.navigationController?.isNavigationBarHidden = true
     }
@@ -201,7 +202,6 @@ extension DashboardViewController: CurrentAnimeDelegate {
 
 extension DashboardViewController: DashboardCategoryDelegate{
     func didTapNavigateRankAnime() {
-        print("dsadsdasdas")
         let vc = RankAnimeViewController()
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
