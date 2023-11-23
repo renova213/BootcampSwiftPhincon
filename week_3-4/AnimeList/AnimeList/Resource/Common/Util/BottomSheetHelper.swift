@@ -24,14 +24,3 @@ class BottomSheetPresentationController: UIPresentationController {
         super.dismissalTransitionWillBegin()
     }
 }
-
-extension UIViewController {
-    func presentBottomSheet(contentViewController: UIViewController) {
-        let bottomSheetTransitioningDelegate = BottomSheetTransitioningDelegate()
-
-        contentViewController.modalPresentationStyle = .custom
-        contentViewController.transitioningDelegate = bottomSheetTransitioningDelegate
-
-        present(contentViewController, animated: true, completion: nil)
-    }
-}

@@ -115,25 +115,25 @@ extension DashboardViewController: UITableViewDelegate, SkeletonTableViewDataSou
         
         switch indexPath.section {
         case 0:
-            let dashboardSearch = tableView.dequeueReusableCell(forIndexPath: indexPath) as DashboardSearch
+            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DashboardSearch
             
-            dashboardSearch.delegate = self
+            cell.delegate = self
             
-            return dashboardSearch
+            return cell
         case 1:
-            let dashboardCategory = tableView.dequeueReusableCell(forIndexPath: indexPath) as DashboardCategory
-            dashboardCategory.delegate = self
-            return dashboardCategory
+            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DashboardCategory
+            cell.delegate = self
+            return cell
         case 2:
-            let todayAnime = tableView.dequeueReusableCell(forIndexPath: indexPath) as TodayAnime
-            todayAnime.currentAnime = currentAnime
-            todayAnime.delegate = self
-            return todayAnime
+            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as TodayAnime
+            cell.currentAnime = currentAnime
+            cell.delegate = self
+            return cell
         case 3:
-            let currentSeason = tableView.dequeueReusableCell(forIndexPath: indexPath) as CurrentSeasonAnime
-            currentSeason.currentSeasonAnime = currentSeasonAnime
-            currentSeason.delegate = self
-            return currentSeason
+            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as CurrentSeasonAnime
+            cell.currentSeasonAnime = currentSeasonAnime
+            cell.delegate = self
+            return cell
         default:
             return UITableViewCell()
         }

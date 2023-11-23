@@ -10,6 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WatchStatusBottomSheet" customModule="AnimeList" customModuleProvider="target">
             <connections>
                 <outlet property="statusTable" destination="Y6R-4t-qht" id="HXR-pr-x2Q"/>
+                <outlet property="urlImage" destination="v4d-18-VB1" id="xfp-1Z-WE4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,6 +19,9 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="334"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="v4d-18-VB1">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="334"/>
+                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3h-Fz-vd3">
                     <rect key="frame" x="16" y="24" width="361" height="28.666666666666671"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
@@ -26,7 +30,8 @@
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Y6R-4t-qht">
                     <rect key="frame" x="16" y="84.666666666666671" width="361" height="225.33333333333331"/>
-                    <color key="backgroundColor" name="Main Color"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" name="Main Color"/>
@@ -37,13 +42,18 @@
                 <constraint firstAttribute="trailing" secondItem="w3h-Fz-vd3" secondAttribute="trailing" constant="16" id="OFh-Jz-dzX"/>
                 <constraint firstItem="Y6R-4t-qht" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="S0D-NO-YN2"/>
                 <constraint firstItem="Y6R-4t-qht" firstAttribute="top" secondItem="w3h-Fz-vd3" secondAttribute="bottom" constant="32" id="WWB-3S-EEA"/>
+                <constraint firstAttribute="trailing" secondItem="v4d-18-VB1" secondAttribute="trailing" id="cx4-SZ-A95"/>
                 <constraint firstItem="w3h-Fz-vd3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="24" id="dmY-BK-25a"/>
+                <constraint firstAttribute="bottom" secondItem="v4d-18-VB1" secondAttribute="bottom" id="e6F-zi-uCH"/>
+                <constraint firstItem="v4d-18-VB1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="eFu-ar-CZc"/>
+                <constraint firstItem="v4d-18-VB1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hLP-Cj-MCY"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="122.90076335877862" y="-161.97183098591549"/>
         </view>
     </objects>
     <resources>
+        <image name="ImagePlaceholder" width="800" height="540"/>
         <namedColor name="Main Color">
             <color red="0.63529411764705879" green="0.69803921568627447" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

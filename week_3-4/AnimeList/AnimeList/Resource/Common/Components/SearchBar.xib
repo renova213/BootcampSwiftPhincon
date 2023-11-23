@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchBar" customModule="AnimeList" customModuleProvider="target">
+            <connections>
+                <outlet property="searchField" destination="xcN-cV-iS3" id="7AC-qM-r4f"/>
+                <outlet property="searchView" destination="mar-3s-UKD" id="kA3-D7-vfi"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="48"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mar-3s-UKD">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="48"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="dK4-wU-HWz">
+                            <rect key="frame" x="8" y="8" width="377" height="32"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="43y-ZZ-MDI">
+                                    <rect key="frame" x="0.0" y="0.99999999999999645" width="24" height="30.333333333333329"/>
+                                    <color key="tintColor" name="Main Color"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="24" id="UAR-jR-6SA"/>
+                                    </constraints>
+                                </imageView>
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xcN-cV-iS3">
+                                    <rect key="frame" x="36" y="0.0" width="341" height="32"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="JC5-re-E7M"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="dK4-wU-HWz" secondAttribute="trailing" constant="8" id="I46-5L-7jb"/>
+                        <constraint firstAttribute="height" constant="48" id="Ivo-xq-8eS"/>
+                        <constraint firstItem="dK4-wU-HWz" firstAttribute="top" secondItem="mar-3s-UKD" secondAttribute="top" constant="8" id="LTr-1K-QRS"/>
+                        <constraint firstItem="dK4-wU-HWz" firstAttribute="leading" secondItem="mar-3s-UKD" secondAttribute="leading" constant="8" id="NhN-Ie-67d"/>
+                        <constraint firstAttribute="bottom" secondItem="dK4-wU-HWz" secondAttribute="bottom" constant="8" id="Ral-0c-NsL"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="mar-3s-UKD" secondAttribute="trailing" id="2rw-mK-0SD"/>
+                <constraint firstItem="mar-3s-UKD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="PG8-tP-a9b"/>
+                <constraint firstItem="mar-3s-UKD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ZXe-c9-a71"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="mar-3s-UKD" secondAttribute="bottom" id="qQ6-U9-T1T"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="180.91603053435114" y="-242.95774647887325"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <namedColor name="Main Color">
+            <color red="0.63529411764705879" green="0.69803921568627447" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

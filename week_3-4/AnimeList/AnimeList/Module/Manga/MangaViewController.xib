@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MangaViewController" customModule="AnimeList" customModuleProvider="target">
             <connections>
+                <outlet property="filterWatchButton" destination="ULh-lT-X2a" id="sAu-IJ-VM7"/>
+                <outlet property="tableView" destination="qGM-iw-qUZ" id="ubU-lB-9lr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,39 +24,33 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VyX-ce-w0W">
                     <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hww-UO-pPu">
-                            <rect key="frame" x="48" y="339" width="297" height="80"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login untuk menggunakan fitur ini" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7e-fp-3xq">
-                                    <rect key="frame" x="0.0" y="0.0" width="297" height="24"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Lv-kh-fJi">
-                                    <rect key="frame" x="98.666666666666657" y="40" width="100" height="40"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="40" id="Poz-nU-ltv"/>
-                                        <constraint firstAttribute="width" constant="100" id="qAU-wb-cCk"/>
-                                    </constraints>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="Login"/>
-                                </button>
-                            </subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ULh-lT-X2a">
+                            <rect key="frame" x="255.66666666666666" y="649" width="121.33333333333329" height="50"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="d7e-fp-3xq" firstAttribute="top" secondItem="hww-UO-pPu" secondAttribute="top" id="Aq9-V4-mss"/>
-                                <constraint firstAttribute="bottom" secondItem="7Lv-kh-fJi" secondAttribute="bottom" id="E8U-gS-K5L"/>
-                                <constraint firstItem="d7e-fp-3xq" firstAttribute="leading" secondItem="hww-UO-pPu" secondAttribute="leading" id="cAg-bv-Yz5"/>
-                                <constraint firstAttribute="trailing" secondItem="d7e-fp-3xq" secondAttribute="trailing" id="kHP-7g-Ugj"/>
-                                <constraint firstAttribute="height" constant="80" id="yog-jJ-65g"/>
+                                <constraint firstAttribute="height" constant="50" id="FmU-fM-S8V"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="mOa-I5-c5g"/>
                             </constraints>
-                        </stackView>
+                            <color key="tintColor" name="Main Color"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="filled" title="Dibaca Nanti"/>
+                        </button>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qGM-iw-qUZ">
+                            <rect key="frame" x="16" y="0.0" width="361" height="759"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </tableView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="hww-UO-pPu" firstAttribute="centerY" secondItem="VyX-ce-w0W" secondAttribute="centerY" id="0IC-ex-D6o"/>
-                        <constraint firstItem="hww-UO-pPu" firstAttribute="leading" secondItem="VyX-ce-w0W" secondAttribute="leading" constant="48" id="Dpi-47-gym"/>
-                        <constraint firstItem="hww-UO-pPu" firstAttribute="centerX" secondItem="VyX-ce-w0W" secondAttribute="centerX" id="Xmr-Fz-Xoy"/>
+                        <constraint firstItem="qGM-iw-qUZ" firstAttribute="top" secondItem="VyX-ce-w0W" secondAttribute="top" id="4fR-xg-OFX"/>
+                        <constraint firstItem="qGM-iw-qUZ" firstAttribute="leading" secondItem="VyX-ce-w0W" secondAttribute="leading" constant="16" id="7cJ-6h-8Y6"/>
+                        <constraint firstAttribute="bottom" secondItem="ULh-lT-X2a" secondAttribute="bottom" constant="60" id="NEd-19-4WR"/>
+                        <constraint firstAttribute="trailing" secondItem="qGM-iw-qUZ" secondAttribute="trailing" constant="16" id="ZKM-NY-mDM"/>
+                        <constraint firstAttribute="trailing" secondItem="ULh-lT-X2a" secondAttribute="trailing" constant="16" id="fEG-go-vfK"/>
+                        <constraint firstAttribute="bottom" secondItem="qGM-iw-qUZ" secondAttribute="bottom" id="wCK-K6-tt5"/>
                     </constraints>
                 </view>
             </subviews>
@@ -69,6 +66,9 @@
         </view>
     </objects>
     <resources>
+        <namedColor name="Main Color">
+            <color red="0.63529411764705879" green="0.69803921568627447" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

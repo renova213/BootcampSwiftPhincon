@@ -15,14 +15,14 @@ class DashboardSearch: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        configureComponentStyle()
+        configureUI()
         configureGesture()
     }
     
     weak var delegate: DashboardSearchDelegate?
     let disposeBag = DisposeBag()
     
-    func configureComponentStyle(){
+    func configureUI(){
         gestureStackView.isUserInteractionEnabled = true
         
         dashboardSearchField.borderStyle = .none

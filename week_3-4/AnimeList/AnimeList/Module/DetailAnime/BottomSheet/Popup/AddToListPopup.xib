@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddToListPopup" customModule="AnimeList" customModuleProvider="target">
+            <connections>
+                <outlet property="messageLabel" destination="9YD-07-sqY" id="aEF-xh-lPN"/>
+                <outlet property="popView" destination="MWR-xI-NRL" id="JAf-kS-IL2"/>
+                <outlet property="successLottie" destination="gIs-hb-Xwk" id="ER2-An-yqN"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="clg-Eo-DUF">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MWR-xI-NRL">
+                    <rect key="frame" x="81.666666666666686" y="313.33333333333331" width="230" height="225.33333333333331"/>
+                    <subviews>
+                        <view autoresizesSubviews="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="gIs-hb-Xwk" customClass="LottieAnimationView" customModule="Lottie">
+                            <rect key="frame" x="59.999999999999986" y="25" width="110.00000000000001" height="90"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="90" id="55w-BS-dmC"/>
+                                <constraint firstAttribute="width" constant="110" id="Khe-1Q-CIk"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Berhasil menambahkan ke dalam list" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9YD-07-sqY">
+                            <rect key="frame" x="24" y="151" width="182" height="38.333333333333343"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="gIs-hb-Xwk" secondAttribute="trailing" constant="60" id="6ZB-wf-0BD"/>
+                        <constraint firstAttribute="trailing" secondItem="9YD-07-sqY" secondAttribute="trailing" constant="24" id="AqZ-1y-AU8"/>
+                        <constraint firstItem="9YD-07-sqY" firstAttribute="leading" secondItem="MWR-xI-NRL" secondAttribute="leading" constant="24" id="LC8-1f-xNu"/>
+                        <constraint firstItem="gIs-hb-Xwk" firstAttribute="top" secondItem="MWR-xI-NRL" secondAttribute="top" constant="25" id="Nq9-JJ-iI8"/>
+                        <constraint firstAttribute="width" constant="230" id="TGS-eV-GnS"/>
+                        <constraint firstItem="9YD-07-sqY" firstAttribute="top" secondItem="gIs-hb-Xwk" secondAttribute="bottom" constant="36" id="iY6-eJ-oI0"/>
+                        <constraint firstItem="gIs-hb-Xwk" firstAttribute="leading" secondItem="MWR-xI-NRL" secondAttribute="leading" constant="60" id="jsi-6c-ToK"/>
+                        <constraint firstAttribute="bottom" secondItem="9YD-07-sqY" secondAttribute="bottom" constant="36" id="oYf-go-aFF"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="MWR-xI-NRL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="1Tz-E1-hvQ"/>
+                <constraint firstItem="MWR-xI-NRL" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="5qv-rd-9IA"/>
+                <constraint firstItem="clg-Eo-DUF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="64q-MO-jQi"/>
+                <constraint firstItem="clg-Eo-DUF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="G6r-gy-04S"/>
+                <constraint firstAttribute="bottom" secondItem="clg-Eo-DUF" secondAttribute="bottom" id="PrP-6c-z5M"/>
+                <constraint firstAttribute="trailing" secondItem="clg-Eo-DUF" secondAttribute="trailing" id="sFP-k9-KRV"/>
+            </constraints>
+            <point key="canvasLocation" x="139.69465648854961" y="19.718309859154932"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
