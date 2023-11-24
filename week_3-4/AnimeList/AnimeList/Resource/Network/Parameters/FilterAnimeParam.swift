@@ -1,10 +1,3 @@
-//
-//  FilterAnimeParam.swift
-//  AnimeList
-//
-//  Created by Phincon on 14/11/23.
-//
-
 import Foundation
 
 struct FilterAnimeParam {

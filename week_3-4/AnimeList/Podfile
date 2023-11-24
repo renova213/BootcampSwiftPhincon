@@ -13,6 +13,7 @@ target 'AnimeList' do
   pod 'SkeletonView'
   pod 'YouTubePlayer'
   pod 'Hero'
+  pod 'netfox'
 
   # Pods for AnimeList
 

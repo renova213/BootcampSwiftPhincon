@@ -1,15 +1,15 @@
 import UIKit
 import Lottie
 
-class AddToListPopup: UIViewController {
 
+class FailedPopUp: UIViewController {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var popView: UIView!
-    @IBOutlet weak var successLottie: LottieAnimationView!
+    @IBOutlet weak var failedLottie: LottieAnimationView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        successAnimate()
+        failedAnimated()
         configureUI()
     }
     
@@ -17,14 +17,17 @@ class AddToListPopup: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    func successAnimate() {
-        successLottie.animation = LottieAnimation.named("success")
-        successLottie.loopMode = .loop
-        messageLabel.text = "Berhasil menambahkan ke dalam list"
+    func failedAnimated() {
+        failedLottie.animation = LottieAnimation.named("failed")
+        failedLottie.loopMode = .loop
         
-        successLottie.play()    
+        failedLottie.play()
     }
     
+    func setupMessage(message: String){
+        messageLabel.text = message
+    }
+
     func configureUI(){
         popView.roundCornersAll(radius: 10)
         popView.addShadow()

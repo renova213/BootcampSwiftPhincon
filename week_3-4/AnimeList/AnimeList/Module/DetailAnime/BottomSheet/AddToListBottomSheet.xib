@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="addToListBottomSheet" customModule="AnimeList" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddToListBottomSheet" customModule="AnimeList" customModuleProvider="target">
             <connections>
                 <outlet property="addToListButton" destination="qvt-WQ-1qq" id="Stb-N3-nWI"/>
                 <outlet property="bottomSheetView" destination="QNj-9w-gTU" id="exj-x6-pxx"/>

@@ -10,6 +10,7 @@ enum Endpoint {
     case getAnimeCharacter(malId: Int)
     case getAnimeStaff(malId: Int)
     case getRecommendationAnime(malId: Int)
+    case postUserAnime(params: UserAnimeBody)
     
     func path() -> String {
         switch self {
@@ -29,6 +30,8 @@ enum Endpoint {
             return "/anime/\(malId)/staff"
         case .getRecommendationAnime(let malId):
             return "/anime/\(malId)/recommendations"
+        case .postUserAnime:
+            return "/anime/user"
         }
     }
     
@@ -36,6 +39,8 @@ enum Endpoint {
         switch self {
         case .getScheduledAnime, .getSeasonNow, .filterAnime, .filterManga, .getDetailAnime, .getAnimeCharacter, .getAnimeStaff, .getRecommendationAnime:
             return .get
+        case .postUserAnime:
+            return .post
         }
     }
     
@@ -90,6 +95,9 @@ enum Endpoint {
             return params
         case .getDetailAnime, .getAnimeStaff, .getAnimeCharacter, .getRecommendationAnime:
             return nil
+        case .postUserAnime(let params):
+            let param = try? params.asDictionary()
+            return param
         }
     }
     
@@ -104,12 +112,16 @@ enum Endpoint {
         return BaseConstant.baseURL + self.path()
     }
     
+    func urlString2() -> String {
+        return BaseConstant.baseURL2 + self.path()
+    }
+    
     var encoding: ParameterEncoding {
         switch self {
-        case .getScheduledAnime, .getSeasonNow, .filterAnime, .filterManga:
+        case .getScheduledAnime, .getSeasonNow, .filterAnime, .filterManga, .getDetailAnime, .getAnimeCharacter, .getAnimeStaff, .getRecommendationAnime:
             return URLEncoding.queryString
-        case .getDetailAnime, .getAnimeCharacter, .getAnimeStaff, .getRecommendationAnime:
-            return URLEncoding.default
+        case .postUserAnime:
+            return JSONEncoding.default
         }
     }
 }

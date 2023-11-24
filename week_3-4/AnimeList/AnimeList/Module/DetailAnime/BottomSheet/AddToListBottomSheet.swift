@@ -3,7 +3,7 @@ import RxSwift
 import RxCocoa
 import Kingfisher
 
-class addToListBottomSheet: UIViewController {
+class AddToListBottomSheet: UIViewController {
     
     @IBOutlet weak var bottomSheetView: UIView!
     @IBOutlet weak var urlImage: UIImageView!
@@ -17,6 +17,7 @@ class addToListBottomSheet: UIViewController {
     @IBOutlet weak var increamentButton: UIButton!
     @IBOutlet weak var decreamentButton: UIButton!
     @IBOutlet weak var episodeLabel: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadingIndicator.dismissImmediately()
@@ -31,6 +32,7 @@ class addToListBottomSheet: UIViewController {
     }
     
     var imageUrl: String?
+    var malId: Int?
     lazy var loadingIndicator = PopUpLoading(on: view)
     let disposeBag = DisposeBag()
     var selectedScoreIndex = 0{
@@ -40,7 +42,7 @@ class addToListBottomSheet: UIViewController {
     }
 }
 
-extension addToListBottomSheet: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+extension AddToListBottomSheet: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func configureCollectionView(){
         scoreCollection.delegate = self
         scoreCollection.dataSource = self
@@ -69,9 +71,8 @@ extension addToListBottomSheet: UICollectionViewDelegate, UICollectionViewDataSo
     }
 }
 
-extension addToListBottomSheet{
-    func toPopUp() {
-        let vc = AddToListPopup()
+extension AddToListBottomSheet{
+    func successPopUp(_ vc: SuccessPopUp) {
         vc.view.alpha = 0
         vc.modalPresentationStyle = .overCurrentContext
         present(vc, animated: false, completion: nil)
@@ -85,9 +86,24 @@ extension addToListBottomSheet{
         }
     }
     
-    func toDismissPopUp(_ vc: AddToListPopup) {
+    func failedPopUp(_ vc: FailedPopUp) {
+        vc.view.alpha = 0
+        vc.setupMessage(message: "Anime ini sudah ada di list kamu")
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: false, completion: nil)
+        
+        UIView.animate(withDuration: 0.5) {
+            vc.view.alpha = 1
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.toDismissPopUp(vc)
+        }
+    }
+    
+    func toDismissPopUp(_ vc: UIViewController) {
         UIView.animate(withDuration: 0.5, animations: {
-            vc.view.alpha = 0 // Fade out the view
+            vc.view.alpha = 0
         }) { _ in
             vc.dismiss(animated: false, completion: nil)
         }
@@ -124,7 +140,16 @@ extension addToListBottomSheet{
             DispatchQueue.main.asyncAfter(deadline: .now() + 1){
                 self?.addToListButton.isEnabled = true
                 self?.loadingIndicator.dismissImmediately()
-                self?.toPopUp()
+                if let id = self?.malId{
+                    UserAnimeViewModel.shared.postUserAnime(body: UserAnimeBody(userId: 0, malId: id, userScore: DetailAnimeViewModel.shared.selectedIndexScore.value, userEpisode: DetailAnimeViewModel.shared.episode.value, watchStatus: DetailAnimeViewModel.shared.selectedSwatchStatusIndex.value)){[weak self] finish in
+                        if(finish){
+                            self?.successPopUp(SuccessPopUp())
+                        }else{
+                            let vc = FailedPopUp()
+                            self?.failedPopUp(vc)
+                        }
+                    }
+                }
             }
         }
         ).disposed(by: disposeBag)
@@ -166,4 +191,3 @@ extension addToListBottomSheet{
             .disposed(by: disposeBag)
     }
 }
-

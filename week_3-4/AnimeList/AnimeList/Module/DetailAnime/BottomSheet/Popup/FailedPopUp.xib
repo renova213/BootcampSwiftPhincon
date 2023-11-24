@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FailedPopUp" customModule="AnimeList" customModuleProvider="target">
+            <connections>
+                <outlet property="failedLottie" destination="5BI-jy-uHd" id="3YL-kf-v6A"/>
+                <outlet property="messageLabel" destination="aZS-hp-DaV" id="uQQ-By-PQc"/>
+                <outlet property="popView" destination="5mm-4L-NSz" id="FHg-Zn-wXJ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.20000000298023224" contentMode="scaleToFill" id="9K6-VF-VgP">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <viewLayoutGuide key="safeArea" id="173-bV-tex"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5mm-4L-NSz">
+                    <rect key="frame" x="81.666666666666686" y="326" width="230" height="225.33333333333337"/>
+                    <subviews>
+                        <view autoresizesSubviews="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="5BI-jy-uHd" customClass="LottieAnimationView" customModule="Lottie">
+                            <rect key="frame" x="59.999999999999986" y="25" width="110.00000000000001" height="90"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="90" id="2sl-3e-Lp1"/>
+                                <constraint firstAttribute="width" constant="110" id="aQ1-FF-dDQ"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Berhasil menambahkan ke dalam list" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZS-hp-DaV">
+                            <rect key="frame" x="24" y="151" width="182" height="38.333333333333343"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="HkQ-ns-zqp"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="5BI-jy-uHd" secondAttribute="trailing" constant="60" id="4kN-Xm-6QS"/>
+                        <constraint firstItem="5BI-jy-uHd" firstAttribute="leading" secondItem="5mm-4L-NSz" secondAttribute="leading" constant="60" id="I46-Qn-2oz"/>
+                        <constraint firstAttribute="width" constant="230" id="Jkh-BQ-I6r"/>
+                        <constraint firstAttribute="bottom" secondItem="aZS-hp-DaV" secondAttribute="bottom" constant="36" id="MK1-Lg-WJI"/>
+                        <constraint firstItem="aZS-hp-DaV" firstAttribute="leading" secondItem="5mm-4L-NSz" secondAttribute="leading" constant="24" id="MVt-51-n3y"/>
+                        <constraint firstItem="5BI-jy-uHd" firstAttribute="top" secondItem="5mm-4L-NSz" secondAttribute="top" constant="25" id="gX9-8F-jyt"/>
+                        <constraint firstItem="aZS-hp-DaV" firstAttribute="top" secondItem="5BI-jy-uHd" secondAttribute="bottom" constant="36" id="puY-kQ-DL4"/>
+                        <constraint firstAttribute="trailing" secondItem="aZS-hp-DaV" secondAttribute="trailing" constant="24" id="uA2-LC-MHZ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="5mm-4L-NSz" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="WKR-Fz-3ey"/>
+                <constraint firstItem="5mm-4L-NSz" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="gWq-o5-o6g"/>
+            </constraints>
+            <point key="canvasLocation" x="140" y="20"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="5BI-jy-uHd"/>
+    </designables>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

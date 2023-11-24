@@ -3,6 +3,7 @@ import UIKit
 
 struct BaseConstant{
     static let baseURL = "https://api.jikan.moe/v4"
+    static let baseURL2 = "http://fine-plum-fossa.cyclic.app"
     static let userDefaults = UserDefaults.standard
 }
 

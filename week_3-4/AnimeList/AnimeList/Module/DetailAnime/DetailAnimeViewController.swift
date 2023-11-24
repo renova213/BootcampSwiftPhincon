@@ -62,7 +62,8 @@ extension DetailAnimeViewController{
     
     private func buttonGesture(){
         addToListButton.rx.tap.subscribe(onNext: { [weak self] in
-            let bottomSheetVC = addToListBottomSheet()
+            let bottomSheetVC = AddToListBottomSheet()
+            bottomSheetVC.malId = self?.malId ?? 0
             bottomSheetVC.imageUrl = self?.animeDetail?.images?.jpg?.imageUrl ?? ""
             bottomSheetVC.setContentHeight(bottomSheetVC.view.bounds.height)
             self?.presentBottomSheet(contentViewController: bottomSheetVC)
