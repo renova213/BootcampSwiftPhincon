@@ -11,6 +11,10 @@ enum Endpoint {
     case getAnimeStaff(malId: Int)
     case getRecommendationAnime(malId: Int)
     case postUserAnime(params: UserAnimeBody)
+    case getUserAnime(userId: Int)
+    case putUserAnime(params: UpdateUserAnimeBody)
+    case deleteUserAnime(id: String)
+    case findOneUserAnime(userId: Int, malId: Int)
     
     func path() -> String {
         switch self {
@@ -30,17 +34,27 @@ enum Endpoint {
             return "/anime/\(malId)/staff"
         case .getRecommendationAnime(let malId):
             return "/anime/\(malId)/recommendations"
-        case .postUserAnime:
+        case .postUserAnime, .getUserAnime:
             return "/anime/user"
+        case .findOneUserAnime:
+            return "/anime/user/find"
+        case .putUserAnime(let param):
+            return "/anime/user/\(param.id)"
+        case .deleteUserAnime(let id):
+            return "/anime/user/\(id)"
         }
     }
     
     func method() -> HTTPMethod {
         switch self {
-        case .getScheduledAnime, .getSeasonNow, .filterAnime, .filterManga, .getDetailAnime, .getAnimeCharacter, .getAnimeStaff, .getRecommendationAnime:
+        case .getScheduledAnime, .getSeasonNow, .filterAnime, .filterManga, .getDetailAnime, .getAnimeCharacter, .getAnimeStaff, .getRecommendationAnime, .getUserAnime, .findOneUserAnime:
             return .get
         case .postUserAnime:
             return .post
+        case .putUserAnime:
+            return .put
+        case .deleteUserAnime:
+            return .delete
         }
     }
     
@@ -93,11 +107,21 @@ enum Endpoint {
             params["sfw"] = "true"
             
             return params
-        case .getDetailAnime, .getAnimeStaff, .getAnimeCharacter, .getRecommendationAnime:
-            return nil
+        case .getUserAnime(let userId):
+            return ["user_id": userId]
+        case .findOneUserAnime(let userId, let malId):
+            return ["user_id": userId, "mal_id": malId]
         case .postUserAnime(let params):
             let param = try? params.asDictionary()
             return param
+        case .putUserAnime(let param):
+            var params = [String: Any]()
+            params["user_score"] = param.userScore
+            params["user_episode"] = param.userEpisode
+            params["watch_status"] = param.watchStatus
+            return params
+        case .getDetailAnime, .getAnimeStaff, .getAnimeCharacter, .getRecommendationAnime, .deleteUserAnime:
+            return nil
         }
     }
     
@@ -109,19 +133,21 @@ enum Endpoint {
     }
     
     func urlString() -> String {
-        return BaseConstant.baseURL + self.path()
-    }
-    
-    func urlString2() -> String {
-        return BaseConstant.baseURL2 + self.path()
+        switch self {
+        case .getScheduledAnime, .getSeasonNow, .filterAnime, .filterManga, .getDetailAnime, .getAnimeCharacter, .getAnimeStaff, .getRecommendationAnime:
+            return BaseConstant.baseURL + self.path()
+        case .postUserAnime, .getUserAnime,.findOneUserAnime, .putUserAnime, .deleteUserAnime:
+            return BaseConstant.baseURL2 + self.path()
+        }
     }
     
     var encoding: ParameterEncoding {
         switch self {
-        case .getScheduledAnime, .getSeasonNow, .filterAnime, .filterManga, .getDetailAnime, .getAnimeCharacter, .getAnimeStaff, .getRecommendationAnime:
+        case .getScheduledAnime, .getSeasonNow, .filterAnime, .filterManga, .getDetailAnime, .getAnimeCharacter, .getAnimeStaff, .getRecommendationAnime, .getUserAnime, .findOneUserAnime, .deleteUserAnime:
             return URLEncoding.queryString
-        case .postUserAnime:
+        case .postUserAnime, .putUserAnime:
             return JSONEncoding.default
         }
     }
 }
+

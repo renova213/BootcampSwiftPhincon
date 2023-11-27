@@ -14,7 +14,7 @@ class SearchViewModel {
         let endpoint = Endpoint.filterAnime(params: filterParam)
         let query = filterParam.q ?? ""
         if(query != ""){
-            APIManager.shared.fetchRequest(endpoint: endpoint){[weak self] (result: Result<AnimeData, Error>) in
+            APIManager.shared.fetchRequest(endpoint: endpoint){[weak self] (result: Result<AnimeResponse, Error>) in
                 guard let self = self else { return }
                     switch result {
                     case .success(let data):
@@ -34,7 +34,7 @@ class SearchViewModel {
         let query = filterParam.q ?? ""
         
         if(query != ""){
-            APIManager.shared.fetchRequest(endpoint: endpoint){[weak self] (result: Result<MangaData, Error>) in
+            APIManager.shared.fetchRequest(endpoint: endpoint){[weak self] (result: Result<MangaResponse, Error>) in
                 guard let self = self else { return }
                     switch result {
                     case .success(let data):

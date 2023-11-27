@@ -1,13 +1,16 @@
 import Foundation
 import Alamofire
 
-enum APIError: Error {
-    case unauthorized
-    case internalServerError
-    case badRequest
-    case notFound
-    case confilct
-    case unknownError
+public enum HTTPStatusCode: Int {
+    case success = 200
+    case created = 201
+    case noContent = 204
+    case badRequest = 400
+    case unauthorized = 401
+    case forbidden = 403
+    case notFound = 404
+    case conflic = 409
+    case internalServerError = 500
 }
 
 class APIManager {
@@ -20,33 +23,24 @@ class APIManager {
                    method: endpoint.method(),
                    parameters: endpoint.parameters,
                    encoding: endpoint.encoding,
-                   headers: endpoint.headers).validate().responseDecodable(of: T.self) { response in
+                   headers: endpoint.headers).validate(statusCode: 200..<300).responseDecodable(of: T.self) { response in
             
             switch response.result {
             case .success(let decodedObject):
                 completion(.success(decodedObject))
                 
             case .failure(let error):
-                completion(.failure(error))
+                if let statusCode = response.response?.statusCode,
+                   let httpStatusCode = HTTPStatusCode(rawValue: statusCode),
+                   let data = response.data,
+                   let errorResponse = try? JSONDecoder().decode(StatusResponse.self, from: data) {
+                    
+                    let customError = CustomError(statusCode: httpStatusCode, message: errorResponse.message)
+                    completion(.failure(customError))
+                } else {
+                    completion(.failure(error))
+                }
             }
         }
     }
-    
-    public func fetchRequestBase2<T: Codable>(endpoint: Endpoint, completion: @escaping(Result<T, Error>)-> Void){
-            
-        AF.request(endpoint.urlString2(),
-                   method: endpoint.method(),
-                   parameters: endpoint.parameters,
-                   encoding: endpoint.encoding,
-                   headers: endpoint.headers).validate().responseDecodable(of: T.self) { response in
-        
-            switch response.result {
-            case .success(let decodedObject):
-                completion(.success(decodedObject))
-                
-            case .failure(let error):
-                completion(.failure(error))
-        }
-    }
-}
 }

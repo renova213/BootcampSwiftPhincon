@@ -1,10 +1,6 @@
 import Foundation
 
 struct AnimeDetailEntity: Codable {
-    let data: AnimeDetailData?
-}
-
-struct AnimeDetailData: Codable {
     let malID: Int?
     let url: String?
     let images: AnimeDetailImageType?

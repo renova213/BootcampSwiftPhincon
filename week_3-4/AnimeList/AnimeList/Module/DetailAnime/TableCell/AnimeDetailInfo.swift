@@ -45,7 +45,7 @@ class AnimeDetailInfo: UITableViewCell {
     func initialSetupImage(urlImage: String){
     }
     
-    func initialSetup(data: AnimeDetailData){
+    func initialSetup(data: AnimeDetailEntity){
         titleLabel.text = data.title ?? "-"
         
         statusLabel.text = data.status ?? "-"

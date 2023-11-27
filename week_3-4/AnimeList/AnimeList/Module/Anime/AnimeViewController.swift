@@ -10,15 +10,26 @@ class AnimeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchViewModel()
         configureTableView()
         tableView.showAnimatedGradientSkeleton()
         filterWatchButton.isHidden = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2){
-            self.filterWatchButton.isHidden = false
-            self.tableView.hideSkeleton()
-        }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        bindViewModel()
+    }
+    
+    let disposeBag = DisposeBag()
+    
+    var userAnimes: [UserAnimeEntity] = [] {
+        didSet{
+            tableView.reloadData()
+        }
+    }
+}
+
+extension AnimeViewController {
     func configureUI(){
         filterWatchButton.roundCornersAll(radius: 10)
     }
@@ -28,6 +39,22 @@ class AnimeViewController: UIViewController {
         tableView.dataSource = self
         tableView.registerCellWithNib(AnimeListCell.self)
         tableView.registerCellWithNib(AnimeSearchFilterCell.self)
+    }
+    
+    func fetchViewModel(){
+        UserAnimeViewModel.shared.getUserAnime(userId: 0){[weak self] finish in
+            if (finish){
+                self?.tableView.hideSkeleton()
+                self?.filterWatchButton.isHidden = false
+            }
+        }
+    }
+    
+    func bindViewModel(){
+        UserAnimeViewModel.shared.userAnime
+            .subscribe(onNext: {[weak self] in self?.userAnimes = $0
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -41,7 +68,7 @@ extension AnimeViewController: UITableViewDelegate, UITableViewDataSource{
         case 0:
             return 1
         case 1:
-            return 9
+            return userAnimes.count
         default:
             return 0
         }
@@ -55,9 +82,14 @@ extension AnimeViewController: UITableViewDelegate, UITableViewDataSource{
             cell.delegate = self
             return cell
         case 1:
+            let data = userAnimes[indexPath.row]
+            
             let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as AnimeListCell
             cell.selectionStyle = .none
-            cell.urlImage.hero.id = "48316"
+            if let id = data.anime.malId {
+                cell.urlImage.hero.id = String(id)
+            }
+            cell.initialSetup(data: data)
             return cell
         default:
             return UITableViewCell()
@@ -66,8 +98,10 @@ extension AnimeViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(indexPath.section == 1){
+            let data = userAnimes[indexPath.row]
             let vc = DetailAnimeViewController()
-            vc.malId = 48316
+            vc.id = data.id
+            vc.malId = data.anime.malId
             vc.hidesBottomBarWhenPushed = true
             navigationController?.hero.isEnabled = true
             navigationController?.pushViewController(vc, animated: true)

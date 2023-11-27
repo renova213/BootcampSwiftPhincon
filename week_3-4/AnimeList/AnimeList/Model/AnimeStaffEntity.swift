@@ -1,9 +1,5 @@
 import Foundation
 
-struct AnimeStaffData: Codable {
-    var data: [AnimeStaffEntity]
-}
-
 struct AnimeStaffEntity: Codable {
     let person: AnimeStaffPerson?
     let positions: [String]?

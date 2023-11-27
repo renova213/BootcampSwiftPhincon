@@ -64,16 +64,11 @@ extension DashboardViewController {
     
     func bindFetchViewModel() {
         AnimeViewModel.shared.currentAnime
-            .subscribe(onNext: { [weak self] i in
-                
-                self?.currentAnime = i
-            })
+            .subscribe(onNext: { [weak self] in self?.currentAnime = $0 })
             .disposed(by: disposeBag)
         
         AnimeViewModel.shared.currentSeasonAnime
-            .subscribe(onNext: { [weak self] i in
-                
-                self?.currentSeasonAnime = i
+            .subscribe(onNext: {[weak self] in self?.currentSeasonAnime = $0
             })
             .disposed(by: disposeBag)
     }

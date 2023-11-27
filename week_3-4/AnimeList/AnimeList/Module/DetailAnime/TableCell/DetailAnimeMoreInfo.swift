@@ -17,7 +17,7 @@ class DetailAnimeMoreInfo: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func initialSetup(data: AnimeDetailData){
+    func initialSetup(data: AnimeDetailEntity){
         
         synonimLabel.text = data.titleSynonyms?.joined(separator: ", ")
         japaneseTitleLabel.text = data.titleJapanese ?? "-"

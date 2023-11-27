@@ -11,12 +11,13 @@ class DetailAnimeViewController: UIViewController {
     @IBOutlet weak var sourceButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addToListButton: UIButton!
-    
+    @IBOutlet weak var updateListButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         tableView.showAnimatedGradientSkeleton()
         addToListButton.isHidden = true
+        updateListButton.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -28,8 +29,9 @@ class DetailAnimeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
     }
     
+    var id: String?
     var malId: Int?
-    var animeDetail: AnimeDetailData? {
+    var animeDetail: AnimeDetailEntity? {
         didSet{
             tableView.reloadData()
         }
@@ -70,6 +72,16 @@ extension DetailAnimeViewController{
         }
         ).disposed(by: disposeBag)
         
+        updateListButton.rx.tap.subscribe(onNext: { [weak self] in
+            let bottomSheetVC = UpdateListBottomSheet()
+            bottomSheetVC.malId = self?.malId ?? 0
+            bottomSheetVC.id = self?.id
+            bottomSheetVC.imageUrl = self?.animeDetail?.images?.jpg?.imageUrl ?? ""
+            bottomSheetVC.setContentHeight(bottomSheetVC.view.bounds.height)
+            self?.presentBottomSheet(contentViewController: bottomSheetVC)
+        }
+        ).disposed(by: disposeBag)
+        
         backButton.rx.tap.subscribe(onNext: { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
@@ -88,11 +100,15 @@ extension DetailAnimeViewController{
 extension DetailAnimeViewController {
     func getFetchViewModel(){
         if let id = malId{
-            AnimeViewModel.shared.getDetailAnime(malId: id){finish in
+            DetailAnimeViewModel.shared.getDetailAnime(malId: id){finish in
                 if(finish){
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-                        self.tableView.hideSkeleton()
-                        self.addToListButton.isHidden = false
+                    self.tableView.hideSkeleton()
+                    UserAnimeViewModel.shared.findOneUserAnime(userId: 0, malId: id){[weak self] finish in
+                        if(finish){
+                            self?.updateListButton.isHidden = false
+                        }else{
+                            self?.addToListButton.isHidden = false
+                        }
                     }
                 }
             }
@@ -103,7 +119,7 @@ extension DetailAnimeViewController {
     }
     
     func bindFetchViewModel() {
-        AnimeViewModel.shared.animeDetail
+        DetailAnimeViewModel.shared.animeDetail
             .subscribe(onNext: { [weak self] i in
                 
                 self?.animeDetail = i
@@ -242,6 +258,7 @@ extension DetailAnimeViewController: DetailAnimeRecommendationDelegate{
     func didTapNavigation(malId: Int) {
         let vc = DetailAnimeViewController()
         vc.malId = malId
+        vc.id = id
         navigationController?.pushViewController(vc, animated: true)
         navigationController?.popViewController(animated: false)
         tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)

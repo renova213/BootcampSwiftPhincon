@@ -1,9 +1,5 @@
 import Foundation
 
-struct AnimeRecommendationData: Codable{
-    var data: [AnimeRecommendationEntity]
-}
-
 struct AnimeRecommendationEntity: Codable {
     let entry: AnimeRecommendationEntry?
     let votes: Int?

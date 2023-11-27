@@ -9,21 +9,18 @@ class AnimeViewModel {
     let currentAnime = BehaviorRelay<[AnimeEntity]>(value: [])
     let currentSeasonAnime = BehaviorRelay<[AnimeEntity]>(value: [])
     let filterAnime = BehaviorRelay<[AnimeEntity]>(value: [])
-    let animeDetail = BehaviorRelay<AnimeDetailData?>(value: nil)
     let animeCharacter = BehaviorRelay<[AnimeCharacterEntity]>(value: [])
     let animeStaff = BehaviorRelay<[AnimeStaffEntity]>(value: [])
     let animeRecommendations = BehaviorRelay<[AnimeRecommendationEntity]>(value: [])
     
     func getCurrentAnime(limit: String, page: String, completion: @escaping(Bool) -> Void) {
         let endpoint = Endpoint.getScheduledAnime(params: ScheduleParam(filter: Date.getCurrentDay().lowercased(), page: page, limit: limit))
-        APIManager.shared.fetchRequest(endpoint: endpoint){[weak self] (result: Result<AnimeData, Error>) in
+        APIManager.shared.fetchRequest(endpoint: endpoint){[weak self] (result: Result<AnimeResponse, Error>) in
             guard let self = self else { return }
             switch result {
             case .success(let data):
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                    self.currentAnime.accept(data.data)
-                    completion(true)
-                }
+                self.currentAnime.accept(data.data)
+                completion(true)
             case .failure:
                 completion(false)
             }
@@ -33,7 +30,7 @@ class AnimeViewModel {
     func getCurrentSeasonAnime(limit: String, page: String) {
         
         let endpoint = Endpoint.getSeasonNow(page: page, limit: limit)
-        APIManager.shared.fetchRequest(endpoint: endpoint){[weak self] (result: Result<AnimeData, Error>) in
+        APIManager.shared.fetchRequest(endpoint: endpoint){[weak self] (result: Result<AnimeResponse, Error>) in
             guard let self = self else { return }
             switch result {
             case .success(let data):
@@ -46,37 +43,21 @@ class AnimeViewModel {
     
     func getShowMoreAnime(endpoint: Endpoint, completion: @escaping(Bool)-> Void) {
         
-        APIManager.shared.fetchRequest(endpoint: endpoint){[weak self] (result: Result<AnimeData, Error>) in
+        APIManager.shared.fetchRequest(endpoint: endpoint){[weak self] (result: Result<AnimeResponse, Error>) in
             guard let self = self else { return }
             switch result {
             case .success(let data):
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                    self.showMoreAnime.accept(data.data)
-                    completion(true)
-                }
+                self.showMoreAnime.accept(data.data)
+                completion(true)
             case .failure:
                 completion(false)
             }
         }
     }
     
-    func getDetailAnime(malId: Int, completion: @escaping(Bool) -> Void) {
-        
-        APIManager.shared.fetchRequest(endpoint: Endpoint.getDetailAnime(malId: malId)){[weak self] (result: Result<AnimeDetailEntity, Error>) in
-            guard let self = self else { return }
-                switch result {
-                case .success(let data):
-                    self.animeDetail.accept(data.data)
-                    completion(true)
-                case .failure:  
-                    completion(false)
-                }
-            }
-    }
-    
     func getAnimeCharacter(malId: Int) {
         
-        APIManager.shared.fetchRequest(endpoint: Endpoint.getAnimeCharacter(malId: malId)){[weak self] (result: Result<AnimeCharacterData, Error>) in
+        APIManager.shared.fetchRequest(endpoint: Endpoint.getAnimeCharacter(malId: malId)){[weak self] (result: Result<AnimeCharacterResponse, Error>) in
             guard let self = self else { return }
             switch result {
             case .success(let data):
@@ -89,7 +70,7 @@ class AnimeViewModel {
     
     func getAnimeStaff(malId: Int) {
         
-        APIManager.shared.fetchRequest(endpoint: Endpoint.getAnimeStaff(malId: malId)){[weak self] (result: Result<AnimeStaffData, Error>) in
+        APIManager.shared.fetchRequest(endpoint: Endpoint.getAnimeStaff(malId: malId)){[weak self] (result: Result<AnimeStaffResponse, Error>) in
             guard let self = self else { return }
             switch result {
             case .success(let data):
@@ -101,7 +82,7 @@ class AnimeViewModel {
     }
     
     func getAnimeRecommendations(malId: Int) {
-        APIManager.shared.fetchRequest(endpoint: Endpoint.getRecommendationAnime(malId: malId)){[weak self] (result: Result<AnimeRecommendationData, Error>) in
+        APIManager.shared.fetchRequest(endpoint: Endpoint.getRecommendationAnime(malId: malId)){[weak self] (result: Result<AnimeRecommendationResponse, Error>) in
             guard let self = self else { return }
             switch result {
             case .success(let data):

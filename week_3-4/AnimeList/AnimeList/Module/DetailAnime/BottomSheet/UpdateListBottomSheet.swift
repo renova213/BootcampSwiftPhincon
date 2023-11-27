@@ -3,16 +3,16 @@ import RxSwift
 import RxCocoa
 import Kingfisher
 
-class AddToListBottomSheet: UIViewController {
+class UpdateListBottomSheet: UIViewController {
     
+    @IBOutlet weak var messageRatingLabel: UILabel!
     @IBOutlet weak var bottomSheetView: UIView!
     @IBOutlet weak var urlImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var scoreView: UIView!
     @IBOutlet weak var scoreCollection: UICollectionView!
-    @IBOutlet weak var messageScoreLabel: UITextField!
     @IBOutlet weak var closeButton: UIButton!
-    @IBOutlet weak var addToListButton: UIButton!
+    @IBOutlet weak var updateListButton: UIButton!
     @IBOutlet weak var statusButton: UIButton!
     @IBOutlet weak var increamentButton: UIButton!
     @IBOutlet weak var decreamentButton: UIButton!
@@ -24,6 +24,7 @@ class AddToListBottomSheet: UIViewController {
         buttonGesture()
         configureUI()
         configureCollectionView()
+        fetchViewModel()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -34,6 +35,7 @@ class AddToListBottomSheet: UIViewController {
         view.heightAnchor.constraint(equalToConstant: height).isActive = true
     }
     
+    var id: String?
     var imageUrl: String?
     var malId: Int?
     lazy var loadingIndicator = PopUpLoading(on: view)
@@ -45,7 +47,7 @@ class AddToListBottomSheet: UIViewController {
     }
 }
 
-extension AddToListBottomSheet: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+extension UpdateListBottomSheet: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func configureCollectionView(){
         scoreCollection.delegate = self
         scoreCollection.dataSource = self
@@ -66,7 +68,6 @@ extension AddToListBottomSheet: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         DetailAnimeViewModel.shared.changeSelectedIndexScore(index: indexPath.row)
-        DetailAnimeViewModel.shared.changeMessageRating()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -74,10 +75,10 @@ extension AddToListBottomSheet: UICollectionViewDelegate, UICollectionViewDataSo
     }
 }
 
-extension AddToListBottomSheet{
+extension UpdateListBottomSheet{
     func successPopUp(_ vc: SuccessPopUp) {
         vc.view.alpha = 0
-        vc.setupMessage(message: "Successfully added to the list")
+        vc.setupMessage(message: "Update successfully")
         vc.modalPresentationStyle = .overCurrentContext
         present(vc, animated: false, completion: nil)
         
@@ -114,6 +115,18 @@ extension AddToListBottomSheet{
         }
     }
     
+    func fetchViewModel(){
+        if let id = self.malId{
+            UserAnimeViewModel.shared.findOneUserAnime(userId: 0, malId: id){ finish in
+                if(finish){
+                    if let data = UserAnimeViewModel.shared.findOneUserAnime.value{
+                        DetailAnimeViewModel.shared.setupBottomSheet(data: data)
+                    }
+                }
+            }
+        }
+    }
+    
     func buttonGesture(){
         closeButton.rx.tap.subscribe(onNext: {[weak self] _ in
             self?.dismiss(animated: true, completion: nil)
@@ -138,28 +151,25 @@ extension AddToListBottomSheet{
             self?.presentBottomSheet(contentViewController: bottomSheetVC)
         }
         ).disposed(by: disposeBag)
-        addToListButton.rx.tap.subscribe(onNext: { [weak self] in
-            self?.addToListButton.isEnabled = false
+        updateListButton.rx.tap.subscribe(onNext: { [weak self] in
+            self?.updateListButton.isEnabled = false
             self?.loadingIndicator.showInFull()
-            
-            if let id = self?.malId{
-                UserAnimeViewModel.shared.postUserAnime(body: UserAnimeBody(userId: 0, malId: id, userScore: DetailAnimeViewModel.shared.selectedIndexScore.value + 1, userEpisode: DetailAnimeViewModel.shared.episode.value, watchStatus: DetailAnimeViewModel.shared.selectedSwatchStatusIndex.value)){[weak self] result in
-                    switch result {
-                    case .success:
-                        self?.addToListButton.isEnabled = true
-                        self?.loadingIndicator.dismissImmediately()
-                        UserAnimeViewModel.shared.getUserAnime(userId: 0){ result in }
-                        self?.successPopUp(SuccessPopUp())
-                        break
-                    case .failure(let error):
-                        self?.addToListButton.isEnabled = true
-                        self?.loadingIndicator.dismissImmediately()
-                        let vc = FailedPopUp()
-                        if let error = error as? CustomError{
-                            self?.failedPopUp(vc, error.message)
-                        }
-                        break
+            UserAnimeViewModel.shared.updateUserAnime(body: UpdateUserAnimeBody(id: self?.id ?? "", userScore: DetailAnimeViewModel.shared.selectedIndexScore.value + 1, userEpisode: DetailAnimeViewModel.shared.episode.value, watchStatus: DetailAnimeViewModel.shared.selectedSwatchStatusIndex.value)){[weak self] result in
+                switch result {
+                case .success:
+                    self?.updateListButton.isEnabled = true
+                    self?.loadingIndicator.dismissImmediately()
+                    UserAnimeViewModel.shared.getUserAnime(userId: 0){ result in }
+                    self?.successPopUp(SuccessPopUp())
+                    break
+                case .failure(let error):
+                    self?.updateListButton.isEnabled = true
+                    self?.loadingIndicator.dismissImmediately()
+                    let vc = FailedPopUp()
+                    if let error = error as? CustomError{
+                        self?.failedPopUp(vc, error.message)
                     }
+                    break
                 }
             }
         }
@@ -174,7 +184,7 @@ extension AddToListBottomSheet{
         }
         DetailAnimeViewModel.shared.resetBottomSheet()
     }
-   
+    
     func bindViewModel() {
         DetailAnimeViewModel.shared.selectedIndexScore
             .subscribe(onNext: { [weak self] i in
@@ -192,7 +202,7 @@ extension AddToListBottomSheet{
         DetailAnimeViewModel.shared.messageRating
             .subscribe(onNext: { [weak self] i in
                 
-                self?.messageScoreLabel.text = String(i)
+                self?.messageRatingLabel.text = String(i)
             })
             .disposed(by: disposeBag)
         DetailAnimeViewModel.shared.selectedStatus

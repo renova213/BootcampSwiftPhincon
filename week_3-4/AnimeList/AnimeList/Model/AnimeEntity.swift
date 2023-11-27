@@ -1,32 +1,18 @@
 import Foundation
 
-struct AnimeData: Codable {
-    var data: [AnimeEntity]
-}
-
 struct AnimeEntity: Codable{
-    let malId: Int?
-    let title:String?
+    let title, type, season, status: String?
     let images: AnimeImageType?
     let score: Double?
     let broadcast: AnimeBroadcast?
-    let type: String?
-    let episodes: Int?
-    let season: String?
     let aired: AnimeAired?
-    let rank: Int?
+    let malId,scoredBy, rank, year, episodes: Int?
+    let genres: [AnimeGenre]
     
     enum CodingKeys: String, CodingKey {
         case malId = "mal_id"
-        case title = "title"
-        case images = "images"
-        case score = "score"
-        case broadcast = "broadcast"
-        case type = "type"
-        case episodes = "episodes"
-        case season = "season"
-        case aired = "aired"
-        case rank = "rank"
+        case scoredBy = "scored_by"
+        case rank, aired, season, episodes, type, broadcast, score, images, title, year, genres, status
     }
 }
 
@@ -66,4 +52,8 @@ struct AnimeProp: Codable {
 
 struct AnimeFrom: Codable {
     let day, month, year: Int?
+}
+
+struct AnimeGenre: Codable {
+    let name: String?
 }

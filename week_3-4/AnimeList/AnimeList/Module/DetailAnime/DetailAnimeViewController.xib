@@ -16,6 +16,7 @@
                 <outlet property="favoriteButton" destination="CO5-8p-K7g" id="uoC-iK-NEB"/>
                 <outlet property="sourceButton" destination="JoI-RV-qEj" id="xcb-7k-M4Y"/>
                 <outlet property="tableView" destination="ocu-HJ-9a7" id="CK3-ds-X6y"/>
+                <outlet property="updateListButton" destination="OI9-CO-QJo" id="eLv-fJ-b8G"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="NBZ-mB-87i"/>
             </connections>
         </placeholder>
@@ -114,6 +115,18 @@
                                 <color key="baseBackgroundColor" name="Main Color"/>
                             </buttonConfiguration>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OI9-CO-QJo">
+                            <rect key="frame" x="234" y="673" width="135" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="135" id="JBf-3C-arn"/>
+                                <constraint firstAttribute="height" constant="50" id="KKV-PZ-oGf"/>
+                            </constraints>
+                            <color key="tintColor" name="Main Color"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="filled" image="square.and.pencil" catalog="system" title="Update" imagePadding="16">
+                                <color key="baseBackgroundColor" name="Main Color"/>
+                            </buttonConfiguration>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
@@ -124,7 +137,9 @@
                         <constraint firstAttribute="bottom" secondItem="sAj-v0-ods" secondAttribute="bottom" constant="70" id="Mfc-O2-O87"/>
                         <constraint firstItem="OSU-MH-7hh" firstAttribute="top" secondItem="u36-a9-IWQ" secondAttribute="top" id="Nyd-HS-nHo"/>
                         <constraint firstAttribute="trailing" secondItem="OSU-MH-7hh" secondAttribute="trailing" id="gb6-BQ-Ib7"/>
+                        <constraint firstAttribute="trailing" secondItem="OI9-CO-QJo" secondAttribute="trailing" constant="24" id="i1e-l1-B17"/>
                         <constraint firstItem="ocu-HJ-9a7" firstAttribute="leading" secondItem="u36-a9-IWQ" secondAttribute="leading" id="loX-iS-qvF"/>
+                        <constraint firstAttribute="bottom" secondItem="OI9-CO-QJo" secondAttribute="bottom" constant="70" id="mlR-Tu-xvW"/>
                         <constraint firstItem="OSU-MH-7hh" firstAttribute="leading" secondItem="u36-a9-IWQ" secondAttribute="leading" id="tUr-5c-0oH"/>
                     </constraints>
                 </view>
@@ -145,6 +160,7 @@
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="113"/>
         <namedColor name="Main Color">
             <color red="0.63529411764705879" green="0.69803921568627447" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

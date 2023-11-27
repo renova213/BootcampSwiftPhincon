@@ -1,9 +1,5 @@
 import Foundation
 
-struct MangaData: Codable {
-    var data: [MangaEntity]
-}
-
 struct MangaEntity: Codable{
     var malId: Int?
     var title: String?

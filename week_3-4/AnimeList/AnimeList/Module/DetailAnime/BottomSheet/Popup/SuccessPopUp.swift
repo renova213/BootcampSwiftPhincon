@@ -20,9 +20,11 @@ class SuccessPopUp: UIViewController {
     func successAnimate() {
         successLottie.animation = LottieAnimation.named("success")
         successLottie.loopMode = .loop
-        messageLabel.text = "Berhasil menambahkan ke dalam list"
-        
         successLottie.play()    
+    }
+    
+    func setupMessage(message: String){
+        messageLabel.text = message
     }
     
     func configureUI(){

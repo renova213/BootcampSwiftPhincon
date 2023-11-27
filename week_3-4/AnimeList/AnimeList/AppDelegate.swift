@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  AnimeList
-//
-//  Created by Phincon on 10/11/23.
-//
-
 import UIKit
 import netfox
 

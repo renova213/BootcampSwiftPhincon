@@ -52,9 +52,7 @@ extension WatchStatusBottomSheet: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let data = DetailAnimeViewModel.shared.watchStatus[indexPath.row]
         
-        DetailAnimeViewModel.shared.selectWatchStatus(status: data)
         DetailAnimeViewModel.shared.changeSelectedStatusIndex(index: indexPath.row)
         self.dismiss(animated: true, completion: nil)
     }
