@@ -14,6 +14,7 @@ PODS:
     - RxSwift (= 6.6.0)
   - RxSwift (6.6.0)
   - SkeletonView (1.30.4)
+  - ToastViewSwift (2.0.0)
   - YouTubePlayer (0.7.2)
 
 DEPENDENCIES:
@@ -26,6 +27,7 @@ DEPENDENCIES:
   - RxGesture
   - RxSwift (= 6.6.0)
   - SkeletonView
+  - ToastViewSwift
   - YouTubePlayer
 
 SPEC REPOS:
@@ -40,6 +42,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SkeletonView
+    - ToastViewSwift
     - YouTubePlayer
 
 SPEC CHECKSUMS:
@@ -53,8 +56,9 @@ SPEC CHECKSUMS:
   RxRelay: 45eaa5db8ee4fb50e5ebd57deec0159e97fa51e6
   RxSwift: a4b44f7d24599f674deebd1818eab82e58410632
   SkeletonView: 5a050f6411e697abd4cda0a8d767013399dccd69
+  ToastViewSwift: db710ad3c19c826269d004038c7b69f5b658dc6f
   YouTubePlayer: 2b5f2830d8f9b2cde942083211291e382c9e6bd5
 
-PODFILE CHECKSUM: 86d652173a1706c8cea509e1e350f45e69092af2
+PODFILE CHECKSUM: 4d48e90401886695024a82f242f86cd98448d255
 
 COCOAPODS: 1.14.2

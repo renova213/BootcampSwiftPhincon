@@ -14,6 +14,7 @@ target 'AnimeList' do
   pod 'YouTubePlayer'
   pod 'Hero'
   pod 'netfox'
+  pod "ToastViewSwift"
 
   # Pods for AnimeList
 
