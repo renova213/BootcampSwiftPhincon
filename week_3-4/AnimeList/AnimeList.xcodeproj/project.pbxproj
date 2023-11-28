@@ -124,6 +124,7 @@
 		36AF1C0F2B10499100C8EB46 /* UserAnimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF1C0E2B10499100C8EB46 /* UserAnimeViewModel.swift */; };
 		36AF1C122B104B7500C8EB46 /* StatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF1C112B104B7500C8EB46 /* StatusResponse.swift */; };
 		36AF1C142B1096D400C8EB46 /* ExtEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF1C132B1096D400C8EB46 /* ExtEncode.swift */; };
+		36C7D22F2B15765600FB25F8 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C7D22E2B15765600FB25F8 /* BaseViewModel.swift */; };
 		36C9C5352B0767A7009E907C /* AnimeCharacterEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C9C5342B0767A7009E907C /* AnimeCharacterEntity.swift */; };
 		36D643CD2B01B97800EF554E /* SchedulesParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D643CC2B01B97800EF554E /* SchedulesParam.swift */; };
 		36D643CF2B01BF8300EF554E /* AnimeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D643CE2B01BF8300EF554E /* AnimeEntity.swift */; };
@@ -268,6 +269,7 @@
 		36AF1C0E2B10499100C8EB46 /* UserAnimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnimeViewModel.swift; sourceTree = "<group>"; };
 		36AF1C112B104B7500C8EB46 /* StatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusResponse.swift; sourceTree = "<group>"; };
 		36AF1C132B1096D400C8EB46 /* ExtEncode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtEncode.swift; sourceTree = "<group>"; };
+		36C7D22E2B15765600FB25F8 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		36C9C5342B0767A7009E907C /* AnimeCharacterEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeCharacterEntity.swift; sourceTree = "<group>"; };
 		36D643CC2B01B97800EF554E /* SchedulesParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesParam.swift; sourceTree = "<group>"; };
 		36D643CE2B01BF8300EF554E /* AnimeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeEntity.swift; sourceTree = "<group>"; };
@@ -419,6 +421,8 @@
 		36231CE42AFE0454008257C8 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				36C7D2312B157AAC00FB25F8 /* ViewModel */,
+				36C7D2302B157AA600FB25F8 /* View */,
 				36569EDC2AFE083F00EDB6B9 /* TableCell */,
 				36569ED62AFE05B700EDB6B9 /* DashboardViewController.swift */,
 				36569ED72AFE05B700EDB6B9 /* DashboardViewController.xib */,
@@ -589,6 +593,7 @@
 				36641E372B0ED52E00651AF0 /* BottomSheetHelper.swift */,
 				36641E392B0ED55C00651AF0 /* PopUpLoading.swift */,
 				36641E3B2B0ED5A500651AF0 /* Common.swift */,
+				36C7D22E2B15765600FB25F8 /* BaseViewModel.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -730,6 +735,20 @@
 				36683F8D2B14741C00478AC5 /* FindOneUserAnimeResponse.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		36C7D2302B157AA600FB25F8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		36C7D2312B157AAC00FB25F8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		36D60F2B2B0478AD00800D88 /* DetailAnime */ = {
@@ -1039,6 +1058,7 @@
 				36F9D0B72B0F32AF0056F40E /* ExtUIButton.swift in Sources */,
 				36AF1C142B1096D400C8EB46 /* ExtEncode.swift in Sources */,
 				36569ED42AFE058500EDB6B9 /* MainTabBarViewController.swift in Sources */,
+				36C7D22F2B15765600FB25F8 /* BaseViewModel.swift in Sources */,
 				36683F882B14382C00478AC5 /* AnimeDetailResponse.swift in Sources */,
 				36641E382B0ED52E00651AF0 /* BottomSheetHelper.swift in Sources */,
 				36F46C1B2B02108B002FFC78 /* CurrentSeasonAnimeItem.swift in Sources */,

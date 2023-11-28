@@ -2,8 +2,9 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class AnimeViewModel {
+class AnimeViewModel: BaseViewModel {
     static let shared = AnimeViewModel()
+    let api = APIManager.shared
     
     let showMoreAnime = BehaviorRelay<[AnimeEntity]>(value: [])
     let currentAnime = BehaviorRelay<[AnimeEntity]>(value: [])
@@ -13,30 +14,44 @@ class AnimeViewModel {
     let animeStaff = BehaviorRelay<[AnimeStaffEntity]>(value: [])
     let animeRecommendations = BehaviorRelay<[AnimeRecommendationEntity]>(value: [])
     
-    func getCurrentAnime(limit: String, page: String, completion: @escaping(Bool) -> Void) {
-        let endpoint = Endpoint.getScheduledAnime(params: ScheduleParam(filter: Date.getCurrentDay().lowercased(), page: page, limit: limit))
-        APIManager.shared.fetchRequest(endpoint: endpoint){[weak self] (result: Result<AnimeResponse, Error>) in
-            guard let self = self else { return }
-            switch result {
-            case .success(let data):
-                self.currentAnime.accept(data.data)
-                completion(true)
-            case .failure:
-                completion(false)
-            }
-        }
-    }
-    
-    func getCurrentSeasonAnime(limit: String, page: String) {
+    func loadData <T: Codable>(for endpoint: Endpoint, resultType: T.Type){
+        loadingState.accept(.loading)
         
-        let endpoint = Endpoint.getSeasonNow(page: page, limit: limit)
-        APIManager.shared.fetchRequest(endpoint: endpoint){[weak self] (result: Result<AnimeResponse, Error>) in
+        api.fetchRequest(endpoint: endpoint){ [weak self] (response: Result<T, Error>) in
             guard let self = self else { return }
-            switch result {
+            
+            switch  response{
             case .success(let data):
-                self.currentSeasonAnime.accept(data.data)
-            case .failure(let err):
-                print(err)
+                switch endpoint {
+                case .getScheduledAnime:
+                    let data = data as? AnimeResponse
+                    self.currentAnime.accept(data?.data ?? [])
+                    self.loadingState.accept(.finished)
+                    break
+                case .getSeasonNow:
+                    let data = data as? AnimeResponse
+                    self.currentSeasonAnime.accept(data?.data ?? [])
+                    self.loadingState.accept(.finished)
+                    break
+                case .getAnimeCharacter:
+                    let data = data as? AnimeCharacterResponse
+                    if let character = data?.data{
+                        self.animeCharacter.accept(character)
+                    }
+                    self.loadingState.accept(.finished)
+                    break
+                case .getRecommendationAnime:
+                    let data = data as? AnimeRecommendationResponse
+                    self.animeRecommendations.accept(data?.data ?? [])
+                    self.loadingState.accept(.finished)
+                    break
+                default:
+                    self.loadingState.accept(.finished)
+                    break
+                }
+            case .failure:
+                self.loadingState.accept(.failed)
+                break
             }
         }
     }

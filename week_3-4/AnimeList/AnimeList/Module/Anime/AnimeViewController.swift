@@ -21,7 +21,7 @@ class AnimeViewController: UIViewController {
     }
     
     let disposeBag = DisposeBag()
-    
+    let userAnimeVM = UserAnimeViewModel.shared
     var userAnimes: [UserAnimeEntity] = [] {
         didSet{
             tableView.reloadData()
@@ -51,7 +51,7 @@ extension AnimeViewController {
     }
     
     func bindViewModel(){
-        UserAnimeViewModel.shared.userAnime
+       userAnimeVM.userAnime
             .subscribe(onNext: {[weak self] in self?.userAnimes = $0
             })
             .disposed(by: disposeBag)

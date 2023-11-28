@@ -10,17 +10,21 @@ class DashboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        fetchData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        bindFetchViewModel()
-        getFetchViewModel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        bindData()
     }
     
     weak var delegateTodayAnime: TodayAnimeDelegate?
     weak var delegateCurrentAnime: CurrentAnimeDelegate?
     
+    let animeVM = AnimeViewModel.shared
     let disposeBag = DisposeBag()
     var currentAnime: [AnimeEntity] = []{
         didSet{
@@ -48,29 +52,34 @@ class DashboardViewController: UIViewController {
 
 extension DashboardViewController {
     
-    func getFetchViewModel(){
-        if(DashboardViewModel.shared.isFirstFetchData.value){
-            DashboardViewModel.shared.changeFirstFetchData(bool: false)
-            self.dashboardTableView.showAnimatedGradientSkeleton()
-            
-            AnimeViewModel.shared.getCurrentAnime(limit: "6", page: "1"){ finish in
-                if (finish){
-                    self.dashboardTableView.hideSkeleton()
-                }
-            }
-            AnimeViewModel.shared.getCurrentSeasonAnime(limit: "6", page: "1")
-        }
+    func fetchData(){
+        
+        animeVM.loadData(for: Endpoint.getScheduledAnime(params: ScheduleParam(filter: Date.getCurrentDay().lowercased(), page: "1", limit: "6")), resultType: AnimeResponse.self)
+        
+        AnimeViewModel.shared.loadData(for: Endpoint.getSeasonNow(page: "1", limit: "6"), resultType: AnimeResponse.self)
     }
     
-    func bindFetchViewModel() {
-        AnimeViewModel.shared.currentAnime
+    func bindData() {
+        animeVM.currentAnime.asObservable()
             .subscribe(onNext: { [weak self] in self?.currentAnime = $0 })
             .disposed(by: disposeBag)
         
-        AnimeViewModel.shared.currentSeasonAnime
+        animeVM.currentSeasonAnime.asObservable()
             .subscribe(onNext: {[weak self] in self?.currentSeasonAnime = $0
             })
             .disposed(by: disposeBag)
+        animeVM.loadingState.asObservable().subscribe(onNext: {[weak self] state in
+            guard let self = self else { return }
+            switch state {
+            case .notLoad, .loading:
+                self.dashboardTableView.showAnimatedGradientSkeleton()
+            case .failed, .finished:
+                DispatchQueue.main.async {
+                    self.view.hideSkeleton()
+                }
+            }
+        }
+        ).disposed(by: disposeBag)
     }
 }
 
