@@ -5,6 +5,7 @@ import RxCocoa
 
 class WatchStatusBottomSheet: UIViewController {
     
+    @IBOutlet weak var dismissButton: UIButton!
     @IBOutlet weak var urlImage: UIImageView!
     @IBOutlet weak var statusTable: UITableView!
     override func viewDidLoad() {
@@ -12,6 +13,7 @@ class WatchStatusBottomSheet: UIViewController {
         configureTable()
         configureUI()
         bindData()
+        buttonGesture()
     }
     
     var imageUrl: String?
@@ -20,6 +22,8 @@ class WatchStatusBottomSheet: UIViewController {
             statusTable.reloadData()
         }
     }
+    private let disposeBag = DisposeBag()
+    
     func setContentHeight(_ height: CGFloat) {
         view.heightAnchor.constraint(equalToConstant: height).isActive = true
     }
@@ -29,6 +33,17 @@ class WatchStatusBottomSheet: UIViewController {
         if let url = URL(string: imageUrl ?? ""){
             urlImage.kf.setImage(with: url, placeholder: UIImage(named: "ImagePlaceholder"))
         }
+    }
+    
+    func bindData(){
+        DetailAnimeViewModel.shared.selectedSwatchStatusIndex.subscribe(onNext: {i in
+            self.selectedIndex = i
+        }).disposed(by: DisposeBag())
+    }
+    
+    func buttonGesture(){
+        dismissButton.rx.tap.subscribe(onNext: {_ in
+            self.dismiss(animated: false, completion: nil)}).disposed(by: disposeBag)
     }
 }
 
@@ -61,11 +76,5 @@ extension WatchStatusBottomSheet: UITableViewDelegate, UITableViewDataSource{
         statusTable.dataSource = self
         statusTable.delegate = self
         statusTable.registerCellWithNib(WatchStatusItem.self)
-    }
-    
-    func bindData(){
-        DetailAnimeViewModel.shared.selectedSwatchStatusIndex.subscribe(onNext: {i in
-            self.selectedIndex = i
-        }).disposed(by: DisposeBag())
     }
 }

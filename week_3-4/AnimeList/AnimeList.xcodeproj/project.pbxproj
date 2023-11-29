@@ -130,6 +130,10 @@
 		36D643CD2B01B97800EF554E /* SchedulesParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D643CC2B01B97800EF554E /* SchedulesParam.swift */; };
 		36D643CF2B01BF8300EF554E /* AnimeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D643CE2B01BF8300EF554E /* AnimeEntity.swift */; };
 		36E472E12B15E5F000C1E9B0 /* ExtProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E472E02B15E5F000C1E9B0 /* ExtProgressView.swift */; };
+		36EB5F702B16CE2600A5EE9A /* FilterPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EB5F6E2B16CE2600A5EE9A /* FilterPopUp.swift */; };
+		36EB5F712B16CE2600A5EE9A /* FilterPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36EB5F6F2B16CE2600A5EE9A /* FilterPopUp.xib */; };
+		36EB5F752B16D9A700A5EE9A /* AnimeFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EB5F732B16D9A700A5EE9A /* AnimeFilterCell.swift */; };
+		36EB5F762B16D9A700A5EE9A /* AnimeFilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36EB5F742B16D9A700A5EE9A /* AnimeFilterCell.xib */; };
 		36F0711A2B0CB3C10016587E /* RankAnimeFilterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F071182B0CB3C10016587E /* RankAnimeFilterItem.swift */; };
 		36F0711B2B0CB3C10016587E /* RankAnimeFilterItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F071192B0CB3C10016587E /* RankAnimeFilterItem.xib */; };
 		36F405DE2B0F4F4800311133 /* MangaListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F405DC2B0F4F4800311133 /* MangaListCell.swift */; };
@@ -276,6 +280,10 @@
 		36D643CC2B01B97800EF554E /* SchedulesParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesParam.swift; sourceTree = "<group>"; };
 		36D643CE2B01BF8300EF554E /* AnimeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeEntity.swift; sourceTree = "<group>"; };
 		36E472E02B15E5F000C1E9B0 /* ExtProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtProgressView.swift; sourceTree = "<group>"; };
+		36EB5F6E2B16CE2600A5EE9A /* FilterPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FilterPopUp.swift; path = ../../../../../../../../FilterPopUp.swift; sourceTree = "<group>"; };
+		36EB5F6F2B16CE2600A5EE9A /* FilterPopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FilterPopUp.xib; path = ../../../../../../../../FilterPopUp.xib; sourceTree = "<group>"; };
+		36EB5F732B16D9A700A5EE9A /* AnimeFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnimeFilterCell.swift; path = ../../../../../../../../../AnimeFilterCell.swift; sourceTree = "<group>"; };
+		36EB5F742B16D9A700A5EE9A /* AnimeFilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AnimeFilterCell.xib; path = ../../../../../../../../../AnimeFilterCell.xib; sourceTree = "<group>"; };
 		36F071182B0CB3C10016587E /* RankAnimeFilterItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankAnimeFilterItem.swift; sourceTree = "<group>"; };
 		36F071192B0CB3C10016587E /* RankAnimeFilterItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RankAnimeFilterItem.xib; sourceTree = "<group>"; };
 		36F405DC2B0F4F4800311133 /* MangaListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaListCell.swift; sourceTree = "<group>"; };
@@ -829,6 +837,7 @@
 		36E472DC2B15A9C300C1E9B0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				36EB5F6D2B16CE0A00A5EE9A /* PopUp */,
 				36F9D0B82B0F33690056F40E /* TableCell */,
 				36569ECE2AFE057300EDB6B9 /* AnimeViewController.swift */,
 				36569ECF2AFE057300EDB6B9 /* AnimeViewController.xib */,
@@ -842,6 +851,25 @@
 				36AF1C0E2B10499100C8EB46 /* UserAnimeViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		36EB5F6D2B16CE0A00A5EE9A /* PopUp */ = {
+			isa = PBXGroup;
+			children = (
+				36EB5F722B16D97800A5EE9A /* TableView */,
+				36EB5F6E2B16CE2600A5EE9A /* FilterPopUp.swift */,
+				36EB5F6F2B16CE2600A5EE9A /* FilterPopUp.xib */,
+			);
+			path = PopUp;
+			sourceTree = "<group>";
+		};
+		36EB5F722B16D97800A5EE9A /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				36EB5F732B16D9A700A5EE9A /* AnimeFilterCell.swift */,
+				36EB5F742B16D9A700A5EE9A /* AnimeFilterCell.xib */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 		36F071172B0CB3970016587E /* CollectionCell */ = {
@@ -995,12 +1023,14 @@
 				3660225F2B0B1AC200099DE3 /* AnimeStaffItem.xib in Resources */,
 				36671F7B2B031DEE00EB7083 /* SelectedSearchCategoryItem.xib in Resources */,
 				36942E452B0704B2006A38CE /* AnimeCardItem.xib in Resources */,
+				36EB5F712B16CE2600A5EE9A /* FilterPopUp.xib in Resources */,
 				36F9D0C02B0F44E40056F40E /* AnimeSearchFilterCell.xib in Resources */,
 				36170DE22B10A5AF009EC642 /* FailedPopUp.xib in Resources */,
 				36A09BA22B05D4DF00778CD3 /* DetailAnimeTrailer.xib in Resources */,
 				360E829B2B0DF7E10011D844 /* WatchStatusItem.xib in Resources */,
 				364EB4FE2B076C5F0012022C /* DetailAnimeCharacter.xib in Resources */,
 				36F46C1C2B02108B002FFC78 /* CurrentSeasonAnimeItem.xib in Resources */,
+				36EB5F762B16D9A700A5EE9A /* AnimeFilterCell.xib in Resources */,
 				36569ED12AFE057300EDB6B9 /* AnimeViewController.xib in Resources */,
 				366022592B0B16AC00099DE3 /* DetailAnimeStaff.xib in Resources */,
 				36683F982B14822E00478AC5 /* UpdateListBottomSheet.xib in Resources */,
@@ -1096,6 +1126,7 @@
 				366022662B0B445100099DE3 /* DetailAnimeTheme.swift in Sources */,
 				366022542B0B07B800099DE3 /* AnimeCharacterItem.swift in Sources */,
 				36C9C5352B0767A7009E907C /* AnimeCharacterEntity.swift in Sources */,
+				36EB5F752B16D9A700A5EE9A /* AnimeFilterCell.swift in Sources */,
 				3660224D2B0AE49D00099DE3 /* AnimeDetailEntity.swift in Sources */,
 				36AF1C0F2B10499100C8EB46 /* UserAnimeViewModel.swift in Sources */,
 				36F46C162B020F1E002FFC78 /* CurrentSeasonAnime.swift in Sources */,
@@ -1168,6 +1199,7 @@
 				36683F822B14374D00478AC5 /* AnimeResponse.swift in Sources */,
 				36A09BA12B05D4DF00778CD3 /* DetailAnimeTrailer.swift in Sources */,
 				36683F7C2B14315B00478AC5 /* UserAnimeResponse.swift in Sources */,
+				36EB5F702B16CE2600A5EE9A /* FilterPopUp.swift in Sources */,
 				362B1FEF2B0CA38A009BACDB /* RankAnimeViewController.swift in Sources */,
 				36569EFE2AFE128100EDB6B9 /* TodayAnimeItem.swift in Sources */,
 				36641E3C2B0ED5A500651AF0 /* Common.swift in Sources */,

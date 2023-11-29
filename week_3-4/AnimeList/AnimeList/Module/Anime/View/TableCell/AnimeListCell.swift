@@ -112,21 +112,27 @@ class AnimeListCell: UITableViewCell {
         switch status {
         case 0:
             statusWatchView.backgroundColor = UIColor.systemGreen
+            progressIndicator.tintColor = UIColor.systemGreen
             return "CW"
         case 1:
             statusWatchView.backgroundColor = UIColor.systemBlue
+            progressIndicator.tintColor = UIColor.systemBlue
             return "CMP"
         case 2:
             statusWatchView.backgroundColor = UIColor.systemOrange
+            progressIndicator.tintColor = UIColor.systemOrange
             return "OH"
         case 3:
             statusWatchView.backgroundColor = UIColor.systemRed
+            progressIndicator.tintColor = UIColor.systemRed
             return "DRP"
         case 4:
             statusWatchView.backgroundColor = UIColor.systemBrown
+            progressIndicator.tintColor = UIColor.systemBrown
             return "PTW"
         default:
             return ""
+            
         }
     }
 }

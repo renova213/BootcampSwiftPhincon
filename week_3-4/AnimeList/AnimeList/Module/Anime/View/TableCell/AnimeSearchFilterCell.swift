@@ -4,6 +4,7 @@ import RxCocoa
 
 protocol AnimeSearchFilterCellDelegate: AnyObject{
     func didTapNavigation()
+    func didTapFilterPopUp()
 }
 
 class AnimeSearchFilterCell: UITableViewCell {
@@ -18,6 +19,7 @@ class AnimeSearchFilterCell: UITableViewCell {
     }
     private let disposeBag = DisposeBag()
     weak var delegate: AnimeSearchFilterCellDelegate?
+    weak var delegateFilterPopUp: FilterPopUpDelegate?
     
     func configureUI(){
         searchBar.configureUI()
@@ -31,5 +33,8 @@ class AnimeSearchFilterCell: UITableViewCell {
         }
         )
         .disposed(by: disposeBag)
+        filterButton.rx.tap.subscribe(onNext: {_ in
+            self.delegate?.didTapFilterPopUp()
+        }).disposed(by: disposeBag)
     }
 }

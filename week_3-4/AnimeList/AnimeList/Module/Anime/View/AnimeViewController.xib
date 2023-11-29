@@ -3,7 +3,6 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +10,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AnimeViewController" customModule="AnimeList" customModuleProvider="target">
             <connections>
-                <outlet property="filterWatchButton" destination="PXl-p3-Ip0" id="aXc-9P-779"/>
                 <outlet property="tableView" destination="gDk-zW-xTl" id="wT3-J2-OPZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -31,25 +29,13 @@
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                             </userDefinedRuntimeAttributes>
                         </tableView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PXl-p3-Ip0">
-                            <rect key="frame" x="243" y="649" width="134" height="50"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="50" id="Bag-oV-OgC"/>
-                            </constraints>
-                            <color key="tintColor" name="Main Color"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="filled" title="Ditonton Nanti"/>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="PXl-p3-Ip0" secondAttribute="trailing" constant="16" id="GSa-tS-hUQ"/>
                         <constraint firstItem="gDk-zW-xTl" firstAttribute="top" secondItem="8PV-fe-Qxr" secondAttribute="top" id="SGI-vF-bfN"/>
                         <constraint firstAttribute="trailing" secondItem="gDk-zW-xTl" secondAttribute="trailing" constant="16" id="Wtm-bP-xMr"/>
                         <constraint firstAttribute="bottom" secondItem="gDk-zW-xTl" secondAttribute="bottom" id="Xgi-v7-Oic"/>
                         <constraint firstItem="gDk-zW-xTl" firstAttribute="leading" secondItem="8PV-fe-Qxr" secondAttribute="leading" constant="16" id="ZMR-n2-5wJ"/>
-                        <constraint firstAttribute="bottom" secondItem="PXl-p3-Ip0" secondAttribute="bottom" constant="60" id="dpI-zE-Dfa"/>
                     </constraints>
                 </view>
             </subviews>
@@ -65,9 +51,6 @@
         </view>
     </objects>
     <resources>
-        <namedColor name="Main Color">
-            <color red="0.63529411764705879" green="0.69803921568627447" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -5,19 +5,17 @@ import SkeletonView
 import Hero
 
 class AnimeViewController: UIViewController {
-    @IBOutlet weak var filterWatchButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchViewModel()
+        loadData()
         configureTableView()
         tableView.showAnimatedGradientSkeleton()
-        filterWatchButton.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        bindViewModel()
+        bindData()
     }
     
     let disposeBag = DisposeBag()
@@ -27,12 +25,19 @@ class AnimeViewController: UIViewController {
             tableView.reloadData()
         }
     }
+    var selectedFilterIndex = 4 {
+        didSet{
+            tableView.reloadData()
+        }
+    }
+    var filterString: String = "A-Z" {
+        didSet{
+            tableView.reloadData()
+        }
+    }
 }
 
 extension AnimeViewController {
-    func configureUI(){
-        filterWatchButton.roundCornersAll(radius: 10)
-    }
     
     func configureTableView(){
         tableView.delegate = self
@@ -41,17 +46,16 @@ extension AnimeViewController {
         tableView.registerCellWithNib(AnimeSearchFilterCell.self)
     }
     
-    func fetchViewModel(){
+    func loadData(){
         UserAnimeViewModel.shared.getUserAnime(userId: 0){[weak self] finish in
             if (finish){
                 self?.tableView.hideSkeleton()
-                self?.filterWatchButton.isHidden = false
             }
         }
     }
     
-    func bindViewModel(){
-       userAnimeVM.userAnime
+    func bindData(){
+        userAnimeVM.userAnime
             .subscribe(onNext: {[weak self] in self?.userAnimes = $0
             })
             .disposed(by: disposeBag)
@@ -80,6 +84,8 @@ extension AnimeViewController: UITableViewDelegate, UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as AnimeSearchFilterCell
             cell.selectionStyle = .none
             cell.delegate = self
+            cell.delegateFilterPopUp = self
+            cell.filterButton.setTitle(userAnimeVM.filterData[selectedFilterIndex], for: .normal)
             return cell
         case 1:
             let data = userAnimes[indexPath.row]
@@ -139,7 +145,23 @@ extension AnimeViewController: SkeletonTableViewDataSource{
     }
 }
 
-extension AnimeViewController: AnimeSearchFilterCellDelegate, AnimeListCellDelegate{
+extension AnimeViewController: AnimeSearchFilterCellDelegate, AnimeListCellDelegate, FilterPopUpDelegate{
+    func didTapFilterIndex(index: Int) {
+        selectedFilterIndex = index
+        userAnimeVM.sortUserAnime(index: index)
+    }
+    
+    func didTapFilterPopUp() {
+        let vc = FilterPopUp()
+        vc.delegate = self
+        vc.view.alpha = 0.0
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: false, completion: nil)
+        UIView.animate(withDuration: 0.5) {
+            vc.view.alpha = 1.0
+        }
+    }
+    
     func didTapNavigation() {
         let vc = SearchViewController()
         
@@ -156,7 +178,8 @@ extension AnimeViewController: AnimeSearchFilterCellDelegate, AnimeListCellDeleg
         bottomSheetVC.imageUrl = data.anime.images?.jpg?.imageUrl ?? ""
         bottomSheetVC.setContentHeight(bottomSheetVC.view.bounds.height)
         self.presentBottomSheet(contentViewController: bottomSheetVC)
-}
+    }
+    
     func increamentEpisode(data: UserAnimeEntity) {
         self.userAnimeVM.updateUserAnime(body: UpdateUserAnimeBody(id: data.id, userScore: data.userScore, userEpisode: data.userEpisode + 1, watchStatus: data.watchStatus)){result in
             switch result {
@@ -164,7 +187,7 @@ extension AnimeViewController: AnimeSearchFilterCellDelegate, AnimeListCellDeleg
                 self.userAnimeVM.getUserAnime(userId: 0){ result in }
                 break
             case .failure:
-               break
+                break
             }
         }
     }

@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WatchStatusBottomSheet" customModule="AnimeList" customModuleProvider="target">
             <connections>
+                <outlet property="dismissButton" destination="YDH-Kg-g3v" id="Mcj-Q8-vVo"/>
                 <outlet property="statusTable" destination="Y6R-4t-qht" id="HXR-pr-x2Q"/>
                 <outlet property="urlImage" destination="v4d-18-VB1" id="xfp-1Z-WE4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -23,24 +24,35 @@
                     <rect key="frame" x="0.0" y="0.0" width="393" height="334"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3h-Fz-vd3">
-                    <rect key="frame" x="16" y="24" width="361" height="28.666666666666671"/>
+                    <rect key="frame" x="16" y="24" width="313" height="29"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Y6R-4t-qht">
-                    <rect key="frame" x="16" y="84.666666666666671" width="361" height="225.33333333333331"/>
+                    <rect key="frame" x="16" y="85" width="361" height="225"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDH-Kg-g3v">
+                    <rect key="frame" x="353" y="20" width="24" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="24" id="gKZ-le-BrM"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
+                </button>
             </subviews>
             <color key="backgroundColor" name="Main Color"/>
             <constraints>
+                <constraint firstItem="YDH-Kg-g3v" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="02R-w9-afX"/>
                 <constraint firstItem="w3h-Fz-vd3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="3jz-gD-IGM"/>
+                <constraint firstAttribute="trailing" secondItem="YDH-Kg-g3v" secondAttribute="trailing" constant="16" id="AYd-Pa-keZ"/>
                 <constraint firstAttribute="bottom" secondItem="Y6R-4t-qht" secondAttribute="bottom" constant="24" id="Eow-JT-o2y"/>
                 <constraint firstAttribute="trailing" secondItem="Y6R-4t-qht" secondAttribute="trailing" constant="16" id="Mcm-PW-VTL"/>
-                <constraint firstAttribute="trailing" secondItem="w3h-Fz-vd3" secondAttribute="trailing" constant="16" id="OFh-Jz-dzX"/>
                 <constraint firstItem="Y6R-4t-qht" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="S0D-NO-YN2"/>
+                <constraint firstItem="YDH-Kg-g3v" firstAttribute="leading" secondItem="w3h-Fz-vd3" secondAttribute="trailing" constant="24" id="WUJ-ud-xHc"/>
                 <constraint firstItem="Y6R-4t-qht" firstAttribute="top" secondItem="w3h-Fz-vd3" secondAttribute="bottom" constant="32" id="WWB-3S-EEA"/>
                 <constraint firstAttribute="trailing" secondItem="v4d-18-VB1" secondAttribute="trailing" id="cx4-SZ-A95"/>
                 <constraint firstItem="w3h-Fz-vd3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="24" id="dmY-BK-25a"/>
@@ -54,6 +66,7 @@
     </objects>
     <resources>
         <image name="ImagePlaceholder" width="800" height="540"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="Main Color">
             <color red="0.63529411764705879" green="0.69803921568627447" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

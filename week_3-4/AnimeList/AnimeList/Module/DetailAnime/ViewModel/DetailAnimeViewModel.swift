@@ -89,7 +89,7 @@ class DetailAnimeViewModel {
     func setupBottomSheet(data: UserAnimeEntity){
         changeSelectedIndexScore(index: data.userScore - 1)
         selectedSwatchStatusIndex.accept(data.watchStatus)
-        episode.accept(data.userEpisode)
+        episode.accept(data.userEpisode ?? 0)
         changeMessageRating()
         changeTitleWatchStatus()
 

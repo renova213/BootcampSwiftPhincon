@@ -5,8 +5,9 @@ import RxCocoa
 class UserAnimeViewModel {
     static let shared = UserAnimeViewModel()
     
-    let userAnime = BehaviorRelay<[UserAnimeEntity]>(value: [])
+    var userAnime = BehaviorRelay<[UserAnimeEntity]>(value: [])
     let findOneUserAnime = BehaviorRelay<UserAnimeEntity?>(value: nil)
+    let filterData = ["A-Z", "Z-A", "Score", "Watching Status", "Sort By"]
     
     func postUserAnime(body: UserAnimeBody, completion: @escaping((Result<StatusResponse, Error>)-> Void)) {
         let endpoint = Endpoint.postUserAnime(params: body)
@@ -54,6 +55,22 @@ class UserAnimeViewModel {
             case .failure:
                 completion(false)
             }
+        }
+    }
+    
+    func sortUserAnime(index: Int){
+        switch index {
+        case 0:
+            self.userAnime.accept(userAnime.value.sorted {$0.anime.title ?? "" < $1.anime.title ?? ""})
+        break
+        case 1:
+            self.userAnime.accept(userAnime.value.sorted {$0.anime.title ?? "" > $1.anime.title ?? ""})
+        case 2:
+            self.userAnime.accept(userAnime.value.sorted {$0.userScore > $1.userScore})
+        case 3:
+            self.userAnime.accept(userAnime.value.sorted {$0.watchStatus < $1.watchStatus})
+        default:
+            break
         }
     }
 }
