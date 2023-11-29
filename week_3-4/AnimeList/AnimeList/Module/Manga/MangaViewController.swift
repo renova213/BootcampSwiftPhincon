@@ -20,6 +20,10 @@ class MangaViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
     func configureUI(){
         filterWatchButton.roundCornersAll(radius: 10)
     }

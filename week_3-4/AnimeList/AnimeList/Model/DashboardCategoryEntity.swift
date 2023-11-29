@@ -11,9 +11,9 @@ struct DashboardCategoryEntity {
     }
     
     static let items: [DashboardCategoryEntity] = [
-    DashboardCategoryEntity(title: "Peringkat Anime", icon: UIImage(systemName: "sparkles.tv")!),
-    DashboardCategoryEntity(title: "Peringkat Manga", icon: UIImage(systemName: "book")!),
-    DashboardCategoryEntity(title: "Daftar Permusim", icon: UIImage(systemName: "list.bullet.rectangle.portrait")!),
-    DashboardCategoryEntity(title: "Kalender", icon: UIImage(systemName: "calendar")!)
+    DashboardCategoryEntity(title: "Top Anime", icon: UIImage(systemName: "sparkles.tv")!),
+    DashboardCategoryEntity(title: "Top Manga", icon: UIImage(systemName: "book")!),
+    DashboardCategoryEntity(title: "List Season", icon: UIImage(systemName: "list.bullet.rectangle.portrait")!),
+    DashboardCategoryEntity(title: "Calendar", icon: UIImage(systemName: "calendar")!)
     ]
 }

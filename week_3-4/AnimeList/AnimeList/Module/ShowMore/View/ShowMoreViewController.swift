@@ -96,10 +96,10 @@ extension ShowMoreViewController {
         
         switch typeGet {
         case "seasonNow":
-            showMoreVM.loadData(for: Endpoint.getSeasonNow(page: "1", limit: "25"), resultType: AnimeResponse.self)
+            showMoreVM.loadData(for: Endpoint.getSeasonNow(params: SeasonNowParam(page: "1", limit: "25")), resultType: AnimeResponse.self)
             
         case "currentAnime":
-            showMoreVM.loadData(for: Endpoint.getSeasonNow(page: "1", limit: "25"), resultType: AnimeResponse.self)
+            showMoreVM.loadData(for: Endpoint.getSeasonNow(params: SeasonNowParam(page: "1", limit: "25")), resultType: AnimeResponse.self)
         default:
             animeData = []
         }

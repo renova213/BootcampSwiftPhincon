@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RankAnimeViewController" customModule="AnimeList" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TopAnimeViewController" customModule="AnimeList" customModuleProvider="target">
             <connections>
+                <outlet property="appBar" destination="oFU-QR-FZO" id="Wo9-wk-pGL"/>
                 <outlet property="backButton" destination="xlk-gk-hEY" id="gtL-7A-zWA"/>
-                <outlet property="filterCollection" destination="l0H-9e-ClI" id="W9b-Mk-APG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,8 +24,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oFU-QR-FZO">
                     <rect key="frame" x="0.0" y="59" width="393" height="50"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ranking Anime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALI-OZ-iy1">
-                            <rect key="frame" x="138" y="12" width="117" height="26"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Anime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALI-OZ-iy1">
+                            <rect key="frame" x="155.66666666666666" y="12" width="81.666666666666657" height="26"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -51,28 +51,12 @@
                         <constraint firstItem="ALI-OZ-iy1" firstAttribute="centerX" secondItem="oFU-QR-FZO" secondAttribute="centerX" id="haN-ih-fS9"/>
                     </constraints>
                 </view>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="l0H-9e-ClI">
-                    <rect key="frame" x="0.0" y="125" width="393" height="50"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="oaB-aW-Xbm"/>
-                    </constraints>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="N5u-yw-5hm">
-                        <size key="itemSize" width="128" height="128"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                </collectionView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="oFU-QR-FZO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="2Mj-uL-vwt"/>
-                <constraint firstItem="l0H-9e-ClI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="EQ9-dO-gzh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="oFU-QR-FZO" secondAttribute="trailing" id="GIx-J6-u93"/>
-                <constraint firstItem="l0H-9e-ClI" firstAttribute="top" secondItem="oFU-QR-FZO" secondAttribute="bottom" constant="16" id="NmF-Cy-typ"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="l0H-9e-ClI" secondAttribute="trailing" id="nb6-qH-NDp"/>
                 <constraint firstItem="oFU-QR-FZO" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="wIX-v6-ozS"/>
             </constraints>
             <point key="canvasLocation" x="122.90076335877862" y="20.422535211267608"/>

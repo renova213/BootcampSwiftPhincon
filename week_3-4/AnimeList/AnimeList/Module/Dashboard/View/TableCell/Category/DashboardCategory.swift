@@ -29,6 +29,7 @@ extension DashboardCategory: UICollectionViewDelegate, UICollectionViewDataSourc
         
         cell.setUpButton(title: categoryItem.title, icon: categoryItem.icon.withTintColor(UIColor.white))
         cell.delegate = self
+        cell.index = indexPath.row
         return cell
     }
     
@@ -39,8 +40,8 @@ extension DashboardCategory: UICollectionViewDelegate, UICollectionViewDataSourc
 }
 
 extension DashboardCategory: DashboardCategoryItemDelegate{
-    func didTapNavigateRankAnime() {
-        delegate?.didTapNavigateRankAnime()
+    func didTapNavigateRankAnime(index: Int) {
+        delegate?.didTapNavigateRankAnime(index: index)
     }
 }
 

@@ -4,6 +4,7 @@ PODS:
   - Kingfisher (7.10.0)
   - lottie-ios (4.3.3)
   - netfox (1.21.0)
+  - Parchment (3.2.0)
   - RxCocoa (6.6.0):
     - RxRelay (= 6.6.0)
     - RxSwift (= 6.6.0)
@@ -23,6 +24,7 @@ DEPENDENCIES:
   - Kingfisher
   - lottie-ios
   - netfox
+  - Parchment (~> 3.2)
   - RxCocoa (= 6.6.0)
   - RxGesture
   - RxSwift (= 6.6.0)
@@ -37,6 +39,7 @@ SPEC REPOS:
     - Kingfisher
     - lottie-ios
     - netfox
+    - Parchment
     - RxCocoa
     - RxGesture
     - RxRelay
@@ -51,6 +54,7 @@ SPEC CHECKSUMS:
   Kingfisher: a18f05d3b6d37d8650ee4a3e61d57a28fc6207f6
   lottie-ios: 25e7b2675dad5c3ddad369ac9baab03560c5bfdd
   netfox: 9d5cc727fe7576c4c7688a2504618a156b7d44b7
+  Parchment: a43c440b22c8a60f7e0196b74339446d4d1d18ea
   RxCocoa: 44a80de90e25b739b5aeaae3c8c371a32e3343cc
   RxGesture: f3efb47ed2d26a8082f7b660d4a59970e275a7f8
   RxRelay: 45eaa5db8ee4fb50e5ebd57deec0159e97fa51e6
@@ -59,6 +63,6 @@ SPEC CHECKSUMS:
   ToastViewSwift: db710ad3c19c826269d004038c7b69f5b658dc6f
   YouTubePlayer: 2b5f2830d8f9b2cde942083211291e382c9e6bd5
 
-PODFILE CHECKSUM: 4d48e90401886695024a82f242f86cd98448d255
+PODFILE CHECKSUM: 494ca4fbf1d3afdee0d3c375f5535b4b5217a280
 
 COCOAPODS: 1.14.2

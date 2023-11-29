@@ -13,3 +13,10 @@ enum SFSymbol {
     static let mangaSymbol = UIImage(systemName: "chart.bar.doc.horizontal")
     static let otherSymbol = UIImage(systemName: "line.horizontal.3")
 }
+
+enum TopAnime {
+    case airing(filter: String)
+    case upcoming(filter: String)
+    case popularity(filter: String)
+    case favorite(filter: String)
+}

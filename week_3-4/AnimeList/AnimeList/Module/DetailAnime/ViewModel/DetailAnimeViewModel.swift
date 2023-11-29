@@ -20,7 +20,7 @@ class DetailAnimeViewModel {
     
     func getDetailAnime(malId: Int, completion: @escaping(Bool) -> Void) {
         
-        APIManager.shared.fetchRequest(endpoint: Endpoint.getDetailAnime(malId: malId)){[weak self] (result: Result<AnimeDetailResponse, Error>) in
+        APIManager.shared.fetchRequest(endpoint: Endpoint.getDetailAnime(params: malId)){[weak self] (result: Result<AnimeDetailResponse, Error>) in
             guard let self = self else { return }
             switch result {
             case .success(let data):
@@ -34,7 +34,7 @@ class DetailAnimeViewModel {
     
     func getAnimeCharacter(malId: Int) {
         
-        APIManager.shared.fetchRequest(endpoint: Endpoint.getAnimeCharacter(malId: malId)){[weak self] (result: Result<AnimeCharacterResponse, Error>) in
+        APIManager.shared.fetchRequest(endpoint: Endpoint.getAnimeCharacter(params: malId)){[weak self] (result: Result<AnimeCharacterResponse, Error>) in
             guard let self = self else { return }
             switch result {
             case .success(let data):
@@ -47,7 +47,7 @@ class DetailAnimeViewModel {
     
     func getAnimeStaff(malId: Int) {
         
-        APIManager.shared.fetchRequest(endpoint: Endpoint.getAnimeStaff(malId: malId)){[weak self] (result: Result<AnimeStaffResponse, Error>) in
+        APIManager.shared.fetchRequest(endpoint: Endpoint.getAnimeStaff(params: malId)){[weak self] (result: Result<AnimeStaffResponse, Error>) in
             guard let self = self else { return }
             switch result {
             case .success(let data):
@@ -59,7 +59,7 @@ class DetailAnimeViewModel {
     }
     
     func getAnimeRecommendations(malId: Int) {
-        APIManager.shared.fetchRequest(endpoint: Endpoint.getRecommendationAnime(malId: malId)){[weak self] (result: Result<AnimeRecommendationResponse, Error>) in
+        APIManager.shared.fetchRequest(endpoint: Endpoint.getRecommendationAnime(params: malId)){[weak self] (result: Result<AnimeRecommendationResponse, Error>) in
             guard let self = self else { return }
             switch result {
             case .success(let data):
@@ -89,7 +89,7 @@ class DetailAnimeViewModel {
     func setupBottomSheet(data: UserAnimeEntity){
         changeSelectedIndexScore(index: data.userScore - 1)
         selectedSwatchStatusIndex.accept(data.watchStatus)
-        episode.accept(data.userEpisode ?? 0)
+        episode.accept(data.userEpisode)
         changeMessageRating()
         changeTitleWatchStatus()
 

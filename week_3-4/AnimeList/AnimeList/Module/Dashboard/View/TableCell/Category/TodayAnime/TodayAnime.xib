@@ -20,7 +20,7 @@
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="120" translatesAutoresizingMaskIntoConstraints="NO" id="Xtf-UX-YWS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="41"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hari ini" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yl4-AC-YQR">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yl4-AC-YQR">
                                 <rect key="frame" x="0.0" y="0.0" width="100" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="5td-RR-QZX"/>
@@ -32,7 +32,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZqK-5F-9UL">
                                 <rect key="frame" x="220" y="0.0" width="100" height="41"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Lainnya"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Others"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>

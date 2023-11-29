@@ -29,6 +29,7 @@ class DashboardViewController: UIViewController {
         super.viewDidLoad()
         configureTableView()
         fetchData()
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -56,7 +57,7 @@ extension DashboardViewController {
         let scheduledParams = ScheduleParam(filter: Date.getCurrentDay().lowercased(), page: "1", limit: "6")
         dashboardVM.loadData(for: Endpoint.getScheduledAnime(params: scheduledParams), resultType: AnimeResponse.self)
 
-        dashboardVM.loadData(for: Endpoint.getSeasonNow(page: "1", limit: "6"), resultType: AnimeResponse.self)
+        dashboardVM.loadData(for: Endpoint.getSeasonNow(params: SeasonNowParam(page: "1", limit: "6")), resultType: AnimeResponse.self)
     }
 }
 
@@ -161,7 +162,7 @@ extension DashboardViewController: TodayAnimeDelegate, DashboardSearchDelegate, 
     }
 
     func didSelectCell() {
-        navigateToSearchViewController()
+        navigateToView(view: SearchViewController())
     }
 
     func didTapCurrentAnime(malId: Int) {
@@ -172,8 +173,14 @@ extension DashboardViewController: TodayAnimeDelegate, DashboardSearchDelegate, 
         navigateToShowMoreViewController(type: "seasonNow")
     }
 
-    func didTapNavigateRankAnime() {
-        navigateToRankAnimeViewController()
+    func didTapNavigateRankAnime(index: Int) {
+        switch index {
+        case 0:
+            navigateToView(view: TopAnimeViewController())
+            break
+        default:
+            break
+        }
     }
 
     private func navigateToDetailAnimeViewController(malId: Int) {
@@ -193,15 +200,8 @@ extension DashboardViewController: TodayAnimeDelegate, DashboardSearchDelegate, 
         vc.navigationController?.isNavigationBarHidden = true
     }
 
-    private func navigateToSearchViewController() {
-        let vc = SearchViewController()
-        vc.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(vc, animated: true)
-        vc.navigationController?.isNavigationBarHidden = true
-    }
-
-    private func navigateToRankAnimeViewController() {
-        let vc = RankAnimeViewController()
+    private func navigateToView(view: UIViewController) {
+        let vc = view
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
         vc.navigationController?.isNavigationBarHidden = true

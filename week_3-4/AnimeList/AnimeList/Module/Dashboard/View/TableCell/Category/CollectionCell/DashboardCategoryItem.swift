@@ -3,7 +3,7 @@ import RxSwift
 import RxCocoa
 
 protocol DashboardCategoryItemDelegate: AnyObject{
-    func didTapNavigateRankAnime()
+    func didTapNavigateRankAnime(index: Int)
 }
 
 class DashboardCategoryItem: UICollectionViewCell {
@@ -19,6 +19,7 @@ class DashboardCategoryItem: UICollectionViewCell {
     
     weak var delegate: DashboardCategoryItemDelegate?
     private let disposeBag = DisposeBag()
+    var index: Int?
     
     func configureComponentStyle(){
         categoryItemView.roundCornersAll(radius: 12)
@@ -32,8 +33,9 @@ class DashboardCategoryItem: UICollectionViewCell {
     
     func buttonGesture(){
         categoryButton.rx.tap.subscribe(onNext: {_ in
-            print("dasdasdasdas")
-            self.delegate?.didTapNavigateRankAnime()
+            if let currentIndex = self.index {
+                self.delegate?.didTapNavigateRankAnime(index: currentIndex)
+            }
         }).disposed(by: disposeBag)
     }
 }

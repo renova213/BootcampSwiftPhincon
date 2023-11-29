@@ -17,7 +17,7 @@ class UserAnimeViewModel {
     }
     
     func getUserAnime(userId: Int, completion: @escaping((Bool)-> Void)) {
-        let endpoint = Endpoint.getUserAnime(userId: userId)
+        let endpoint = Endpoint.getUserAnime(params: userId)
         APIManager.shared.fetchRequest(endpoint: endpoint){(result: Result<UserAnimeResponse, Error>) in
             switch result {
             case .success(let data):
@@ -37,14 +37,14 @@ class UserAnimeViewModel {
     }
     
     func deleteUserAnime(id: String, completion: @escaping((Result<StatusResponse, Error>)-> Void)) {
-        let endpoint = Endpoint.deleteUserAnime(id: id)
+        let endpoint = Endpoint.deleteUserAnime(params: id)
         APIManager.shared.fetchRequest(endpoint: endpoint){(result: Result<StatusResponse, Error>) in
            completion(result)
         }
     }
     
     func findOneUserAnime(userId: Int, malId: Int, completion: @escaping((Bool)-> Void)) {
-        let endpoint = Endpoint.findOneUserAnime(userId: userId, malId: malId)
+        let endpoint = Endpoint.findOneUserAnime(params: OneUserAnimeParam(userId: userId, malId: malId))
         APIManager.shared.fetchRequest(endpoint: endpoint){(result: Result<FindOneUserAnimeResponse, Error>) in
             switch result {
             case .success(let data):

@@ -18,6 +18,10 @@ class AnimeViewController: UIViewController {
         bindData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
     let disposeBag = DisposeBag()
     let userAnimeVM = UserAnimeViewModel.shared
     var userAnimes: [UserAnimeEntity] = [] {
