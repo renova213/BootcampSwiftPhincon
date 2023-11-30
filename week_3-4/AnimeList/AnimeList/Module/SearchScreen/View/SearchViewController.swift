@@ -65,7 +65,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource,Skele
         case 0:
             return String(describing: SearchCategories.self)
         default:
-            return String(describing: SearchResult.self)
+            return String(describing: SearchResultCell.self)
         }
     }
     
@@ -94,6 +94,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource,Skele
     
     private func configureSearchCategoriesCell(for indexPath: IndexPath) -> UITableViewCell {
         let searchCategories = tableView.dequeueReusableCell(forIndexPath: indexPath) as SearchCategories
+        searchCategories.selectionStyle = .none
         searchCategories.delegate = self
         return searchCategories
     }
@@ -106,14 +107,14 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource,Skele
     private func returnCell(indexPath: IndexPath) -> UITableViewCell{
         if(currentIndex == 0){
             let data = filteredAnime[indexPath.row]
-            let searchResult = tableView.dequeueReusableCell(forIndexPath: indexPath) as SearchResult
+            let searchResult = tableView.dequeueReusableCell(forIndexPath: indexPath) as SearchResultCell
             searchResult.initialSetupAnime(data: data)
             searchResult.selectionStyle = .none
             
             return searchResult
         }else{
             let data = filteredManga[indexPath.row]
-            let searchResult = tableView.dequeueReusableCell(forIndexPath: indexPath) as SearchResult
+            let searchResult = tableView.dequeueReusableCell(forIndexPath: indexPath) as SearchResultCell
             searchResult.initialSetupManga(data: data)
             searchResult.selectionStyle = .none
             
@@ -133,7 +134,7 @@ extension SearchViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerCellWithNib(SearchCategories.self)
-        tableView.registerCellWithNib(SearchResult.self)
+        tableView.registerCellWithNib(SearchResultCell.self)
     }
     
     private func backButtonGesture() {

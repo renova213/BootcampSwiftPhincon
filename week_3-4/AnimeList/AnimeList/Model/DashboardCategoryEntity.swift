@@ -14,6 +14,6 @@ struct DashboardCategoryEntity {
     DashboardCategoryEntity(title: "Top Anime", icon: UIImage(systemName: "sparkles.tv")!),
     DashboardCategoryEntity(title: "Top Manga", icon: UIImage(systemName: "book")!),
     DashboardCategoryEntity(title: "List Season", icon: UIImage(systemName: "list.bullet.rectangle.portrait")!),
-    DashboardCategoryEntity(title: "Calendar", icon: UIImage(systemName: "calendar")!)
+    DashboardCategoryEntity(title: "Schedule", icon: UIImage(systemName: "calendar")!)
     ]
 }

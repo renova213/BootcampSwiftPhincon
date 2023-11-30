@@ -178,6 +178,15 @@ extension DashboardViewController: TodayAnimeDelegate, DashboardSearchDelegate, 
         case 0:
             navigateToView(view: TopAnimeViewController())
             break
+        case 1:
+            navigateToView(view: TopMangaViewController())
+            break
+        case 2:
+            navigateToView(view: AnimeSeasonViewController())
+            break
+        case 3:
+            navigateToView(view: AnimeScheduleViewController())
+            break
         default:
             break
         }

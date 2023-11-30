@@ -127,6 +127,7 @@ enum Endpoint {
             var params = [String: Any]()
             params["filter"] = param.filter
             params["page"] = param.page
+            params["limit"] = "15"
             return params
         case .getDetailAnime, .getAnimeStaff, .getAnimeCharacter, .getRecommendationAnime, .deleteUserAnime:
             return nil

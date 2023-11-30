@@ -54,7 +54,7 @@ extension TodayAnime: SkeletonCollectionViewDelegate, SkeletonCollectionViewData
         if let id = data.malId{
             cell.urlImage.hero.id = String(id)
         }
-        cell.setUpComponent(title: data.title ?? "", date: "Ditayangkan pada pukul \(DateFormatter.convertTime(from: data.broadcast?.time ?? "00:00", fromTimeZone: data.broadcast?.timezone ?? "Asia/Tokyo", to: "Asia/Jakarta" ) ?? "-")", urlImage: data.images?.jpg?.imageUrl ?? "", rating: data.score )
+        cell.setUpComponent(title: data.title ?? "", date: "Aired at \(DateFormatter.convertTime(from: data.broadcast?.time ?? "00:00", fromTimeZone: data.broadcast?.timezone ?? "Asia/Tokyo", to: "Asia/Jakarta" ) ?? "-")", urlImage: data.images?.jpg?.imageUrl ?? "", rating: data.score )
         
         return cell
     }

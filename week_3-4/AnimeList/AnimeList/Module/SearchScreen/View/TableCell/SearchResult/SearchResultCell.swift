@@ -1,19 +1,18 @@
 import UIKit
-import Kingfisher
 
-class SearchResult: UITableViewCell {
+class SearchResultCell: UITableViewCell {
     
-    @IBOutlet weak var releaseDate: UILabel!
-    @IBOutlet weak var urlImage: UIImageView!
     @IBOutlet weak var searchView: UIView!
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var rating: UILabel!
-    @IBOutlet weak var episode: UILabel!
+    @IBOutlet weak var urlImage: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var episodeLabel: UILabel!
+    @IBOutlet weak var releaseLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         configureStyleComponent()
     }
-    
     func configureStyleComponent(){
         searchView.roundCornersAll(radius: 12)
         searchView.backgroundColor = UIColor(named: "Main Color")?.withAlphaComponent(0.8)
@@ -22,16 +21,16 @@ class SearchResult: UITableViewCell {
     }
     
     func initialSetupAnime(data: AnimeEntity){
-        self.title.text = data.title ?? ""
+        self.titleLabel.text = data.title ?? ""
         
-        self.episode.text = "\(data.type ?? "") (\(String(data.episodes ?? 0)) episode)"
+        self.episodeLabel.text = "\(data.type ?? "") (\(String(data.episodes ?? 0)) episode)"
         
-        self.releaseDate.text = data.aired?.string ?? ""
+        self.releaseLabel.text = data.aired?.string ?? ""
         
-        if let ratingData = data.score {
-            rating.text = String(ratingData)
+        if let score = data.score {
+            scoreLabel.text = String(score)
         }else{
-            rating.text = "-"
+            scoreLabel.text = "-"
         }
         
         if let imageURL = URL(string: data.images?.jpg?.imageUrl ?? "") {
@@ -40,16 +39,16 @@ class SearchResult: UITableViewCell {
     }
     
     func initialSetupManga(data: MangaEntity){
-        self.title.text = data.title ?? ""
+        self.titleLabel.text = data.title ?? ""
         
-        self.episode.text = "\(data.type ?? "") (\(String(data.chapters ?? 0)) episode)"
+        self.episodeLabel.text = "\(data.type ?? "") (\(String(data.chapters ?? 0)) episode)"
         
-        self.releaseDate.text = data.published.string ?? ""
+        self.releaseLabel.text = data.published.string ?? ""
         
         if let ratingData = data.score {
-            rating.text = String(ratingData)
+            scoreLabel.text = String(ratingData)
         }else{
-            rating.text = "-"
+            scoreLabel.text = "-"
         }
         
         if let imageURL = URL(string: data.images?.jpg?.imageUrl ?? "") {

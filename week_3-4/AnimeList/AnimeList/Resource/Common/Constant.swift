@@ -14,9 +14,20 @@ enum SFSymbol {
     static let otherSymbol = UIImage(systemName: "line.horizontal.3")
 }
 
-enum TopAnime {
-    case airing(filter: String)
-    case upcoming(filter: String)
-    case popularity(filter: String)
-    case favorite(filter: String)
+enum TopAnimeEnum {
+    case airing
+    case upcoming
+    case popularity
+    case favorite
 }
+
+enum AnimeCalendarEnum {
+    case monday
+    case tuesday
+    case wednesday
+    case thursday
+    case friday
+    case unknown
+    case other
+}
+
