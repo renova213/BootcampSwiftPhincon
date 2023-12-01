@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.8.1)
+  - FloatingPanel (2.8.0)
   - Hero (1.6.2)
   - Kingfisher (7.10.0)
   - lottie-ios (4.3.3)
@@ -20,6 +21,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - FloatingPanel
   - Hero
   - Kingfisher
   - lottie-ios
@@ -35,6 +37,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - FloatingPanel
     - Hero
     - Kingfisher
     - lottie-ios
@@ -50,6 +53,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 3ca42e259043ee0dc5c0cdd76c4bc568b8e42af7
+  FloatingPanel: f585be005983e66f8f4932f93ca46bf9f09dae3a
   Hero: c69009dbc9e2f0472e081adc644dba05fcedae72
   Kingfisher: a18f05d3b6d37d8650ee4a3e61d57a28fc6207f6
   lottie-ios: 25e7b2675dad5c3ddad369ac9baab03560c5bfdd
@@ -63,6 +67,6 @@ SPEC CHECKSUMS:
   ToastViewSwift: db710ad3c19c826269d004038c7b69f5b658dc6f
   YouTubePlayer: 2b5f2830d8f9b2cde942083211291e382c9e6bd5
 
-PODFILE CHECKSUM: 494ca4fbf1d3afdee0d3c375f5535b4b5217a280
+PODFILE CHECKSUM: 1cdd33fe37b9ccbbda1d213f44e8f5995ec78a4f
 
 COCOAPODS: 1.14.2

@@ -16,6 +16,7 @@ target 'AnimeList' do
   pod 'netfox'
   pod "ToastViewSwift"
   pod 'Parchment', '~> 3.2'
+  pod 'FloatingPanel' 
 
   # Pods for AnimeList
 

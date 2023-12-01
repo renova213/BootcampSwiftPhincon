@@ -12,6 +12,9 @@ enum StateLoading: Int {
 
 class BaseViewModel {
     internal let bag: DisposeBag = DisposeBag()
+    
+    let api = APIManager.shared
+    
     var loadingState = BehaviorRelay<StateLoading>(value: .notLoad)
     
     func isInternetAvailable() -> Bool {

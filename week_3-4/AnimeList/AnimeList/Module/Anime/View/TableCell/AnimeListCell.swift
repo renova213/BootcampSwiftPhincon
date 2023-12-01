@@ -76,6 +76,7 @@ class AnimeListCell: UITableViewCell {
         deleteButton.rx.tap.subscribe(onNext: {_ in
             self.deleteButton.isEnabled = false
             if let dataID = self.userAnime?.id {
+                self.deleteButton.bounceAnimation(duration: 0.5)
                 self.userAnimeVM.deleteUserAnime(id: dataID){result in
                     switch result {
                     case .success:
@@ -97,12 +98,14 @@ class AnimeListCell: UITableViewCell {
         
         editButton.rx.tap.subscribe(onNext: {_ in
             if let data = self.userAnime{
+                self.editButton.bounceAnimation(duration: 0.5)
                 self.delegate?.didTap(data: data)
             }
         }).disposed(by: disposeBag)
         
         increamentEpisodeButton.rx.tap.subscribe(onNext: {_ in
             if let data = self.userAnime{
+                self.increamentEpisodeButton.bounceAnimation(duration: 0.5)
                 self.delegate?.increamentEpisode(data: data)
             }
         }).disposed(by: disposeBag)

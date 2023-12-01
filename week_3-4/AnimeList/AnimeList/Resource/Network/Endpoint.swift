@@ -16,6 +16,7 @@ enum Endpoint {
     case deleteUserAnime(params: String)
     case findOneUserAnime(params: OneUserAnimeParam)
     case getTopAnime(params: TopAnimeParam)
+    case getSeasonList
     
     func path() -> String {
         switch self {
@@ -45,12 +46,14 @@ enum Endpoint {
             return "/anime/user/\(id)"
         case .getTopAnime:
             return "/top/anime"
+        case .getSeasonList:
+            return "/seasons"
         }
     }
     
     func method() -> HTTPMethod {
         switch self {
-        case .getScheduledAnime, .getSeasonNow, .filterAnime, .filterManga, .getDetailAnime, .getAnimeCharacter, .getAnimeStaff, .getRecommendationAnime, .getUserAnime, .findOneUserAnime, .getTopAnime:
+        case .getScheduledAnime, .getSeasonNow, .filterAnime, .filterManga, .getDetailAnime, .getAnimeCharacter, .getAnimeStaff, .getRecommendationAnime, .getUserAnime, .findOneUserAnime, .getTopAnime, .getSeasonList:
             return .get
         case .postUserAnime:
             return .post
@@ -129,7 +132,7 @@ enum Endpoint {
             params["page"] = param.page
             params["limit"] = "15"
             return params
-        case .getDetailAnime, .getAnimeStaff, .getAnimeCharacter, .getRecommendationAnime, .deleteUserAnime:
+        case .getDetailAnime, .getAnimeStaff, .getAnimeCharacter, .getRecommendationAnime, .deleteUserAnime, .getSeasonList:
             return nil
         }
     }
@@ -143,7 +146,7 @@ enum Endpoint {
     
     func urlString() -> String {
         switch self {
-        case .getScheduledAnime, .getSeasonNow, .filterAnime, .filterManga, .getDetailAnime, .getAnimeCharacter, .getAnimeStaff, .getRecommendationAnime, .getTopAnime:
+        case .getScheduledAnime, .getSeasonNow, .filterAnime, .filterManga, .getDetailAnime, .getAnimeCharacter, .getAnimeStaff, .getRecommendationAnime, .getTopAnime, .getSeasonList:
             return BaseConstant.baseURL + self.path()
         case .postUserAnime, .getUserAnime,.findOneUserAnime, .putUserAnime, .deleteUserAnime:
             return BaseConstant.baseURL2 + self.path()
@@ -154,6 +157,8 @@ enum Endpoint {
         switch self {
         case .getScheduledAnime, .getSeasonNow, .filterAnime, .filterManga, .getDetailAnime, .getAnimeCharacter, .getAnimeStaff, .getRecommendationAnime, .getUserAnime, .findOneUserAnime, .deleteUserAnime, .getTopAnime:
             return URLEncoding.queryString
+        case .getSeasonList:
+            return URLEncoding.default
         case .postUserAnime, .putUserAnime:
             return JSONEncoding.default
         }
