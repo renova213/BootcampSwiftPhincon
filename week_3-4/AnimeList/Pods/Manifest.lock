@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (5.8.1)
+  - DGCharts (5.0.0):
+    - DGCharts/Core (= 5.0.0)
+  - DGCharts/Core (5.0.0)
   - FloatingPanel (2.8.0)
   - Hero (1.6.2)
   - Kingfisher (7.10.0)
@@ -21,6 +24,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - DGCharts
   - FloatingPanel
   - Hero
   - Kingfisher
@@ -37,6 +41,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - DGCharts
     - FloatingPanel
     - Hero
     - Kingfisher
@@ -53,6 +58,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 3ca42e259043ee0dc5c0cdd76c4bc568b8e42af7
+  DGCharts: 6e0cf2644e8f81ad13f04caa8bc18502870a1c54
   FloatingPanel: f585be005983e66f8f4932f93ca46bf9f09dae3a
   Hero: c69009dbc9e2f0472e081adc644dba05fcedae72
   Kingfisher: a18f05d3b6d37d8650ee4a3e61d57a28fc6207f6
@@ -67,6 +73,6 @@ SPEC CHECKSUMS:
   ToastViewSwift: db710ad3c19c826269d004038c7b69f5b658dc6f
   YouTubePlayer: 2b5f2830d8f9b2cde942083211291e382c9e6bd5
 
-PODFILE CHECKSUM: 1cdd33fe37b9ccbbda1d213f44e8f5995ec78a4f
+PODFILE CHECKSUM: 352094333b45d6a820cc4030ac094e28870f0d54
 
 COCOAPODS: 1.14.2

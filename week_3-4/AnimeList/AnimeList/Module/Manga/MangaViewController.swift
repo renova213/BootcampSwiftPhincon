@@ -8,12 +8,14 @@ class MangaViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var filterWatchButton: UIButton!
+    @IBOutlet weak var appBar: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
         tableView.showAnimatedGradientSkeleton()
         filterWatchButton.isHidden = true
+        configureUI()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2){
             self.filterWatchButton.isHidden = false
             self.tableView.hideSkeleton()
@@ -26,6 +28,7 @@ class MangaViewController: UIViewController {
     
     func configureUI(){
         filterWatchButton.roundCornersAll(radius: 10)
+        appBar.createAppBar()
     }
     
     func configureTableView(){

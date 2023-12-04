@@ -1,10 +1,3 @@
-//
-//  MainTabBarViewController.swift
-//  AnimeList
-//
-//  Created by Phincon on 10/11/23.
-//
-
 import UIKit
 
 class MainTabBarViewController: UITabBarController {
@@ -12,7 +5,7 @@ class MainTabBarViewController: UITabBarController {
     let dashboardVC = UINavigationController(rootViewController: DashboardViewController())
     let animeVC = UINavigationController(rootViewController: AnimeViewController())
     let mangaVC = UINavigationController(rootViewController: MangaViewController())
-    let otherVC = UINavigationController(rootViewController: OtherViewController())
+    let profileVC = UINavigationController(rootViewController: ProfileViewController())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,10 +35,10 @@ extension MainTabBarViewController{
         dashboardVC.tabBarItem = UITabBarItem(title: "Dashboard", image: SFSymbol.homeSymbol, tag: 0)
         animeVC.tabBarItem = UITabBarItem(title: "Anime", image: SFSymbol.animeSymbol, tag: 1)
         mangaVC.tabBarItem = UITabBarItem(title: "Manga", image: SFSymbol.mangaSymbol, tag: 2)
-        otherVC.tabBarItem = UITabBarItem(title: "Lain", image: SFSymbol.otherSymbol, tag: 3)
+        profileVC.tabBarItem = UITabBarItem(title: "Profile", image: SFSymbol.profileSymbol, tag: 3)
     }
     
     func configureTabBar(){
-        setViewControllers([dashboardVC, animeVC, mangaVC, otherVC], animated: true)
+        setViewControllers([dashboardVC, animeVC, mangaVC, profileVC], animated: true)
     }
 }

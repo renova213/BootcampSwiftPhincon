@@ -5,6 +5,7 @@ import Hero
 
 class DashboardViewController: UIViewController {
     
+    @IBOutlet weak var appBar: UIView!
     @IBOutlet weak var dashboardTableView: UITableView!
     
     weak var delegateTodayAnime: TodayAnimeDelegate?
@@ -28,6 +29,7 @@ class DashboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        configureUI()
         fetchData()
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
@@ -37,6 +39,14 @@ class DashboardViewController: UIViewController {
         bindData()
     }
 
+    
+}
+
+extension DashboardViewController {
+    func configureUI(){
+        appBar.createAppBar()
+    }
+    
     func configureTableView() {
         DispatchQueue.main.async {
             self.dashboardTableView.isSkeletonable = true
@@ -50,9 +60,7 @@ class DashboardViewController: UIViewController {
             dashboardTableView.registerCellWithNib(type)
         }
     }
-}
-
-extension DashboardViewController {
+    
     func fetchData() {
         let scheduledParams = ScheduleParam(filter: Date.getCurrentDay().lowercased(), page: "1", limit: "6")
         dashboardVM.loadData(for: Endpoint.getScheduledAnime(params: scheduledParams), resultType: AnimeResponse.self)

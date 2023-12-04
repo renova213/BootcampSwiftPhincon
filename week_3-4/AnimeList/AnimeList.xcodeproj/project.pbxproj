@@ -20,6 +20,29 @@
 		3603D6EF2B19D94100C223E0 /* ExtAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3603D6EE2B19D94100C223E0 /* ExtAnimation.swift */; };
 		3605F3D82B1D629E00984C62 /* AnimeSeasonParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3605F3D72B1D629E00984C62 /* AnimeSeasonParam.swift */; };
 		3605F3DC2B1D64C900984C62 /* AnimeSeasonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3605F3DB2B1D64C900984C62 /* AnimeSeasonResponse.swift */; };
+		3605F3E42B1D91AA00984C62 /* ExtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3605F3E32B1D91AA00984C62 /* ExtViewController.swift */; };
+		3605F3E82B1DA6CA00984C62 /* ProfileInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3605F3E62B1DA6CA00984C62 /* ProfileInfoCell.swift */; };
+		3605F3E92B1DA6CA00984C62 /* ProfileInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3605F3E72B1DA6CA00984C62 /* ProfileInfoCell.xib */; };
+		3605F3FE2B1DB65D00984C62 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3605F3EB2B1DB65D00984C62 /* Poppins-ExtraLight.ttf */; };
+		3605F3FF2B1DB65D00984C62 /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3605F3EC2B1DB65D00984C62 /* Poppins-ThinItalic.ttf */; };
+		3605F4002B1DB65D00984C62 /* Poppins-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3605F3ED2B1DB65D00984C62 /* Poppins-ExtraLightItalic.ttf */; };
+		3605F4012B1DB65D00984C62 /* Poppins-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3605F3EE2B1DB65D00984C62 /* Poppins-BoldItalic.ttf */; };
+		3605F4022B1DB65D00984C62 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3605F3EF2B1DB65D00984C62 /* Poppins-Light.ttf */; };
+		3605F4032B1DB65D00984C62 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3605F3F02B1DB65D00984C62 /* Poppins-Medium.ttf */; };
+		3605F4042B1DB65D00984C62 /* Poppins-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3605F3F12B1DB65D00984C62 /* Poppins-SemiBoldItalic.ttf */; };
+		3605F4052B1DB65D00984C62 /* Poppins-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3605F3F22B1DB65D00984C62 /* Poppins-ExtraBoldItalic.ttf */; };
+		3605F4062B1DB65E00984C62 /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3605F3F32B1DB65D00984C62 /* Poppins-ExtraBold.ttf */; };
+		3605F4072B1DB65E00984C62 /* Poppins-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3605F3F42B1DB65D00984C62 /* Poppins-BlackItalic.ttf */; };
+		3605F4092B1DB65E00984C62 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3605F3F62B1DB65D00984C62 /* Poppins-Regular.ttf */; };
+		3605F40A2B1DB65E00984C62 /* Poppins-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3605F3F72B1DB65D00984C62 /* Poppins-LightItalic.ttf */; };
+		3605F40B2B1DB65E00984C62 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3605F3F82B1DB65D00984C62 /* Poppins-Bold.ttf */; };
+		3605F40C2B1DB65E00984C62 /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3605F3F92B1DB65D00984C62 /* Poppins-Black.ttf */; };
+		3605F40D2B1DB65E00984C62 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3605F3FA2B1DB65D00984C62 /* Poppins-Thin.ttf */; };
+		3605F40E2B1DB65E00984C62 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3605F3FB2B1DB65D00984C62 /* Poppins-SemiBold.ttf */; };
+		3605F40F2B1DB65E00984C62 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3605F3FC2B1DB65D00984C62 /* Poppins-Italic.ttf */; };
+		3605F4102B1DB65E00984C62 /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3605F3FD2B1DB65D00984C62 /* Poppins-MediumItalic.ttf */; };
+		3605F4142B1DB8DF00984C62 /* ProfileStatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3605F4122B1DB8DF00984C62 /* ProfileStatsCell.swift */; };
+		3605F4152B1DB8DF00984C62 /* ProfileStatsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3605F4132B1DB8DF00984C62 /* ProfileStatsCell.xib */; };
 		3606D4702B17183C0097D6C5 /* ExtPagingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3606D46F2B17183C0097D6C5 /* ExtPagingController.swift */; };
 		3606D4742B171B490097D6C5 /* TopAnimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3606D4732B171B490097D6C5 /* TopAnimeViewModel.swift */; };
 		3606D4832B1723570097D6C5 /* TopAnimeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3606D4812B1723570097D6C5 /* TopAnimeTableCell.swift */; };
@@ -64,8 +87,8 @@
 		364EB4FE2B076C5F0012022C /* DetailAnimeCharacter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 364EB4FC2B076C5F0012022C /* DetailAnimeCharacter.xib */; };
 		36569EC32AFE04FE00EDB6B9 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36569EC12AFE04FE00EDB6B9 /* SplashViewController.swift */; };
 		36569EC42AFE04FE00EDB6B9 /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36569EC22AFE04FE00EDB6B9 /* SplashViewController.xib */; };
-		36569EC82AFE055900EDB6B9 /* OtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36569EC62AFE055900EDB6B9 /* OtherViewController.swift */; };
-		36569EC92AFE055900EDB6B9 /* OtherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36569EC72AFE055900EDB6B9 /* OtherViewController.xib */; };
+		36569EC82AFE055900EDB6B9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36569EC62AFE055900EDB6B9 /* ProfileViewController.swift */; };
+		36569EC92AFE055900EDB6B9 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36569EC72AFE055900EDB6B9 /* ProfileViewController.xib */; };
 		36569ECC2AFE056700EDB6B9 /* MangaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36569ECA2AFE056700EDB6B9 /* MangaViewController.swift */; };
 		36569ECD2AFE056700EDB6B9 /* MangaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36569ECB2AFE056700EDB6B9 /* MangaViewController.xib */; };
 		36569ED02AFE057300EDB6B9 /* AnimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36569ECE2AFE057300EDB6B9 /* AnimeViewController.swift */; };
@@ -203,6 +226,29 @@
 		3603D6EE2B19D94100C223E0 /* ExtAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtAnimation.swift; sourceTree = "<group>"; };
 		3605F3D72B1D629E00984C62 /* AnimeSeasonParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeSeasonParam.swift; sourceTree = "<group>"; };
 		3605F3DB2B1D64C900984C62 /* AnimeSeasonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeSeasonResponse.swift; sourceTree = "<group>"; };
+		3605F3E32B1D91AA00984C62 /* ExtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtViewController.swift; sourceTree = "<group>"; };
+		3605F3E62B1DA6CA00984C62 /* ProfileInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoCell.swift; sourceTree = "<group>"; };
+		3605F3E72B1DA6CA00984C62 /* ProfileInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileInfoCell.xib; sourceTree = "<group>"; };
+		3605F3EB2B1DB65D00984C62 /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
+		3605F3EC2B1DB65D00984C62 /* Poppins-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ThinItalic.ttf"; sourceTree = "<group>"; };
+		3605F3ED2B1DB65D00984C62 /* Poppins-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		3605F3EE2B1DB65D00984C62 /* Poppins-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BoldItalic.ttf"; sourceTree = "<group>"; };
+		3605F3EF2B1DB65D00984C62 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
+		3605F3F02B1DB65D00984C62 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		3605F3F12B1DB65D00984C62 /* Poppins-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		3605F3F22B1DB65D00984C62 /* Poppins-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		3605F3F32B1DB65D00984C62 /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
+		3605F3F42B1DB65D00984C62 /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
+		3605F3F62B1DB65D00984C62 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		3605F3F72B1DB65D00984C62 /* Poppins-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-LightItalic.ttf"; sourceTree = "<group>"; };
+		3605F3F82B1DB65D00984C62 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		3605F3F92B1DB65D00984C62 /* Poppins-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Black.ttf"; sourceTree = "<group>"; };
+		3605F3FA2B1DB65D00984C62 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
+		3605F3FB2B1DB65D00984C62 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		3605F3FC2B1DB65D00984C62 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
+		3605F3FD2B1DB65D00984C62 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
+		3605F4122B1DB8DF00984C62 /* ProfileStatsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStatsCell.swift; sourceTree = "<group>"; };
+		3605F4132B1DB8DF00984C62 /* ProfileStatsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileStatsCell.xib; sourceTree = "<group>"; };
 		3606D46F2B17183C0097D6C5 /* ExtPagingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtPagingController.swift; sourceTree = "<group>"; };
 		3606D4732B171B490097D6C5 /* TopAnimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAnimeViewModel.swift; sourceTree = "<group>"; };
 		3606D4812B1723570097D6C5 /* TopAnimeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAnimeTableCell.swift; sourceTree = "<group>"; };
@@ -249,8 +295,8 @@
 		364EB4FC2B076C5F0012022C /* DetailAnimeCharacter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailAnimeCharacter.xib; sourceTree = "<group>"; };
 		36569EC12AFE04FE00EDB6B9 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		36569EC22AFE04FE00EDB6B9 /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
-		36569EC62AFE055900EDB6B9 /* OtherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherViewController.swift; sourceTree = "<group>"; };
-		36569EC72AFE055900EDB6B9 /* OtherViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OtherViewController.xib; sourceTree = "<group>"; };
+		36569EC62AFE055900EDB6B9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		36569EC72AFE055900EDB6B9 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		36569ECA2AFE056700EDB6B9 /* MangaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaViewController.swift; sourceTree = "<group>"; };
 		36569ECB2AFE056700EDB6B9 /* MangaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MangaViewController.xib; sourceTree = "<group>"; };
 		36569ECE2AFE057300EDB6B9 /* AnimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeViewController.swift; sourceTree = "<group>"; };
@@ -412,6 +458,42 @@
 			path = CollectionCell;
 			sourceTree = "<group>";
 		};
+		3605F3E52B1DA68D00984C62 /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				3605F3E62B1DA6CA00984C62 /* ProfileInfoCell.swift */,
+				3605F3E72B1DA6CA00984C62 /* ProfileInfoCell.xib */,
+				3605F4122B1DB8DF00984C62 /* ProfileStatsCell.swift */,
+				3605F4132B1DB8DF00984C62 /* ProfileStatsCell.xib */,
+			);
+			path = TableCell;
+			sourceTree = "<group>";
+		};
+		3605F4112B1DB69800984C62 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3605F3EB2B1DB65D00984C62 /* Poppins-ExtraLight.ttf */,
+				3605F3EC2B1DB65D00984C62 /* Poppins-ThinItalic.ttf */,
+				3605F3ED2B1DB65D00984C62 /* Poppins-ExtraLightItalic.ttf */,
+				3605F3EE2B1DB65D00984C62 /* Poppins-BoldItalic.ttf */,
+				3605F3EF2B1DB65D00984C62 /* Poppins-Light.ttf */,
+				3605F3F02B1DB65D00984C62 /* Poppins-Medium.ttf */,
+				3605F3F12B1DB65D00984C62 /* Poppins-SemiBoldItalic.ttf */,
+				3605F3F22B1DB65D00984C62 /* Poppins-ExtraBoldItalic.ttf */,
+				3605F3F32B1DB65D00984C62 /* Poppins-ExtraBold.ttf */,
+				3605F3F42B1DB65D00984C62 /* Poppins-BlackItalic.ttf */,
+				3605F3F62B1DB65D00984C62 /* Poppins-Regular.ttf */,
+				3605F3F72B1DB65D00984C62 /* Poppins-LightItalic.ttf */,
+				3605F3F82B1DB65D00984C62 /* Poppins-Bold.ttf */,
+				3605F3F92B1DB65D00984C62 /* Poppins-Black.ttf */,
+				3605F3FA2B1DB65D00984C62 /* Poppins-Thin.ttf */,
+				3605F3FB2B1DB65D00984C62 /* Poppins-SemiBold.ttf */,
+				3605F3FC2B1DB65D00984C62 /* Poppins-Italic.ttf */,
+				3605F3FD2B1DB65D00984C62 /* Poppins-MediumItalic.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		3606D4712B171A8A0097D6C5 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -525,7 +607,7 @@
 				36D60F2B2B0478AD00800D88 /* DetailAnime */,
 				36F46C1F2B021B12002FFC78 /* SearchScreen */,
 				36231CE92AFE0479008257C8 /* Splash */,
-				36231CE82AFE046F008257C8 /* Other */,
+				36231CE82AFE046F008257C8 /* Profile */,
 				36231CE72AFE046A008257C8 /* Manga */,
 				36231CE62AFE0462008257C8 /* Anime */,
 				36231CE52AFE045B008257C8 /* MainTabBar */,
@@ -553,6 +635,7 @@
 		36231CE32AFE0437008257C8 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				3605F4112B1DB69800984C62 /* Fonts */,
 				36569F002AFE250F00EDB6B9 /* Network */,
 				36231CD52AFE041A008257C8 /* Assets.xcassets */,
 				36569EC52AFE053300EDB6B9 /* Common */,
@@ -597,13 +680,14 @@
 			path = Manga;
 			sourceTree = "<group>";
 		};
-		36231CE82AFE046F008257C8 /* Other */ = {
+		36231CE82AFE046F008257C8 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				36569EC62AFE055900EDB6B9 /* OtherViewController.swift */,
-				36569EC72AFE055900EDB6B9 /* OtherViewController.xib */,
+				3605F3E52B1DA68D00984C62 /* TableCell */,
+				36569EC62AFE055900EDB6B9 /* ProfileViewController.swift */,
+				36569EC72AFE055900EDB6B9 /* ProfileViewController.xib */,
 			);
-			path = Other;
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		36231CE92AFE0479008257C8 /* Splash */ = {
@@ -757,6 +841,7 @@
 				3606D46F2B17183C0097D6C5 /* ExtPagingController.swift */,
 				3643ABC52B18240C00195054 /* ExtInt.swift */,
 				3603D6EE2B19D94100C223E0 /* ExtAnimation.swift */,
+				3605F3E32B1D91AA00984C62 /* ExtViewController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1233,11 +1318,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3605F4002B1DB65D00984C62 /* Poppins-ExtraLightItalic.ttf in Resources */,
 				36231CD62AFE041A008257C8 /* Assets.xcassets in Resources */,
 				3660226F2B0B4B1900099DE3 /* AnimeRecommendationItem.xib in Resources */,
 				36F405DF2B0F4F4800311133 /* MangaListCell.xib in Resources */,
 				36A79ABF2B04AD6400471D5B /* AnimeGenreItem.xib in Resources */,
+				3605F4152B1DB8DF00984C62 /* ProfileStatsCell.xib in Resources */,
+				3605F3FE2B1DB65D00984C62 /* Poppins-ExtraLight.ttf in Resources */,
 				3643ABCD2B18436E00195054 /* AnimeScheduleViewController.xib in Resources */,
+				3605F40B2B1DB65E00984C62 /* Poppins-Bold.ttf in Resources */,
 				36569ED92AFE05B700EDB6B9 /* DashboardViewController.xib in Resources */,
 				3606D4842B1723570097D6C5 /* TopAnimeTableCell.xib in Resources */,
 				36569EED2AFE0E6F00EDB6B9 /* DashboardCategory.xib in Resources */,
@@ -1246,13 +1335,17 @@
 				36569EE22AFE091B00EDB6B9 /* DashboardSearch.xib in Resources */,
 				3660226B2B0B4A3100099DE3 /* DetailAnimeRecommendation.xib in Resources */,
 				36942E4F2B0758BC006A38CE /* DetailAnimeMoreInfo.xib in Resources */,
-				36569EC92AFE055900EDB6B9 /* OtherViewController.xib in Resources */,
+				36569EC92AFE055900EDB6B9 /* ProfileViewController.xib in Resources */,
 				3660225F2B0B1AC200099DE3 /* AnimeStaffItem.xib in Resources */,
 				36671F7B2B031DEE00EB7083 /* SelectedSearchCategoryItem.xib in Resources */,
 				36942E452B0704B2006A38CE /* AnimeCardItem.xib in Resources */,
 				36EB5F712B16CE2600A5EE9A /* FilterPopUp.xib in Resources */,
 				3643ABD42B1845D700195054 /* AnimeSchedulePagingViewController.xib in Resources */,
+				3605F4052B1DB65D00984C62 /* Poppins-ExtraBoldItalic.ttf in Resources */,
+				3605F4042B1DB65D00984C62 /* Poppins-SemiBoldItalic.ttf in Resources */,
+				3605F40C2B1DB65E00984C62 /* Poppins-Black.ttf in Resources */,
 				36F9D0C02B0F44E40056F40E /* AnimeSearchFilterCell.xib in Resources */,
+				3605F3E92B1DA6CA00984C62 /* ProfileInfoCell.xib in Resources */,
 				36170DE22B10A5AF009EC642 /* FailedPopUp.xib in Resources */,
 				36A09BA22B05D4DF00778CD3 /* DetailAnimeTrailer.xib in Resources */,
 				360E829B2B0DF7E10011D844 /* WatchStatusItem.xib in Resources */,
@@ -1260,17 +1353,23 @@
 				36F46C1C2B02108B002FFC78 /* CurrentSeasonAnimeItem.xib in Resources */,
 				36EB5F762B16D9A700A5EE9A /* AnimeFilterCell.xib in Resources */,
 				36569ED12AFE057300EDB6B9 /* AnimeViewController.xib in Resources */,
+				3605F4032B1DB65D00984C62 /* Poppins-Medium.ttf in Resources */,
 				366022592B0B16AC00099DE3 /* DetailAnimeStaff.xib in Resources */,
+				3605F4022B1DB65D00984C62 /* Poppins-Light.ttf in Resources */,
 				36683F982B14822E00478AC5 /* UpdateListBottomSheet.xib in Resources */,
 				36569EFA2AFE117500EDB6B9 /* TodayAnime.xib in Resources */,
+				3605F4092B1DB65E00984C62 /* Poppins-Regular.ttf in Resources */,
 				369C55F42B0481E100B982AF /* DetailAnimeViewController.xib in Resources */,
+				3605F3FF2B1DB65D00984C62 /* Poppins-ThinItalic.ttf in Resources */,
 				36A79ABA2B04836900471D5B /* AnimeDetailInfo.xib in Resources */,
 				36259EDB2B0617D800FE89BC /* ShowMoreViewController.xib in Resources */,
 				36671F872B03262D00EB7083 /* SearchCategories.xib in Resources */,
 				368C165A2B18780900F44C4B /* AnimeSeasonViewController.xib in Resources */,
 				366022672B0B445100099DE3 /* DetailAnimeTheme.xib in Resources */,
 				360E828E2B0DD56E0011D844 /* RatingScoreItem.xib in Resources */,
+				3605F4102B1DB65E00984C62 /* Poppins-MediumItalic.ttf in Resources */,
 				3603D6E52B197C1000C223E0 /* AnimeSeasonItemCell.xib in Resources */,
+				3605F4072B1DB65E00984C62 /* Poppins-BlackItalic.ttf in Resources */,
 				36F9D0BC2B0F33990056F40E /* AnimeListCell.xib in Resources */,
 				36F46C232B021B5C002FFC78 /* SearchViewController.xib in Resources */,
 				360E82872B0DA8150011D844 /* AddToListBottomSheet.xib in Resources */,
@@ -1282,14 +1381,20 @@
 				36569EC42AFE04FE00EDB6B9 /* SplashViewController.xib in Resources */,
 				368C16642B187B7000F44C4B /* AnimeSeasonTableCell.xib in Resources */,
 				3603D6E92B19844600C223E0 /* AnimeSeasonYearCell.xib in Resources */,
+				3605F40F2B1DB65E00984C62 /* Poppins-Italic.ttf in Resources */,
 				36942E4B2B073682006A38CE /* ShowMoreItem.xib in Resources */,
+				3605F40A2B1DB65E00984C62 /* Poppins-LightItalic.ttf in Resources */,
+				3605F40D2B1DB65E00984C62 /* Poppins-Thin.ttf in Resources */,
+				3605F4012B1DB65D00984C62 /* Poppins-BoldItalic.ttf in Resources */,
 				360E82962B0DF20C0011D844 /* WatchStatusBottomSheet.xib in Resources */,
 				368C165F2B18789100F44C4B /* TopMangaViewController.xib in Resources */,
 				36F9D0B52B0F29AE0056F40E /* SearchBar.xib in Resources */,
+				3605F40E2B1DB65E00984C62 /* Poppins-SemiBold.ttf in Resources */,
 				36F46C172B020F1E002FFC78 /* CurrentSeasonAnime.xib in Resources */,
 				3603D6D92B196B5600C223E0 /* AnimeSeasonContentViewController.xib in Resources */,
 				36569ECD2AFE056700EDB6B9 /* MangaViewController.xib in Resources */,
 				36641E412B0EF14D00651AF0 /* SuccessPopUp.xib in Resources */,
+				3605F4062B1DB65E00984C62 /* Poppins-ExtraBold.ttf in Resources */,
 				36569EFF2AFE128100EDB6B9 /* TodayAnimeItem.xib in Resources */,
 				3693B0B72B188CFE00406B1D /* SearchResultCell.xib in Resources */,
 				362B1FF02B0CA38A009BACDB /* TopAnimeViewController.xib in Resources */,
@@ -1357,6 +1462,7 @@
 				3643ABD82B186B2600195054 /* AnimeScheduleTableCell.swift in Sources */,
 				3643ABCC2B18436E00195054 /* AnimeScheduleViewController.swift in Sources */,
 				36569EF12AFE0F8C00EDB6B9 /* DashboardCategoryItem.swift in Sources */,
+				3605F4142B1DB8DF00984C62 /* ProfileStatsCell.swift in Sources */,
 				369C55F32B0481E100B982AF /* DetailAnimeViewController.swift in Sources */,
 				366022752B0B524400099DE3 /* AnimeRecommendationEntity.swift in Sources */,
 				36569ED02AFE057300EDB6B9 /* AnimeViewController.swift in Sources */,
@@ -1368,6 +1474,7 @@
 				3603D6DB2B1970A000C223E0 /* AnimeSeasonFloatingPanel.swift in Sources */,
 				36EB5F752B16D9A700A5EE9A /* AnimeFilterCell.swift in Sources */,
 				3660224D2B0AE49D00099DE3 /* AnimeDetailEntity.swift in Sources */,
+				3605F3E42B1D91AA00984C62 /* ExtViewController.swift in Sources */,
 				36AF1C0F2B10499100C8EB46 /* UserAnimeViewModel.swift in Sources */,
 				36F46C162B020F1E002FFC78 /* CurrentSeasonAnime.swift in Sources */,
 				36569EE92AFE0CA700EDB6B9 /* ExtView.swift in Sources */,
@@ -1396,7 +1503,7 @@
 				36683F882B14382C00478AC5 /* AnimeDetailResponse.swift in Sources */,
 				36641E382B0ED52E00651AF0 /* BottomSheetHelper.swift in Sources */,
 				36F46C1B2B02108B002FFC78 /* CurrentSeasonAnimeItem.swift in Sources */,
-				36569EC82AFE055900EDB6B9 /* OtherViewController.swift in Sources */,
+				36569EC82AFE055900EDB6B9 /* ProfileViewController.swift in Sources */,
 				36569EF42AFE0FE500EDB6B9 /* DashboardCategoryEntity.swift in Sources */,
 				36D643CD2B01B97800EF554E /* SchedulesParam.swift in Sources */,
 				36942E4A2B073682006A38CE /* ShowMoreItem.swift in Sources */,
@@ -1451,6 +1558,7 @@
 				36641E3A2B0ED55C00651AF0 /* PopUpLoading.swift in Sources */,
 				360E829A2B0DF7E10011D844 /* WatchStatusItem.swift in Sources */,
 				3606D4742B171B490097D6C5 /* TopAnimeViewModel.swift in Sources */,
+				3605F3E82B1DA6CA00984C62 /* ProfileInfoCell.swift in Sources */,
 				36569ED82AFE05B700EDB6B9 /* DashboardViewController.swift in Sources */,
 				3606D4952B1739740097D6C5 /* OneUserAnimeParam.swift in Sources */,
 				36683F822B14374D00478AC5 /* AnimeResponse.swift in Sources */,

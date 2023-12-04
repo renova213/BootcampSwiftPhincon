@@ -6,10 +6,12 @@ import Hero
 
 class AnimeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var appBar: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
+        configureUI()
         configureTableView()
         tableView.showAnimatedGradientSkeleton()
     }
@@ -42,6 +44,10 @@ class AnimeViewController: UIViewController {
 }
 
 extension AnimeViewController {
+    
+    func configureUI(){
+        appBar.createAppBar()
+    }
     
     func configureTableView(){
         tableView.delegate = self

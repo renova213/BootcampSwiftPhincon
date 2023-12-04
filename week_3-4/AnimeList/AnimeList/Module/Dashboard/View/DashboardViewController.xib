@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DashboardViewController" customModule="AnimeList" customModuleProvider="target">
             <connections>
+                <outlet property="appBar" destination="gtp-Cu-gc9" id="S3z-0A-gug"/>
                 <outlet property="dashboardTableView" destination="ed9-O9-6P4" id="91O-BE-SEh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -19,8 +20,15 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gtp-Cu-gc9">
+                    <rect key="frame" x="0.0" y="59" width="393" height="50"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="nyR-L5-LTn"/>
+                    </constraints>
+                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ed9-O9-6P4">
-                    <rect key="frame" x="16" y="59" width="361" height="743"/>
+                    <rect key="frame" x="16" y="125" width="361" height="677"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <userDefinedRuntimeAttributes>
@@ -34,7 +42,10 @@
                 <constraint firstItem="ed9-O9-6P4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="990-Qe-Lrh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ed9-O9-6P4" secondAttribute="trailing" constant="16" id="Mx8-xd-ciU"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ed9-O9-6P4" secondAttribute="bottom" constant="16" id="Vvh-n3-LEn"/>
-                <constraint firstItem="ed9-O9-6P4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="i5n-Gu-Xke"/>
+                <constraint firstItem="ed9-O9-6P4" firstAttribute="top" secondItem="gtp-Cu-gc9" secondAttribute="bottom" constant="16" id="m0K-6r-8P8"/>
+                <constraint firstItem="gtp-Cu-gc9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="okd-vi-1g4"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gtp-Cu-gc9" secondAttribute="trailing" id="qSE-j4-2P4"/>
+                <constraint firstItem="gtp-Cu-gc9" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="vNL-kl-Dm7"/>
             </constraints>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>

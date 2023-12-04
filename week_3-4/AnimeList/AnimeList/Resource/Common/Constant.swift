@@ -11,7 +11,7 @@ enum SFSymbol {
     static let homeSymbol = UIImage(systemName: "homekit")
     static let animeSymbol = UIImage(systemName: "film")
     static let mangaSymbol = UIImage(systemName: "chart.bar.doc.horizontal")
-    static let otherSymbol = UIImage(systemName: "line.horizontal.3")
+    static let profileSymbol = UIImage(systemName: "person.fill")
 }
 
 enum TopAnimeEnum {

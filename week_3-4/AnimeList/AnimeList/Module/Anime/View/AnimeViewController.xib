@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AnimeViewController" customModule="AnimeList" customModuleProvider="target">
             <connections>
+                <outlet property="appBar" destination="eHd-4w-dMI" id="n5b-hD-vHK"/>
                 <outlet property="tableView" destination="gDk-zW-xTl" id="wT3-J2-OPZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,19 +24,29 @@
                     <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="gDk-zW-xTl">
-                            <rect key="frame" x="16" y="0.0" width="361" height="759"/>
+                            <rect key="frame" x="16" y="66" width="361" height="693"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                             </userDefinedRuntimeAttributes>
                         </tableView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eHd-4w-dMI">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="7Et-zx-6ob"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="gDk-zW-xTl" firstAttribute="top" secondItem="8PV-fe-Qxr" secondAttribute="top" id="SGI-vF-bfN"/>
+                        <constraint firstItem="eHd-4w-dMI" firstAttribute="top" secondItem="8PV-fe-Qxr" secondAttribute="top" id="0yB-EO-rxu"/>
+                        <constraint firstAttribute="trailing" secondItem="eHd-4w-dMI" secondAttribute="trailing" id="Qa6-ir-OHg"/>
                         <constraint firstAttribute="trailing" secondItem="gDk-zW-xTl" secondAttribute="trailing" constant="16" id="Wtm-bP-xMr"/>
                         <constraint firstAttribute="bottom" secondItem="gDk-zW-xTl" secondAttribute="bottom" id="Xgi-v7-Oic"/>
+                        <constraint firstItem="eHd-4w-dMI" firstAttribute="leading" secondItem="8PV-fe-Qxr" secondAttribute="leading" id="ZAJ-BT-19j"/>
                         <constraint firstItem="gDk-zW-xTl" firstAttribute="leading" secondItem="8PV-fe-Qxr" secondAttribute="leading" constant="16" id="ZMR-n2-5wJ"/>
+                        <constraint firstItem="gDk-zW-xTl" firstAttribute="top" secondItem="eHd-4w-dMI" secondAttribute="bottom" constant="16" id="oQW-61-QtZ"/>
                     </constraints>
                 </view>
             </subviews>
@@ -47,7 +58,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8PV-fe-Qxr" secondAttribute="trailing" id="ifS-Dr-tyr"/>
                 <constraint firstItem="8PV-fe-Qxr" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="qtT-bM-IUl"/>
             </constraints>
-            <point key="canvasLocation" x="140" y="20"/>
+            <point key="canvasLocation" x="139.69465648854961" y="19.718309859154932"/>
         </view>
     </objects>
     <resources>

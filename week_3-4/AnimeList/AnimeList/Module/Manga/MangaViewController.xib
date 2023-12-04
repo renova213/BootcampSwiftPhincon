@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MangaViewController" customModule="AnimeList" customModuleProvider="target">
             <connections>
+                <outlet property="appBar" destination="Zo4-Cd-64U" id="QXk-Bf-FYv"/>
                 <outlet property="filterWatchButton" destination="ULh-lT-X2a" id="sAu-IJ-VM7"/>
                 <outlet property="tableView" destination="qGM-iw-qUZ" id="ubU-lB-9lr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -36,20 +37,30 @@
                             <buttonConfiguration key="configuration" style="filled" title="Dibaca Nanti"/>
                         </button>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qGM-iw-qUZ">
-                            <rect key="frame" x="16" y="0.0" width="361" height="759"/>
+                            <rect key="frame" x="16" y="66" width="361" height="693"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                             </userDefinedRuntimeAttributes>
                         </tableView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zo4-Cd-64U">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="khH-HC-kDq"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="qGM-iw-qUZ" firstAttribute="top" secondItem="VyX-ce-w0W" secondAttribute="top" id="4fR-xg-OFX"/>
                         <constraint firstItem="qGM-iw-qUZ" firstAttribute="leading" secondItem="VyX-ce-w0W" secondAttribute="leading" constant="16" id="7cJ-6h-8Y6"/>
+                        <constraint firstAttribute="trailing" secondItem="Zo4-Cd-64U" secondAttribute="trailing" id="CMM-6Q-v2R"/>
                         <constraint firstAttribute="bottom" secondItem="ULh-lT-X2a" secondAttribute="bottom" constant="60" id="NEd-19-4WR"/>
                         <constraint firstAttribute="trailing" secondItem="qGM-iw-qUZ" secondAttribute="trailing" constant="16" id="ZKM-NY-mDM"/>
+                        <constraint firstItem="Zo4-Cd-64U" firstAttribute="leading" secondItem="VyX-ce-w0W" secondAttribute="leading" id="bqZ-d9-yRx"/>
                         <constraint firstAttribute="trailing" secondItem="ULh-lT-X2a" secondAttribute="trailing" constant="16" id="fEG-go-vfK"/>
+                        <constraint firstItem="Zo4-Cd-64U" firstAttribute="top" secondItem="VyX-ce-w0W" secondAttribute="top" id="j1z-pC-bnX"/>
+                        <constraint firstItem="qGM-iw-qUZ" firstAttribute="top" secondItem="Zo4-Cd-64U" secondAttribute="bottom" constant="16" id="rNj-me-Yg0"/>
                         <constraint firstAttribute="bottom" secondItem="qGM-iw-qUZ" secondAttribute="bottom" id="wCK-K6-tt5"/>
                     </constraints>
                 </view>
@@ -62,7 +73,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VyX-ce-w0W" secondAttribute="trailing" id="hot-AX-UMP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="VyX-ce-w0W" secondAttribute="bottom" id="lC1-NW-Ym9"/>
             </constraints>
-            <point key="canvasLocation" x="140" y="20"/>
+            <point key="canvasLocation" x="139.69465648854961" y="19.718309859154932"/>
         </view>
     </objects>
     <resources>
