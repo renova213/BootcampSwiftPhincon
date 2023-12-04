@@ -31,3 +31,7 @@ enum AnimeCalendarEnum {
     case other
 }
 
+enum Season: String {
+    case spring, summer, autumn, winter
+}
+

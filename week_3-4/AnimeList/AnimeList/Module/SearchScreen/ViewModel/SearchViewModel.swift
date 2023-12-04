@@ -4,7 +4,6 @@ import RxCocoa
 
 class SearchViewModel: BaseViewModel {
     static let shared = SearchViewModel()
-    let api = APIManager.shared
 
     let filteredAnime = BehaviorRelay<[AnimeEntity]>(value: [])
     let filteredManga = BehaviorRelay<[MangaEntity]>(value: [])

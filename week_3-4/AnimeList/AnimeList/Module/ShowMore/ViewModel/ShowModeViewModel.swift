@@ -4,7 +4,6 @@ import RxCocoa
 
 class ShowMoreViewModel: BaseViewModel {
     static let shared = ShowMoreViewModel()
-    let api = APIManager.shared
     
     let showMoreAnime = BehaviorRelay<[AnimeEntity]>(value: [])
     

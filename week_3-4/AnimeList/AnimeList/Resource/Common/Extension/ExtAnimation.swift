@@ -22,6 +22,28 @@ extension UICollectionViewCell {
     }
 }
 
+extension UILabel {
+    func fadeIn(duration: TimeInterval = 1.0, completion: ((Bool) -> Void)? = nil) {
+        self.alpha = 0.0
+        
+        UIView.animate(withDuration: duration, animations: {
+            self.alpha = 1.0
+        }, completion: completion)
+    }
+    
+    func fadeOutAndIn(duration: TimeInterval = 1.0, delayBetween: TimeInterval = 1.0, completion: ((Bool) -> Void)? = nil) {
+        UIView.animate(withDuration: duration, animations: {
+            self.alpha = 0.0
+        }) { (completed) in
+            DispatchQueue.main.asyncAfter(deadline: .now() + delayBetween) {
+                UIView.animate(withDuration: duration, animations: {
+                    self.alpha = 1.0
+                }, completion: completion)
+            }
+        }
+    }
+}
+
 extension UIButton {
     func bounceAnimation(scaleX: CGFloat = 0.001, scaleY: CGFloat = 0.001, duration: TimeInterval = 0.8) {
         self.transform = CGAffineTransform(scaleX: scaleX, y: scaleY)
@@ -31,8 +53,8 @@ extension UIButton {
                        initialSpringVelocity: 5,
                        options: .allowUserInteraction,
                        animations: {
-                           self.transform = .identity
-                       },
+            self.transform = .identity
+        },
                        completion: nil)
     }
 }

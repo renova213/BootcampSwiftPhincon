@@ -3,7 +3,6 @@ import RxSwift
 import RxCocoa
 
 class AnimeScheduleViewModel:BaseViewModel {
-    let api = APIManager.shared
     
     let tabBarItem: [String] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Unknown", "Other"]
     

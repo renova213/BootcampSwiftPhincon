@@ -3,7 +3,7 @@ import RxSwift
 import RxCocoa
 
 protocol AnimeSeasonYearCellDelegate: AnyObject {
-    func didTapYear(index: Int)
+    func didTapYear(index: Int, year: Int)
 }
 
 class AnimeSeasonYearCell: UICollectionViewCell {
@@ -19,9 +19,11 @@ class AnimeSeasonYearCell: UICollectionViewCell {
     weak var delegate: AnimeSeasonYearCellDelegate?
     private let disposeBag = DisposeBag()
     var index: Int?
+    var year: Int?
     
     func initialSetup(year: String, selectedYearIndex: Int, index: Int){
         self.index = index
+        self.year = Int(year)
         
         yearLabel.text = year
         
@@ -43,8 +45,8 @@ class AnimeSeasonYearCell: UICollectionViewCell {
     func buttonGesture(){
         itemView.rx.tapGesture().when(.recognized).subscribe({[weak self] _ in
             guard let self = self else { return }
-            if let index = self.index {
-                self.delegate?.didTapYear(index: index)
+            if let index = self.index, let year = self.year {
+                self.delegate?.didTapYear(index: index, year: year)
             }
         }).disposed(by: disposeBag)
     }

@@ -4,7 +4,6 @@ import RxCocoa
 
 class DashboardViewModel: BaseViewModel {
     static let shared = DashboardViewModel()
-    let api = APIManager.shared
     
     let currentAnime = BehaviorRelay<[AnimeEntity]>(value: [])
     let currentSeasonAnime = BehaviorRelay<[AnimeEntity]>(value: [])

@@ -15,6 +15,7 @@
                 <outlet property="confirmButton" destination="NJV-k6-fo3" id="4Cc-Qm-L0H"/>
                 <outlet property="filterButton" destination="Fyj-47-pIt" id="fRV-Hv-HhW"/>
                 <outlet property="seasonCollection" destination="GN2-RL-7mM" id="3Vy-fL-J3M"/>
+                <outlet property="seasonLabel" destination="0AN-Gw-nhk" id="UDL-TW-npi"/>
                 <outlet property="stackViewFilter" destination="tzx-H7-Sf3" id="nj3-7w-BWK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="yearCollection" destination="i2N-Ka-A1O" id="h1u-vo-CrZ"/>
@@ -48,21 +49,38 @@
                         <constraint firstAttribute="height" constant="40" id="lcd-Rp-95x"/>
                     </constraints>
                 </stackView>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="GN2-RL-7mM">
-                    <rect key="frame" x="32" y="165" width="329" height="50"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="CbJ-MP-fLp"/>
-                    </constraints>
-                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="20" id="Y7Y-X0-VCa">
-                        <size key="itemSize" width="128" height="128"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                </collectionView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Xy3-Gu-5Ks">
+                    <rect key="frame" x="32" y="165" width="329" height="77.333333333333314"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="GN2-RL-7mM">
+                            <rect key="frame" x="0.0" y="0.0" width="329" height="50"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="CbJ-MP-fLp"/>
+                            </constraints>
+                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="20" id="Y7Y-X0-VCa">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </collectionView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0AN-Gw-nhk">
+                            <rect key="frame" x="0.0" y="58.000000000000007" width="329" height="19.333333333333336"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="NO"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                    </subviews>
+                </stackView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="i2N-Ka-A1O">
-                    <rect key="frame" x="16" y="239" width="361" height="40"/>
+                    <rect key="frame" x="16" y="258.33333333333331" width="361" height="40"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="Dpv-Db-M9L"/>
@@ -78,7 +96,7 @@
                     </userDefinedRuntimeAttributes>
                 </collectionView>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="tzx-H7-Sf3">
-                    <rect key="frame" x="16" y="303" width="139" height="40"/>
+                    <rect key="frame" x="16" y="322.33333333333331" width="139" height="40"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75x-42-gCE">
                             <rect key="frame" x="0.0" y="0.0" width="63" height="40"/>
@@ -111,20 +129,23 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="Main Color"/>
             <constraints>
-                <constraint firstItem="GN2-RL-7mM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="0oe-1q-px3"/>
-                <constraint firstItem="GN2-RL-7mM" firstAttribute="top" secondItem="kCx-Tp-Zpj" secondAttribute="bottom" constant="24" id="4wE-t0-1qf"/>
                 <constraint firstItem="i2N-Ka-A1O" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="JWq-kQ-lzi"/>
                 <constraint firstItem="tzx-H7-Sf3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="LqH-pu-kne"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Xy3-Gu-5Ks" secondAttribute="trailing" constant="32" id="QeV-qr-cjn"/>
+                <constraint firstItem="Xy3-Gu-5Ks" firstAttribute="top" secondItem="kCx-Tp-Zpj" secondAttribute="bottom" constant="24" id="TF5-Bs-chF"/>
                 <constraint firstItem="tzx-H7-Sf3" firstAttribute="top" secondItem="i2N-Ka-A1O" secondAttribute="bottom" constant="24" id="agI-V3-LjU"/>
+                <constraint firstItem="i2N-Ka-A1O" firstAttribute="top" secondItem="Xy3-Gu-5Ks" secondAttribute="bottom" constant="16" id="cdB-La-AUq"/>
+                <constraint firstItem="Xy3-Gu-5Ks" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="eNi-Ir-Jtd"/>
                 <constraint firstItem="kCx-Tp-Zpj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="42" id="fK8-hb-hEz"/>
                 <constraint firstItem="kCx-Tp-Zpj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="nqU-W5-i9e"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="GN2-RL-7mM" secondAttribute="trailing" constant="32" id="ru8-0d-hBx"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kCx-Tp-Zpj" secondAttribute="trailing" constant="16" id="tS4-W5-IdQ"/>
-                <constraint firstItem="i2N-Ka-A1O" firstAttribute="top" secondItem="GN2-RL-7mM" secondAttribute="bottom" constant="24" id="xEu-rp-CFg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="i2N-Ka-A1O" secondAttribute="trailing" constant="16" id="yWk-Xh-AAh"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-237" y="-813"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
+            <point key="canvasLocation" x="-237.40458015267174" y="-813.38028169014092"/>
         </view>
     </objects>
     <resources>

@@ -14,6 +14,7 @@
                 <outlet property="backButton" destination="33J-Fg-b7G" id="A4g-hK-g59"/>
                 <outlet property="filterButton" destination="R1w-xo-ehz" id="Bnv-op-bzG"/>
                 <outlet property="tableView" destination="rf2-Mc-aMG" id="js9-8R-csV"/>
+                <outlet property="titleLabel" destination="19H-wv-ZLS" id="89a-Zn-00X"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

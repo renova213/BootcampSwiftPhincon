@@ -3,11 +3,12 @@ import RxSwift
 import RxCocoa
 import SkeletonView
 protocol AnimeSeasonContentViewControllerDelegate: AnyObject{
-    func didConfirm(index: Int)
+    func didConfirm(sortIndex: Int, season: String, year: Int)
 }
 
 class AnimeSeasonContentViewController: UIViewController {
     
+    @IBOutlet weak var seasonLabel: UILabel!
     @IBOutlet weak var stackViewFilter: UIStackView!
     @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var yearCollection: UICollectionView!
@@ -16,8 +17,8 @@ class AnimeSeasonContentViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
         loadData()
+        configureUI()
         resetData()
         buttonGesture()
     }
@@ -28,6 +29,8 @@ class AnimeSeasonContentViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         configureCollection()
+        seasonLabel.fadeIn(duration: 0.3)
+        animeSeasonVM.changeSelectedSeason(season: "Winter")
     }
     
     private let disposeBag = DisposeBag()
@@ -66,12 +69,9 @@ extension AnimeSeasonContentViewController: UICollectionViewDelegate, SkeletonCo
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
-        case seasonCollection:
-            return seasonList[self.selectedYearIndex].seasons.count
-        case yearCollection:
-            return seasonList.count
-        default:
-            return 0
+        case seasonCollection: return seasonList.isEmpty ? 0 : seasonList[self.selectedYearIndex].seasons.count
+        case yearCollection: return seasonList.count
+        default: return 0
         }
     }
     
@@ -114,10 +114,11 @@ extension AnimeSeasonContentViewController: UICollectionViewDelegate, SkeletonCo
             return CGSize(width: 50, height: 50)
         }
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
         if collectionView == seasonCollection {
-            let totalCell = seasonList[selectedYearIndex].seasons.count
+            let totalCell = seasonList.isEmpty ? 0 : seasonList[self.selectedYearIndex].seasons.count
             
             let totalCellWidth = 50 * totalCell
             let totalSpacingWidth = 20 * (totalCell - 1)
@@ -154,7 +155,7 @@ extension AnimeSeasonContentViewController{
         }).disposed(by: disposeBag)
         confirmButton.rx.tap.subscribe({[weak self] _ in
             guard let self = self else { return }
-            self.delegate?.didConfirm(index: self.animeSeasonVM.filterIndex.value)
+            self.delegate?.didConfirm(sortIndex: self.animeSeasonVM.filterIndex.value, season: self.animeSeasonVM.selectedSeason.value, year: self.animeSeasonVM.selectedYear.value)
             self.dismiss(animated: true)
         }).disposed(by: disposeBag)
         cancelButton.rx.tap.subscribe({[weak self] _ in
@@ -171,7 +172,6 @@ extension AnimeSeasonContentViewController{
         cancelButton.roundCornersAll(radius: 8)
         filterButton.addBorder(width: 1, color: UIColor.white)
         filterButton.roundCornersAll(radius: 8)
-        
     }
     func configureCollection(){
         seasonCollection.delegate = self
@@ -183,7 +183,7 @@ extension AnimeSeasonContentViewController{
         yearCollection.registerCellWithNib(AnimeSeasonYearCell.self)
     }
     func loadData(){
-        animeSeasonVM.loadData(for: Endpoint.getSeasonList, resultType: SeasonListResponse.self, index: 0)
+        animeSeasonVM.loadData(for: Endpoint.getSeasonList, resultType: SeasonListResponse.self, sortIndex: 0)
     }
     func bindData(){
         animeSeasonVM.seasonList.asObservable().subscribe(onNext: {[weak self] data in
@@ -198,6 +198,10 @@ extension AnimeSeasonContentViewController{
             guard let self = self else { return }
             self.selectedSeasonIndex = i
         }).disposed(by: disposeBag)
+        animeSeasonVM.selectedSeason.asObservable().subscribe(onNext: {[weak self] season in
+            guard let self = self else { return }
+            self.seasonLabel.text = season
+        }).disposed(by: disposeBag)
         animeSeasonVM.filterIndex.subscribe({[weak self] index in
             guard let self = self else { return }
             switch index.element {
@@ -208,6 +212,7 @@ extension AnimeSeasonContentViewController{
             default:
                 self.filterButton.setTitle("Select", for: .normal)
             }
+            
         }).disposed(by: disposeBag)
     }
     func loadingState(){
@@ -226,12 +231,18 @@ extension AnimeSeasonContentViewController{
 }
 
 extension AnimeSeasonContentViewController: AnimeSeasonYearCellDelegate, AnimeSeasonItemCellDelegate {
-    func didTapYear(index: Int) {
+    func didTapYear(index: Int, year: Int) {
         animeSeasonVM.changeSelectedYearIndex(index: index)
         animeSeasonVM.changeSelectedSeasonIndex(index: 0)
+        animeSeasonVM.changeSelectedYear(year: year)
+        animeSeasonVM.changeSelectedSeason(season: animeSeasonVM.selectedSeason.value)
+        animeSeasonVM.changeSelectedSeason(season: "Winter")
+        seasonLabel.fadeIn(duration: 0.3)
     }
     
-    func didTapSeason(index: Int) {
+    func didTapSeason(index: Int, season: String) {
         animeSeasonVM.changeSelectedSeasonIndex(index: index)
+        animeSeasonVM.changeSelectedSeason(season: season.capitalized)
+        seasonLabel.fadeIn(duration: 0.3)
     }
 }

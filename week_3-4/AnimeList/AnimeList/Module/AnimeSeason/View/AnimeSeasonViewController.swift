@@ -7,6 +7,7 @@ import FloatingPanel
 class AnimeSeasonViewController: UIViewController {
     var fpc: FloatingPanelController!
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backButton: UIButton!
@@ -51,8 +52,19 @@ extension AnimeSeasonViewController: UITableViewDelegate, SkeletonTableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let data = animeSeasons[indexPath.row]
         let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as AnimeSeasonTableCell
+        cell.selectionStyle = .none
         cell.initialSetup(data: data)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = animeSeasons[indexPath.row]
+        
+        let vc = DetailAnimeViewController()
+        vc.malId = data.malId
+        navigationController?.hero.isEnabled = true
+        navigationController?.pushViewController(vc, animated: true)
+        vc.navigationController?.isNavigationBarHidden = true
     }
 }
 
@@ -94,7 +106,17 @@ extension AnimeSeasonViewController{
         ).disposed(by: disposeBag)
     }
     func loadData(){
-        animeSeasonVM.loadData(for: Endpoint.getSeasonNow(params: SeasonNowParam(page: "1", limit: "20")), resultType: AnimeResponse.self, index: 0)
+        let japanTimeZone = TimeZone(identifier: "Asia/Tokyo")!
+        let currentSeason = Date.currentSeason(in: japanTimeZone)
+        
+        animeSeasonVM.loadData(
+            for: Endpoint.getSeason(params: AnimeSeasonParam(year: Date.getCurrentYear(), season: currentSeason)),
+            resultType: AnimeSeasonResponse.self,
+            sortIndex: 0
+        )
+        if let timeZone = TimeZone(identifier: "Asia/Tokyo"){
+            animeSeasonVM.changeTitleAppBar(title: "\(Date.currentSeason(in: timeZone)) \(Date.getCurrentYear())".capitalized)
+        }
     }
     func bindData(){
         animeSeasonVM.loadingState.asObservable()
@@ -116,11 +138,20 @@ extension AnimeSeasonViewController{
             guard let self = self else { return }
             self.animeSeasons = data.element ?? []
         }).disposed(by: disposeBag)
+        animeSeasonVM.titleAppBar.subscribe(onNext: {[weak self] title in
+            guard let self = self else { return }
+            self.titleLabel.text = title
+        }).disposed(by: disposeBag)
     }
 }
 
 extension AnimeSeasonViewController: AnimeSeasonContentViewControllerDelegate{
-    func didConfirm(index: Int) {
-        animeSeasonVM.loadData(for: Endpoint.getSeasonNow(params: SeasonNowParam(page: "1", limit: "20")), resultType: AnimeResponse.self, index: index)
+    func didConfirm(sortIndex: Int, season: String, year: Int) {
+        animeSeasonVM.loadData(
+            for: Endpoint.getSeason(params: AnimeSeasonParam(year: year, season: season)),
+            resultType: AnimeSeasonResponse.self,
+            sortIndex: sortIndex
+        )
+        animeSeasonVM.changeTitleAppBar(title: "\(season) \(year)".capitalized)
     }
 }

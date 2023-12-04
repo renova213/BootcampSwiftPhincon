@@ -3,7 +3,6 @@ import RxSwift
 import RxCocoa
 
 class TopAnimeViewModel: BaseViewModel {
-    let api = APIManager.shared
     
     let tabBarItem: [String] = ["Airing", "Upcoming", "By Popularity", "Favorite"]
     let topAiringAnime = BehaviorRelay<[AnimeEntity]>(value: [])
