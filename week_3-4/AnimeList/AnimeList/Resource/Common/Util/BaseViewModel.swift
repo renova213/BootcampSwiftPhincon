@@ -17,6 +17,9 @@ class BaseViewModel {
     
     var loadingState = BehaviorRelay<StateLoading>(value: .notLoad)
     
+    var toggle = BehaviorRelay<Bool>(value: false)
+    var toggle2 = BehaviorRelay<Bool>(value: false)
+    
     func isInternetAvailable() -> Bool {
         var zeroAddress = sockaddr_in()
         zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
