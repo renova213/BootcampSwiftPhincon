@@ -20,10 +20,11 @@ extension UIView {
     }
     
     func boxShadow(opacity: Float, offset: CGSize, shadowRadius: CGFloat){
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = opacity
-        self.layer.shadowOffset = offset
-        self.layer.shadowRadius = shadowRadius
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = opacity
+        layer.shadowOffset = offset
+        layer.shadowRadius = shadowRadius
+        layer.masksToBounds = false
     }
     
     func addShadow() {
