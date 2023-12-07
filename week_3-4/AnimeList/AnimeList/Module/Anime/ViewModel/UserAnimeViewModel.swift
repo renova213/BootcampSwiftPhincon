@@ -7,6 +7,7 @@ class UserAnimeViewModel {
     
     var userAnime = BehaviorRelay<[UserAnimeEntity]>(value: [])
     let findOneUserAnime = BehaviorRelay<UserAnimeEntity?>(value: nil)
+    var currentFilterIndex = BehaviorRelay<Int>(value: 4)
     let filterData = ["A-Z", "Z-A", "Score", "Watching Status", "Sort By"]
     
     func postUserAnime(body: UserAnimeBody, completion: @escaping((Result<StatusResponse, Error>)-> Void)) {
@@ -72,5 +73,9 @@ class UserAnimeViewModel {
         default:
             break
         }
+    }
+    
+    func changeCurrentFilterIndex(index: Int){
+        currentFilterIndex.accept(index)
     }
 }

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="45" id="KGk-i7-Jjw" customClass="FilterPopUpTableCell" customModule="AnimeList" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u0C-Fb-gB8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="radio_false" translatesAutoresizingMaskIntoConstraints="NO" id="1Tv-jU-Uxv">
+                                <rect key="frame" x="12" y="0.0" width="20" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="u06-3n-ATh"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A-Z" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udt-wC-QXj">
+                                <rect key="frame" x="40" y="8" width="272" height="19"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1Tv-jU-Uxv" firstAttribute="top" secondItem="u0C-Fb-gB8" secondAttribute="top" id="776-QW-fu3"/>
+                            <constraint firstItem="udt-wC-QXj" firstAttribute="top" secondItem="u0C-Fb-gB8" secondAttribute="top" constant="8" id="DyP-n9-hvI"/>
+                            <constraint firstAttribute="height" constant="35" id="HY5-Zx-XHS"/>
+                            <constraint firstAttribute="bottom" secondItem="1Tv-jU-Uxv" secondAttribute="bottom" id="J7T-df-JcI"/>
+                            <constraint firstItem="udt-wC-QXj" firstAttribute="leading" secondItem="1Tv-jU-Uxv" secondAttribute="trailing" constant="8" id="Opo-pZ-uaE"/>
+                            <constraint firstAttribute="bottom" secondItem="udt-wC-QXj" secondAttribute="bottom" constant="8" id="Or6-28-w0O"/>
+                            <constraint firstAttribute="trailing" secondItem="udt-wC-QXj" secondAttribute="trailing" constant="8" id="Rch-DU-DLP"/>
+                            <constraint firstItem="1Tv-jU-Uxv" firstAttribute="leading" secondItem="u0C-Fb-gB8" secondAttribute="leading" constant="12" id="zRV-sJ-1CT"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="u0C-Fb-gB8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="K17-hT-4PX"/>
+                    <constraint firstItem="u0C-Fb-gB8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Zxs-uf-pxn"/>
+                    <constraint firstAttribute="bottom" secondItem="u0C-Fb-gB8" secondAttribute="bottom" constant="8" id="dMG-K2-Swx"/>
+                    <constraint firstAttribute="trailing" secondItem="u0C-Fb-gB8" secondAttribute="trailing" id="dhE-GC-wRg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="radioImage" destination="1Tv-jU-Uxv" id="7MK-nc-SVo"/>
+                <outlet property="titleLabel" destination="udt-wC-QXj" id="WBM-4o-iCM"/>
+            </connections>
+            <point key="canvasLocation" x="120.61068702290076" y="20.070422535211268"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="radio_false" width="24" height="24"/>
+    </resources>
+</document>
