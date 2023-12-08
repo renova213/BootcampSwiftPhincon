@@ -18,6 +18,7 @@ target 'AnimeList' do
   pod 'FloatingPanel'
   pod 'DGCharts'
   pod 'Toast-Swift', '~> 5.0.1'
+  pod 'GoogleSignIn' 
 
   # Pods for AnimeList
 

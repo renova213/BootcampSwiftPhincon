@@ -1,9 +1,23 @@
 PODS:
   - Alamofire (5.8.1)
+  - AppAuth (1.6.2):
+    - AppAuth/Core (= 1.6.2)
+    - AppAuth/ExternalUserAgent (= 1.6.2)
+  - AppAuth/Core (1.6.2)
+  - AppAuth/ExternalUserAgent (1.6.2):
+    - AppAuth/Core
   - DGCharts (5.0.0):
     - DGCharts/Core (= 5.0.0)
   - DGCharts/Core (5.0.0)
   - FloatingPanel (2.8.0)
+  - GoogleSignIn (7.0.0):
+    - AppAuth (~> 1.5)
+    - GTMAppAuth (< 3.0, >= 1.3)
+    - GTMSessionFetcher/Core (< 4.0, >= 1.1)
+  - GTMAppAuth (2.0.0):
+    - AppAuth/Core (~> 1.6)
+    - GTMSessionFetcher/Core (< 4.0, >= 1.5)
+  - GTMSessionFetcher/Core (3.2.0)
   - Hero (1.6.2)
   - Kingfisher (7.10.0)
   - lottie-ios (4.3.3)
@@ -26,6 +40,7 @@ DEPENDENCIES:
   - Alamofire
   - DGCharts
   - FloatingPanel
+  - GoogleSignIn
   - Hero
   - Kingfisher
   - lottie-ios
@@ -41,8 +56,12 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - AppAuth
     - DGCharts
     - FloatingPanel
+    - GoogleSignIn
+    - GTMAppAuth
+    - GTMSessionFetcher
     - Hero
     - Kingfisher
     - lottie-ios
@@ -58,8 +77,12 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 3ca42e259043ee0dc5c0cdd76c4bc568b8e42af7
+  AppAuth: 3bb1d1cd9340bd09f5ed189fb00b1cc28e1e8570
   DGCharts: 6e0cf2644e8f81ad13f04caa8bc18502870a1c54
   FloatingPanel: f585be005983e66f8f4932f93ca46bf9f09dae3a
+  GoogleSignIn: b232380cf495a429b8095d3178a8d5855b42e842
+  GTMAppAuth: 99fb010047ba3973b7026e45393f51f27ab965ae
+  GTMSessionFetcher: 41b9ef0b4c08a6db4b7eb51a21ae5183ec99a2c8
   Hero: c69009dbc9e2f0472e081adc644dba05fcedae72
   Kingfisher: a18f05d3b6d37d8650ee4a3e61d57a28fc6207f6
   lottie-ios: 25e7b2675dad5c3ddad369ac9baab03560c5bfdd
@@ -73,6 +96,6 @@ SPEC CHECKSUMS:
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   YouTubePlayer: 2b5f2830d8f9b2cde942083211291e382c9e6bd5
 
-PODFILE CHECKSUM: 32c3010319f084be15e0ce63d318908301886552
+PODFILE CHECKSUM: 9a70eadf9fe3f3fdf21f880d158fcb6066bebbf8
 
 COCOAPODS: 1.14.2

@@ -222,6 +222,7 @@
 		36EAF76A2B22F72800814FDA /* RegisterParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EAF7692B22F72800814FDA /* RegisterParams.swift */; };
 		36EAF76C2B23093300814FDA /* RegisterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EAF76B2B23093300814FDA /* RegisterResponse.swift */; };
 		36EAF76E2B230E8900814FDA /* client_668495768253-8rv45t9sa7227r38tknvpps2trph79et.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36EAF76D2B230E8900814FDA /* client_668495768253-8rv45t9sa7227r38tknvpps2trph79et.apps.googleusercontent.com.plist */; };
+		36EAF7702B23146600814FDA /* ExtString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EAF76F2B23146600814FDA /* ExtString.swift */; };
 		36F405DE2B0F4F4800311133 /* MangaListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F405DC2B0F4F4800311133 /* MangaListCell.swift */; };
 		36F405DF2B0F4F4800311133 /* MangaListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F405DD2B0F4F4800311133 /* MangaListCell.xib */; };
 		36F405E22B0F4FDF00311133 /* MangaSearchFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F405E02B0F4FDF00311133 /* MangaSearchFilterCell.swift */; };
@@ -458,6 +459,7 @@
 		36EAF7692B22F72800814FDA /* RegisterParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterParams.swift; sourceTree = "<group>"; };
 		36EAF76B2B23093300814FDA /* RegisterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponse.swift; sourceTree = "<group>"; };
 		36EAF76D2B230E8900814FDA /* client_668495768253-8rv45t9sa7227r38tknvpps2trph79et.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_668495768253-8rv45t9sa7227r38tknvpps2trph79et.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
+		36EAF76F2B23146600814FDA /* ExtString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtString.swift; sourceTree = "<group>"; };
 		36F405DC2B0F4F4800311133 /* MangaListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaListCell.swift; sourceTree = "<group>"; };
 		36F405DD2B0F4F4800311133 /* MangaListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MangaListCell.xib; sourceTree = "<group>"; };
 		36F405E02B0F4FDF00311133 /* MangaSearchFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaSearchFilterCell.swift; sourceTree = "<group>"; };
@@ -913,6 +915,7 @@
 				3605F3E32B1D91AA00984C62 /* ExtViewController.swift */,
 				3673F22F2B20697400CD83E2 /* ExtLabel.swift */,
 				368FD43A2B21C58600BBA590 /* ExtTextField.swift */,
+				36EAF76F2B23146600814FDA /* ExtString.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1692,6 +1695,7 @@
 				3660226A2B0B4A3100099DE3 /* DetailAnimeRecommendation.swift in Sources */,
 				3660224F2B0AF76F00099DE3 /* ExtDateFormatter.swift in Sources */,
 				36F9D0BB2B0F33990056F40E /* AnimeListCell.swift in Sources */,
+				36EAF7702B23146600814FDA /* ExtString.swift in Sources */,
 				3692C3F12B21679B00E0DE5B /* FilterPopUp.swift in Sources */,
 				36683F8E2B14741C00478AC5 /* FindOneUserAnimeResponse.swift in Sources */,
 				3605F3D82B1D629E00984C62 /* AnimeSeasonParam.swift in Sources */,

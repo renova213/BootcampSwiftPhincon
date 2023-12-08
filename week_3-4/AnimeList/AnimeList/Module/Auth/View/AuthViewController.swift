@@ -2,6 +2,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Toast_Swift
+import GoogleSignIn
 
 class AuthViewController: UIViewController {
     
@@ -106,6 +107,26 @@ extension AuthViewController {
     }
     
     func configureGesture(){
+        
+        signUpView.googleBorder.rx.tapGesture().when(.recognized).subscribe(onNext: {[weak self] _ in
+            guard let self = self else { return }
+            GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
+                if let profileData = GIDSignIn.sharedInstance.currentUser?.profile {
+                    let stringRepresentation = "Name: \(profileData.name), Email: \(profileData.email ) "
+                    print(stringRepresentation)
+                }
+            }
+        }).disposed(by: disposeBag)
+        
+        signInView.googleBorder.rx.tapGesture().when(.recognized).subscribe(onNext: {[weak self] _ in
+            guard let self = self else { return }
+            GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
+                if let profileData = GIDSignIn.sharedInstance.currentUser?.profile {
+                    let stringRepresentation = "Name: \(profileData.name), Email: \(profileData.email ) "
+                    print(stringRepresentation)
+                }
+            }
+        }).disposed(by: disposeBag)
         
         signInView.forgotPasswordButton.rx.tap.subscribe(onNext: {[weak self] _ in
             guard let self = self else { return }
