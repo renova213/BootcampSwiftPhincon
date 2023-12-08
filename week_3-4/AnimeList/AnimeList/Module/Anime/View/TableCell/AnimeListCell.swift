@@ -1,7 +1,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import ToastViewSwift
+import Toast_Swift
 
 protocol AnimeListCellDelegate: AnyObject {
     func didTap(data: UserAnimeEntity)
@@ -82,14 +82,12 @@ class AnimeListCell: UITableViewCell {
                     case .success:
                         self.userAnimeVM.getUserAnime(userId: 0){finish in}
                         self.deleteButton.isEnabled = true
-                        let toast = Toast.text("Delete success")
-                        toast.show()
+                        self.contentView.makeToast("Delete success")
                         break
                     case .failure(let error):
                         self.deleteButton.isEnabled = true
                         if let error = error as? CustomError{
-                            let toast = Toast.text(error.message)
-                            toast.show()
+                            self.contentView.makeToast(error.message)
                         }
                     }
                 }

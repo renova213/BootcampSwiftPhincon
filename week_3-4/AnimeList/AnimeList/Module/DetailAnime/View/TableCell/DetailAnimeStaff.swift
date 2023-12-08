@@ -1,5 +1,9 @@
 import UIKit
 
+protocol detailAnimeStaffDelegate: AnyObject{
+    func didTapWebKitStaff(url: URL)
+}
+
 class DetailAnimeStaff: UITableViewCell {
     
     @IBOutlet weak var animeStaffCollection: UICollectionView!
@@ -15,6 +19,8 @@ class DetailAnimeStaff: UITableViewCell {
             animeStaffCollection.reloadData()
         }
     }
+    
+    weak var delegate: detailAnimeStaffDelegate?
 }
 
 extension DetailAnimeStaff {
@@ -52,7 +58,7 @@ extension DetailAnimeStaff:UICollectionViewDelegate, UICollectionViewDataSource,
         let data = animeStaffs[indexPath.row]
         if let malUrl = data.person?.url{
             if let urlData = URL(string: malUrl) {
-                UIApplication.shared.open(urlData, options: [:], completionHandler: nil)
+                delegate?.didTapWebKitStaff(url: urlData)
             }
         }
     }

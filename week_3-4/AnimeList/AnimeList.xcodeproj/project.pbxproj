@@ -214,6 +214,14 @@
 		36D643CD2B01B97800EF554E /* SchedulesParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D643CC2B01B97800EF554E /* SchedulesParam.swift */; };
 		36D643CF2B01BF8300EF554E /* AnimeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D643CE2B01BF8300EF554E /* AnimeEntity.swift */; };
 		36E472E12B15E5F000C1E9B0 /* ExtProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E472E02B15E5F000C1E9B0 /* ExtProgressView.swift */; };
+		36EAF75A2B22A49E00814FDA /* WebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EAF7582B22A49E00814FDA /* WebKitViewController.swift */; };
+		36EAF75B2B22A49E00814FDA /* WebKitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36EAF7592B22A49E00814FDA /* WebKitViewController.xib */; };
+		36EAF75D2B22BBB500814FDA /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EAF75C2B22BBB500814FDA /* LoginResponse.swift */; };
+		36EAF75F2B22BBCC00814FDA /* LoginParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EAF75E2B22BBCC00814FDA /* LoginParam.swift */; };
+		36EAF7632B22ECB200814FDA /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EAF7622B22ECB200814FDA /* UserEntity.swift */; };
+		36EAF76A2B22F72800814FDA /* RegisterParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EAF7692B22F72800814FDA /* RegisterParams.swift */; };
+		36EAF76C2B23093300814FDA /* RegisterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EAF76B2B23093300814FDA /* RegisterResponse.swift */; };
+		36EAF76E2B230E8900814FDA /* client_668495768253-8rv45t9sa7227r38tknvpps2trph79et.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36EAF76D2B230E8900814FDA /* client_668495768253-8rv45t9sa7227r38tknvpps2trph79et.apps.googleusercontent.com.plist */; };
 		36F405DE2B0F4F4800311133 /* MangaListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F405DC2B0F4F4800311133 /* MangaListCell.swift */; };
 		36F405DF2B0F4F4800311133 /* MangaListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F405DD2B0F4F4800311133 /* MangaListCell.xib */; };
 		36F405E22B0F4FDF00311133 /* MangaSearchFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F405E02B0F4FDF00311133 /* MangaSearchFilterCell.swift */; };
@@ -442,6 +450,14 @@
 		36D643CC2B01B97800EF554E /* SchedulesParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesParam.swift; sourceTree = "<group>"; };
 		36D643CE2B01BF8300EF554E /* AnimeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeEntity.swift; sourceTree = "<group>"; };
 		36E472E02B15E5F000C1E9B0 /* ExtProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtProgressView.swift; sourceTree = "<group>"; };
+		36EAF7582B22A49E00814FDA /* WebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitViewController.swift; sourceTree = "<group>"; };
+		36EAF7592B22A49E00814FDA /* WebKitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebKitViewController.xib; sourceTree = "<group>"; };
+		36EAF75C2B22BBB500814FDA /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		36EAF75E2B22BBCC00814FDA /* LoginParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginParam.swift; sourceTree = "<group>"; };
+		36EAF7622B22ECB200814FDA /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
+		36EAF7692B22F72800814FDA /* RegisterParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterParams.swift; sourceTree = "<group>"; };
+		36EAF76B2B23093300814FDA /* RegisterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponse.swift; sourceTree = "<group>"; };
+		36EAF76D2B230E8900814FDA /* client_668495768253-8rv45t9sa7227r38tknvpps2trph79et.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_668495768253-8rv45t9sa7227r38tknvpps2trph79et.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
 		36F405DC2B0F4F4800311133 /* MangaListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaListCell.swift; sourceTree = "<group>"; };
 		36F405DD2B0F4F4800311133 /* MangaListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MangaListCell.xib; sourceTree = "<group>"; };
 		36F405E02B0F4FDF00311133 /* MangaSearchFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaSearchFilterCell.swift; sourceTree = "<group>"; };
@@ -637,6 +653,7 @@
 				36231CE02AFE0422008257C8 /* Module */,
 				36231CCC2AFE041A008257C8 /* AppDelegate.swift */,
 				36231CCE2AFE041A008257C8 /* SceneDelegate.swift */,
+				36EAF76D2B230E8900814FDA /* client_668495768253-8rv45t9sa7227r38tknvpps2trph79et.apps.googleusercontent.com.plist */,
 				36231CDA2AFE041A008257C8 /* Info.plist */,
 			);
 			path = AnimeList;
@@ -645,6 +662,7 @@
 		36231CE02AFE0422008257C8 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				36EAF7572B22A35D00814FDA /* WebKit */,
 				3692C3F82B217AB800E0DE5B /* Auth */,
 				368C165B2B18788100F44C4B /* TopManga */,
 				368C16562B1877EA00F44C4B /* AnimeSeason */,
@@ -675,6 +693,7 @@
 				366022742B0B524400099DE3 /* AnimeRecommendationEntity.swift */,
 				36683F7F2B14338200478AC5 /* UserAnimeEntity.swift */,
 				3603D6EC2B1993A300C223E0 /* SeasonListEntity.swift */,
+				36EAF7622B22ECB200814FDA /* UserEntity.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -682,9 +701,10 @@
 		36231CE32AFE0437008257C8 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				3605F4112B1DB69800984C62 /* Fonts */,
-				36569F002AFE250F00EDB6B9 /* Network */,
 				36231CD52AFE041A008257C8 /* Assets.xcassets */,
+				36641E362B0ED4FA00651AF0 /* Util */,
+				36569F002AFE250F00EDB6B9 /* Network */,
+				3605F4112B1DB69800984C62 /* Fonts */,
 				36569EC52AFE053300EDB6B9 /* Common */,
 			);
 			path = Resource;
@@ -836,7 +856,6 @@
 		36569EC52AFE053300EDB6B9 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				36641E362B0ED4FA00651AF0 /* Util */,
 				36259ED32B0613DE00FE89BC /* Components */,
 				36569EE32AFE0C7700EDB6B9 /* Extension */,
 				36569EDA2AFE06AC00EDB6B9 /* Constant.swift */,
@@ -1251,6 +1270,8 @@
 				3606D48E2B1737C40097D6C5 /* TopAnimeResponse.swift */,
 				3603D6EA2B19936800C223E0 /* SeasonListResponse.swift */,
 				3605F3DB2B1D64C900984C62 /* AnimeSeasonResponse.swift */,
+				36EAF75C2B22BBB500814FDA /* LoginResponse.swift */,
+				36EAF76B2B23093300814FDA /* RegisterResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1274,6 +1295,8 @@
 				3606D4942B1739740097D6C5 /* OneUserAnimeParam.swift */,
 				3606D4962B1739F10097D6C5 /* TopAnimeParam.swift */,
 				3605F3D72B1D629E00984C62 /* AnimeSeasonParam.swift */,
+				36EAF75E2B22BBCC00814FDA /* LoginParam.swift */,
+				36EAF7692B22F72800814FDA /* RegisterParams.swift */,
 			);
 			path = Parameters;
 			sourceTree = "<group>";
@@ -1313,6 +1336,15 @@
 				36AF1C0E2B10499100C8EB46 /* UserAnimeViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		36EAF7572B22A35D00814FDA /* WebKit */ = {
+			isa = PBXGroup;
+			children = (
+				36EAF7582B22A49E00814FDA /* WebKitViewController.swift */,
+				36EAF7592B22A49E00814FDA /* WebKitViewController.xib */,
+			);
+			path = WebKit;
 			sourceTree = "<group>";
 		};
 		36F405DB2B0F4F1100311133 /* TableCell */ = {
@@ -1463,6 +1495,7 @@
 				36569EC92AFE055900EDB6B9 /* ProfileViewController.xib in Resources */,
 				3692C4082B21A0CA00E0DE5B /* SignUpView.xib in Resources */,
 				3660225F2B0B1AC200099DE3 /* AnimeStaffItem.xib in Resources */,
+				36EAF75B2B22A49E00814FDA /* WebKitViewController.xib in Resources */,
 				36671F7B2B031DEE00EB7083 /* SelectedSearchCategoryItem.xib in Resources */,
 				36942E452B0704B2006A38CE /* AnimeCardItem.xib in Resources */,
 				3643ABD42B1845D700195054 /* AnimeSchedulePagingViewController.xib in Resources */,
@@ -1528,6 +1561,7 @@
 				3673F2232B202A3800CD83E2 /* ProfileFavoriteItemCell.xib in Resources */,
 				3605F4062B1DB65E00984C62 /* Poppins-ExtraBold.ttf in Resources */,
 				36569EFF2AFE128100EDB6B9 /* TodayAnimeItem.xib in Resources */,
+				36EAF76E2B230E8900814FDA /* client_668495768253-8rv45t9sa7227r38tknvpps2trph79et.apps.googleusercontent.com.plist in Resources */,
 				3693B0B72B188CFE00406B1D /* SearchResultCell.xib in Resources */,
 				362B1FF02B0CA38A009BACDB /* TopAnimeViewController.xib in Resources */,
 			);
@@ -1582,8 +1616,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36EAF76C2B23093300814FDA /* RegisterResponse.swift in Sources */,
 				36569ECC2AFE056700EDB6B9 /* MangaViewController.swift in Sources */,
 				36F405DE2B0F4F4800311133 /* MangaListCell.swift in Sources */,
+				36EAF75A2B22A49E00814FDA /* WebKitViewController.swift in Sources */,
 				3643ABC62B18240C00195054 /* ExtInt.swift in Sources */,
 				3603D6EB2B19936800C223E0 /* SeasonListResponse.swift in Sources */,
 				3673F2302B20697400CD83E2 /* ExtLabel.swift in Sources */,
@@ -1628,6 +1664,8 @@
 				3606D48F2B1737C40097D6C5 /* TopAnimeResponse.swift in Sources */,
 				36569EC32AFE04FE00EDB6B9 /* SplashViewController.swift in Sources */,
 				368C16682B187FD600F44C4B /* AnimeSeasonViewModel.swift in Sources */,
+				36EAF75D2B22BBB500814FDA /* LoginResponse.swift in Sources */,
+				36EAF76A2B22F72800814FDA /* RegisterParams.swift in Sources */,
 				36569EE12AFE091B00EDB6B9 /* DashboardSearch.swift in Sources */,
 				36F9D0B72B0F32AF0056F40E /* ExtUIButton.swift in Sources */,
 				36AF1C142B1096D400C8EB46 /* ExtEncode.swift in Sources */,
@@ -1675,6 +1713,7 @@
 				3692C3F62B216D1E00E0DE5B /* FilterPopUpTableCell.swift in Sources */,
 				36231CCF2AFE041A008257C8 /* SceneDelegate.swift in Sources */,
 				36641E402B0EF14D00651AF0 /* SuccessPopUp.swift in Sources */,
+				36EAF75F2B22BBCC00814FDA /* LoginParam.swift in Sources */,
 				36E472E12B15E5F000C1E9B0 /* ExtProgressView.swift in Sources */,
 				3643ABD32B1845D700195054 /* AnimeSchedulePagingViewController.swift in Sources */,
 				36569EF92AFE117500EDB6B9 /* TodayAnime.swift in Sources */,
@@ -1711,6 +1750,7 @@
 				36569EFE2AFE128100EDB6B9 /* TodayAnimeItem.swift in Sources */,
 				36641E3C2B0ED5A500651AF0 /* Common.swift in Sources */,
 				36F405E22B0F4FDF00311133 /* MangaSearchFilterCell.swift in Sources */,
+				36EAF7632B22ECB200814FDA /* UserEntity.swift in Sources */,
 				3673F2222B202A3800CD83E2 /* ProfileFavoriteItemCell.swift in Sources */,
 				36671F822B03233200EB7083 /* SearchCategories.swift in Sources */,
 				3603D6E42B197C1000C223E0 /* AnimeSeasonItemCell.swift in Sources */,

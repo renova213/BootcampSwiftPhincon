@@ -30,15 +30,23 @@ class SignInView: UIView {
         self.addSubview(view)
     }
     
+    let eyeButton = UIButton(type: .custom)
+    
     func configureUI(){
         signInButton.roundCornersAll(radius: 20)
+        forgotPasswordButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
+        
         googleBorder.layer.borderColor = UIColor.lightGray.cgColor
         googleBorder.layer.borderWidth = 0.5
         googleBorder.roundCornersAll(radius: 8)
-        forgotPasswordButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Medium", size: 16)
+        
+        forgotPasswordButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
+        
         usernameField.addBottomBorderWithColor(color: UIColor.lightGray, thickness: 1, width: self.frame.width)
         usernameField.setPlaceholder(text: "Enter username", color: UIColor.lightGray)
+        
         passwordField.addBottomBorderWithColor(color: UIColor.lightGray, thickness: 1, width: self.frame.width)
         passwordField.setPlaceholder(text: "Enter password", color: UIColor.lightGray)
+        passwordField.isSecureTextEntry = true
     }
 }

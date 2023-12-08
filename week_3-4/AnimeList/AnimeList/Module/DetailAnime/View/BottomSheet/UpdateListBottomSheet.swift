@@ -111,7 +111,7 @@ class UpdateListBottomSheet: UIViewController {
          UIView.animate(withDuration: 0.5, animations: {
              vc.view.alpha = 0
          }) { _ in
-             vc.dismiss(animated: false, completion: nil)
+             vc.dismiss(animated: true, completion: nil)
          }
      }
      
@@ -129,7 +129,7 @@ class UpdateListBottomSheet: UIViewController {
      
      func buttonGesture(){
          closeButton.rx.tap.subscribe(onNext: {[weak self] _ in
-             self?.dismiss(animated: true, completion: nil)
+             self?.dismiss(animated: false, completion: nil)
          }
          ).disposed(by: disposeBag)
          

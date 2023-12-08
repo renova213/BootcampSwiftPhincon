@@ -27,6 +27,7 @@ class DetailAnimeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
     }
     
     var id: String?
@@ -87,10 +88,13 @@ extension DetailAnimeViewController{
         }
         ).disposed(by: disposeBag)
         
-        sourceButton.rx.tap.subscribe(onNext: {_ in
+        sourceButton.rx.tap.subscribe(onNext: {[weak self] _ in
+            guard let self = self else { return }
             if let urlData = self.animeDetail?.url{
                 if let url = URL(string: urlData) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    let vc = WebKitViewController()
+                    vc.url = url
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
             }
         }).disposed(by: disposeBag)
@@ -227,11 +231,13 @@ extension DetailAnimeViewController: SkeletonTableViewDataSource, UITableViewDel
             let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeCharacter
             cell.initialSetup(data: animeCharacter)
             cell.selectionStyle = .none
+            cell.delegate = self
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeStaff
             cell.initialSetup(data: animeStaff)
             cell.selectionStyle = .none
+            cell.delegate = self
             return cell
         case 5:
             let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeTheme
@@ -256,7 +262,19 @@ extension DetailAnimeViewController: SkeletonTableViewDataSource, UITableViewDel
     }
 }
 
-extension DetailAnimeViewController: DetailAnimeRecommendationDelegate{
+extension DetailAnimeViewController: DetailAnimeRecommendationDelegate, detailAnimeStaffDelegate, DetailAnimeCharacterDelegate{
+    func didTapWebKitStaff(url: URL) {
+        let vc = WebKitViewController()
+        vc.url = url
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func didTapWebKitCharacter(url: URL) {
+        let vc = WebKitViewController()
+        vc.url = url
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func didTapNavigation(malId: Int) {
         let vc = DetailAnimeViewController()
         vc.malId = malId

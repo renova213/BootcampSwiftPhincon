@@ -36,12 +36,12 @@ class FilterPopUp: UIViewController {
     func configureGesture(){
         okButton.rx.tap.subscribe(onNext: {[weak self] _ in
             guard let self = self else { return }
-            self.dismiss(animated: true)
+            self.dismiss(animated: false)
             self.delegate?.didTapFilterIndex(index: self.currentIndex)
         }).disposed(by: disposeBag)
         cancelButton.rx.tap.subscribe(onNext: {[weak self] _ in
             guard let self = self else { return }
-            self.dismiss(animated: true)
+            self.dismiss(animated: false)
         }).disposed(by: disposeBag)
         
     }

@@ -1,6 +1,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Toast_Swift
 
 class AuthViewController: UIViewController {
     
@@ -17,6 +18,7 @@ class AuthViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         configureGesture()
+        bindData()
     }
     
     private let disposeBag = DisposeBag()
@@ -31,6 +33,7 @@ extension AuthViewController {
     
     func configureUI(){
         signInView.configureUI()
+        
         signUpView.configureUI()
         
         loginImage.makeCircular()
@@ -45,30 +48,121 @@ extension AuthViewController {
         signUpToggleView.roundCornersAll(radius: 20)
     }
     
-    func configureGesture(){
-        signUpToggleView.rx.tapGesture().when(.recognized).subscribe(onNext: {[weak self] _ in
+    func bindData(){
+        
+        authVM.loadingState.asObservable().subscribe(onNext: {[weak self] state in
             guard let self = self else { return }
-            UIView.animate(withDuration: 0.15) {
-                self.signUpToggleView.backgroundColor = UIColor(named: "Main Color")
-                self.signInToggleView.backgroundColor = UIColor.clear
-                self.signUpToggleTitle.textColor = UIColor.white
-                self.signInToggleTitle.textColor = UIColor(named: "Main Color")
-                self.signUpView.isHidden = false
-                self.signInView.isHidden = true
-            }
             
-            self.authVM.switchAuthToggle(state: false)
+            var style = ToastStyle()
+            style.backgroundColor = UIColor(named: "Main Color") ?? UIColor.black
+            
+            switch state {
+            case .loading:
+                self.signInView.signInButton.isEnabled = false
+                break
+            case .finished:
+                let vc = MainTabBarViewController()
+                self.view.makeToast("Login success", duration: 2, style: style)
+                DispatchQueue.main.asyncAfter(deadline: .now()+2){
+                    self.signInView.signInButton.isEnabled = true
+                    self.navigationController?.setViewControllers([vc], animated: true)
+                }
+                break
+            case .failed, .notLoad:
+                if let errorMessage = self.authVM.errorMessage.value?.message {
+                    self.view.makeToast(errorMessage, duration: 2, style: style)
+                    self.signInView.signInButton.isEnabled = true
+                }
+                break
+            }
         }).disposed(by: disposeBag)
-        signInToggleView.rx.tapGesture().when(.recognized).subscribe(onNext: {[weak self] _ in
+        
+        authVM.loadingState2.asObservable().subscribe(onNext: {[weak self] state in
             guard let self = self else { return }
-            UIView.animate(withDuration: 0.15) {
-                self.signInToggleView.backgroundColor = UIColor(named: "Main Color")
-                self.signUpToggleView.backgroundColor = UIColor.clear
-                self.signInToggleTitle.textColor = UIColor.white
-                self.signUpToggleTitle.textColor = UIColor(named: "Main Color")
-                self.signUpView.isHidden = true
-                self.signInView.isHidden = false
+            
+            var style = ToastStyle()
+            style.backgroundColor = UIColor(named: "Main Color") ?? UIColor.black
+            
+            switch state {
+            case .loading:
+                self.signUpView.signUpButton.isEnabled = false
+                break
+            case .finished:
+                self.showSignInView()
+                self.signUpView.usernameField.text = ""
+                self.signUpView.emailField.text = ""
+                self.signUpView.passwordField.text = ""
+                self.view.makeToast("Register success", duration: 2, style: style)
+                self.signUpView.signUpButton.isEnabled = true
+                break
+            case .failed, .notLoad:
+                if let errorMessage = self.authVM.errorMessage.value?.message {
+                    self.view.makeToast(errorMessage, duration: 2, style: style)
+                    self.signUpView.signUpButton.isEnabled = true
+                }
+                break
             }
         }).disposed(by: disposeBag)
     }
+    
+    func configureGesture(){
+        
+        signInView.forgotPasswordButton.rx.tap.subscribe(onNext: {[weak self] _ in
+            guard let self = self else { return }
+            self.showForgotPasswordPopUp()
+        }).disposed(by: disposeBag)
+        
+        signUpToggleView.rx.tapGesture().when(.recognized).subscribe(onNext: {[weak self] _ in
+            guard let self = self else { return }
+            self.showSignUpView()
+        }).disposed(by: disposeBag)
+        
+        signInToggleView.rx.tapGesture().when(.recognized).subscribe(onNext: {[weak self] _ in
+            guard let self = self else { return }
+            self.showSignInView()
+        }).disposed(by: disposeBag)
+        
+        signInView.signInButton.rx.tap.subscribe(onNext: {[weak self] _ in
+            guard let self = self else { return }
+            self.authVM.postData(for: Endpoint.postLogin(params: LoginParam(username: self.signInView.usernameField.text ?? "", password: self.signInView.passwordField.text ?? "")), resultType: LoginResponse.self)
+        }).disposed(by: disposeBag)
+        signUpView.signUpButton.rx.tap.subscribe(onNext: {[weak self] _ in
+            guard let self = self else { return }
+            self.authVM.postData(for: Endpoint.postRegister(params: RegisterParam(username: self.signUpView.usernameField.text ?? "", email: self.signUpView.emailField.text ?? "", password: self.signUpView.passwordField.text ?? "")), resultType: RegisterResponse.self)
+        }).disposed(by: disposeBag)
+    }
+    
+    func showSignInView(){
+        UIView.animate(withDuration: 0.15) {
+            self.signInToggleView.backgroundColor = UIColor(named: "Main Color")
+            self.signUpToggleView.backgroundColor = UIColor.clear
+            self.signInToggleTitle.textColor = UIColor.white
+            self.signUpToggleTitle.textColor = UIColor(named: "Main Color")
+            self.signUpView.isHidden = true
+            self.signInView.isHidden = false
+        }
+    }
+    
+    func showSignUpView(){
+        UIView.animate(withDuration: 0.15) {
+            self.signUpToggleView.backgroundColor = UIColor(named: "Main Color")
+            self.signInToggleView.backgroundColor = UIColor.clear
+            self.signUpToggleTitle.textColor = UIColor.white
+            self.signInToggleTitle.textColor = UIColor(named: "Main Color")
+            self.signUpView.isHidden = false
+            self.signInView.isHidden = true
+        }
+    }
+    
+    func showForgotPasswordPopUp(){
+        let vc = ForgotPasswordPopUp()
+        
+        vc.view.alpha = 0.0
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: false, completion: nil)
+        UIView.animate(withDuration: 0.5) {
+            vc.view.alpha = 1.0
+        }
+    }
 }
+

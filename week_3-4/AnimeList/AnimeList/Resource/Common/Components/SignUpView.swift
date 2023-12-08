@@ -27,13 +27,18 @@ class SignUpView: UIView {
     
     func configureUI(){
         signUpButton.roundCornersAll(radius: 20)
+        
         googleBorder.layer.borderColor = UIColor.lightGray.cgColor
         googleBorder.layer.borderWidth = 0.5
         googleBorder.roundCornersAll(radius: 8)
+        
         usernameField.addBottomBorderWithColor(color: UIColor.lightGray, thickness: 1, width: self.frame.width)
         usernameField.setPlaceholder(text: "Enter username", color: UIColor.lightGray)
+        
         passwordField.addBottomBorderWithColor(color: UIColor.lightGray, thickness: 1, width: self.frame.width)
         passwordField.setPlaceholder(text: "Enter password", color: UIColor.lightGray)
+        passwordField.isSecureTextEntry = true
+        
         emailField.addBottomBorderWithColor(color: UIColor.lightGray, thickness: 1, width: self.frame.width)
         emailField.setPlaceholder(text: "Enter email", color: UIColor.lightGray)
     }

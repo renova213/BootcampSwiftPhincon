@@ -1,5 +1,9 @@
 import UIKit
 
+protocol DetailAnimeCharacterDelegate: AnyObject{
+    func didTapWebKitCharacter(url: URL)
+}
+
 class DetailAnimeCharacter: UITableViewCell {
     
     @IBOutlet weak var animeCharacterCollection: UICollectionView!
@@ -14,6 +18,8 @@ class DetailAnimeCharacter: UITableViewCell {
             animeCharacterCollection.reloadData()
         }
     }
+    
+    weak var delegate: DetailAnimeCharacterDelegate?
 }
 
 extension DetailAnimeCharacter {
@@ -53,7 +59,7 @@ extension DetailAnimeCharacter: UICollectionViewDataSource, UICollectionViewDele
 extension DetailAnimeCharacter: AnimeCharacterItemDelegate{
     func didSelectCell(url: String) {
         if let urlData = URL(string: url) {
-            UIApplication.shared.open(urlData, options: [:], completionHandler: nil)
+            delegate?.didTapWebKitCharacter(url: urlData)
         }
     }
 }
