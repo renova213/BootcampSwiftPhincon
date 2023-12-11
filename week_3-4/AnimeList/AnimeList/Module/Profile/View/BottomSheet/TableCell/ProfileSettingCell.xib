@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="KGk-i7-Jjw" customClass="ProfileSettingCell" customModule="AnimeList" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Sa-p6-OoU">
+                        <rect key="frame" x="0.0" y="8" width="320" height="40"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="j3q-tc-Txo">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencil.line" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="oqi-IE-9Jv">
+                                        <rect key="frame" x="0.0" y="3" width="24" height="35"/>
+                                        <color key="tintColor" name="Main Color"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="Svm-YZ-Mxm"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CmU-by-9mh">
+                                        <rect key="frame" x="36" y="0.0" width="284" height="40"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="28b-HW-CUk"/>
+                            <constraint firstItem="j3q-tc-Txo" firstAttribute="leading" secondItem="3Sa-p6-OoU" secondAttribute="leading" id="L17-RH-VWS"/>
+                            <constraint firstItem="j3q-tc-Txo" firstAttribute="top" secondItem="3Sa-p6-OoU" secondAttribute="top" id="Z21-HF-K0a"/>
+                            <constraint firstAttribute="trailing" secondItem="j3q-tc-Txo" secondAttribute="trailing" id="auV-AV-wsV"/>
+                            <constraint firstAttribute="bottom" secondItem="j3q-tc-Txo" secondAttribute="bottom" id="dZk-og-zcc"/>
+                            <constraint firstItem="j3q-tc-Txo" firstAttribute="centerX" secondItem="3Sa-p6-OoU" secondAttribute="centerX" id="ebD-nu-GdO"/>
+                            <constraint firstItem="j3q-tc-Txo" firstAttribute="centerY" secondItem="3Sa-p6-OoU" secondAttribute="centerY" id="hc2-qJ-C3L"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="3Sa-p6-OoU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="2Gj-9v-SUl"/>
+                    <constraint firstAttribute="trailing" secondItem="3Sa-p6-OoU" secondAttribute="trailing" id="9vi-pY-8Gf"/>
+                    <constraint firstAttribute="bottom" secondItem="3Sa-p6-OoU" secondAttribute="bottom" constant="8" id="ZJa-C5-blx"/>
+                    <constraint firstItem="3Sa-p6-OoU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ixS-sb-82S"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="iconImage" destination="oqi-IE-9Jv" id="6gZ-BC-fk9"/>
+                <outlet property="titleLabel" destination="CmU-by-9mh" id="tsV-TC-Y0v"/>
+            </connections>
+            <point key="canvasLocation" x="114.50381679389312" y="-30.281690140845072"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="pencil.line" catalog="system" width="128" height="98"/>
+        <namedColor name="Main Color">
+            <color red="0.63529411764705879" green="0.69803921568627447" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

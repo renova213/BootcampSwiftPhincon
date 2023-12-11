@@ -51,6 +51,30 @@ class BaseViewModel {
         }
     }
     
+    func deleteUserIDFromUserDefaults() {
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: "user_id")
+        defaults.synchronize()
+    }
+    
+    func deleteTokenFromKeychain() {
+        let query: [CFString: Any] = [
+            kSecClass: kSecClassGenericPassword,
+            kSecAttrAccount: "access_token"
+        ]
+        
+        let status = SecItemDelete(query as CFDictionary)
+        
+        if status != errSecSuccess {
+            print("Error deleting token from Keychain: \(status)")
+        }
+    }
+    
+    func deleteCredentials() {
+        deleteUserIDFromUserDefaults()
+        deleteTokenFromKeychain()
+    }
+    
     func storeToken(with token: String) {
         let tokenData = token.data(using: .utf8)
         

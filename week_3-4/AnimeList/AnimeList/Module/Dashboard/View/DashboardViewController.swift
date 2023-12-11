@@ -38,8 +38,6 @@ class DashboardViewController: UIViewController {
         super.viewWillAppear(animated)
         bindData()
     }
-
-    
 }
 
 extension DashboardViewController {

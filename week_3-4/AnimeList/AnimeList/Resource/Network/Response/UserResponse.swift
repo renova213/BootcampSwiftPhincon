@@ -1,5 +1,5 @@
 import Foundation
 
 struct UserResponse: Codable {
-    let data: UserEntity
+    let data: UserEntity?
 }

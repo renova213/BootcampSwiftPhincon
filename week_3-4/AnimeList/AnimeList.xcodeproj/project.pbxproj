@@ -10,7 +10,7 @@
 		20BAD3DCF4ACCA21E2BAAB3C /* Pods_AnimeList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D5DF5FA6C38D0963D8C00F7 /* Pods_AnimeList.framework */; };
 		3603D6D82B196B5600C223E0 /* AnimeSeasonContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3603D6D62B196B5600C223E0 /* AnimeSeasonContentViewController.swift */; };
 		3603D6D92B196B5600C223E0 /* AnimeSeasonContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3603D6D72B196B5600C223E0 /* AnimeSeasonContentViewController.xib */; };
-		3603D6DB2B1970A000C223E0 /* AnimeSeasonFloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3603D6DA2B1970A000C223E0 /* AnimeSeasonFloatingPanel.swift */; };
+		3603D6DB2B1970A000C223E0 /* FloatingPanelUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3603D6DA2B1970A000C223E0 /* FloatingPanelUtil.swift */; };
 		3603D6E42B197C1000C223E0 /* AnimeSeasonItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3603D6E22B197C1000C223E0 /* AnimeSeasonItemCell.swift */; };
 		3603D6E52B197C1000C223E0 /* AnimeSeasonItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3603D6E32B197C1000C223E0 /* AnimeSeasonItemCell.xib */; };
 		3603D6E82B19844600C223E0 /* AnimeSeasonYearCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3603D6E62B19844600C223E0 /* AnimeSeasonYearCell.swift */; };
@@ -73,6 +73,8 @@
 		36259EDB2B0617D800FE89BC /* ShowMoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36259ED92B0617D800FE89BC /* ShowMoreViewController.xib */; };
 		362B1FEF2B0CA38A009BACDB /* TopAnimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B1FED2B0CA38A009BACDB /* TopAnimeViewController.swift */; };
 		362B1FF02B0CA38A009BACDB /* TopAnimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 362B1FEE2B0CA38A009BACDB /* TopAnimeViewController.xib */; };
+		363D84642B270A19000C7344 /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363D84622B270A19000C7344 /* UpdateProfileViewController.swift */; };
+		363D84652B270A19000C7344 /* UpdateProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 363D84632B270A19000C7344 /* UpdateProfileViewController.xib */; };
 		363E1EFD2B1581D70091C6B3 /* ShowModeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363E1EFC2B1581D70091C6B3 /* ShowModeViewModel.swift */; };
 		3643ABC62B18240C00195054 /* ExtInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3643ABC52B18240C00195054 /* ExtInt.swift */; };
 		3643ABCC2B18436E00195054 /* AnimeScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3643ABCA2B18436E00195054 /* AnimeScheduleViewController.swift */; };
@@ -170,9 +172,12 @@
 		3673F2302B20697400CD83E2 /* ExtLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3673F22F2B20697400CD83E2 /* ExtLabel.swift */; };
 		368340302B269C240034B6E4 /* LoginGoogleParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3683402F2B269C240034B6E4 /* LoginGoogleParam.swift */; };
 		368340322B26A26C0034B6E4 /* RegisterGoogleParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368340312B26A26C0034B6E4 /* RegisterGoogleParam.swift */; };
-		368340362B26AFEE0034B6E4 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368340342B26AFEE0034B6E4 /* SettingViewController.swift */; };
-		368340372B26AFEE0034B6E4 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368340352B26AFEE0034B6E4 /* SettingViewController.xib */; };
 		368340392B26B1280034B6E4 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368340382B26B1280034B6E4 /* UserResponse.swift */; };
+		3683403D2B26C2920034B6E4 /* ProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3683403B2B26C2920034B6E4 /* ProfileSettingViewController.swift */; };
+		3683403E2B26C2920034B6E4 /* ProfileSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3683403C2B26C2920034B6E4 /* ProfileSettingViewController.xib */; };
+		368340422B26C4730034B6E4 /* ProfileSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368340402B26C4730034B6E4 /* ProfileSettingCell.swift */; };
+		368340432B26C4730034B6E4 /* ProfileSettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368340412B26C4730034B6E4 /* ProfileSettingCell.xib */; };
+		368340452B26C62C0034B6E4 /* SettingItemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368340442B26C62C0034B6E4 /* SettingItemEntity.swift */; };
 		368C16592B18780900F44C4B /* AnimeSeasonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368C16572B18780900F44C4B /* AnimeSeasonViewController.swift */; };
 		368C165A2B18780900F44C4B /* AnimeSeasonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368C16582B18780900F44C4B /* AnimeSeasonViewController.xib */; };
 		368C165E2B18789100F44C4B /* TopMangaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368C165C2B18789100F44C4B /* TopMangaViewController.swift */; };
@@ -250,7 +255,7 @@
 /* Begin PBXFileReference section */
 		3603D6D62B196B5600C223E0 /* AnimeSeasonContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeSeasonContentViewController.swift; sourceTree = "<group>"; };
 		3603D6D72B196B5600C223E0 /* AnimeSeasonContentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimeSeasonContentViewController.xib; sourceTree = "<group>"; };
-		3603D6DA2B1970A000C223E0 /* AnimeSeasonFloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeSeasonFloatingPanel.swift; sourceTree = "<group>"; };
+		3603D6DA2B1970A000C223E0 /* FloatingPanelUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelUtil.swift; sourceTree = "<group>"; };
 		3603D6E22B197C1000C223E0 /* AnimeSeasonItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeSeasonItemCell.swift; sourceTree = "<group>"; };
 		3603D6E32B197C1000C223E0 /* AnimeSeasonItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimeSeasonItemCell.xib; sourceTree = "<group>"; };
 		3603D6E62B19844600C223E0 /* AnimeSeasonYearCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeSeasonYearCell.swift; sourceTree = "<group>"; };
@@ -315,6 +320,8 @@
 		36259ED92B0617D800FE89BC /* ShowMoreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowMoreViewController.xib; sourceTree = "<group>"; };
 		362B1FED2B0CA38A009BACDB /* TopAnimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAnimeViewController.swift; sourceTree = "<group>"; };
 		362B1FEE2B0CA38A009BACDB /* TopAnimeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopAnimeViewController.xib; sourceTree = "<group>"; };
+		363D84622B270A19000C7344 /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
+		363D84632B270A19000C7344 /* UpdateProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateProfileViewController.xib; sourceTree = "<group>"; };
 		363E1EFC2B1581D70091C6B3 /* ShowModeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowModeViewModel.swift; sourceTree = "<group>"; };
 		3643ABC52B18240C00195054 /* ExtInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtInt.swift; sourceTree = "<group>"; };
 		3643ABCA2B18436E00195054 /* AnimeScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeScheduleViewController.swift; sourceTree = "<group>"; };
@@ -412,9 +419,12 @@
 		3673F22F2B20697400CD83E2 /* ExtLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtLabel.swift; sourceTree = "<group>"; };
 		3683402F2B269C240034B6E4 /* LoginGoogleParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginGoogleParam.swift; sourceTree = "<group>"; };
 		368340312B26A26C0034B6E4 /* RegisterGoogleParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterGoogleParam.swift; sourceTree = "<group>"; };
-		368340342B26AFEE0034B6E4 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		368340352B26AFEE0034B6E4 /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		368340382B26B1280034B6E4 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
+		3683403B2B26C2920034B6E4 /* ProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewController.swift; sourceTree = "<group>"; };
+		3683403C2B26C2920034B6E4 /* ProfileSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSettingViewController.xib; sourceTree = "<group>"; };
+		368340402B26C4730034B6E4 /* ProfileSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingCell.swift; sourceTree = "<group>"; };
+		368340412B26C4730034B6E4 /* ProfileSettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSettingCell.xib; sourceTree = "<group>"; };
+		368340442B26C62C0034B6E4 /* SettingItemEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemEntity.swift; sourceTree = "<group>"; };
 		368C16572B18780900F44C4B /* AnimeSeasonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeSeasonViewController.swift; sourceTree = "<group>"; };
 		368C16582B18780900F44C4B /* AnimeSeasonViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimeSeasonViewController.xib; sourceTree = "<group>"; };
 		368C165C2B18789100F44C4B /* TopMangaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMangaViewController.swift; sourceTree = "<group>"; };
@@ -510,7 +520,6 @@
 				3603D6E12B197BE800C223E0 /* CollectionCell */,
 				3603D6D62B196B5600C223E0 /* AnimeSeasonContentViewController.swift */,
 				3603D6D72B196B5600C223E0 /* AnimeSeasonContentViewController.xib */,
-				3603D6DA2B1970A000C223E0 /* AnimeSeasonFloatingPanel.swift */,
 			);
 			path = BottomSheet;
 			sourceTree = "<group>";
@@ -674,7 +683,6 @@
 		36231CE02AFE0422008257C8 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				368340332B26AFA50034B6E4 /* Setting */,
 				36EAF7572B22A35D00814FDA /* WebKit */,
 				3692C3F82B217AB800E0DE5B /* Auth */,
 				368C165B2B18788100F44C4B /* TopManga */,
@@ -707,6 +715,7 @@
 				36683F7F2B14338200478AC5 /* UserAnimeEntity.swift */,
 				3603D6EC2B1993A300C223E0 /* SeasonListEntity.swift */,
 				36EAF7622B22ECB200814FDA /* UserEntity.swift */,
+				368340442B26C62C0034B6E4 /* SettingItemEntity.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -800,6 +809,15 @@
 				3606D4722B171A900097D6C5 /* ViewModel */,
 			);
 			path = TopAnime;
+			sourceTree = "<group>";
+		};
+		363D84612B2709F9000C7344 /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				363D84622B270A19000C7344 /* UpdateProfileViewController.swift */,
+				363D84632B270A19000C7344 /* UpdateProfileViewController.xib */,
+			);
+			path = Popup;
 			sourceTree = "<group>";
 		};
 		363E1EFA2B1581AD0091C6B3 /* View */ = {
@@ -965,6 +983,7 @@
 		36641E362B0ED4FA00651AF0 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				3603D6DA2B1970A000C223E0 /* FloatingPanelUtil.swift */,
 				36641E372B0ED52E00651AF0 /* BottomSheetHelper.swift */,
 				36641E392B0ED55C00651AF0 /* PopUpLoading.swift */,
 				36641E3B2B0ED5A500651AF0 /* Common.swift */,
@@ -1034,6 +1053,8 @@
 		3673F2152B200C2300CD83E2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				363D84612B2709F9000C7344 /* Popup */,
+				3683403A2B26C1FD0034B6E4 /* BottomSheet */,
 				3605F3E52B1DA68D00984C62 /* TableCell */,
 				36569EC62AFE055900EDB6B9 /* ProfileViewController.swift */,
 				36569EC72AFE055900EDB6B9 /* ProfileViewController.xib */,
@@ -1076,13 +1097,23 @@
 			path = ShowMore;
 			sourceTree = "<group>";
 		};
-		368340332B26AFA50034B6E4 /* Setting */ = {
+		3683403A2B26C1FD0034B6E4 /* BottomSheet */ = {
 			isa = PBXGroup;
 			children = (
-				368340342B26AFEE0034B6E4 /* SettingViewController.swift */,
-				368340352B26AFEE0034B6E4 /* SettingViewController.xib */,
+				3683403F2B26C3320034B6E4 /* TableCell */,
+				3683403B2B26C2920034B6E4 /* ProfileSettingViewController.swift */,
+				3683403C2B26C2920034B6E4 /* ProfileSettingViewController.xib */,
 			);
-			path = Setting;
+			path = BottomSheet;
+			sourceTree = "<group>";
+		};
+		3683403F2B26C3320034B6E4 /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				368340402B26C4730034B6E4 /* ProfileSettingCell.swift */,
+				368340412B26C4730034B6E4 /* ProfileSettingCell.xib */,
+			);
+			path = TableCell;
 			sourceTree = "<group>";
 		};
 		36880DDC2B157FD100BD6867 /* ViewModel */ = {
@@ -1542,7 +1573,7 @@
 				366022592B0B16AC00099DE3 /* DetailAnimeStaff.xib in Resources */,
 				3605F4022B1DB65D00984C62 /* Poppins-Light.ttf in Resources */,
 				36683F982B14822E00478AC5 /* UpdateListBottomSheet.xib in Resources */,
-				368340372B26AFEE0034B6E4 /* SettingViewController.xib in Resources */,
+				368340432B26C4730034B6E4 /* ProfileSettingCell.xib in Resources */,
 				36569EFA2AFE117500EDB6B9 /* TodayAnime.xib in Resources */,
 				3605F4092B1DB65E00984C62 /* Poppins-Regular.ttf in Resources */,
 				369C55F42B0481E100B982AF /* DetailAnimeViewController.xib in Resources */,
@@ -1568,6 +1599,7 @@
 				366022552B0B07B800099DE3 /* AnimeCharacterItem.xib in Resources */,
 				36569EC42AFE04FE00EDB6B9 /* SplashViewController.xib in Resources */,
 				368C16642B187B7000F44C4B /* AnimeSeasonTableCell.xib in Resources */,
+				3683403E2B26C2920034B6E4 /* ProfileSettingViewController.xib in Resources */,
 				3692C3F22B21679B00E0DE5B /* FilterPopUp.xib in Resources */,
 				3673F21C2B201F7300CD83E2 /* ProfileFavoriteCell.xib in Resources */,
 				3603D6E92B19844600C223E0 /* AnimeSeasonYearCell.xib in Resources */,
@@ -1590,6 +1622,7 @@
 				36569EFF2AFE128100EDB6B9 /* TodayAnimeItem.xib in Resources */,
 				36EAF76E2B230E8900814FDA /* client_668495768253-8rv45t9sa7227r38tknvpps2trph79et.apps.googleusercontent.com.plist in Resources */,
 				3693B0B72B188CFE00406B1D /* SearchResultCell.xib in Resources */,
+				363D84652B270A19000C7344 /* UpdateProfileViewController.xib in Resources */,
 				362B1FF02B0CA38A009BACDB /* TopAnimeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1643,8 +1676,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				368340362B26AFEE0034B6E4 /* SettingViewController.swift in Sources */,
 				36EAF76C2B23093300814FDA /* RegisterResponse.swift in Sources */,
+				363D84642B270A19000C7344 /* UpdateProfileViewController.swift in Sources */,
 				36569ECC2AFE056700EDB6B9 /* MangaViewController.swift in Sources */,
 				36F405DE2B0F4F4800311133 /* MangaListCell.swift in Sources */,
 				36EAF75A2B22A49E00814FDA /* WebKitViewController.swift in Sources */,
@@ -1668,7 +1701,7 @@
 				366022662B0B445100099DE3 /* DetailAnimeTheme.swift in Sources */,
 				366022542B0B07B800099DE3 /* AnimeCharacterItem.swift in Sources */,
 				36C9C5352B0767A7009E907C /* AnimeCharacterEntity.swift in Sources */,
-				3603D6DB2B1970A000C223E0 /* AnimeSeasonFloatingPanel.swift in Sources */,
+				3603D6DB2B1970A000C223E0 /* FloatingPanelUtil.swift in Sources */,
 				3660224D2B0AE49D00099DE3 /* AnimeDetailEntity.swift in Sources */,
 				3605F3E42B1D91AA00984C62 /* ExtViewController.swift in Sources */,
 				36AF1C0F2B10499100C8EB46 /* UserAnimeViewModel.swift in Sources */,
@@ -1688,6 +1721,7 @@
 				365F9BCF2B045C05001D05AE /* MangaEntity.swift in Sources */,
 				36569EDB2AFE06AC00EDB6B9 /* Constant.swift in Sources */,
 				366022582B0B16AC00099DE3 /* DetailAnimeStaff.swift in Sources */,
+				368340452B26C62C0034B6E4 /* SettingItemEntity.swift in Sources */,
 				360E828D2B0DD56E0011D844 /* RatingScoreItem.swift in Sources */,
 				3606D48F2B1737C40097D6C5 /* TopAnimeResponse.swift in Sources */,
 				36569EC32AFE04FE00EDB6B9 /* SplashViewController.swift in Sources */,
@@ -1715,6 +1749,7 @@
 				36942E4E2B0758BC006A38CE /* DetailAnimeMoreInfo.swift in Sources */,
 				365F9BCB2B045581001D05AE /* SearchViewModel.swift in Sources */,
 				36683F862B14380500478AC5 /* MangaResponse.swift in Sources */,
+				368340422B26C4730034B6E4 /* ProfileSettingCell.swift in Sources */,
 				36569EE52AFE0C8B00EDB6B9 /* ExtTableView.swift in Sources */,
 				360E82952B0DF20C0011D844 /* WatchStatusBottomSheet.swift in Sources */,
 				3660226A2B0B4A3100099DE3 /* DetailAnimeRecommendation.swift in Sources */,
@@ -1785,6 +1820,7 @@
 				36EAF7632B22ECB200814FDA /* UserEntity.swift in Sources */,
 				3673F2222B202A3800CD83E2 /* ProfileFavoriteItemCell.swift in Sources */,
 				36671F822B03233200EB7083 /* SearchCategories.swift in Sources */,
+				3683403D2B26C2920034B6E4 /* ProfileSettingViewController.swift in Sources */,
 				3603D6E42B197C1000C223E0 /* AnimeSeasonItemCell.swift in Sources */,
 				3603D6E82B19844600C223E0 /* AnimeSeasonYearCell.swift in Sources */,
 				3692C3FB2B217AC900E0DE5B /* AuthViewController.swift in Sources */,

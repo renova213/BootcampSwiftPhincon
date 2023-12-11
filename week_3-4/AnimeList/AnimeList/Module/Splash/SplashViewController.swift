@@ -14,7 +14,8 @@ class SplashViewController: UIViewController {
             if (token.isEmpty){
                 let vc = AuthViewController()
                 self.navigationController?.setViewControllers([vc], animated: true)
-            }else{ let vc = MainTabBarViewController()
+            }else{
+                let vc = MainTabBarViewController()
                 self.navigationController?.setViewControllers([vc], animated: true)
             }
         }

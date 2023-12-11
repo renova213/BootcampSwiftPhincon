@@ -13,14 +13,10 @@ class AnimeViewController: UIViewController {
         loadData()
         configureUI()
         configureTableView()
-        tableView.showAnimatedGradientSkeleton()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        bindData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        bindData()
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     

@@ -15,4 +15,11 @@ extension UITextField {
         let attributes = [NSAttributedString.Key.foregroundColor: color]
         attributedPlaceholder = NSAttributedString(string: text, attributes: attributes)
     }
+    
+    func setBorderColor(_ color: UIColor, width: CGFloat = 1.0, cornerRadius: CGFloat = 0.0) {
+        self.layer.borderColor = color.cgColor
+        self.layer.borderWidth = width
+        self.layer.cornerRadius = cornerRadius
+        self.layer.masksToBounds = cornerRadius > 0.0
+    }
 }

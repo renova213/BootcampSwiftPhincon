@@ -1,6 +1,8 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import FloatingPanel
+import SkeletonView
 
 class ProfileViewController: UIViewController {
     
@@ -8,29 +10,30 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var appBar: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
+        bindData()
         configureTableView()
-        loadData()
+        configureUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        loadData()
+        super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
-        bindData()
     }
     
-    private var profileStatsTabState = false {
-        didSet{
-            tableView.reloadData()
-        }
-    }
-    
-    private var userData: UserEntity? {
+    var profileStatsTabState = false {
         didSet{
             tableView.reloadData()
         }
     }
     
     private let profileVM = ProfileViewModel()
+    
+    var userData: UserEntity? {
+        didSet{
+            tableView.reloadData()
+        }
+    }
     
     private var toggleMinimizeFavorite: Bool = false {
         didSet{
@@ -43,6 +46,8 @@ class ProfileViewController: UIViewController {
             tableView.reloadData()
         }
     }
+    
+    private let disposeBag = DisposeBag()
 }
 
 extension ProfileViewController {
@@ -52,10 +57,24 @@ extension ProfileViewController {
             self.profileStatsTabState = state
         }).disposed(by: DisposeBag())
         
-        profileVM.userData.asObservable().subscribe(onNext: {[weak self] userData in
+        profileVM.loadingState2.asObservable().subscribe(onNext: {[weak self] state in
             guard let self = self else { return }
-            self.userData = userData
-        }).disposed(by: DisposeBag())
+            switch state {
+            case .loading, .failed:
+            self.tableView.showAnimatedGradientSkeleton()
+                break
+            case .finished, .notLoad:
+                self.tableView.hideSkeleton()
+            }
+        }).disposed(by: disposeBag)
+        
+        profileVM.userData.asObservable().subscribe(onNext: {[weak self] data in
+            guard let self = self else { return }
+            if let responseData = data {
+                self.userData = responseData
+                self.tableView.reloadData()
+            }
+        }).disposed(by: disposeBag)
     }
     
     func loadData(){
@@ -74,10 +93,24 @@ extension ProfileViewController {
         tableView.registerCellWithNib(ProfileInfoCell.self)
         tableView.registerCellWithNib(ProfileStatsCell.self)
         tableView.registerCellWithNib(ProfileFavoriteCell.self)
-        tableView.registerCellWithNib(ProfileRecentUpdate.self)    }
+        tableView.registerCellWithNib(ProfileRecentUpdate.self)
+    }
 }
 
-extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
+extension ProfileViewController: UITableViewDelegate, SkeletonTableViewDataSource {
+    func numSections(in collectionSkeletonView: UITableView) -> Int {
+        return 4
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        let cellTypes: [String] = [String(describing: ProfileInfoCell.self), String(describing: ProfileStatsCell.self), String(describing: ProfileRecentUpdate.self), String(describing: ProfileFavoriteCell.self)]
+        return cellTypes[indexPath.section]
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
@@ -114,7 +147,26 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension ProfileViewController: ProfileStatsCellDelegate, ProfileFavoriteCellDegelate, ProfileInfoCellDelegate {
+extension ProfileViewController: FloatingPanelControllerDelegate{
+    func floatingPanel(_ fpc: FloatingPanelController, layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout {
+        return ProfileFloatingPanel()
+    }
+    
+    func presentFloatingPanel(){
+        let fpc = FloatingPanelController()
+        fpc.delegate = self
+        fpc.isRemovalInteractionEnabled = true
+        fpc.surfaceView.appearance.cornerRadius = 20
+        let contentVC = ProfileSettingViewController()
+        contentVC.delegate = self
+        contentVC.hidesBottomBarWhenPushed = true
+        contentVC.navigationController?.isNavigationBarHidden = true
+        fpc.set(contentViewController: contentVC)
+        self.present(fpc, animated: true, completion: nil)
+    }
+}
+
+extension ProfileViewController: ProfileStatsCellDelegate, ProfileFavoriteCellDegelate, ProfileInfoCellDelegate, ProfileSettingViewControllerDelegate {
     func minimizeFavorite() {
         toggleMinimizeFavorite = !toggleMinimizeFavorite
     }
@@ -124,9 +176,26 @@ extension ProfileViewController: ProfileStatsCellDelegate, ProfileFavoriteCellDe
     }
     
     func didTapNavigationSetting() {
-        let vc = SettingViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
-        self.navigationController?.isNavigationBarHidden = true
-        self.navigationController?.hidesBottomBarWhenPushed = true
+        self.presentFloatingPanel()
+    }
+    
+    func didTapSignOut() {
+        profileVM.deleteCredentials()
+        let vc = AuthViewController()
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let appDelegate = windowScene.delegate as? SceneDelegate {
+            let navigationController = UINavigationController(rootViewController: vc)
+            appDelegate.window?.rootViewController = navigationController
+            appDelegate.window?.makeKeyAndVisible()
+        }
+    }
+    
+    func didTapUpdateProfile() {
+        let vc = UpdateProfileViewController()
+        vc.view.alpha = 0.0
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: false, completion: nil)
+        UIView.animate(withDuration: 0.5) {
+            vc.view.alpha = 1.0
+        }
     }
 }
