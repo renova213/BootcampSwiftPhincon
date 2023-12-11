@@ -65,21 +65,27 @@ extension DetailAnimeViewController{
     
     private func buttonGesture(){
         addToListButton.rx.tap.subscribe(onNext: { [weak self] in
+            guard let self = self else { return }
+            
             let bottomSheetVC = AddToListBottomSheet()
-            bottomSheetVC.malId = self?.malId ?? 0
-            bottomSheetVC.imageUrl = self?.animeDetail?.images?.jpg?.imageUrl ?? ""
+            bottomSheetVC.malId = self.malId ?? 0
+            bottomSheetVC.totalEpisode = self.animeDetail?.episodes ?? 0
+            bottomSheetVC.imageUrl = self.animeDetail?.images?.jpg?.imageUrl ?? ""
             bottomSheetVC.setContentHeight(bottomSheetVC.view.bounds.height)
-            self?.presentBottomSheet(contentViewController: bottomSheetVC)
+            self.presentBottomSheet(contentViewController: bottomSheetVC)
         }
         ).disposed(by: disposeBag)
         
         updateListButton.rx.tap.subscribe(onNext: { [weak self] in
+            guard let self = self else { return }
+
             let bottomSheetVC = UpdateListBottomSheet()
-            bottomSheetVC.malId = self?.malId ?? 0
-            bottomSheetVC.id = self?.id
-            bottomSheetVC.imageUrl = self?.animeDetail?.images?.jpg?.imageUrl ?? ""
+            bottomSheetVC.malId = self.malId ?? 0
+            bottomSheetVC.id = self.id
+            bottomSheetVC.totalEpisode = self.animeDetail?.episodes ?? 0
+            bottomSheetVC.imageUrl = self.animeDetail?.images?.jpg?.imageUrl ?? ""
             bottomSheetVC.setContentHeight(bottomSheetVC.view.bounds.height)
-            self?.presentBottomSheet(contentViewController: bottomSheetVC)
+            self.presentBottomSheet(contentViewController: bottomSheetVC)
         }
         ).disposed(by: disposeBag)
         

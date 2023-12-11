@@ -1,7 +1,6 @@
 import Foundation
 
-struct RegisterParam: Codable {
+struct LoginGoogleParam: Codable {
     let username: String
     let email: String
-    let password: String
 }

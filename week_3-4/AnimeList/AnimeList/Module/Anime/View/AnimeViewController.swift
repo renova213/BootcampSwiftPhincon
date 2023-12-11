@@ -181,10 +181,10 @@ extension AnimeViewController: AnimeSearchFilterCellDelegate, AnimeListCellDeleg
     }
     
     func didTap(data: UserAnimeEntity) {
-        print(data)
         let bottomSheetVC = UpdateListBottomSheet()
         bottomSheetVC.malId = data.anime.malId ?? 0
         bottomSheetVC.id = data.id
+        bottomSheetVC.totalEpisode = data.anime.episodes
         bottomSheetVC.imageUrl = data.anime.images?.jpg?.imageUrl ?? ""
         bottomSheetVC.setContentHeight(bottomSheetVC.view.bounds.height)
         self.presentBottomSheet(contentViewController: bottomSheetVC)

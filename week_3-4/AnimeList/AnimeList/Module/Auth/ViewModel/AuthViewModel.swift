@@ -8,7 +8,7 @@ class AuthViewModel: BaseViewModel {
     
     func postData <T: Codable>(for endpoint: Endpoint, resultType: T.Type){
         switch endpoint {
-        case .postLogin:
+        case .postLogin, .postLoginGoogle:
             loadingState.accept(.loading)
             break
         case .postRegister:
@@ -25,7 +25,7 @@ class AuthViewModel: BaseViewModel {
                 switch response{
                 case .success(let data):
                     switch endpoint {
-                    case .postLogin:
+                    case .postLogin, .postLoginGoogle:
                         if let data = data as? LoginResponse{
                             if let token = data.token {
                                 self.storeToken(with: token)
@@ -33,10 +33,10 @@ class AuthViewModel: BaseViewModel {
                             if let userData = data.user{
                                 self.saveUserIDToUserDefaults(userID: userData.id)
                             }
+                            self.loadingState.accept(.finished)
                         }
-                        self.loadingState.accept(.finished)
                         break
-                    case .postRegister:
+                    case .postRegister, .postRegisterGoogle:
                         self.loadingState2.accept(.finished)
                         break
                     default:
@@ -45,12 +45,12 @@ class AuthViewModel: BaseViewModel {
                     break
                 case .failure(let error):
                     switch endpoint {
-                    case .postLogin:
+                    case .postLogin, .postLoginGoogle:
                         if let error = error as? CustomError {
                             self.errorMessage.accept(error)
                         }
                         self.loadingState.accept(.failed)
-                    case .postRegister:
+                    case .postRegister, .postRegisterGoogle:
                         if let error = error as? CustomError {
                             self.errorMessage.accept(error)
                         }

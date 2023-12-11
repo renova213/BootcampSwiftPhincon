@@ -30,20 +30,17 @@
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="pencil.line" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="BuP-rn-3fR">
-                                        <rect key="frame" x="138" y="2.9999999999999982" width="24" height="19"/>
-                                        <color key="tintColor" systemColor="systemBlueColor"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cc8-at-LNv">
+                                        <rect key="frame" x="138" y="0.0" width="24" height="24"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="nsN-C4-R3k"/>
-                                            <constraint firstAttribute="width" constant="24" id="uiP-dM-88c"/>
+                                            <constraint firstAttribute="width" constant="24" id="SOV-7N-c7v"/>
+                                            <constraint firstAttribute="height" constant="24" id="j54-Jh-PUz"/>
                                         </constraints>
-                                    </imageView>
+                                        <color key="tintColor" name="Main Color"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="gearshape" catalog="system"/>
+                                    </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="BuP-rn-3fR" secondAttribute="bottom" id="AoV-2y-r7b"/>
-                                    <constraint firstItem="BuP-rn-3fR" firstAttribute="top" secondItem="BoR-5P-8u1" secondAttribute="top" id="ZwQ-lf-gI9"/>
-                                    <constraint firstAttribute="trailing" secondItem="BuP-rn-3fR" secondAttribute="trailing" id="v8Q-QB-Gjt"/>
-                                </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e52-2K-9BV">
                                 <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
@@ -131,6 +128,7 @@
                 <outlet property="joinedLabel" destination="uZm-J7-r0I" id="AVM-UH-iDZ"/>
                 <outlet property="nameLabel" destination="qft-on-EJR" id="1fJ-Nc-kzH"/>
                 <outlet property="profileImage" destination="hpQ-YA-wm2" id="0vQ-wc-Vy4"/>
+                <outlet property="settingButton" destination="cc8-at-LNv" id="4TV-ov-gNa"/>
             </connections>
             <point key="canvasLocation" x="120.61068702290076" y="83.098591549295776"/>
         </tableViewCell>
@@ -138,7 +136,10 @@
     <resources>
         <image name="ImagePlaceholder" width="800" height="540"/>
         <image name="birthday.cake.fill" catalog="system" width="128" height="115"/>
-        <image name="pencil.line" catalog="system" width="128" height="98"/>
+        <image name="gearshape" catalog="system" width="128" height="123"/>
+        <namedColor name="Main Color">
+            <color red="0.63529411764705879" green="0.69803921568627447" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Second Icon Color">
             <color red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -147,9 +148,6 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

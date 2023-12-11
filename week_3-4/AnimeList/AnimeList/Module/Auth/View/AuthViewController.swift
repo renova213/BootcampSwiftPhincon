@@ -60,12 +60,14 @@ extension AuthViewController {
             switch state {
             case .loading:
                 self.signInView.signInButton.isEnabled = false
+                self.signInView.googleBorder.isUserInteractionEnabled = false
                 break
             case .finished:
                 let vc = MainTabBarViewController()
                 self.view.makeToast("Login success", duration: 2, style: style)
                 DispatchQueue.main.asyncAfter(deadline: .now()+2){
                     self.signInView.signInButton.isEnabled = true
+                    self.signInView.googleBorder.isUserInteractionEnabled = true
                     self.navigationController?.setViewControllers([vc], animated: true)
                 }
                 break
@@ -73,6 +75,7 @@ extension AuthViewController {
                 if let errorMessage = self.authVM.errorMessage.value?.message {
                     self.view.makeToast(errorMessage, duration: 2, style: style)
                     self.signInView.signInButton.isEnabled = true
+                    self.signInView.googleBorder.isUserInteractionEnabled = true
                 }
                 break
             }
@@ -87,6 +90,7 @@ extension AuthViewController {
             switch state {
             case .loading:
                 self.signUpView.signUpButton.isEnabled = false
+                self.signUpView.googleBorder.isUserInteractionEnabled = false
                 break
             case .finished:
                 self.showSignInView()
@@ -95,11 +99,13 @@ extension AuthViewController {
                 self.signUpView.passwordField.text = ""
                 self.view.makeToast("Register success", duration: 2, style: style)
                 self.signUpView.signUpButton.isEnabled = true
+                self.signUpView.googleBorder.isUserInteractionEnabled = true
                 break
             case .failed, .notLoad:
                 if let errorMessage = self.authVM.errorMessage.value?.message {
                     self.view.makeToast(errorMessage, duration: 2, style: style)
                     self.signUpView.signUpButton.isEnabled = true
+                    self.signUpView.googleBorder.isUserInteractionEnabled = true
                 }
                 break
             }
@@ -112,8 +118,7 @@ extension AuthViewController {
             guard let self = self else { return }
             GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
                 if let profileData = GIDSignIn.sharedInstance.currentUser?.profile {
-                    let stringRepresentation = "Name: \(profileData.name), Email: \(profileData.email ) "
-                    print(stringRepresentation)
+                    self.authVM.postData(for: Endpoint.postRegisterGoogle(params: RegisterGoogleParam(username: profileData.name, email: profileData.email)), resultType: RegisterResponse.self)
                 }
             }
         }).disposed(by: disposeBag)
@@ -122,8 +127,7 @@ extension AuthViewController {
             guard let self = self else { return }
             GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
                 if let profileData = GIDSignIn.sharedInstance.currentUser?.profile {
-                    let stringRepresentation = "Name: \(profileData.name), Email: \(profileData.email ) "
-                    print(stringRepresentation)
+                    self.authVM.postData(for: Endpoint.postLoginGoogle(params: LoginGoogleParam(username: profileData.name, email: profileData.email)), resultType: LoginResponse.self)
                 }
             }
         }).disposed(by: disposeBag)

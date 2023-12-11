@@ -1,6 +1,6 @@
 import Foundation
 
-struct LoginParam {
+struct LoginParam: Codable {
     let username: String
     let password: String
 }

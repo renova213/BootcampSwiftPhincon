@@ -10,6 +10,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         configureTableView()
+        loadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -18,6 +19,12 @@ class ProfileViewController: UIViewController {
     }
     
     private var profileStatsTabState = false {
+        didSet{
+            tableView.reloadData()
+        }
+    }
+    
+    private var userData: UserEntity? {
         didSet{
             tableView.reloadData()
         }
@@ -44,6 +51,17 @@ extension ProfileViewController {
             guard let self = self else { return }
             self.profileStatsTabState = state
         }).disposed(by: DisposeBag())
+        
+        profileVM.userData.asObservable().subscribe(onNext: {[weak self] userData in
+            guard let self = self else { return }
+            self.userData = userData
+        }).disposed(by: DisposeBag())
+    }
+    
+    func loadData(){
+        if let userId = profileVM.getUserIDFromUserDefaults(){
+            profileVM.loadData(for: Endpoint.getUser(params: userId), resultType: UserResponse.self)
+        }
     }
     
     func configureUI(){
@@ -68,7 +86,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as ProfileInfoCell
-            cell.initialSetup()
+            if let userData = self.userData {
+                cell.initialSetup(data: userData)
+            }
+            cell.delegate = self
             cell.selectionStyle = .none
             return cell
         case 1:
@@ -93,12 +114,19 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension ProfileViewController: ProfileStatsCellDelegate, ProfileFavoriteCellDegelate {
+extension ProfileViewController: ProfileStatsCellDelegate, ProfileFavoriteCellDegelate, ProfileInfoCellDelegate {
     func minimizeFavorite() {
         toggleMinimizeFavorite = !toggleMinimizeFavorite
     }
     
     func didTapTab(state: Bool) {
         profileStatsTabState = state
+    }
+    
+    func didTapNavigationSetting() {
+        let vc = SettingViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.hidesBottomBarWhenPushed = true
     }
 }

@@ -45,10 +45,8 @@ class BaseViewModel {
         let status = SecItemCopyMatching(query as CFDictionary, &tokenData)
         
         if status == errSecSuccess, let data = tokenData as? Data, let token = String(data: data, encoding: .utf8) {
-            print("Stored token: \(token)")
             return token
         } else {
-            print("Token not found in Keychain")
             return ""
         }
     }

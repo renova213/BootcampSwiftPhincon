@@ -36,6 +36,7 @@ class AddToListBottomSheet: UIViewController {
       
       var imageUrl: String?
       var malId: Int?
+    var totalEpisode: Int?
       lazy var loadingIndicator = PopUpLoading(on: view)
       let disposeBag = DisposeBag()
       var selectedScoreIndex = 0{
@@ -120,24 +121,25 @@ class AddToListBottomSheet: UIViewController {
           }
           ).disposed(by: disposeBag)
           
-          increamentButton.rx.tap.subscribe(onNext: {_ in
-              DetailAnimeViewModel.shared.increamentEpisode(totalEpisode: 20)
-          }
-                                            
-          ).disposed(by: disposeBag)
+          increamentButton.rx.tap.subscribe(onNext: {[weak self] _ in
+              guard let self = self else { return }
+              
+              if let totalEpisode = self.totalEpisode {
+                  DetailAnimeViewModel.shared.increamentEpisode(totalEpisode: totalEpisode)
+              }
+          }).disposed(by: disposeBag)
+          
           decreamentButton.rx.tap.subscribe(onNext: {_ in
               DetailAnimeViewModel.shared.decreamentEpisode()
-          }
-                                            
-          ).disposed(by: disposeBag)
+          }).disposed(by: disposeBag)
           
           statusButton.rx.tap.subscribe(onNext: { [weak self] in
               let bottomSheetVC = WatchStatusBottomSheet()
               bottomSheetVC.imageUrl = self?.imageUrl
               bottomSheetVC.setContentHeight(bottomSheetVC.view.bounds.height)
               self?.presentBottomSheet(contentViewController: bottomSheetVC)
-          }
-          ).disposed(by: disposeBag)
+          }).disposed(by: disposeBag)
+          
           addToListButton.rx.tap.subscribe(onNext: { [weak self] in
               self?.addToListButton.isEnabled = false
               self?.loadingIndicator.showInFull()
