@@ -24,6 +24,7 @@ class AuthViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     private let authVM = AuthViewModel()
+    var style = ToastStyle()
     
     override func viewWillAppear(_ animated: Bool) {
         signUpView.isHidden = true
@@ -84,8 +85,7 @@ extension AuthViewController {
         authVM.loadingState2.asObservable().subscribe(onNext: {[weak self] state in
             guard let self = self else { return }
             
-            var style = ToastStyle()
-            style.backgroundColor = UIColor(named: "Main Color") ?? UIColor.black
+            self.style.backgroundColor = UIColor(named: "Main Color") ?? UIColor.black
             
             switch state {
             case .loading:
@@ -97,13 +97,13 @@ extension AuthViewController {
                 self.signUpView.usernameField.text = ""
                 self.signUpView.emailField.text = ""
                 self.signUpView.passwordField.text = ""
-                self.view.makeToast("Register success", duration: 2, style: style)
+                self.view.makeToast("Register success", duration: 2, style: self.style)
                 self.signUpView.signUpButton.isEnabled = true
                 self.signUpView.googleBorder.isUserInteractionEnabled = true
                 break
             case .failed, .notLoad:
                 if let errorMessage = self.authVM.errorMessage.value?.message {
-                    self.view.makeToast(errorMessage, duration: 2, style: style)
+                    self.view.makeToast(errorMessage, duration: 2, style: self.style)
                     self.signUpView.signUpButton.isEnabled = true
                     self.signUpView.googleBorder.isUserInteractionEnabled = true
                 }

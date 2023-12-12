@@ -1,8 +1,9 @@
 import Foundation
+import CoreData
 import RxSwift
 import RxCocoa
 
-class DetailAnimeViewModel {
+class DetailAnimeViewModel: BaseViewModel {
     static let shared = DetailAnimeViewModel()
     
     let scoreList:[Int] = [1,2,3,4,5,6,7,8,9,10]
@@ -14,9 +15,9 @@ class DetailAnimeViewModel {
     var selectedStatus = BehaviorRelay<String>(value: "Pilih status")
     let animeDetail = BehaviorRelay<AnimeDetailEntity?>(value: nil)
     let animeCharacter = BehaviorRelay<[AnimeCharacterEntity]>(value: [])
-     let animeStaff = BehaviorRelay<[AnimeStaffEntity]>(value: [])
-     let animeRecommendations = BehaviorRelay<[AnimeRecommendationEntity]>(value: [])
-     
+    let animeStaff = BehaviorRelay<[AnimeStaffEntity]>(value: [])
+    let animeRecommendations = BehaviorRelay<[AnimeRecommendationEntity]>(value: [])
+    
     
     func getDetailAnime(malId: Int, completion: @escaping(Bool) -> Void) {
         
@@ -70,6 +71,18 @@ class DetailAnimeViewModel {
         }
     }
     
+    func addToFavorite(anime: AnimeDetailEntity){
+        let newFavoriteAnime = FavoriteAnimeEntity(context: context)
+          newFavoriteAnime.title = anime.title
+          newFavoriteAnime.title = anime.title
+        do {
+            try context.save()
+            print("Save to cart")
+        }catch {
+            print("Failed to save item")
+        }
+    }
+    
     func changeSelectedStatusIndex(index: Int){
         selectedSwatchStatusIndex.accept(index)
         changeTitleWatchStatus()
@@ -92,7 +105,7 @@ class DetailAnimeViewModel {
         episode.accept(data.userEpisode)
         changeMessageRating()
         changeTitleWatchStatus()
-
+        
     }
     
     func decreamentEpisode(){

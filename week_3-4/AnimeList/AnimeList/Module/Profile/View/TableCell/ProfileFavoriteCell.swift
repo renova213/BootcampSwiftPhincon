@@ -23,6 +23,11 @@ class ProfileFavoriteCell: UITableViewCell {
     }
     
     weak var delegate: ProfileFavoriteCellDegelate?
+    var favoriteAnimeList: [FavoriteAnimeEntity] = [] {
+        didSet {
+            animeCollection.reloadData()
+        }
+    }
     private let disposeBag = DisposeBag()
 }
 
@@ -72,7 +77,8 @@ extension ProfileFavoriteCell: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch  collectionView{
         case animeCollection:
-            return 4
+            print(favoriteAnimeList.count)
+            return favoriteAnimeList.count
         case mangaCollection:
             return 5
         case characterCollection:

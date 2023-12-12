@@ -22,4 +22,14 @@ extension UITextField {
         self.layer.cornerRadius = cornerRadius
         self.layer.masksToBounds = cornerRadius > 0.0
     }
+    
+    func setHorizontalPadding(_ horizontal: CGFloat) {
+        let paddingLeftView = UIView(frame: CGRect(x: 0, y: 0, width: horizontal, height: frame.size.height))
+        leftView = paddingLeftView
+        leftViewMode = .always
+        
+        let paddingRightView = UIView(frame: CGRect(x: 0, y: 0, width: horizontal, height: frame.size.height))
+        rightView = paddingRightView
+        rightViewMode = .always
+    }
 }

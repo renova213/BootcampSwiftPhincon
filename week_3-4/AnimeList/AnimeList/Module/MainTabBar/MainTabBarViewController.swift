@@ -27,7 +27,8 @@ class MainTabBarViewController: UITabBarController {
 
 extension MainTabBarViewController{
     func configureStyleTabBar(){
-        self.tabBar.tintColor =  UIColor(named: "Main Color")
+        self.tabBar.tintColor =  UIColor.white
+        self.tabBar.backgroundColor =  UIColor(named: "Main Color")
         self.tabBar.unselectedItemTintColor = UIColor(named: "Second Icon Color")
     }
     

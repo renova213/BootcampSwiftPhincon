@@ -1,8 +1,10 @@
 import UIKit
+import Toast_Swift
 
 protocol ProfileSettingViewControllerDelegate: AnyObject {
     func didTapSignOut()
     func didTapUpdateProfile()
+    func didTapChangePassword()
 }
 
 class ProfileSettingViewController: UIViewController {
@@ -11,9 +13,11 @@ class ProfileSettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        configureUI()
     }
     
     private let profileVM = ProfileViewModel()
+    private var style = ToastStyle()
     weak var delegate: ProfileSettingViewControllerDelegate?
 }
 
@@ -22,6 +26,10 @@ extension ProfileSettingViewController{
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerCellWithNib(ProfileSettingCell.self)
+    }
+    
+    func configureUI(){
+        style.backgroundColor = UIColor(named: "Main Color") ?? UIColor.black
     }
 }
 
@@ -47,8 +55,12 @@ extension ProfileSettingViewController: UITableViewDelegate, UITableViewDataSour
             self.dismiss(animated: false)
             break
         case 1:
+            self.dismiss(animated: false)
+            delegate?.didTapChangePassword()
             break
         case 2:
+            profileVM.clearAlamofireCache()
+            self.view.makeToast("Cache cleared", duration: 2, style: self.style)
             break
         case 3:
             self.dismiss(animated: false)

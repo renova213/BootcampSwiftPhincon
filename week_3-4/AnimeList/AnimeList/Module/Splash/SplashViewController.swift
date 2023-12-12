@@ -9,7 +9,7 @@ class SplashViewController: UIViewController {
     }
     
     func splashTimer(){
-        let token = BaseViewModel().retrieveToken()
+        let token = TokenHelper().retrieveToken()
         DispatchQueue.main.asyncAfter(deadline: .now() + 3){
             if (token.isEmpty){
                 let vc = AuthViewController()

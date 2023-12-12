@@ -3,7 +3,6 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -13,10 +12,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UpdateProfileViewController" customModule="AnimeList" customModuleProvider="target">
             <connections>
                 <outlet property="birthdayField" destination="z3S-kc-lKe" id="iPl-2i-Ozt"/>
-                <outlet property="calendarButton" destination="5iA-GE-x58" id="X1M-CK-QEx"/>
                 <outlet property="closeButton" destination="u5H-j4-gK3" id="c9B-9n-wNg"/>
                 <outlet property="emailField" destination="Bjr-Oe-Nqf" id="3OV-Hk-8K1"/>
-                <outlet property="updateButton" destination="qf7-fT-BwY" id="b7o-nL-Ac1"/>
+                <outlet property="updateButton" destination="qf7-fT-BwY" id="qhN-xX-6PI"/>
                 <outlet property="updateProfileView" destination="J4f-0B-Nsg" id="pzR-YX-7nS"/>
                 <outlet property="usernameField" destination="knX-Sv-yTx" id="vhm-UW-3zI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -83,26 +81,13 @@
                             <rect key="frame" x="16" y="196.00000000000003" width="313" height="50"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z3S-kc-lKe">
-                                    <rect key="frame" x="0.0" y="0.0" width="255" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="313" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="EIi-NQ-jqM"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5iA-GE-x58">
-                                    <rect key="frame" x="263" y="0.0" width="50" height="50"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="50" id="ijx-6J-KBF"/>
-                                        <constraint firstAttribute="height" constant="50" id="uUX-W2-zcy"/>
-                                    </constraints>
-                                    <color key="tintColor" name="Main Color"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain">
-                                        <imageReference key="image" image="calendar" catalog="system" symbolScale="large"/>
-                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
-                                    </buttonConfiguration>
-                                </button>
                             </subviews>
                         </stackView>
                     </subviews>
@@ -144,7 +129,6 @@
         </view>
     </objects>
     <resources>
-        <image name="calendar" catalog="system" width="128" height="107"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="Main Color">
             <color red="0.63529411764705879" green="0.69803921568627447" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

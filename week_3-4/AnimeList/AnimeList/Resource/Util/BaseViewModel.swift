@@ -14,66 +14,14 @@ class BaseViewModel {
     internal let bag: DisposeBag = DisposeBag()
     
     let api = APIManager.shared
+    let tokenHelper = TokenHelper()
+    let context = CoreDataStack().persistentContainer.viewContext
     
     var loadingState = BehaviorRelay<StateLoading>(value: .notLoad)
     var loadingState2 = BehaviorRelay<StateLoading>(value: .notLoad)
     
     var toggle = BehaviorRelay<Bool>(value: false)
     var toggle2 = BehaviorRelay<Bool>(value: false)
-    
-    func saveUserIDToUserDefaults(userID: String) {
-        let defaults = UserDefaults.standard
-        defaults.set(userID, forKey: "user_id")
-        defaults.synchronize()
-    }
-    
-    func getUserIDFromUserDefaults() -> String? {
-        let defaults = UserDefaults.standard
-        let userID = defaults.string(forKey: "user_id")
-        
-        return userID
-    }
-    
-    func retrieveToken() -> String {
-        let query: [CFString: Any] = [
-            kSecClass: kSecClassGenericPassword,
-            kSecAttrAccount: "access_token",
-            kSecReturnData: kCFBooleanTrue!,
-        ]
-        
-        var tokenData: AnyObject?
-        let status = SecItemCopyMatching(query as CFDictionary, &tokenData)
-        
-        if status == errSecSuccess, let data = tokenData as? Data, let token = String(data: data, encoding: .utf8) {
-            return token
-        } else {
-            return ""
-        }
-    }
-    
-    func deleteUserIDFromUserDefaults() {
-        let defaults = UserDefaults.standard
-        defaults.removeObject(forKey: "user_id")
-        defaults.synchronize()
-    }
-    
-    func deleteTokenFromKeychain() {
-        let query: [CFString: Any] = [
-            kSecClass: kSecClassGenericPassword,
-            kSecAttrAccount: "access_token"
-        ]
-        
-        let status = SecItemDelete(query as CFDictionary)
-        
-        if status != errSecSuccess {
-            print("Error deleting token from Keychain: \(status)")
-        }
-    }
-    
-    func deleteCredentials() {
-        deleteUserIDFromUserDefaults()
-        deleteTokenFromKeychain()
-    }
     
     func storeToken(with token: String) {
         let tokenData = token.data(using: .utf8)

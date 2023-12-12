@@ -15,6 +15,7 @@ class DetailAnimeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        configureGesture()
         tableView.showAnimatedGradientSkeleton()
         addToListButton.isHidden = true
         updateListButton.isHidden = true
@@ -30,6 +31,7 @@ class DetailAnimeViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
     }
     
+    private let detailAnimeVM = DetailAnimeViewModel()
     var id: String?
     var malId: Int?
     var animeDetail: AnimeDetailEntity? {
@@ -58,12 +60,19 @@ class DetailAnimeViewController: UIViewController {
 
 extension DetailAnimeViewController{
     private func configureUI() {
-        buttonGesture()
         configureTableView()
         addToListButton.roundCornersAll(radius: 10)
     }
     
-    private func buttonGesture(){
+    private func configureGesture(){
+        favoriteButton.rx.tap.subscribe(onNext: {[weak self] in
+            guard let self = self else { return }
+            
+            if let anime = self.animeDetail {
+                self.detailAnimeVM.addToFavorite(anime: anime)
+            }
+        }).disposed(by: disposeBag)
+        
         addToListButton.rx.tap.subscribe(onNext: { [weak self] in
             guard let self = self else { return }
             
@@ -78,7 +87,7 @@ extension DetailAnimeViewController{
         
         updateListButton.rx.tap.subscribe(onNext: { [weak self] in
             guard let self = self else { return }
-
+            
             let bottomSheetVC = UpdateListBottomSheet()
             bottomSheetVC.malId = self.malId ?? 0
             bottomSheetVC.id = self.id
@@ -110,7 +119,7 @@ extension DetailAnimeViewController{
 extension DetailAnimeViewController {
     func getFetchViewModel(){
         if let id = malId{
-            DetailAnimeViewModel.shared.getDetailAnime(malId: id){finish in
+            detailAnimeVM.getDetailAnime(malId: id){finish in
                 if(finish){
                     self.tableView.hideSkeleton()
                     UserAnimeViewModel.shared.findOneUserAnime(userId: 0, malId: id){[weak self] finish in
@@ -122,37 +131,37 @@ extension DetailAnimeViewController {
                     }
                 }
             }
-            DetailAnimeViewModel.shared.getAnimeCharacter(malId: id)
+            detailAnimeVM.getAnimeCharacter(malId: id)
             DispatchQueue.main.asyncAfter(deadline: .now()+1){
-                DetailAnimeViewModel.shared.getAnimeStaff(malId: id)
-                DetailAnimeViewModel.shared.getAnimeRecommendations(malId: id)
+                self.detailAnimeVM.getAnimeStaff(malId: id)
+                self.detailAnimeVM.getAnimeRecommendations(malId: id)
             }
         }
     }
     
     func bindFetchViewModel() {
-        DetailAnimeViewModel.shared.animeDetail
+        detailAnimeVM.animeDetail
             .subscribe(onNext: { [weak self] i in
-                
-                self?.animeDetail = i
+                guard let self = self else { return }
+                self.animeDetail = i
             })
             .disposed(by: disposeBag)
-        DetailAnimeViewModel.shared.animeCharacter
+        detailAnimeVM.animeCharacter
             .subscribe(onNext: { [weak self] i in
-                
-                self?.animeCharacter = i
+                guard let self = self else { return }
+                self.animeCharacter = i
             })
             .disposed(by: disposeBag)
-        DetailAnimeViewModel.shared.animeStaff
+        detailAnimeVM.animeStaff
             .subscribe(onNext: { [weak self] i in
-                
-                self?.animeStaff = i
+                guard let self = self else { return }
+                self.animeStaff = i
             })
             .disposed(by: disposeBag)
-        DetailAnimeViewModel.shared.animeRecommendations
+        detailAnimeVM.animeRecommendations
             .subscribe(onNext: { [weak self] i in
-                
-                self?.animeRecommendation = i
+                guard let self = self else { return }
+                self.animeRecommendation = i
             })
             .disposed(by: disposeBag)
     }

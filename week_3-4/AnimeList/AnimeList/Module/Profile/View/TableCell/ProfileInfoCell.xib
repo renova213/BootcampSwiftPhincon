@@ -60,7 +60,23 @@
                                             <constraint firstAttribute="width" constant="110" id="3SA-YY-cSm"/>
                                             <constraint firstAttribute="height" constant="110" id="V7T-GS-L3E"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8w8-qI-Btp">
+                                        <rect key="frame" x="86" y="86" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="32" id="ZlF-Qk-B0I"/>
+                                            <constraint firstAttribute="height" constant="32" id="otJ-Nu-noN"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="systemRedColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="photo.fill.on.rectangle.fill" catalog="system"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -68,6 +84,8 @@
                                     <constraint firstItem="hpQ-YA-wm2" firstAttribute="top" secondItem="e52-2K-9BV" secondAttribute="top" id="E75-gE-JEb"/>
                                     <constraint firstAttribute="bottom" secondItem="hpQ-YA-wm2" secondAttribute="bottom" id="EbK-hg-vjW"/>
                                     <constraint firstAttribute="trailing" secondItem="hpQ-YA-wm2" secondAttribute="trailing" id="f26-GK-24L"/>
+                                    <constraint firstAttribute="bottom" secondItem="8w8-qI-Btp" secondAttribute="bottom" constant="-8" id="nth-uG-XUk"/>
+                                    <constraint firstAttribute="trailing" secondItem="8w8-qI-Btp" secondAttribute="trailing" constant="-8" id="z5L-dW-9It"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
@@ -161,6 +179,7 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="birthdayLabel" destination="dM3-HM-lkj" id="kGg-cK-skk"/>
+                <outlet property="galleryButton" destination="8w8-qI-Btp" id="XEk-LZ-oNg"/>
                 <outlet property="joinedLabel" destination="uZm-J7-r0I" id="AVM-UH-iDZ"/>
                 <outlet property="nameLabel" destination="qft-on-EJR" id="1fJ-Nc-kzH"/>
                 <outlet property="profileImage" destination="hpQ-YA-wm2" id="0vQ-wc-Vy4"/>
@@ -173,6 +192,7 @@
         <image name="ImagePlaceholder" width="800" height="540"/>
         <image name="birthday.cake.fill" catalog="system" width="128" height="115"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>
+        <image name="photo.fill.on.rectangle.fill" catalog="system" width="128" height="98"/>
         <namedColor name="Main Color">
             <color red="0.63529411764705879" green="0.69803921568627447" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -184,6 +204,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
