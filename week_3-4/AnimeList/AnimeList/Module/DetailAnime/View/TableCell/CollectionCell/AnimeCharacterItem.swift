@@ -9,6 +9,8 @@ protocol AnimeCharacterItemDelegate: AnyObject {
 }
 
 class AnimeCharacterItem: UICollectionViewCell {
+    @IBOutlet weak var favoriteCastButton: UIButton!
+    @IBOutlet weak var favoriteCharacterButton: UIButton!
     @IBOutlet weak var animeCharacterImage: UIImageView!
     @IBOutlet weak var characterNameLabel: UILabel!
     @IBOutlet weak var voiceActorImage: UIImageView!
@@ -20,8 +22,8 @@ class AnimeCharacterItem: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        configureComponentStyle()
-        configureComponentGesture()
+        configureUI()
+        configureGesture()
     }
     
     var disposeBag = DisposeBag()
@@ -31,7 +33,7 @@ class AnimeCharacterItem: UICollectionViewCell {
 }
 
 extension AnimeCharacterItem {
-    func configureComponentStyle(){
+    func configureUI(){
         voiceActorNameView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
         animeCharacterView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
     }
@@ -54,13 +56,15 @@ extension AnimeCharacterItem {
         characterMalUrl = data.character?.url
     }
     
-    func configureComponentGesture(){
+    func configureGesture(){
         characterView.rx
             .tapGesture()
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
-                if let url = self?.characterMalUrl{
-                    self?.delegate?.didSelectCell(url: url)
+                guard let self = self else { return }
+
+                if let url = self.characterMalUrl{
+                    self.delegate?.didSelectCell(url: url)
                 }
             })
             .disposed(by: disposeBag)
@@ -68,10 +72,15 @@ extension AnimeCharacterItem {
             .tapGesture()
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
-                if let url = self?.voiceActorMalUrl{
-                    self?.delegate?.didSelectCell(url: url)
+                guard let self = self else { return }
+
+                if let url = self.voiceActorMalUrl{
+                    self.delegate?.didSelectCell(url: url)
                 }
             })
             .disposed(by: disposeBag)
+        favoriteCastButton.rx.tap.subscribe(onNext: {[weak self] in
+            guard let self = self else { return }
+        }).disposed(by: disposeBag)
     }
 }

@@ -15,10 +15,12 @@ class ChangePasswordViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         configureGesture()
+        bindData()
     }
     
     private let disposeBag = DisposeBag()
     private var style = ToastStyle()
+    private let profileVM = ProfileViewModel()
     
     func configureUI(){
         changePasswordView.roundCornersAll(radius: 10)
@@ -43,6 +45,35 @@ class ChangePasswordViewController: UIViewController {
         closeButton.rx.tap.subscribe(onNext: {[weak self] _ in
             guard let self = self else { return }
             self.dismiss(animated: false)
+        }).disposed(by: disposeBag)
+        
+        updatePasswordButton.rx.tap.subscribe(onNext: {[weak self] _ in
+            guard let self = self else { return }
+            if let userId = UserDefaultHelper.shared.getUserIDFromUserDefaults(){
+                self.profileVM.updateData(for: Endpoint.putChangePassword(params: ChangePasswordParam(userId: userId, newPassword: self.newPassword.text ?? "", oldPassword: self.oldPassword.text ?? "")), resultType: StatusResponse.self
+            )}
+        }).disposed(by: disposeBag)
+    }
+    
+    func bindData(){
+        profileVM.loadingState.subscribe(onNext: {[weak self] state in
+            guard let self = self else { return }
+            
+            switch state {
+            case .loading:
+                self.updatePasswordButton.isEnabled = false
+            case .finished:
+                self.view.makeToast("Password successfully updated", duration: 2, style: self.style)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                    self.updatePasswordButton.isEnabled = true
+                    self.dismiss(animated: true)
+                }
+            case .notLoad, .failed:
+                if let errorMessage = self.profileVM.errorMessage.value?.message {
+                    self.view.makeToast(errorMessage, duration: 2, style: self.style)
+                }
+                self.updatePasswordButton.isEnabled = true
+            }
         }).disposed(by: disposeBag)
     }
 }

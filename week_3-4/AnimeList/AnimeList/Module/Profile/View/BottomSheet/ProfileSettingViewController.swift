@@ -59,8 +59,8 @@ extension ProfileSettingViewController: UITableViewDelegate, UITableViewDataSour
             delegate?.didTapChangePassword()
             break
         case 2:
-            profileVM.clearAlamofireCache()
-            self.view.makeToast("Cache cleared", duration: 2, style: self.style)
+            profileVM.clearImageCache()
+            self.view.makeToast("Image cache cleared", duration: 2, style: self.style)
             break
         case 3:
             self.dismiss(animated: false)

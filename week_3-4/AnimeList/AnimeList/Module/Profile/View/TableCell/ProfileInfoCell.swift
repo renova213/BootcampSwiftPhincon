@@ -26,7 +26,7 @@ class ProfileInfoCell: UITableViewCell {
     
     func initialSetup(data: UserEntity){
         nameLabel.text = data.username
-        joinedLabel.text = data.joinedDate
+        joinedLabel.text = "Joined \(data.joinedDate ?? "")"
         birthdayLabel.text = data.birthday
         if let url = URL(string: data.image.urlImage){
             profileImage.kf.setImage(with: url, placeholder: UIImage(named: "ImagePlaceholder"))

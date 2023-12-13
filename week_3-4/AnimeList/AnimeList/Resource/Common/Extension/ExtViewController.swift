@@ -1,32 +1,45 @@
 import Foundation
 import UIKit
 
-extension UIView {
-    func createAppBar() {
+extension UIViewController {
+    func presentSuccessPopUp(message: String, duration: TimeInterval = 3) {
+        let vc = SuccessPopUp()
+        vc.view.alpha = 0
+        vc.setupMessage(message: message)
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: false, completion: nil)
+
+        UIView.animate(withDuration: 0.5) {
+            vc.view.alpha = 1
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+            self.toDismissPopUp(vc)
+        }
+    }
+    
+    func presentFailedPopUp(message: String, duration: TimeInterval = 3) {
+        let vc = FailedPopUp()
         
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = UIColor(named: "Main Color")
-        
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "appbar")
-        imageView.contentMode = .scaleAspectFit
-        
-        self.addSubview(imageView)
-                
-        NSLayoutConstraint.activate([
-            self.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            self.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-            self.heightAnchor.constraint(equalToConstant: 50),
-        ])
-        
-        NSLayoutConstraint.activate([
-            imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            imageView.widthAnchor.constraint(equalToConstant: 150),
-            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 12),
-            imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -12),
-        ])
+        vc.view.alpha = 0
+        vc.setupMessage(message: message)
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: false, completion: nil)
+
+        UIView.animate(withDuration: 0.5) {
+            vc.view.alpha = 1
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+            self.toDismissPopUp(vc)
+        }
+    }
+    
+    func toDismissPopUp(_ vc: UIViewController) {
+        UIView.animate(withDuration: 0.5, animations: {
+            vc.view.alpha = 0
+        }) { _ in
+            vc.dismiss(animated: true, completion: nil)
+        }
     }
 }

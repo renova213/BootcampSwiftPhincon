@@ -1,7 +1,7 @@
 import Foundation
 
 struct AnimeDetailEntity: Codable {
-    let malID: Int?
+    let malID: Int
     let url: String?
     let images: AnimeDetailImageType?
     let trailer: Trailer?

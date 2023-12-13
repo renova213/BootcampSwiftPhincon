@@ -31,7 +31,7 @@ class AuthViewModel: BaseViewModel {
                                 self.storeToken(with: token)
                             }
                             if let userData = data.user{
-                                self.tokenHelper.saveUserIDToUserDefaults(userID: userData.id)
+                                UserDefaultHelper.shared.saveUserIDToUserDefaults(userID: userData.id)
                             }
                             self.loadingState.accept(.finished)
                         }

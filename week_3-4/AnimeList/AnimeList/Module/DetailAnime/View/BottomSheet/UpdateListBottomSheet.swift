@@ -77,44 +77,6 @@ extension UpdateListBottomSheet: UICollectionViewDelegate, UICollectionViewDataS
 }
 
 extension UpdateListBottomSheet{
-    func successPopUp(_ vc: SuccessPopUp) {
-        vc.view.alpha = 0
-        vc.setupMessage(message: "Update successfully")
-        vc.modalPresentationStyle = .overCurrentContext
-        present(vc, animated: false, completion: nil)
-        
-        UIView.animate(withDuration: 0.5) {
-            vc.view.alpha = 1
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.toDismissPopUp(vc)
-            self.toDismissPopUp(self)
-        }
-    }
-    
-    func failedPopUp(_ vc: FailedPopUp, _ message: String) {
-        vc.view.alpha = 0
-        vc.setupMessage(message: message)
-        vc.modalPresentationStyle = .overCurrentContext
-        present(vc, animated: false, completion: nil)
-        
-        UIView.animate(withDuration: 0.5) {
-            vc.view.alpha = 1
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.toDismissPopUp(vc)
-        }
-    }
-    
-    func toDismissPopUp(_ vc: UIViewController) {
-        UIView.animate(withDuration: 0.5, animations: {
-            vc.view.alpha = 0
-        }) { _ in
-            vc.dismiss(animated: true, completion: nil)
-        }
-    }
     
     func fetchViewModel(){
         if let id = self.malId{
@@ -165,7 +127,7 @@ extension UpdateListBottomSheet{
 
             self.updateListButton.isEnabled = false
             self.loadingIndicator.showInFull()
-            UserAnimeViewModel.shared.updateUserAnime(body: UpdateUserAnimeBody(id: self.id ?? "", userScore: DetailAnimeViewModel.shared.selectedIndexScore.value + 1, userEpisode: DetailAnimeViewModel.shared.episode.value, watchStatus: DetailAnimeViewModel.shared.selectedSwatchStatusIndex.value)){[weak self] result in
+            UserAnimeViewModel.shared.updateUserAnime(body: UpdateUserAnimeParam(id: self.id ?? "", userScore: DetailAnimeViewModel.shared.selectedIndexScore.value + 1, userEpisode: DetailAnimeViewModel.shared.episode.value, watchStatus: DetailAnimeViewModel.shared.selectedSwatchStatusIndex.value)){[weak self] result in
                 switch result {
                 case .success:
                     guard let self = self else { return }
@@ -173,7 +135,7 @@ extension UpdateListBottomSheet{
                     self.updateListButton.isEnabled = true
                     self.loadingIndicator.dismissImmediately()
                     UserAnimeViewModel.shared.getUserAnime(userId: 0){ result in }
-                    self.successPopUp(SuccessPopUp())
+                    self.presentSuccessPopUp(message: "Successfully updated list")
                     break
                 case .failure(let error):
                     guard let self = self else { return }
@@ -182,7 +144,7 @@ extension UpdateListBottomSheet{
                     self.loadingIndicator.dismissImmediately()
                     let vc = FailedPopUp()
                     if let error = error as? CustomError{
-                        self.failedPopUp(vc, error.message)
+                        self.presentFailedPopUp(message: error.message)
                     }
                     break
                 }

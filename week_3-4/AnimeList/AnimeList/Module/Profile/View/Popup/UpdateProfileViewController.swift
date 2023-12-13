@@ -78,8 +78,8 @@ class UpdateProfileViewController: UIViewController {
         
         updateButton.rx.tap.subscribe(onNext: {[weak self] _ in
             guard let self = self else { return }
-            if let userId = self.profileVM.tokenHelper.getUserIDFromUserDefaults(){
-                self.profileVM.loadData(for: Endpoint.putUser(params: UpdateUserParam(userId: userId, birthday: self.birthdayField.text ?? "-")), resultType: StatusResponse.self)
+            if let userId = UserDefaultHelper.shared.getUserIDFromUserDefaults(){
+                self.profileVM.updateData(for: Endpoint.putUser(params: UpdateUserParam(userId: userId, birthday: self.birthdayField.text ?? "-")), resultType: StatusResponse.self)
             }
         }).disposed(by: disposeBag)
     }

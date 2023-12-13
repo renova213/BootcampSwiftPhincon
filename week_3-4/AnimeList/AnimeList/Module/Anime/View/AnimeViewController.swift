@@ -187,7 +187,7 @@ extension AnimeViewController: AnimeSearchFilterCellDelegate, AnimeListCellDeleg
     }
     
     func increamentEpisode(data: UserAnimeEntity) {
-        self.userAnimeVM.updateUserAnime(body: UpdateUserAnimeBody(id: data.id, userScore: data.userScore, userEpisode: data.userEpisode + 1, watchStatus: data.watchStatus)){result in
+        self.userAnimeVM.updateUserAnime(body: UpdateUserAnimeParam(id: data.id, userScore: data.userScore, userEpisode: data.userEpisode + 1, watchStatus: data.watchStatus)){result in
             switch result {
             case .success:
                 self.userAnimeVM.getUserAnime(userId: 0){ result in }

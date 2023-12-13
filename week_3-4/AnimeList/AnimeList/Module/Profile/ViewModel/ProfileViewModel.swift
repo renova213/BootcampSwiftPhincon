@@ -1,13 +1,15 @@
 import Foundation
 import RxSwift
 import RxCocoa
-import Alamofire
+import Kingfisher
 import CoreData
 
 class ProfileViewModel: BaseViewModel {
+    
+    var favoriteAnimeList = BehaviorRelay<[FavoriteAnimeEntity]>(value: [])
+    var favoriteAnimeCharacterList = BehaviorRelay<[FavoriteAnimeCharacterEntity]>(value: [])
     let userData = BehaviorRelay<UserEntity?>(value: nil)
     var errorMessage = BehaviorRelay<CustomError?>(value: nil)
-    var favoriteAnimeList = BehaviorRelay<[FavoriteAnimeEntity]>(value: [])
     
     func multipartData <T: Codable>(for endpoint: Endpoint, image: Data, resultType: T.Type){
         api.fetchMultipartRequest(endpoint: endpoint, image: image){ [weak self] (response: Result<T, Error>) in
@@ -16,7 +18,7 @@ class ProfileViewModel: BaseViewModel {
             case .success:
                 switch endpoint {
                 case .postUploadProfileImage:
-                    if let userId = self.tokenHelper.getUserIDFromUserDefaults(){
+                    if let userId = UserDefaultHelper.shared.getUserIDFromUserDefaults(){
                         self.loadData(for: Endpoint.getUser(params: userId), resultType: UserResponse.self)
                         self.loadingState.accept(.finished)
                     }
@@ -49,7 +51,32 @@ class ProfileViewModel: BaseViewModel {
                         self.loadingState.accept(.finished)
                     }
                     break
+                default:
+                    self.loadingState.accept(.finished)
+                    break
+                }
+                break
+            case .failure(let error):
+                if let error = error as? CustomError {
+                    self.errorMessage.accept(error)
+                }
+                self.loadingState.accept(.failed)
+            }
+        }
+    }
+    
+    func updateData <T: Codable>(for endpoint: Endpoint, resultType: T.Type){
+        loadingState.accept(.loading)
+        
+        api.fetchRequest(endpoint: endpoint){ [weak self] (response: Result<T, Error>) in
+            guard let self = self else { return }
+            switch response{
+            case .success:
+                switch endpoint {
                 case .putUser:
+                    self.loadingState.accept(.finished)
+                    break
+                case .putChangePassword:
                     self.loadingState.accept(.finished)
                     break
                 default:
@@ -66,19 +93,25 @@ class ProfileViewModel: BaseViewModel {
         }
     }
     
-    func clearAlamofireCache() {
-        if let cache = Alamofire.Session.default.sessionConfiguration.urlCache {
-            cache.removeAllCachedResponses()
+    func fetchFavoriteList(for favorite: FetchFavoriteEnum) {
+        do {
+            if let userId = UserDefaultHelper.shared.getUserIDFromUserDefaults() {
+                switch favorite {
+                case .anime:
+                    let favoriteAnimeList: [FavoriteAnimeEntity] = try CoreDataHelper.shared.fetchFavoriteList( FavoriteAnimeEntity.self, userId: userId)
+                    self.favoriteAnimeList.accept(favoriteAnimeList)
+                    break
+                case .character:
+                    let favoriteAnimeCharacter: [FavoriteAnimeCharacterEntity] = try CoreDataHelper.shared.fetchFavoriteList(FavoriteAnimeCharacterEntity.self, userId: userId)
+                    self.favoriteAnimeCharacterList.accept(favoriteAnimeCharacter)
+                }
+            }
+        } catch {
+            print("Error fetching favorite data: \(error)")
         }
     }
     
-    func fetchFavoriteAnimeList(){        
-        do {
-            let fetchRequest: NSFetchRequest<FavoriteAnimeEntity> = FavoriteAnimeEntity.fetchRequest()
-            let favoriteAnimeList = try context.fetch(fetchRequest)
-            self.favoriteAnimeList.accept(favoriteAnimeList)
-        } catch {
-            print("Error fetching favorite anime data: \(error)")
-        }
+    func clearImageCache() {
+        KingfisherManager.shared.cache.clearDiskCache()
     }
 }

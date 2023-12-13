@@ -27,8 +27,8 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9m-b8-29r">
-                                <rect key="frame" x="8" y="138" width="89" height="19"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="8" y="134" width="89" height="27"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" systemColor="systemBlueColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -36,8 +36,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="D9m-b8-29r" firstAttribute="leading" secondItem="QpN-Mt-bt9" secondAttribute="leading" constant="8" id="9Tv-cb-ehl"/>
-                            <constraint firstItem="D9m-b8-29r" firstAttribute="top" secondItem="04G-k9-CIQ" secondAttribute="bottom" constant="8" id="JHs-KY-e8M"/>
-                            <constraint firstAttribute="bottom" secondItem="D9m-b8-29r" secondAttribute="bottom" constant="8" id="M4N-6m-TVc"/>
+                            <constraint firstItem="D9m-b8-29r" firstAttribute="top" secondItem="04G-k9-CIQ" secondAttribute="bottom" constant="4" id="JHs-KY-e8M"/>
+                            <constraint firstAttribute="bottom" secondItem="D9m-b8-29r" secondAttribute="bottom" constant="4" id="M4N-6m-TVc"/>
                             <constraint firstAttribute="trailing" secondItem="04G-k9-CIQ" secondAttribute="trailing" id="TLo-om-M43"/>
                             <constraint firstAttribute="height" constant="165" id="cdV-7L-UNs"/>
                             <constraint firstAttribute="trailing" secondItem="D9m-b8-29r" secondAttribute="trailing" constant="8" id="iXM-2l-Jmf"/>

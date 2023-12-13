@@ -10,7 +10,7 @@ class UserAnimeViewModel {
     var currentFilterIndex = BehaviorRelay<Int>(value: 4)
     let filterData = ["A-Z", "Z-A", "Score", "Watching Status", "Sort By"]
     
-    func postUserAnime(body: UserAnimeBody, completion: @escaping((Result<StatusResponse, Error>)-> Void)) {
+    func postUserAnime(body: UserAnimeParam, completion: @escaping((Result<StatusResponse, Error>)-> Void)) {
         let endpoint = Endpoint.postUserAnime(params: body)
         APIManager.shared.fetchRequest(endpoint: endpoint){(result: Result<StatusResponse, Error>) in
             completion(result)
@@ -30,7 +30,7 @@ class UserAnimeViewModel {
         }
     }
     
-    func updateUserAnime(body: UpdateUserAnimeBody, completion: @escaping((Result<StatusResponse, Error>)-> Void)) {
+    func updateUserAnime(body: UpdateUserAnimeParam, completion: @escaping((Result<StatusResponse, Error>)-> Void)) {
         let endpoint = Endpoint.putUserAnime(params: body)
         APIManager.shared.fetchRequest(endpoint: endpoint){(result: Result<StatusResponse, Error>) in
            completion(result)

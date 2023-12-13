@@ -21,17 +21,14 @@ class DetailAnimeViewController: UIViewController {
         updateListButton.isHidden = true
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        getFetchViewModel()
-        bindFetchViewModel()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
+        loadData()
+        bindData()
     }
     
     private let detailAnimeVM = DetailAnimeViewModel()
+    private let profileVM = ProfileViewModel()
     var id: String?
     var malId: Int?
     var animeDetail: AnimeDetailEntity? {
@@ -69,7 +66,7 @@ extension DetailAnimeViewController{
             guard let self = self else { return }
             
             if let anime = self.animeDetail {
-                self.detailAnimeVM.addToFavorite(anime: anime)
+                self.detailAnimeVM.addToFavorite(for: FavoriteEnum.anime(entity: anime))
             }
         }).disposed(by: disposeBag)
         
@@ -117,20 +114,26 @@ extension DetailAnimeViewController{
 }
 
 extension DetailAnimeViewController {
-    func getFetchViewModel(){
+    
+    func loadData(){
         if let id = malId{
-            detailAnimeVM.getDetailAnime(malId: id){finish in
+            detailAnimeVM.getDetailAnime(malId: id){[weak self] finish in
+                guard let self = self else {return}
+                
                 if(finish){
                     self.tableView.hideSkeleton()
                     UserAnimeViewModel.shared.findOneUserAnime(userId: 0, malId: id){[weak self] finish in
+                        guard let self = self else {return}
+                        
                         if(finish){
-                            self?.updateListButton.isHidden = false
+                            self.updateListButton.isHidden = false
                         }else{
-                            self?.addToListButton.isHidden = false
+                            self.addToListButton.isHidden = false
                         }
                     }
                 }
             }
+            profileVM.fetchFavoriteList(for: FetchFavoriteEnum.anime)
             detailAnimeVM.getAnimeCharacter(malId: id)
             DispatchQueue.main.asyncAfter(deadline: .now()+1){
                 self.detailAnimeVM.getAnimeStaff(malId: id)
@@ -139,11 +142,12 @@ extension DetailAnimeViewController {
         }
     }
     
-    func bindFetchViewModel() {
+    func bindData() {
         detailAnimeVM.animeDetail
             .subscribe(onNext: { [weak self] i in
-                guard let self = self else { return }
-                self.animeDetail = i
+                guard let self = self, let animeDetail = i else { return }
+                self.animeDetail = animeDetail
+                self.detailAnimeVM.isExistFavoriteAnimeList(for: FavoriteEnum.anime(entity: animeDetail))
             })
             .disposed(by: disposeBag)
         detailAnimeVM.animeCharacter
@@ -164,6 +168,16 @@ extension DetailAnimeViewController {
                 self.animeRecommendation = i
             })
             .disposed(by: disposeBag)
+        detailAnimeVM.isExistAnimeFavorite.subscribe(onNext: {[weak self] state in
+            guard let self = self else { return }
+            
+            switch state {
+            case true:
+                self.favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            case false:
+                self.favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            }
+        }).disposed(by: disposeBag)
     }
 }
 

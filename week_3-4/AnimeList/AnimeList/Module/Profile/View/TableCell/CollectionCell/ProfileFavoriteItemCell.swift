@@ -14,10 +14,10 @@ class ProfileFavoriteItemCell: UICollectionViewCell {
         itemView.roundCornersAll(radius: 8)
     }
     
-    func initialSetup(){
-        titleLabel.text = "K-On!"
-        if let url = URL(string: "https://m.media-amazon.com/images/M/MV5BODNiM2Q4ZDYtNmU1Ny00OTRhLThjY2QtNzE4MzZlMzFjMDY3XkEyXkFqcGdeQXVyNjQwNzI5MDA@._V1_FMjpg_UX1000_.jpg") {
-            urlImage.kf.setImage(with: url, placeholder: UIImage(named: "ImagePlaceholder"))
+    func initialSetup(title: String, urlImage: String){
+        titleLabel.text = title
+        if let url = URL(string: urlImage) {
+            self.urlImage.kf.setImage(with: url, placeholder: UIImage(named: "ImagePlaceholder"))
         }
     }
 }

@@ -92,7 +92,20 @@ extension ProfileFavoriteCell: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(forIndexPath: indexPath) as ProfileFavoriteItemCell
-        cell.initialSetup()
+        switch collectionView {
+        case animeCollection:
+            let data = favoriteAnimeList[indexPath.row]
+            cell.initialSetup(title: data.title ?? "", urlImage: data.urlImage ?? "")
+            break
+        case mangaCollection:
+            break
+        case characterCollection:
+            break
+        case castCollection:
+            break
+        default:
+            break
+        }
         return cell
     }
     

@@ -91,10 +91,11 @@ extension ProfileViewController {
     }
     
     func loadData(){
-        if let userId = profileVM.tokenHelper.getUserIDFromUserDefaults(){
+        if let userId = UserDefaultHelper.shared.getUserIDFromUserDefaults(){
             profileVM.loadData(for: Endpoint.getUser(params: userId), resultType: UserResponse.self)
         }
-        profileVM.fetchFavoriteAnimeList()
+        profileVM.fetchFavoriteList(for: FetchFavoriteEnum.anime)
+        profileVM.fetchFavoriteList(for: FetchFavoriteEnum.character)
     }
     
     func configureUI(){
@@ -212,7 +213,7 @@ extension ProfileViewController: ProfileStatsCellDelegate, ProfileFavoriteCellDe
     }
     
     func didTapSignOut() {
-        profileVM.tokenHelper.deleteCredentials()
+        UserDefaultHelper.shared.deleteUserIDFromUserDefaults()
         let vc = AuthViewController()
         self.view.makeToast("Signout success", duration: 2, style: self.style)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2){
@@ -251,7 +252,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.editedImage] as? UIImage else {return}
 
-        if let imageData = image.jpegData(compressionQuality: 0.5), let userId = profileVM.tokenHelper.getUserIDFromUserDefaults(){
+        if let imageData = image.jpegData(compressionQuality: 0.5), let userId = UserDefaultHelper.shared.getUserIDFromUserDefaults(){
             profileVM.multipartData(for: Endpoint.postUploadProfileImage(params: UploadProfileImageParam(userId: userId)),image: imageData, resultType: StatusResponse.self)
         }
         self.dismiss(animated: true)
