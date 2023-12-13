@@ -28,6 +28,11 @@ class ProfileFavoriteCell: UITableViewCell {
             animeCollection.reloadData()
         }
     }
+    var favoriteAnimeCharacter: [FavoriteAnimeCharacterEntity] = [] {
+        didSet {
+            characterCollection.reloadData()
+        }
+    }
     private let disposeBag = DisposeBag()
 }
 
@@ -77,12 +82,11 @@ extension ProfileFavoriteCell: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch  collectionView{
         case animeCollection:
-            print(favoriteAnimeList.count)
             return favoriteAnimeList.count
         case mangaCollection:
             return 5
         case characterCollection:
-            return 3
+            return favoriteAnimeCharacter.count
         case castCollection:
             return 2
         default:
@@ -100,6 +104,8 @@ extension ProfileFavoriteCell: UICollectionViewDelegate, UICollectionViewDataSou
         case mangaCollection:
             break
         case characterCollection:
+            let data = favoriteAnimeCharacter[indexPath.row]
+            cell.initialSetup(title: data.name ?? "", urlImage: data.urlImage ?? "")
             break
         case castCollection:
             break

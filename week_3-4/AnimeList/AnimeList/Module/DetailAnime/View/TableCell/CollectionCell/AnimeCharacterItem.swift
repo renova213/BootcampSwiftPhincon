@@ -30,6 +30,9 @@ class AnimeCharacterItem: UICollectionViewCell {
     weak var delegate: AnimeCharacterItemDelegate?
     var characterMalUrl:String?
     var voiceActorMalUrl: String?
+    var animeCharacter: AnimeCharacterEntity?
+    private let detailAnimeVM = DetailAnimeViewModel()
+    
 }
 
 extension AnimeCharacterItem {
@@ -52,7 +55,7 @@ extension AnimeCharacterItem {
         if let characterImageURL = URL(string: data.character?.images?.jpg?.imageURL ?? "") {
             self.animeCharacterImage.kf.setImage(with: characterImageURL, placeholder: UIImage(named: "ImagePlaceholder"))
         }
-        
+        animeCharacter = data
         characterMalUrl = data.character?.url
     }
     
@@ -81,6 +84,17 @@ extension AnimeCharacterItem {
             .disposed(by: disposeBag)
         favoriteCastButton.rx.tap.subscribe(onNext: {[weak self] in
             guard let self = self else { return }
+            if let animeCharacter = self.animeCharacter {
+                
+//                self.detailAnimeVM.addToFavorite(for: FavoriteEnum.cast(entity: animeCharacter))
+            }
+        }).disposed(by: disposeBag)
+        
+        favoriteCharacterButton.rx.tap.subscribe(onNext: {[weak self] in
+            guard let self = self else { return }
+            if let animeCharacter = self.animeCharacter {
+                self.detailAnimeVM.addToFavorite(for: FavoriteEnum.character(entity: animeCharacter))
+            }
         }).disposed(by: disposeBag)
     }
 }

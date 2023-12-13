@@ -18,6 +18,7 @@ enum StateLoading: Int {
 enum FavoriteEnum {
     case anime(entity: AnimeDetailEntity)
     case character(entity: AnimeCharacterEntity)
+//    case cast(entity: AnimeCharacterEntity)
 }
 
 enum FetchFavoriteEnum {

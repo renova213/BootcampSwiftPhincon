@@ -43,6 +43,12 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    var favoriteAnimeCharacterList: [FavoriteAnimeCharacterEntity] = [] {
+        didSet{
+            tableView.reloadData()
+        }
+    }
+    
     private var toggleMinimizeFavorite: Bool = false {
         didSet{
             tableView.reloadData()
@@ -87,6 +93,11 @@ extension ProfileViewController {
         profileVM.favoriteAnimeList.asObservable().subscribe(onNext: {[weak self] animeFavorite in
             guard let self = self else { return }
             self.favoriteAnimeList = animeFavorite
+        }).disposed(by: disposeBag)
+        
+        profileVM.favoriteAnimeCharacterList.asObservable().subscribe(onNext: {[weak self] animeCharacter in
+            guard let self = self else { return }
+            self.favoriteAnimeCharacterList = animeCharacter
         }).disposed(by: disposeBag)
     }
     
@@ -163,6 +174,7 @@ extension ProfileViewController: UITableViewDelegate, SkeletonTableViewDataSourc
             cell.selectionStyle = .none
             cell.initialChevronButton(state: toggleMinimizeFavorite)
             cell.favoriteAnimeList = self.favoriteAnimeList
+            cell.favoriteAnimeCharacter = self.favoriteAnimeCharacterList
             cell.delegate = self
             return cell
         default:
@@ -228,6 +240,7 @@ extension ProfileViewController: ProfileStatsCellDelegate, ProfileFavoriteCellDe
     func didTapUpdateProfile() {
         let vc = UpdateProfileViewController()
         vc.view.alpha = 0.0
+        
         if let user = self.userData {
             vc.birthdayField.text = user.birthday
             vc.emailField.text = user.email

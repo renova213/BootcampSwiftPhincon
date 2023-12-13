@@ -138,7 +138,7 @@ class DetailAnimeViewModel: BaseViewModel {
             guard let characterName = animeCharacter.character?.name, let imageURL = animeCharacter.character?.images?.jpg?.imageURL, let characterMalId = animeCharacter.character?.malID else {return }
 
             let properties: [String: Any] = [
-                "title": characterName,
+                "name": characterName,
                 "urlImage": imageURL,
                 "malId": Int32(characterMalId)
             ]
