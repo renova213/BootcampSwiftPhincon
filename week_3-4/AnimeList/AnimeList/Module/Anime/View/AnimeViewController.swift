@@ -53,9 +53,11 @@ extension AnimeViewController {
     }
     
     func loadData(){
-        UserAnimeViewModel.shared.getUserAnime(userId: 0){[weak self] finish in
-            if (finish){
-                self?.tableView.hideSkeleton()
+        if let userId = UserDefaultHelper.shared.getUserIDFromUserDefaults(){
+            UserAnimeViewModel.shared.getUserAnime(userId: userId){[weak self] finish in
+                if (finish){
+                    self?.tableView.hideSkeleton()
+                }
             }
         }
     }
@@ -190,7 +192,9 @@ extension AnimeViewController: AnimeSearchFilterCellDelegate, AnimeListCellDeleg
         self.userAnimeVM.updateUserAnime(body: UpdateUserAnimeParam(id: data.id, userScore: data.userScore, userEpisode: data.userEpisode + 1, watchStatus: data.watchStatus)){result in
             switch result {
             case .success:
-                self.userAnimeVM.getUserAnime(userId: 0){ result in }
+                if let userId = UserDefaultHelper.shared.getUserIDFromUserDefaults(){
+                    self.userAnimeVM.getUserAnime(userId: userId){ result in }
+                }
                 break
             case .failure:
                 break

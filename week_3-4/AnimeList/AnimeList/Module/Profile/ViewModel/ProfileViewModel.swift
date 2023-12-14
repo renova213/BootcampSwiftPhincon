@@ -9,6 +9,7 @@ class ProfileViewModel: BaseViewModel {
     var favoriteAnimeList = BehaviorRelay<[FavoriteAnimeEntity]>(value: [])
     var favoriteAnimeCharacterList = BehaviorRelay<[FavoriteAnimeCharacterEntity]>(value: [])
     var favoriteAnimeCastList = BehaviorRelay<[FavoriteAnimeCastEntity]>(value: [])
+    var userRecentUpdates = BehaviorRelay<[UserRecentUpdateEntity]>(value: [])
     let userData = BehaviorRelay<UserEntity?>(value: nil)
     var errorMessage = BehaviorRelay<CustomError?>(value: nil)
     
@@ -51,6 +52,12 @@ class ProfileViewModel: BaseViewModel {
                         self.userData.accept(data.data)
                         self.loadingState.accept(.finished)
                     }
+                    break
+                case .getUserRecentUpdate:
+                    if let data = data as? UserRecentUpdateResponse{
+                        self.userRecentUpdates.accept(data.data)
+                    }
+                    self.loadingState.accept(.finished)
                     break
                 default:
                     self.loadingState.accept(.finished)

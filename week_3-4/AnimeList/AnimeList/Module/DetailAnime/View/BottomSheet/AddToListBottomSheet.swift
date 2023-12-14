@@ -103,11 +103,13 @@ extension AddToListBottomSheet{
         }).disposed(by: disposeBag)
         
         addToListButton.rx.tap.subscribe(onNext: { [weak self] in
-            self?.addToListButton.isEnabled = false
-            self?.loadingIndicator.showInFull()
+            guard let self = self else { return }
             
-            if let id = self?.malId{
-                UserAnimeViewModel.shared.postUserAnime(body: UserAnimeParam(userId: 0, malId: id, userScore: DetailAnimeViewModel.shared.selectedIndexScore.value + 1, userEpisode: DetailAnimeViewModel.shared.episode.value, watchStatus: DetailAnimeViewModel.shared.selectedSwatchStatusIndex.value)){[weak self] result in
+            self.addToListButton.isEnabled = false
+            self.loadingIndicator.showInFull()
+            
+            if let id = self.malId, let userId = UserDefaultHelper.shared.getUserIDFromUserDefaults(){
+                UserAnimeViewModel.shared.postUserAnime(body: UserAnimeParam(userId: userId, malId: id, userScore: DetailAnimeViewModel.shared.selectedIndexScore.value + 1, userEpisode: DetailAnimeViewModel.shared.episode.value, watchStatus: DetailAnimeViewModel.shared.selectedSwatchStatusIndex.value)){[weak self] result in
                     
                     guard let self = self else { return }
                     
@@ -115,13 +117,12 @@ extension AddToListBottomSheet{
                     case .success:
                         self.addToListButton.isEnabled = true
                         self.loadingIndicator.dismissImmediately()
-                        UserAnimeViewModel.shared.getUserAnime(userId: 0){ result in }
+                        UserAnimeViewModel.shared.getUserAnime(userId: userId){ result in }
                         self.presentSuccessPopUp(message: "Successfully added to list")
                         break
                     case .failure(let error):
                         self.addToListButton.isEnabled = true
                         self.loadingIndicator.dismissImmediately()
-                        let vc = FailedPopUp()
                         if let error = error as? CustomError{
                             self.presentFailedPopUp(message: error.message)
                         }

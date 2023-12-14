@@ -11,8 +11,9 @@ enum Endpoint {
     case getTopAnime(params: TopAnimeParam)
     case getSeasonList
     case getSeason(params: AnimeSeasonParam)
-    case getUserAnime(params: Int)
+    case getUserAnime(params: String)
     case getUser(params: String)
+    case getUserRecentUpdate(params: String)
     case findOneUserAnime(params: OneUserAnimeParam)
     case filterAnime(params: FilterAnimeParam)
     case filterManga(params: FilterMangaParam)
@@ -49,6 +50,8 @@ enum Endpoint {
             return "/anime/\(malId)/recommendations"
         case .getUser:
             return "/user"
+        case .getUserRecentUpdate:
+            return "/anime/user/recentUpdate"
         case .filterAnime:
             return "/anime"
         case .filterManga:
@@ -103,8 +106,6 @@ enum Endpoint {
             return [
                 "page": param.page,
                 "limit": param.limit]
-        case .getUserAnime(let userId):
-            return ["user_id": userId]
         case .getTopAnime(let param):
             var params = [String: Any]()
             params["filter"] = param.filter
@@ -118,6 +119,8 @@ enum Endpoint {
             return params
         case .getUser(let param):
             return ["userId": param]
+        case .getUserRecentUpdate(let param), .getUserAnime(let param):
+            return ["user_id": param]
         case .filterAnime(params: let param):
             
             var params = [String: Any]()
@@ -199,7 +202,7 @@ enum Endpoint {
                 "Content-Type": "application/json"
             ]
             return params
-        case .getUserAnime, .getUser, .findOneUserAnime, .postUserAnime, .postUploadProfileImage, .putUser, .putChangePassword, .putUserAnime, .deleteUserAnime:
+        case .getUserAnime, .getUser, .getUserRecentUpdate, .findOneUserAnime, .postUserAnime, .postUploadProfileImage, .putUser, .putChangePassword, .putUserAnime, .deleteUserAnime:
             let token = TokenHelper().retrieveToken()
             
             let params: HTTPHeaders = [
@@ -214,17 +217,15 @@ enum Endpoint {
         switch self {
         case .getScheduledAnime, .getSeasonNow, .filterAnime, .filterManga, .getDetailAnime, .getAnimeCharacter, .getAnimeStaff, .getRecommendationAnime, .getTopAnime, .getSeasonList, .getSeason:
             return BaseConstant.baseURL + self.path()
-        case .getUserAnime, .getUser,.findOneUserAnime, .postUserAnime, .postLogin, .postLoginGoogle, .postRegisterGoogle, .postRegister, .postUploadProfileImage, .putUserAnime, .putChangePassword, .putUser, .deleteUserAnime:
+        case .getUserAnime, .getUser, .getUserRecentUpdate, .findOneUserAnime, .postUserAnime, .postLogin, .postLoginGoogle, .postRegisterGoogle, .postRegister, .postUploadProfileImage, .putUserAnime, .putChangePassword, .putUser, .deleteUserAnime:
             return BaseConstant.baseURL2 + self.path()
         }
     }
     
     var encoding: ParameterEncoding {
         switch self {
-        case .getScheduledAnime, .getSeasonNow, .getTopAnime, .getSeason, .getUser, .filterAnime, .filterManga, .getDetailAnime, .getAnimeCharacter, .getAnimeStaff, .getRecommendationAnime, .getUserAnime, .findOneUserAnime, .putUser, .deleteUserAnime:
+        case .getScheduledAnime, .getSeasonNow, .getSeasonList, .getTopAnime, .getUserRecentUpdate, .getSeason, .getUser, .filterAnime, .filterManga, .getDetailAnime, .getAnimeCharacter, .getAnimeStaff, .getRecommendationAnime, .getUserAnime, .findOneUserAnime, .putUser, .deleteUserAnime:
             return URLEncoding.queryString
-        case .getSeasonList:
-            return URLEncoding.default
         case .postUserAnime, .putUserAnime, .postLogin, .postUploadProfileImage, .postLoginGoogle, .postRegisterGoogle, .postRegister, .putChangePassword:
             return JSONEncoding.default
         }

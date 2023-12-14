@@ -2,7 +2,8 @@ import Foundation
 
 struct UserAnimeEntity: Codable {
     let id: String
-    let userId, userScore, userEpisode, watchStatus: Int
+    let userScore, userEpisode, watchStatus: Int
+    let userId: String
     let anime: AnimeEntity
     
     enum CodingKeys: String, CodingKey {

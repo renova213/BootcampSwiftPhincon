@@ -1,7 +1,7 @@
 import Foundation
 
 struct UserAnimeParam: Codable{
-    let userId: Int
+    let userId: String
     let malId: Int
     let userScore: Int
     let userEpisode: Int

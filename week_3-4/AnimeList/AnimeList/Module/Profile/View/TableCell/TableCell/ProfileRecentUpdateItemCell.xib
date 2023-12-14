@@ -30,13 +30,13 @@
                                 <rect key="frame" x="88" y="8" width="224" height="84"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gN-Rz-Zja">
-                                        <rect key="frame" x="0.0" y="0.0" width="224" height="18.666666666666668"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="224" height="24"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2eM-9c-luv">
-                                        <rect key="frame" x="0.0" y="26.666666666666664" width="224" height="10"/>
+                                        <rect key="frame" x="0.0" y="32" width="224" height="10"/>
                                         <subviews>
                                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="HRr-J3-QUg">
                                                 <rect key="frame" x="0.0" y="0.0" width="224" height="10"/>
@@ -52,13 +52,13 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gs-j8-1TA">
-                                        <rect key="frame" x="0.0" y="44.666666666666664" width="224" height="19"/>
+                                        <rect key="frame" x="0.0" y="50" width="224" height="26"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVW-cE-I6z">
-                                        <rect key="frame" x="0.0" y="71.666666666666671" width="224" height="12.333333333333329"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVW-cE-I6z">
+                                        <rect key="frame" x="0.0" y="84" width="224" height="0.0"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -91,6 +91,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="episodeLabel" destination="5gs-j8-1TA" id="YxG-aA-1wV"/>
+                <outlet property="progressIndicator" destination="HRr-J3-QUg" id="uvp-sk-Baq"/>
                 <outlet property="statusLabel" destination="QVW-cE-I6z" id="SRh-n6-CA4"/>
                 <outlet property="titleLabel" destination="3gN-Rz-Zja" id="f1W-vl-q6J"/>
                 <outlet property="urlImage" destination="0GK-6W-DY9" id="kly-t2-xVJ"/>

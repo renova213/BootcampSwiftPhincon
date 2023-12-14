@@ -55,6 +55,12 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    var userRecentUpdates: [UserRecentUpdateEntity] = [] {
+        didSet{
+            tableView.reloadData()
+        }
+    }
+    
     private var toggleMinimizeFavorite: Bool = false {
         didSet{
             tableView.reloadData()
@@ -110,11 +116,17 @@ extension ProfileViewController {
             guard let self = self else { return }
             self.favoriteAnimeCastList = animeCharacter
         }).disposed(by: disposeBag)
+        
+        profileVM.userRecentUpdates.asObservable().subscribe(onNext: {[weak self] userUpdates in
+            guard let self = self else { return }
+            self.userRecentUpdates = userUpdates
+        }).disposed(by: disposeBag)
     }
     
     func loadData(){
         if let userId = UserDefaultHelper.shared.getUserIDFromUserDefaults(){
             profileVM.loadData(for: Endpoint.getUser(params: userId), resultType: UserResponse.self)
+            profileVM.loadData(for: Endpoint.getUserRecentUpdate(params: userId), resultType: UserRecentUpdateResponse.self)
         }
         profileVM.fetchFavoriteList(for: FetchFavoriteEnum.anime)
         profileVM.fetchFavoriteList(for: FetchFavoriteEnum.character)
@@ -124,6 +136,7 @@ extension ProfileViewController {
     func configureUI(){
         appBar.createAppBar()
         style.backgroundColor = UIColor(named: "Main Color") ?? UIColor.black
+        
     }
     
     func configureTableView(){
@@ -179,6 +192,16 @@ extension ProfileViewController: UITableViewDelegate, SkeletonTableViewDataSourc
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as ProfileRecentUpdate
+            cell.userRecentUpdates = userRecentUpdates
+            
+            if(userRecentUpdates.count < 3){
+                cell.heightTableView.constant = CGFloat(userRecentUpdates.count * 112)
+                cell.viewAllUpdate.isHidden = true
+            }else{
+                cell.heightTableView.constant = 240
+                cell.viewAllUpdate.isHidden = false
+            }
+            
             cell.selectionStyle = .none
             return cell
         case 3:

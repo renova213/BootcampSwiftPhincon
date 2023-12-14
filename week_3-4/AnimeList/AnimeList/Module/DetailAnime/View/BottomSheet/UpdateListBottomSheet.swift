@@ -80,10 +80,12 @@ extension UpdateListBottomSheet{
     
     func fetchViewModel(){
         if let id = self.malId{
-            UserAnimeViewModel.shared.findOneUserAnime(userId: 0, malId: id){ finish in
-                if(finish){
-                    if let data = UserAnimeViewModel.shared.findOneUserAnime.value{
-                        DetailAnimeViewModel.shared.setupBottomSheet(data: data)
+            if let userId = UserDefaultHelper.shared.getUserIDFromUserDefaults() {
+                UserAnimeViewModel.shared.findOneUserAnime(userId: userId, malId: id){ finish in
+                    if(finish){
+                        if let data = UserAnimeViewModel.shared.findOneUserAnime.value{
+                            DetailAnimeViewModel.shared.setupBottomSheet(data: data)
+                        }
                     }
                 }
             }
@@ -132,17 +134,19 @@ extension UpdateListBottomSheet{
                 case .success:
                     guard let self = self else { return }
                     
-                    self.updateListButton.isEnabled = true
-                    self.loadingIndicator.dismissImmediately()
-                    UserAnimeViewModel.shared.getUserAnime(userId: 0){ result in }
-                    self.presentSuccessPopUp(message: "Successfully updated list")
+                    if let userId = UserDefaultHelper.shared.getUserIDFromUserDefaults(){
+                        self.updateListButton.isEnabled = true
+                        self.loadingIndicator.dismissImmediately()
+                        
+                        UserAnimeViewModel.shared.getUserAnime(userId: userId){ result in }
+                        self.presentSuccessPopUp(message: "Successfully updated list")
+                    }
                     break
                 case .failure(let error):
                     guard let self = self else { return }
 
                     self.updateListButton.isEnabled = true
                     self.loadingIndicator.dismissImmediately()
-                    let vc = FailedPopUp()
                     if let error = error as? CustomError{
                         self.presentFailedPopUp(message: error.message)
                     }

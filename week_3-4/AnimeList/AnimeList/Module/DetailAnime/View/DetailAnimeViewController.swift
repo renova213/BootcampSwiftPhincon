@@ -123,13 +123,15 @@ extension DetailAnimeViewController {
                 
                 if(finish){
                     self.tableView.hideSkeleton()
-                    UserAnimeViewModel.shared.findOneUserAnime(userId: 0, malId: id){[weak self] finish in
-                        guard let self = self else {return}
-                        
-                        if(finish){
-                            self.updateListButton.isHidden = false
-                        }else{
-                            self.addToListButton.isHidden = false
+                    if let userId = UserDefaultHelper.shared.getUserIDFromUserDefaults() {
+                        UserAnimeViewModel.shared.findOneUserAnime(userId: userId, malId: id){[weak self] finish in
+                            guard let self = self else {return}
+                            
+                            if(finish){
+                                self.updateListButton.isHidden = false
+                            }else{
+                                self.addToListButton.isHidden = false
+                            }
                         }
                     }
                 }

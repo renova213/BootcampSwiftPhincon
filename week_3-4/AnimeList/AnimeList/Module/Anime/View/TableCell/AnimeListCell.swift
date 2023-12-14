@@ -80,9 +80,11 @@ class AnimeListCell: UITableViewCell {
                 self.userAnimeVM.deleteUserAnime(id: dataID){result in
                     switch result {
                     case .success:
-                        self.userAnimeVM.getUserAnime(userId: 0){finish in}
-                        self.deleteButton.isEnabled = true
-                        self.contentView.makeToast("Delete success")
+                        if let userId = UserDefaultHelper.shared.getUserIDFromUserDefaults(){
+                            self.userAnimeVM.getUserAnime(userId: userId){finish in}
+                            self.deleteButton.isEnabled = true
+                            self.contentView.makeToast("Delete success")
+                        }
                         break
                     case .failure(let error):
                         self.deleteButton.isEnabled = true
