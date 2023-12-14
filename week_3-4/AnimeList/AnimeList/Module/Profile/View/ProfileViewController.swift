@@ -49,6 +49,12 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    var favoriteAnimeCastList: [FavoriteAnimeCastEntity] = [] {
+        didSet{
+            tableView.reloadData()
+        }
+    }
+    
     private var toggleMinimizeFavorite: Bool = false {
         didSet{
             tableView.reloadData()
@@ -99,6 +105,11 @@ extension ProfileViewController {
             guard let self = self else { return }
             self.favoriteAnimeCharacterList = animeCharacter
         }).disposed(by: disposeBag)
+        
+        profileVM.favoriteAnimeCastList.asObservable().subscribe(onNext: {[weak self] animeCharacter in
+            guard let self = self else { return }
+            self.favoriteAnimeCastList = animeCharacter
+        }).disposed(by: disposeBag)
     }
     
     func loadData(){
@@ -107,6 +118,7 @@ extension ProfileViewController {
         }
         profileVM.fetchFavoriteList(for: FetchFavoriteEnum.anime)
         profileVM.fetchFavoriteList(for: FetchFavoriteEnum.character)
+        profileVM.fetchFavoriteList(for: FetchFavoriteEnum.cast)
     }
     
     func configureUI(){
@@ -175,6 +187,7 @@ extension ProfileViewController: UITableViewDelegate, SkeletonTableViewDataSourc
             cell.initialChevronButton(state: toggleMinimizeFavorite)
             cell.favoriteAnimeList = self.favoriteAnimeList
             cell.favoriteAnimeCharacter = self.favoriteAnimeCharacterList
+            cell.favoriteAnimeCast = self.favoriteAnimeCastList
             cell.delegate = self
             return cell
         default:
@@ -203,15 +216,14 @@ extension ProfileViewController: FloatingPanelControllerDelegate{
 }
 
 extension ProfileViewController: ProfileStatsCellDelegate, ProfileFavoriteCellDegelate, ProfileInfoCellDelegate, ProfileSettingViewControllerDelegate, UpdateProfileViewControllerDelegate {
-    func didTapGalleryImage() {
-        presentPicker(sourceType: .photoLibrary)
-    }
-
     func didLoadUserData() {
         loadData()
     }
     
-    
+    func didTapGalleryImage() {
+        presentPicker(sourceType: .photoLibrary)
+    }
+ 
     func minimizeFavorite() {
         toggleMinimizeFavorite = !toggleMinimizeFavorite
     }

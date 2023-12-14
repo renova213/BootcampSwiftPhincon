@@ -24,6 +24,7 @@ class AnimeCharacterItem: UICollectionViewCell {
         super.awakeFromNib()
         configureUI()
         configureGesture()
+        bindData()
     }
     
     var disposeBag = DisposeBag()
@@ -57,6 +58,8 @@ extension AnimeCharacterItem {
         }
         animeCharacter = data
         characterMalUrl = data.character?.url
+        detailAnimeVM.isExistFavoriteAnimeList(for: FavoriteEnum.character(entity: data))
+        detailAnimeVM.isExistFavoriteAnimeList(for: FavoriteEnum.cast(entity: data))
     }
     
     func configureGesture(){
@@ -85,8 +88,7 @@ extension AnimeCharacterItem {
         favoriteCastButton.rx.tap.subscribe(onNext: {[weak self] in
             guard let self = self else { return }
             if let animeCharacter = self.animeCharacter {
-                
-//                self.detailAnimeVM.addToFavorite(for: FavoriteEnum.cast(entity: animeCharacter))
+                self.detailAnimeVM.addToFavorite(for: FavoriteEnum.cast(entity: animeCharacter))
             }
         }).disposed(by: disposeBag)
         
@@ -95,6 +97,33 @@ extension AnimeCharacterItem {
             if let animeCharacter = self.animeCharacter {
                 self.detailAnimeVM.addToFavorite(for: FavoriteEnum.character(entity: animeCharacter))
             }
+        }).disposed(by: disposeBag)
+    }
+    
+    func bindData(){
+        detailAnimeVM.isExistAnimeCharacter.asObservable().subscribe(onNext: {[weak self] state in
+            guard let self = self else { return }
+            
+            switch state {
+            case true:
+                self.favoriteCharacterButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            case false:
+                self.favoriteCharacterButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            }
+
+            self.favoriteCharacterButton.bounceAnimation()
+        }).disposed(by: disposeBag)
+        
+        detailAnimeVM.isExistAnimeCast.asObservable().subscribe(onNext: {[weak self] state in
+            guard let self = self else { return }
+            print(state)
+            switch state {
+            case true:
+                self.favoriteCastButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            case false:
+                self.favoriteCastButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            }
+            self.favoriteCastButton.bounceAnimation()
         }).disposed(by: disposeBag)
     }
 }

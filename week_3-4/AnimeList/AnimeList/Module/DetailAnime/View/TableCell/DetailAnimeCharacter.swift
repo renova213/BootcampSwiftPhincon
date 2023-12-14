@@ -57,6 +57,7 @@ extension DetailAnimeCharacter: UICollectionViewDataSource, UICollectionViewDele
 }
 
 extension DetailAnimeCharacter: AnimeCharacterItemDelegate{
+    
     func didSelectCell(url: String) {
         if let urlData = URL(string: url) {
             delegate?.didTapWebKitCharacter(url: urlData)

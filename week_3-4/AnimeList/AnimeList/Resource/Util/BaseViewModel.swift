@@ -18,12 +18,13 @@ enum StateLoading: Int {
 enum FavoriteEnum {
     case anime(entity: AnimeDetailEntity)
     case character(entity: AnimeCharacterEntity)
-//    case cast(entity: AnimeCharacterEntity)
+    case cast(entity: AnimeCharacterEntity)
 }
 
 enum FetchFavoriteEnum {
     case anime
     case character
+    case cast
 }
 
 class BaseViewModel {

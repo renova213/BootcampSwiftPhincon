@@ -67,6 +67,7 @@ extension DetailAnimeViewController{
             
             if let anime = self.animeDetail {
                 self.detailAnimeVM.addToFavorite(for: FavoriteEnum.anime(entity: anime))
+                self.favoriteButton.bounceAnimation()
             }
         }).disposed(by: disposeBag)
         
@@ -134,6 +135,8 @@ extension DetailAnimeViewController {
                 }
             }
             profileVM.fetchFavoriteList(for: FetchFavoriteEnum.anime)
+            profileVM.fetchFavoriteList(for: FetchFavoriteEnum.character)
+            profileVM.fetchFavoriteList(for: FetchFavoriteEnum.cast)
             detailAnimeVM.getAnimeCharacter(malId: id)
             DispatchQueue.main.asyncAfter(deadline: .now()+1){
                 self.detailAnimeVM.getAnimeStaff(malId: id)
@@ -168,9 +171,8 @@ extension DetailAnimeViewController {
                 self.animeRecommendation = i
             })
             .disposed(by: disposeBag)
-        detailAnimeVM.isExistAnimeFavorite.subscribe(onNext: {[weak self] state in
+        detailAnimeVM.isExistAnimeFavorite.asObservable().subscribe(onNext: {[weak self] state in
             guard let self = self else { return }
-            
             switch state {
             case true:
                 self.favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
@@ -292,6 +294,7 @@ extension DetailAnimeViewController: SkeletonTableViewDataSource, UITableViewDel
 }
 
 extension DetailAnimeViewController: DetailAnimeRecommendationDelegate, detailAnimeStaffDelegate, DetailAnimeCharacterDelegate{
+    
     func didTapWebKitStaff(url: URL) {
         let vc = WebKitViewController()
         vc.url = url

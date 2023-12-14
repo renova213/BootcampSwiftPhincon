@@ -33,6 +33,11 @@ class ProfileFavoriteCell: UITableViewCell {
             characterCollection.reloadData()
         }
     }
+    var favoriteAnimeCast: [FavoriteAnimeCastEntity] = [] {
+        didSet {
+            characterCollection.reloadData()
+        }
+    }
     private let disposeBag = DisposeBag()
 }
 
@@ -88,7 +93,7 @@ extension ProfileFavoriteCell: UICollectionViewDelegate, UICollectionViewDataSou
         case characterCollection:
             return favoriteAnimeCharacter.count
         case castCollection:
-            return 2
+            return favoriteAnimeCast.count
         default:
             return 0
         }
@@ -108,6 +113,8 @@ extension ProfileFavoriteCell: UICollectionViewDelegate, UICollectionViewDataSou
             cell.initialSetup(title: data.name ?? "", urlImage: data.urlImage ?? "")
             break
         case castCollection:
+            let data = favoriteAnimeCast[indexPath.row]
+            cell.initialSetup(title: data.name ?? "", urlImage: data.urlImage ?? "")
             break
         default:
             break
