@@ -318,6 +318,7 @@
             <connections>
                 <outlet property="airedLabel" destination="HzN-jh-pdb" id="VRb-AK-67t"/>
                 <outlet property="animeEpisode" destination="n4Z-zV-w5m" id="lnd-Iv-DBt"/>
+                <outlet property="containerProgressIndicator" destination="uuw-yH-Xsy" id="uGj-5q-0xr"/>
                 <outlet property="deleteButton" destination="Cry-pN-X75" id="qzp-ct-Ncr"/>
                 <outlet property="editButton" destination="A97-2w-bdi" id="RYH-LN-KvL"/>
                 <outlet property="genreLabel" destination="Igf-lP-b1s" id="fiO-WQ-O3P"/>
@@ -325,7 +326,6 @@
                 <outlet property="myEpisodeLabel" destination="2Ds-cg-Jmb" id="xmU-DO-KGv"/>
                 <outlet property="myScoreLabel" destination="Ccj-Iw-b4k" id="H8z-bW-tWm"/>
                 <outlet property="progressIndicator" destination="jEl-ZB-CkD" id="rxz-mC-seY"/>
-                <outlet property="progressView" destination="uuw-yH-Xsy" id="gfY-Ki-80n"/>
                 <outlet property="releaseDateLabel" destination="695-BU-y0O" id="6pn-xp-ADj"/>
                 <outlet property="statusWatchLabel" destination="ShB-NM-vlm" id="eoX-PM-zge"/>
                 <outlet property="statusWatchView" destination="HK2-ET-THN" id="eEu-Ik-Hr9"/>

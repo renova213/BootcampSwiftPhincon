@@ -1,16 +1,26 @@
 import UIKit
-import Kingfisher
 
-class ProfileRecentUpdateItemCell: UITableViewCell {
-    
-    @IBOutlet weak var progressIndicator: UIProgressView!
+class MoreUserRecentUpdateCell: UITableViewCell {
+
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var episodeLabel: UILabel!
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var progressIndicator: UIProgressView!
+    @IBOutlet weak var containerProgressIndicator: UIView!
     @IBOutlet weak var urlImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        configureUI()
     }
+    
+    func configureUI(){
+        containerView.roundCornersAll(radius: 10)
+        containerView.addShadow()
+        urlImage.roundCornersAll(radius: 10)
+        containerProgressIndicator.roundCornersAll(radius: 4)
+    }
+    
     func initialSetup(data: UserRecentUpdateEntity){
         var watchStatus = ""
 

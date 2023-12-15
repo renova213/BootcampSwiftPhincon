@@ -10,6 +10,9 @@ class ProfileViewModel: BaseViewModel {
     var favoriteAnimeCharacterList = BehaviorRelay<[FavoriteAnimeCharacterEntity]>(value: [])
     var favoriteAnimeCastList = BehaviorRelay<[FavoriteAnimeCastEntity]>(value: [])
     var userRecentUpdates = BehaviorRelay<[UserRecentUpdateEntity]>(value: [])
+    var moreUserRecentUpdates = BehaviorRelay<[UserRecentUpdateEntity]>(value: [])
+    var userAnimeStats = BehaviorRelay<UserStatsEntity?>(value: nil)
+    var userMangaStats = BehaviorRelay<UserStatsEntity?>(value: nil)
     let userData = BehaviorRelay<UserEntity?>(value: nil)
     var errorMessage = BehaviorRelay<CustomError?>(value: nil)
     
@@ -55,10 +58,27 @@ class ProfileViewModel: BaseViewModel {
                     break
                 case .getUserRecentUpdate:
                     if let data = data as? UserRecentUpdateResponse{
-                        self.userRecentUpdates.accept(data.data)
+                        
+                        Observable.from(data.data)
+                                    .take(3)
+                                    .toArray()
+                                    .asObservable()
+                                    .bind(to: self.userRecentUpdates)
+                                    .disposed(by: DisposeBag())
+                        
+                        self.moreUserRecentUpdates.accept(data.data)
                     }
                     self.loadingState.accept(.finished)
                     break
+                case .getUserStats(let param):
+                    if let data = data as? UserStatsResponse{
+                        if (param.filter == "anime"){
+                            self.userAnimeStats.accept(data.data)
+                        }else{
+                            self.userMangaStats.accept(data.data)
+                        }
+                    }
+                    self.loadingState.accept(.finished)
                 default:
                     self.loadingState.accept(.finished)
                     break
@@ -112,9 +132,11 @@ class ProfileViewModel: BaseViewModel {
                 case .character:
                     let favoriteAnimeCharacter: [FavoriteAnimeCharacterEntity] = try CoreDataHelper.shared.fetchFavoriteList(FavoriteAnimeCharacterEntity.self, userId: userId)
                     self.favoriteAnimeCharacterList.accept(favoriteAnimeCharacter)
+                    break
                 case .cast:
                     let favoriteAnimeCast: [FavoriteAnimeCastEntity] = try CoreDataHelper.shared.fetchFavoriteList(FavoriteAnimeCastEntity.self, userId: userId)
                     self.favoriteAnimeCastList.accept(favoriteAnimeCast)
+                    break
                 }
             }
         } catch {

@@ -140,7 +140,7 @@ extension DetailAnimeViewController {
             profileVM.fetchFavoriteList(for: FetchFavoriteEnum.character)
             profileVM.fetchFavoriteList(for: FetchFavoriteEnum.cast)
             detailAnimeVM.getAnimeCharacter(malId: id)
-            DispatchQueue.main.asyncAfter(deadline: .now()+1){
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2){
                 self.detailAnimeVM.getAnimeStaff(malId: id)
                 self.detailAnimeVM.getAnimeRecommendations(malId: id)
             }

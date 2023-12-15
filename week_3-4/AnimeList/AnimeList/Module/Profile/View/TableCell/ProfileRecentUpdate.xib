@@ -80,6 +80,7 @@
             <connections>
                 <outlet property="contentStackView" destination="GfF-55-07d" id="Fre-em-bVu"/>
                 <outlet property="heightTableView" destination="i2P-C3-U1r" id="Yen-o9-l4g"/>
+                <outlet property="recentUpdateView" destination="H9g-zu-MuN" id="dza-rV-Dfe"/>
                 <outlet property="tableView" destination="YBQ-qu-6D9" id="sUC-Q0-Wed"/>
                 <outlet property="viewAllUpdate" destination="WnU-3G-vOm" id="zQj-Km-9aG"/>
             </connections>

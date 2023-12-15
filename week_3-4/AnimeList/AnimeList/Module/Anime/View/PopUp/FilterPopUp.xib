@@ -27,7 +27,7 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jsg-U7-IED">
-                    <rect key="frame" x="24" y="263.66666666666669" width="345" height="350.00000000000006"/>
+                    <rect key="frame" x="24" y="273.66666666666669" width="345" height="330.00000000000006"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNs-yK-9aQ">
                             <rect key="frame" x="16" y="16" width="313" height="24"/>
@@ -36,17 +36,17 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0eY-JP-Sag">
-                            <rect key="frame" x="24" y="64" width="297" height="195"/>
+                            <rect key="frame" x="24" y="64" width="297" height="175"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eLA-m4-ulF">
-                            <rect key="frame" x="273" y="282.99999999999994" width="48" height="35"/>
+                            <rect key="frame" x="273" y="262.99999999999994" width="48" height="35"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="OK"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JiJ-Rw-wYl">
-                            <rect key="frame" x="180" y="282.99999999999994" width="77" height="35"/>
+                            <rect key="frame" x="180" y="262.99999999999994" width="77" height="35"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
@@ -58,7 +58,7 @@
                         <constraint firstItem="SNs-yK-9aQ" firstAttribute="top" secondItem="jsg-U7-IED" secondAttribute="top" constant="16" id="5rs-jR-rPJ"/>
                         <constraint firstItem="0eY-JP-Sag" firstAttribute="top" secondItem="SNs-yK-9aQ" secondAttribute="bottom" constant="24" id="8jd-hX-A6M"/>
                         <constraint firstItem="JiJ-Rw-wYl" firstAttribute="top" secondItem="0eY-JP-Sag" secondAttribute="bottom" constant="24" id="9x9-PX-ngS"/>
-                        <constraint firstAttribute="height" constant="350" id="ANc-FY-C5w"/>
+                        <constraint firstAttribute="height" constant="330" id="ANc-FY-C5w"/>
                         <constraint firstItem="SNs-yK-9aQ" firstAttribute="leading" secondItem="jsg-U7-IED" secondAttribute="leading" constant="16" id="Fe1-p5-ASq"/>
                         <constraint firstAttribute="trailing" secondItem="0eY-JP-Sag" secondAttribute="trailing" constant="24" id="LX8-vc-gEj"/>
                         <constraint firstAttribute="bottom" secondItem="eLA-m4-ulF" secondAttribute="bottom" constant="32" id="NyZ-hv-dTX"/>

@@ -4,6 +4,7 @@ import RxCocoa
 
 protocol ProfileFavoriteCellDegelate: AnyObject {
     func minimizeFavorite()
+    func didTapFavoriteItem(url: String)
 }
 
 class ProfileFavoriteCell: UITableViewCell {
@@ -35,7 +36,7 @@ class ProfileFavoriteCell: UITableViewCell {
     }
     var favoriteAnimeCast: [FavoriteAnimeCastEntity] = [] {
         didSet {
-            characterCollection.reloadData()
+            castCollection.reloadData()
         }
     }
     private let disposeBag = DisposeBag()
@@ -120,6 +121,36 @@ extension ProfileFavoriteCell: UICollectionViewDelegate, UICollectionViewDataSou
             break
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch collectionView {
+        case animeCollection:
+            let data = favoriteAnimeList[indexPath.row]
+            
+            guard let url = data.url else {return}
+            
+            self.delegate?.didTapFavoriteItem(url: url)
+            break
+        case mangaCollection:
+            break
+        case characterCollection:
+            let data = favoriteAnimeCharacter[indexPath.row]
+            
+            guard let url = data.url else {return}
+            
+            self.delegate?.didTapFavoriteItem(url: url)
+            break
+        case castCollection:
+            let data = favoriteAnimeCast[indexPath.row]
+            
+            guard let url = data.url else {return}
+            
+            self.delegate?.didTapFavoriteItem(url: url)
+            break
+        default:
+            break
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

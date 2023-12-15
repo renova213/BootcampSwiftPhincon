@@ -116,7 +116,6 @@ extension AnimeCharacterItem {
         
         detailAnimeVM.isExistAnimeCast.asObservable().subscribe(onNext: {[weak self] state in
             guard let self = self else { return }
-            print(state)
             switch state {
             case true:
                 self.favoriteCastButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)

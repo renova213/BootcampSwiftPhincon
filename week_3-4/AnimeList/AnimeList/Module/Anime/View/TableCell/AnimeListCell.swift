@@ -10,9 +10,9 @@ protocol AnimeListCellDelegate: AnyObject {
 
 class AnimeListCell: UITableViewCell {
     
+    @IBOutlet weak var containerProgressIndicator: UIView!
     @IBOutlet weak var increamentEpisodeButton: UIButton!
     @IBOutlet weak var animeEpisode: UILabel!
-    @IBOutlet weak var progressView: UIView!
     @IBOutlet weak var statusWatchView: UIView!
     @IBOutlet weak var statusWatchLabel: UILabel!
     @IBOutlet weak var urlImage: UIImageView!
@@ -70,6 +70,7 @@ class AnimeListCell: UITableViewCell {
         deleteButton.roundCornersAll(radius: 4)
         urlImage.roundCornersAll(radius: 8)
         statusWatchView.roundCornersAll(radius: 8)
+        containerProgressIndicator.roundCornersAll(radius: 4)
     }
     
     func configureButtonGesture(){

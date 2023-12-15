@@ -137,11 +137,12 @@ class DetailAnimeViewModel: BaseViewModel {
 
         switch favorite {
         case .anime(let anime):
-            guard let title = anime.title, let imageURL = anime.images?.jpg?.imageUrl else {return}
+            guard let title = anime.title else {return}
 
             let properties: [String: Any] = [
                 "title": title,
-                "urlImage": imageURL,
+                "urlImage": anime.images?.jpg?.imageUrl ?? "",
+                "url": anime.url ?? "",
                 "malId": Int32(anime.malID)
             ]
 
@@ -149,11 +150,12 @@ class DetailAnimeViewModel: BaseViewModel {
             isExistFavoriteAnimeList(for: favorite)
             break
         case .character(let animeCharacter):
-            guard let characterName = animeCharacter.character?.name, let imageURL = animeCharacter.character?.images?.jpg?.imageURL, let characterMalId = animeCharacter.character?.malID else {return }
+            guard let characterName = animeCharacter.character?.name, let characterMalId = animeCharacter.character?.malID else {return }
 
             let properties: [String: Any] = [
                 "name": characterName,
-                "urlImage": imageURL,
+                "url": animeCharacter.character?.url ?? "",
+                "urlImage": animeCharacter.character?.images?.jpg?.imageURL ?? "",
                 "malId": Int32(characterMalId)
             ]
 
@@ -161,16 +163,18 @@ class DetailAnimeViewModel: BaseViewModel {
             isExistFavoriteAnimeList(for: favorite)
             break
         case .cast(let animeCharacter):
-            guard let castName = animeCharacter.voiceActors?.first?.person?.name, let imageURL = animeCharacter.voiceActors?.first?.person?.images?.jpg?.imageURL, let castMalId = animeCharacter.voiceActors?.first?.person?.malID else {return }
+            guard let castMalId = animeCharacter.voiceActors?.first?.person?.malID else {return }
 
             let properties: [String: Any] = [
-                "name": castName,
-                "urlImage": imageURL,
+                "name": animeCharacter.voiceActors?.first?.person?.name ?? "",
+                "url": animeCharacter.voiceActors?.first?.person?.url ?? "",
+                "urlImage": animeCharacter.voiceActors?.first?.person?.images?.jpg?.imageURL ?? "",
                 "malId": Int32(castMalId)
             ]
 
             CoreDataHelper.shared.addOrUpdateFavoriteEntity(FavoriteAnimeCastEntity.self, for: favorite, userId: userId, properties: properties)
             isExistFavoriteAnimeList(for: favorite)
+            break
         }
     }
     

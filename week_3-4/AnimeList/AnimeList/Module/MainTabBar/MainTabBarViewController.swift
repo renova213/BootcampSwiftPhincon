@@ -21,15 +21,16 @@ class MainTabBarViewController: UITabBarController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 }
 
 extension MainTabBarViewController{
     func configureStyleTabBar(){
-        self.tabBar.tintColor =  UIColor.white
-        self.tabBar.backgroundColor =  UIColor(named: "Main Color")
-        self.tabBar.unselectedItemTintColor = UIColor(named: "Second Icon Color")
+        tabBar.isTranslucent = false
+        tabBar.tintColor =  UIColor.white
+        tabBar.backgroundColor =  UIColor(named: "Main Color")
+        tabBar.unselectedItemTintColor = UIColor(named: "Second Icon Color")
     }
     
     func configureTabBarItems(){

@@ -117,7 +117,6 @@ extension AddToListBottomSheet{
                     case .success:
                         self.addToListButton.isEnabled = true
                         self.loadingIndicator.dismissImmediately()
-                        UserAnimeViewModel.shared.getUserAnime(userId: userId){ result in }
                         self.presentSuccessPopUp(message: "Successfully added to list")
                         break
                     case .failure(let error):

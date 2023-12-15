@@ -10,14 +10,14 @@ class AnimeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
         configureUI()
         configureTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        bindData()
         navigationController?.setNavigationBarHidden(true, animated: false)
+        loadData()
+        bindData()
     }
     
     let disposeBag = DisposeBag()
@@ -63,6 +63,7 @@ extension AnimeViewController {
     }
     
     func bindData(){
+        tableView.showAnimatedGradientSkeleton()
         userAnimeVM.userAnime
             .subscribe(onNext: {[weak self] in self?.userAnimes = $0
             })
