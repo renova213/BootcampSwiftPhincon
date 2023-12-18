@@ -13,6 +13,7 @@ class DetailAnimeViewModel: BaseViewModel {
     var episode = BehaviorRelay<Int>(value: 0)
     var messageRating = BehaviorRelay<String>(value: "Pilih rating")
     var selectedStatus = BehaviorRelay<String>(value: "Pilih status")
+    let errorMessage = BehaviorRelay<String>(value: "")
     let animeDetail = BehaviorRelay<AnimeDetailEntity?>(value: nil)
     let animeCharacter = BehaviorRelay<[AnimeCharacterEntity]>(value: [])
     let animeStaff = BehaviorRelay<[AnimeStaffEntity]>(value: [])

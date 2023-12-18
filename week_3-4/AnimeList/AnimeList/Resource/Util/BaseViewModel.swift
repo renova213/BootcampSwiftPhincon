@@ -10,11 +10,6 @@ enum StateLoading: Int {
     case failed
 }
 
-//enum OperationError: Error {
-//    case failure(String)
-//    case alreadyExistFavoriteAnime
-//}
-
 enum FavoriteEnum {
     case anime(entity: AnimeDetailEntity)
     case character(entity: AnimeCharacterEntity)
@@ -38,8 +33,6 @@ class BaseViewModel {
     
     var toggle = BehaviorRelay<Bool>(value: false)
     var toggle2 = BehaviorRelay<Bool>(value: false)
-    
-//    typealias OperationCompletion = Result<String, OperationError>
     
     func storeToken(with token: String) {
         let tokenData = token.data(using: .utf8)

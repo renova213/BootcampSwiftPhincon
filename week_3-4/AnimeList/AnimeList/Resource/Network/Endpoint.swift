@@ -4,6 +4,7 @@ import Alamofire
 enum Endpoint {
     case getScheduledAnime(params: ScheduleParam)
     case getDetailAnime(params: Int)
+    case getDetailManga(params: Int)
     case getSeasonNow(params: SeasonNowParam)
     case getAnimeCharacter(params: Int)
     case getAnimeStaff(params: Int)
@@ -15,6 +16,7 @@ enum Endpoint {
     case getUser(params: String)
     case getUserRecentUpdate(params: String)
     case getUserStats(params: UserStatsParam)
+    case getManga(params: MangaParam)
     case findOneUserAnime(params: OneUserAnimeParam)
     case filterAnime(params: FilterAnimeParam)
     case filterManga(params: FilterMangaParam)
@@ -33,6 +35,8 @@ enum Endpoint {
         switch self {
         case .getScheduledAnime:
             return "/schedules"
+        case .getDetailManga(let param):
+            return "/manga/\(param)/full"
         case .getSeasonNow:
             return "/seasons/now"
         case .getDetailAnime(let malId):
@@ -57,7 +61,7 @@ enum Endpoint {
             return "/anime/user/recentUpdate"
         case .filterAnime:
             return "/anime"
-        case .filterManga:
+        case .filterManga, .getManga:
             return "/manga"
         case .findOneUserAnime:
             return "/anime/user/find"
@@ -126,6 +130,23 @@ enum Endpoint {
             return ["userId": param.userId, "filter": param.filter]
         case .getUserRecentUpdate(let param), .getUserAnime(let param):
             return ["user_id": param]
+        case .getManga(let param):
+            var params = [String: Any]()
+            params["limit"] = param.limit
+            if let title = param.title{
+                params["title"] = title
+            }
+            if let year = param.year{
+                params["year"] = year
+            }
+            if let tag = param.tag {
+                params["includedTags[]"] = tag
+            }
+            if let status = param.status {
+                params["status[]"] = status
+            }
+            params["contentRating[]"] = param.contentRating
+            return params
         case .filterAnime(params: let param):
             
             var params = [String: Any]()
@@ -202,17 +223,18 @@ enum Endpoint {
     
     var headers: HTTPHeaders {
         switch self {
-        case .getScheduledAnime, .getSeasonNow, .getDetailAnime, .getAnimeCharacter, .getAnimeStaff, .getRecommendationAnime, .getTopAnime, .filterManga, .filterAnime, .getSeasonList, .getSeason, .postLogin, .postRegister, .postLoginGoogle, .postRegisterGoogle:
-            let params: HTTPHeaders = [
-                "Content-Type": "application/json"
-            ]
-            return params
         case .getUserAnime, .getUser, .getUserRecentUpdate, .getUserStats, .findOneUserAnime, .postUserAnime, .postUploadProfileImage, .putUser, .putChangePassword, .putUserAnime, .deleteUserAnime:
             let token = TokenHelper().retrieveToken()
-            
+
             let params: HTTPHeaders = [
                 "Content-Type": "application/json",
                 "Authorization": "Bearer \(token)"
+            ]
+            return params
+        default:
+            let params: HTTPHeaders = [
+                "Accept": "application/json",
+                "Content-Type": "application/json"
             ]
             return params
         }
@@ -220,20 +242,21 @@ enum Endpoint {
     
     func urlString() -> String {
         switch self {
-        case .getScheduledAnime, .getSeasonNow, .filterAnime, .filterManga, .getDetailAnime, .getAnimeCharacter, .getAnimeStaff, .getRecommendationAnime, .getTopAnime, .getSeasonList, .getSeason:
+        case .getScheduledAnime, .getSeasonNow, .getDetailManga, .filterAnime, .filterManga, .getDetailAnime, .getAnimeCharacter, .getAnimeStaff, .getRecommendationAnime, .getTopAnime, .getSeasonList, .getSeason:
             return BaseConstant.baseURL + self.path()
         case .getUserAnime, .getUser, .getUserRecentUpdate, .getUserStats, .findOneUserAnime, .postUserAnime, .postLogin, .postLoginGoogle, .postRegisterGoogle, .postRegister, .postUploadProfileImage, .putUserAnime, .putChangePassword, .putUser, .deleteUserAnime:
             return BaseConstant.baseURL2 + self.path()
+        case .getManga:
+            return BaseConstant.baseURL3 + self.path()
         }
     }
     
     var encoding: ParameterEncoding {
         switch self {
-        case .getScheduledAnime, .getSeasonNow, .getSeasonList, .getTopAnime, .getUserStats, .getUserRecentUpdate, .getSeason, .getUser, .filterAnime, .filterManga, .getDetailAnime, .getAnimeCharacter, .getAnimeStaff, .getRecommendationAnime, .getUserAnime, .findOneUserAnime, .putUser, .deleteUserAnime:
+        case .getScheduledAnime, .getSeasonNow, .getManga, .getDetailManga, .getSeasonList, .getTopAnime, .getUserStats, .getUserRecentUpdate, .getSeason, .getUser, .filterAnime, .filterManga, .getDetailAnime, .getAnimeCharacter, .getAnimeStaff, .getRecommendationAnime, .getUserAnime, .findOneUserAnime, .putUser, .deleteUserAnime:
             return URLEncoding.queryString
         case .postUserAnime, .putUserAnime, .postLogin, .postUploadProfileImage, .postLoginGoogle, .postRegisterGoogle, .postRegister, .putChangePassword:
             return JSONEncoding.default
         }
     }
 }
-

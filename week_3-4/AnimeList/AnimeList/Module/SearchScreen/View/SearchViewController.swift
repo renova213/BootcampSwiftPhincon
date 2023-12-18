@@ -82,13 +82,19 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource,Skele
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(currentIndex == 0 && indexPath.section == 1){
-            
             let data = filteredAnime[indexPath.row]
             let vc = DetailAnimeViewController()
             vc.malId = data.malId
             navigationController?.hero.isEnabled = true
             navigationController?.pushViewController(vc, animated: true)
-            
+        }
+        
+       if(currentIndex == 1 && indexPath.section == 1){
+           let data = filteredManga[indexPath.row]
+           let vc = DetailMangaViewController()
+           vc.malId = data.malId
+           navigationController?.hero.isEnabled = true
+           navigationController?.pushViewController(vc, animated: true)
         }
     }
     

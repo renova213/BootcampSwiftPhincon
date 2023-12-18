@@ -30,7 +30,7 @@ class DashboardViewController: UIViewController {
         super.viewDidLoad()
         configureTableView()
         configureUI()
-        fetchData()
+        loadData()
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
@@ -59,11 +59,23 @@ extension DashboardViewController {
         }
     }
     
-    func fetchData() {
+    func loadData() {
         let scheduledParams = ScheduleParam(filter: Date.getCurrentDay().lowercased(), page: "1", limit: "6")
         dashboardVM.loadData(for: Endpoint.getScheduledAnime(params: scheduledParams), resultType: AnimeResponse.self)
 
         dashboardVM.loadData(for: Endpoint.getSeasonNow(params: SeasonNowParam(page: "1", limit: "6")), resultType: AnimeResponse.self)
+    }
+    
+    func refreshPopUp(message: String){
+        let vc = RefreshPopUp()
+        vc.delegate = self
+        vc.view.alpha = 0
+        vc.errorLabel.text = message
+        self.present(vc, animated: false, completion: nil)
+
+        UIView.animate(withDuration: 0.5) {
+            vc.view.alpha = 1
+        }
     }
 }
 
@@ -71,27 +83,33 @@ extension DashboardViewController {
     func bindData() {
         dashboardVM.currentAnime.asObservable()
             .subscribe(onNext: { [weak self] in
-                self?.currentAnime = $0
+                guard let self = self else { return }
+
+                self.currentAnime = $0
             })
             .disposed(by: disposeBag)
 
         dashboardVM.currentSeasonAnime.asObservable()
             .subscribe(onNext: { [weak self] in
-                self?.currentSeasonAnime = $0
+                guard let self = self else { return }
+                
+                self.currentSeasonAnime = $0
             })
             .disposed(by: disposeBag)
 
         dashboardVM.loadingState.asObservable()
             .subscribe(onNext: { [weak self] state in
                 guard let self = self else { return }
+                
                 switch state {
                 case .notLoad, .loading:
                     self.dashboardTableView.showAnimatedGradientSkeleton()
-                case .failed, .finished:
-                    DispatchQueue.main.async {
-                        self.dashboardTableView.hideSkeleton()
-                    }
+                case .finished:
+                    self.dashboardTableView.hideSkeleton()
+                case .failed:
+                    self.refreshPopUp(message: self.dashboardVM.errorMessage.value)
                 }
+                
             })
             .disposed(by: disposeBag)
     }
@@ -158,7 +176,12 @@ extension DashboardViewController: UIScrollViewDelegate {
     }
 }
 
-extension DashboardViewController: TodayAnimeDelegate, DashboardSearchDelegate, CurrentAnimeDelegate, DashboardCategoryItemDelegate {
+extension DashboardViewController: TodayAnimeDelegate, DashboardSearchDelegate, CurrentAnimeDelegate, DashboardCategoryItemDelegate, RefreshPopUpDelegate {
+    func didTapRefresh() {
+        self.dismiss(animated: false)
+        loadData()
+    }
+    
     func didTapTodayAnime(malId: Int) {
         navigateToDetailAnimeViewController(malId: malId)
     }

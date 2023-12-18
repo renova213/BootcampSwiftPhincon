@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FailedPopUp" customModule="AnimeList" customModuleProvider="target">
             <connections>
-                <outlet property="failedLottie" destination="5BI-jy-uHd" id="3YL-kf-v6A"/>
+                <outlet property="failedLottie" destination="5BI-jy-uHd" id="dYI-BR-b3e"/>
                 <outlet property="messageLabel" destination="aZS-hp-DaV" id="uQQ-By-PQc"/>
                 <outlet property="popView" destination="5mm-4L-NSz" id="FHg-Zn-wXJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -21,11 +21,11 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view alpha="0.20000000298023224" contentMode="scaleToFill" id="9K6-VF-VgP">
+                <view alpha="0.20000000000000001" contentMode="scaleToFill" id="9K6-VF-VgP">
                     <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <viewLayoutGuide key="safeArea" id="173-bV-tex"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5mm-4L-NSz">
                     <rect key="frame" x="81.666666666666686" y="326" width="230" height="225.33333333333337"/>

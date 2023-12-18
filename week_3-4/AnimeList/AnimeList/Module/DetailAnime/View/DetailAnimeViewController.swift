@@ -241,11 +241,11 @@ extension DetailAnimeViewController: SkeletonTableViewDataSource, UITableViewDel
             if let id = malId{
                 cell.urlImage.hero.id = String(id)
             }
-            
+
             if let data = animeDetail {
                 cell.initialSetup(data: data)
             }
-            
+
             cell.selectionStyle = .none
             return cell
         case 1:
@@ -261,12 +261,20 @@ extension DetailAnimeViewController: SkeletonTableViewDataSource, UITableViewDel
             cell.selectionStyle = .none
             return cell
         case 3:
+            if(animeStaff.isEmpty){
+                return UITableViewCell()
+            }
+
             let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeCharacter
             cell.initialSetup(data: animeCharacter)
             cell.selectionStyle = .none
             cell.delegate = self
             return cell
         case 4:
+            if(animeStaff.isEmpty){
+                return UITableViewCell()
+            }
+
             let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeStaff
             cell.initialSetup(data: animeStaff)
             cell.selectionStyle = .none
@@ -282,13 +290,14 @@ extension DetailAnimeViewController: SkeletonTableViewDataSource, UITableViewDel
         case 6:
             if(animeRecommendation.isEmpty){
                 return UITableViewCell()
-            }else{
-                let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeRecommendation
-                cell.initialSetup(data: animeRecommendation)
-                cell.selectionStyle = .none
-                cell.delegate = self
-                return cell
             }
+
+            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeRecommendation
+            cell.initialSetup(data: animeRecommendation)
+            cell.selectionStyle = .none
+            cell.delegate = self
+            return cell
+            
         default:
             return UITableViewCell()
         }

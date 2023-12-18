@@ -51,7 +51,7 @@
                         <rect key="frame" x="0.0" y="32" width="320" height="205"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="205" id="R2B-OX-mx5"/>
+                            <constraint firstAttribute="height" constant="205" id="ZkA-JN-RcV"/>
                         </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pOT-aF-5LX">
                             <size key="itemSize" width="128" height="128"/>

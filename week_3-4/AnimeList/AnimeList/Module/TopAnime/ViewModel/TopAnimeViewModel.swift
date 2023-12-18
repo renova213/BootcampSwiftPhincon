@@ -18,17 +18,10 @@ class TopAnimeViewModel: BaseViewModel {
             
             switch response{
             case .success(let data):
-                switch endpoint {
-                case .getTopAnime:
-                    if let data = data as? AnimeResponse {
-                        self.responseData(data: data, with: topAnime)
-                    }
-                    self.loadingState.accept(.finished)
-                    break
-                default:
-                    self.loadingState.accept(.finished)
-                    break
+                if let data = data as? AnimeResponse {
+                    self.responseData(data: data, with: topAnime)
                 }
+                self.loadingState.accept(.finished)
                 break
             case .failure:
                 self.loadingState.accept(.failed)

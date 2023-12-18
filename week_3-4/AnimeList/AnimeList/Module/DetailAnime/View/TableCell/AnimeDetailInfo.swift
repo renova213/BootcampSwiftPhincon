@@ -23,11 +23,10 @@ class AnimeDetailInfo: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        configureStyleComponent()
+        configureUI()
         configureCollection()
     }
     
-    var imageWidthConstraint: NSLayoutConstraint!
     var fullDescription = ""
     var isExpanded = BehaviorRelay<Bool>(value: false)
     let disposeBag = DisposeBag()
@@ -37,12 +36,9 @@ class AnimeDetailInfo: UITableViewCell {
         }
     }
     
-    func configureStyleComponent(){
+    func configureUI(){
         imageBorderView.layer.borderWidth = 1.0
         imageBorderView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
-    }
-    
-    func initialSetupImage(urlImage: String){
     }
     
     func initialSetup(data: AnimeDetailEntity){

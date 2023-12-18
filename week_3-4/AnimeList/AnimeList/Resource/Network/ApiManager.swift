@@ -10,7 +10,9 @@ public enum HTTPStatusCode: Int {
     case forbidden = 403
     case notFound = 404
     case conflic = 409
+    case limit = 429
     case internalServerError = 500
+    case serviceUnvaliable = 503
 }
 
 class APIManager {
@@ -48,6 +50,11 @@ class APIManager {
     }
     
     public func fetchRequest<T: Codable>(endpoint: Endpoint, completion: @escaping(Result<T, Error>)-> Void){
+        guard NetworkReachabilityManager()!.isReachable else {
+            let noInternetError = CustomError(statusCode: HTTPStatusCode.serviceUnvaliable, message: "No internet connection")
+                completion(.failure(noInternetError))
+                return
+            }
         
         AF.request(endpoint.urlString(),
                    method: endpoint.method(),
