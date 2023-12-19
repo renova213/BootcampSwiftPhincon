@@ -51,6 +51,9 @@
                 <constraint firstAttribute="bottom" secondItem="Ofd-R4-m8z" secondAttribute="bottom" id="tvV-3s-kjR"/>
             </constraints>
             <size key="customSize" width="129" height="53"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="genreContainer" destination="Ofd-R4-m8z" id="rLd-6X-Ecy"/>
                 <outlet property="genreLabel" destination="xCH-bq-w6h" id="4i3-RP-ofI"/>

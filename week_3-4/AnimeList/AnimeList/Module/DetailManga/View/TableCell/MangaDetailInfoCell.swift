@@ -1,6 +1,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SkeletonView
 
 class MangaDetailInfoCell: UITableViewCell {
     
@@ -84,7 +85,7 @@ class MangaDetailInfoCell: UITableViewCell {
         }
         
         if let favorite = data.favorites {
-            favoriteLabel.text = "\(String(favorite))"
+            favoriteLabel.text = "#\(String(favorite))"
         }else{
             favoriteLabel.text = "-"
         }
@@ -95,7 +96,15 @@ class MangaDetailInfoCell: UITableViewCell {
     }
 }
 
-extension MangaDetailInfoCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+extension MangaDetailInfoCell: UICollectionViewDataSource, SkeletonCollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+    
+    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> SkeletonView.ReusableCellIdentifier {
+        return String(describing: MangaGenreItemCell.self)
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return mangaGenres.count

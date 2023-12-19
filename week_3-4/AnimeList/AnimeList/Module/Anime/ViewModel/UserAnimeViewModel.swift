@@ -66,8 +66,10 @@ class UserAnimeViewModel {
         break
         case 1:
             self.userAnime.accept(userAnime.value.sorted {$0.anime.title ?? "" > $1.anime.title ?? ""})
+            break
         case 2:
             self.userAnime.accept(userAnime.value.sorted {$0.userScore > $1.userScore})
+            break
         case 3:
             self.userAnime.accept(userAnime.value.sorted {$0.watchStatus < $1.watchStatus})
         default:
