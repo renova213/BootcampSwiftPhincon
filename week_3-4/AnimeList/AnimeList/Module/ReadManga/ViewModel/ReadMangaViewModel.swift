@@ -3,8 +3,11 @@ import RxSwift
 import RxCocoa
 
 class ReadMangaViewModel: BaseViewModel{
-    let chapterImages = BehaviorRelay<MangaChapterImageEntity?>(value: nil)
+    let chapterImages = BehaviorRelay<MangaChapterImageResponse?>(value: nil)
     let errorMessage = BehaviorRelay<String>(value: "")
+    let viewState = BehaviorRelay<Bool>(value: true)
+    let slideMode = BehaviorRelay<Bool>(value: true)
+
     
     func loadData <T: Codable> (for endpoint: Endpoint, resultType: T.Type){
         self.loadingState.accept(.loading)
@@ -14,7 +17,7 @@ class ReadMangaViewModel: BaseViewModel{
             switch response {
             case .success(let data):
                 if let data = data as? MangaChapterImageResponse {
-                    self.chapterImages.accept(data.chapter)
+                    self.chapterImages.accept(data)
                     self.loadingState.accept(.finished)
                 }
             case .failure(let data):
@@ -28,5 +31,25 @@ class ReadMangaViewModel: BaseViewModel{
                 self.loadingState.accept(.failed)
             }
         }
+    }
+    
+    func chapterLength () -> Int {
+        if let data = chapterImages.value{
+            if (data.chapter.data.isEmpty){
+                return 1
+            }else{
+                return data.chapter.data.count
+            }
+        }else{
+            return 1
+        }
+    }
+    
+    func changeViewState(state: Bool){
+        viewState.accept(state)
+    }
+    
+    func changeSlideModeState(state: Bool){
+        slideMode.accept(state)
     }
 }

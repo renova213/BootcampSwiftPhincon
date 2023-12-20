@@ -35,11 +35,17 @@ extension DetailMangaViewController {
         }).disposed(by: disposeBag)
         favoriteButton.rx.tap.subscribe(onNext: {[weak self] _ in
             guard let self = self else { return }
-            self.navigationController?.popToRootViewController(animated: true)
+            self.navigationController?.popViewController(animated: true)
         }).disposed(by: disposeBag)
         sourceButton.rx.tap.subscribe(onNext: {[weak self] _ in
             guard let self = self else { return }
-            self.navigationController?.popToRootViewController(animated: true)
+            if let data = self.detailMangaVM.mangaDetail.value, let urlData = data.url{
+                if let url = URL(string: urlData) {
+                    let vc = WebKitViewController()
+                    vc.url = url
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
         }).disposed(by: disposeBag)
     }
     
@@ -152,9 +158,9 @@ extension DetailMangaViewController: SkeletonTableViewDelegate, UITableViewDataS
         case 1:
             let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as MangaChapterCell
             if(detailMangaVM.loadingState.value == StateLoading.finished){
-                cell.hideSkeleton()
+                cell.tableView.hideSkeleton()
             }else{
-                cell.showAnimatedGradientSkeleton()
+                cell.tableView.showAnimatedGradientSkeleton()
             }
             cell.mangaChapters = detailMangaVM.mangaChapters.value
             cell.viewHeight.constant = CGFloat((detailMangaVM.mangaChapters.value.count * 76) + 59)
@@ -179,9 +185,10 @@ extension DetailMangaViewController: RefreshPopUpDelegate, MangaChapterCellDeleg
         tableView.reloadData()
     }
     
-    func didTapNavigateReadChapter(chapterId: String) {
+    func didTapNavigateReadChapter(chapterId: String, title: String) {
         let vc = ReadMangaViewController()
         vc.chapterId = chapterId
+        vc.mangaTitle = title
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -31,8 +31,10 @@ class DetailAnimeViewModel: BaseViewModel {
             case .success(let data):
                 self.animeDetail.accept(data.data)
                 completion(true)
+                break
             case .failure:
                 completion(false)
+                break
             }
         }
     }
@@ -44,8 +46,10 @@ class DetailAnimeViewModel: BaseViewModel {
             switch result {
             case .success(let data):
                 self.animeCharacter.accept(data.data)
+                break
             case .failure(let err):
                 print(err)
+                break
             }
         }
     }
@@ -57,8 +61,10 @@ class DetailAnimeViewModel: BaseViewModel {
             switch result {
             case .success(let data):
                 self.animeStaff.accept(data.data)
+                break
             case .failure(let err):
                 print(err)
+                break
             }
         }
     }
@@ -69,8 +75,10 @@ class DetailAnimeViewModel: BaseViewModel {
             switch result {
             case .success(let data):
                 self.animeRecommendations.accept(data.data)
+                break
             case .failure(let err):
                 print(err)
+                break
             }
         }
     }
@@ -81,14 +89,14 @@ class DetailAnimeViewModel: BaseViewModel {
             print("User ID is nil")
             return
         }
-
+        
         switch favorite {
         case .anime(let anime):
             guard let animeTitle = anime.title else {
                 print("Anime title is nil")
                 return
             }
-
+            
             let isExist = CoreDataHelper.shared.isFavoriteEntityExist(FavoriteAnimeEntity.self, userId: userId, predicateFormat: "userId == %@ AND malId == %d AND title == %@", args: userId, anime.malID, animeTitle)
             isExistAnimeFavorite.accept(isExist)
             break
@@ -97,7 +105,7 @@ class DetailAnimeViewModel: BaseViewModel {
                 print("Character name or malId is nil")
                 return
             }
-
+            
             let isExist = CoreDataHelper.shared.isFavoriteEntityExist(FavoriteAnimeCharacterEntity.self, userId: userId, predicateFormat: "userId == %@ AND malId == %d AND name == %@",args: userId, malId, characterName)
             isExistAnimeCharacter.accept(isExist)
             break
@@ -108,6 +116,7 @@ class DetailAnimeViewModel: BaseViewModel {
             }
             let isExist = CoreDataHelper.shared.isFavoriteEntityExist(FavoriteAnimeCastEntity.self, userId: userId, predicateFormat: "userId == %@ AND malId == %d AND name == %@",args: userId, malId, castName)
             isExistAnimeCast.accept(isExist)
+            break
         }
     }
     
@@ -115,64 +124,66 @@ class DetailAnimeViewModel: BaseViewModel {
         switch favorite {
         case .anime(let anime):
             guard let title = anime.title else {return}
-
+            
             CoreDataHelper.shared.deleteFavoriteEntity(FavoriteAnimeEntity.self, predicateFormat: "title == %@",args: title)
             isExistFavoriteAnimeList(for: favorite)
-
+            break
         case .character(let animeCharacter):
             guard let name = animeCharacter.character?.name else {return}
-
+            
             CoreDataHelper.shared.deleteFavoriteEntity(FavoriteAnimeCharacterEntity.self, predicateFormat: "name == %@", args: name)
             isExistFavoriteAnimeList(for: favorite)
+            break
         case .cast(let animeCharacter):
             guard let name = animeCharacter.voiceActors?.first?.person?.name else {return}
-
+            
             CoreDataHelper.shared.deleteFavoriteEntity(FavoriteAnimeCastEntity.self, predicateFormat: "name == %@", args: name)
             isExistFavoriteAnimeList(for: favorite)
+            break
         }
     }
     
     func addToFavorite(for favorite: FavoriteEnum) {
         guard let userId = UserDefaultHelper.shared.getUserIDFromUserDefaults() else {return
         }
-
+        
         switch favorite {
         case .anime(let anime):
             guard let title = anime.title else {return}
-
+            
             let properties: [String: Any] = [
                 "title": title,
                 "urlImage": anime.images?.jpg?.imageUrl ?? "",
                 "url": anime.url ?? "",
                 "malId": Int32(anime.malID)
             ]
-
+            
             CoreDataHelper.shared.addOrUpdateFavoriteEntity(FavoriteAnimeEntity.self, for: favorite, userId: userId, properties: properties)
             isExistFavoriteAnimeList(for: favorite)
             break
         case .character(let animeCharacter):
             guard let characterName = animeCharacter.character?.name, let characterMalId = animeCharacter.character?.malID else {return }
-
+            
             let properties: [String: Any] = [
                 "name": characterName,
                 "url": animeCharacter.character?.url ?? "",
                 "urlImage": animeCharacter.character?.images?.jpg?.imageURL ?? "",
                 "malId": Int32(characterMalId)
             ]
-
+            
             CoreDataHelper.shared.addOrUpdateFavoriteEntity(FavoriteAnimeCharacterEntity.self, for: favorite, userId: userId, properties: properties)
             isExistFavoriteAnimeList(for: favorite)
             break
         case .cast(let animeCharacter):
             guard let castMalId = animeCharacter.voiceActors?.first?.person?.malID else {return }
-
+            
             let properties: [String: Any] = [
                 "name": animeCharacter.voiceActors?.first?.person?.name ?? "",
                 "url": animeCharacter.voiceActors?.first?.person?.url ?? "",
                 "urlImage": animeCharacter.voiceActors?.first?.person?.images?.jpg?.imageURL ?? "",
                 "malId": Int32(castMalId)
             ]
-
+            
             CoreDataHelper.shared.addOrUpdateFavoriteEntity(FavoriteAnimeCastEntity.self, for: favorite, userId: userId, properties: properties)
             isExistFavoriteAnimeList(for: favorite)
             break

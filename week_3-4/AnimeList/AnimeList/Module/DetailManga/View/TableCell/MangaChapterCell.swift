@@ -5,7 +5,7 @@ import SkeletonView
 
 protocol MangaChapterCellDelegate: AnyObject {
     func didTapSortChapter()
-    func didTapNavigateReadChapter(chapterId: String)
+    func didTapNavigateReadChapter(chapterId: String, title: String)
 }
 
 class MangaChapterCell: UITableViewCell {
@@ -68,6 +68,6 @@ extension MangaChapterCell: SkeletonTableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let data = mangaChapters[indexPath.row]
-        self.delegate?.didTapNavigateReadChapter(chapterId: data.id)
+        self.delegate?.didTapNavigateReadChapter(chapterId: data.id, title: data.attributes.title ?? "-")
     }
 }

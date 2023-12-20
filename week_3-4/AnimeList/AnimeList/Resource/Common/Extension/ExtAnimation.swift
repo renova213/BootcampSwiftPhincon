@@ -58,3 +58,24 @@ extension UIButton {
                        completion: nil)
     }
 }
+
+extension UIView {
+    
+    func fadeIn(duration: TimeInterval = 0.3) {
+        self.alpha = 0.0
+        self.isHidden = false
+        UIView.animate(withDuration: duration) {
+            self.alpha = 1.0
+        }
+    }
+    
+    func fadeOut(duration: TimeInterval = 0.3, completion: ((Bool) -> Void)? = nil) {
+        UIView.animate(withDuration: duration, animations: {
+            self.alpha = 0.0
+        }) { finished in
+            self.isHidden = true
+            self.alpha = 1.0
+            completion?(finished)
+        }
+    }
+}
