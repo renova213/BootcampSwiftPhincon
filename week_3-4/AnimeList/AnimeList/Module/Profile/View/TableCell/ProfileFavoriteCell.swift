@@ -5,6 +5,8 @@ import RxCocoa
 protocol ProfileFavoriteCellDegelate: AnyObject {
     func minimizeFavorite()
     func didTapFavoriteItem(url: String)
+    func didNavigateDetailAnime(malId: Int)
+    func didNavigateDetailManga(malId: Int)
 }
 
 class ProfileFavoriteCell: UITableViewCell {
@@ -37,6 +39,11 @@ class ProfileFavoriteCell: UITableViewCell {
     var favoriteAnimeCast: [FavoriteAnimeCastEntity] = [] {
         didSet {
             castCollection.reloadData()
+        }
+    }
+    var favoriteManga: [FavoriteMangaEntity] = [] {
+        didSet {
+            mangaCollection.reloadData()
         }
     }
     private let disposeBag = DisposeBag()
@@ -90,7 +97,7 @@ extension ProfileFavoriteCell: UICollectionViewDelegate, UICollectionViewDataSou
         case animeCollection:
             return favoriteAnimeList.count
         case mangaCollection:
-            return 5
+            return favoriteManga.count
         case characterCollection:
             return favoriteAnimeCharacter.count
         case castCollection:
@@ -108,6 +115,8 @@ extension ProfileFavoriteCell: UICollectionViewDelegate, UICollectionViewDataSou
             cell.initialSetup(title: data.title ?? "", urlImage: data.urlImage ?? "")
             break
         case mangaCollection:
+            let data = favoriteManga[indexPath.row]
+            cell.initialSetup(title: data.title ?? "", urlImage: data.urlImage ?? "")
             break
         case characterCollection:
             let data = favoriteAnimeCharacter[indexPath.row]
@@ -127,12 +136,13 @@ extension ProfileFavoriteCell: UICollectionViewDelegate, UICollectionViewDataSou
         switch collectionView {
         case animeCollection:
             let data = favoriteAnimeList[indexPath.row]
-            
-            guard let url = data.url else {return}
-            
-            self.delegate?.didTapFavoriteItem(url: url)
+                        
+            self.delegate?.didNavigateDetailAnime(malId: Int(data.malId))
             break
         case mangaCollection:
+            let data = favoriteManga[indexPath.row]
+            
+            self.delegate?.didNavigateDetailManga(malId: Int(data.malId))
             break
         case characterCollection:
             let data = favoriteAnimeCharacter[indexPath.row]

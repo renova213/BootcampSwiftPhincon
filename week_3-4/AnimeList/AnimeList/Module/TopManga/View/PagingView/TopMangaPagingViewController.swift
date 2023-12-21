@@ -1,15 +1,16 @@
 import UIKit
+import SkeletonView
 import RxSwift
 import RxCocoa
-import SkeletonView
 
-class TopAnimePagingView: UIViewController {
+class TopMangaPagingViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
         configureTableView()
+        loadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,9 +27,9 @@ class TopAnimePagingView: UIViewController {
     }
     
     
-    private let topAnimeVM = TopAnimeViewModel()
+    private let topMangaVM = TopMangaViewModel()
     private let disposeBag = DisposeBag()
-    var topAnimes: [AnimeEntity] = [] {
+    var topMangas: [MangaEntity] = [] {
         didSet{
             tableView.reloadData()
         }
@@ -36,7 +37,7 @@ class TopAnimePagingView: UIViewController {
     var index:Int?
 }
 
-extension TopAnimePagingView: UITableViewDelegate, SkeletonTableViewDataSource {
+extension TopMangaPagingViewController: UITableViewDelegate, SkeletonTableViewDataSource {
     func numSections(in collectionSkeletonView: UITableView) -> Int {
         return 1
     }
@@ -46,50 +47,50 @@ extension TopAnimePagingView: UITableViewDelegate, SkeletonTableViewDataSource {
     }
     
     func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
-        return String(describing: TopAnimeTableCell.self)
+        return String(describing: TopMangaTableCell.self)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return topAnimes.count
+        return topMangas.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-            let data = topAnimes[indexPath.row]
-            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as TopAnimeTableCell
+            let data = topMangas[indexPath.row]
+            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as TopMangaTableCell
             cell.selectionStyle = .none
             cell.initialSetup(data: data, index: indexPath.row)
             return cell
+ 
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            let data = topAnimes[indexPath.row]
-            let vc = DetailAnimeViewController()
+            let data = topMangas[indexPath.row]
+            let vc = DetailMangaViewController()
             vc.malId = data.malId
             navigationController?.hero.isEnabled = true
             navigationController?.pushViewController(vc, animated: true)
             vc.navigationController?.isNavigationBarHidden = true
-        }
+    }
 }
 
-extension TopAnimePagingView {
+extension TopMangaPagingViewController {
     func configureTableView(){
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.registerCellWithNib(TopAnimeTableCell.self)
+        tableView.registerCellWithNib(TopMangaTableCell.self)
     }
     
     func loadData(){
         switch index {
         case 0:
-            topAnimeVM.loadData(for: Endpoint.getTopAnime(params: TopAnimeParam(filter: "airing", limit: 15)), with: TopAnimeEnum.airing, resultType: AnimeResponse.self)
+            topMangaVM.loadData(for: Endpoint.getTopManga(params: TopMangaParam(type: "manga", filter: "publishing", limit: 15)), with: TopMangaEnum.publishing, resultType: MangaResponse.self)
             break
         case 1:
-            topAnimeVM.loadData(for: Endpoint.getTopAnime(params: TopAnimeParam(filter: "upcoming", limit: 15)), with: TopAnimeEnum.upcoming, resultType: AnimeResponse.self)
+            topMangaVM.loadData(for: Endpoint.getTopManga(params: TopMangaParam(type: "manga", filter: "upcoming", limit: 15)), with: TopMangaEnum.upcoming, resultType: MangaResponse.self)
             break
         case 2:
-            topAnimeVM.loadData(for: Endpoint.getTopAnime(params: TopAnimeParam(filter: "bypopularity", limit: 15)), with: TopAnimeEnum.popularity, resultType: AnimeResponse.self)
+            topMangaVM.loadData(for: Endpoint.getTopManga(params: TopMangaParam(type: "manga", filter: "bypopularity", limit: 15)), with: TopMangaEnum.popularity, resultType: MangaResponse.self)
             break
         case 3:
-            topAnimeVM.loadData(for: Endpoint.getTopAnime(params: TopAnimeParam(filter: "favorite", limit: 15)), with: TopAnimeEnum.favorite, resultType: AnimeResponse.self)
+            topMangaVM.loadData(for: Endpoint.getTopManga(params: TopMangaParam(type: "manga", filter: "favorite", limit: 15)), with: TopMangaEnum.favorite, resultType: MangaResponse.self)
             break
         default:
             break
@@ -97,14 +98,18 @@ extension TopAnimePagingView {
     }
     
     func bindData(){
-        topAnimeVM.loadingState.asObservable().subscribe(onNext: {[weak self] state in
+        topMangaVM.loadingState.asObservable().subscribe(onNext: {[weak self] state in
             guard let self = self else { return }
             switch state {
             case .loading :
                 self.tableView.showAnimatedGradientSkeleton()
                 break
-            case .finished, .failed, .notLoad:
+            case .finished:
                 self.tableView.hideSkeleton()
+                break
+            case .failed:
+                self.refreshPopUp(message: self.topMangaVM.errorMessage.value)
+            case .notLoad:
                 break
             }
         }).disposed(by: disposeBag)
@@ -112,34 +117,34 @@ extension TopAnimePagingView {
         if let index = self.index {
             switch index {
             case 0:
-                topAnimeVM.topAiringAnime.subscribe({[weak self] data in
+                topMangaVM.topPublishingManga.subscribe({[weak self] data in
                     guard let self = self else { return }
-                    if let animes = data.element {
-                        self.topAnimes = animes
+                    if let mangas = data.element {
+                        self.topMangas = mangas
                     }
                 }).disposed(by: disposeBag)
                 break
             case 1:
-                topAnimeVM.topUpcomingAnime.subscribe({[weak self] data in
+                topMangaVM.topUpcomingManga.subscribe({[weak self] data in
                     guard let self = self else { return }
-                    if let animes = data.element {
-                        self.topAnimes = animes
+                    if let mangas = data.element {
+                        self.topMangas = mangas
                     }
                 }).disposed(by: disposeBag)
                 break
             case 2:
-                topAnimeVM.topPopularityAnime.subscribe({[weak self] data in
+                topMangaVM.topPopularityManga.subscribe({[weak self] data in
                     guard let self = self else { return }
-                    if let animes = data.element {
-                        self.topAnimes = animes
+                    if let mangas = data.element {
+                        self.topMangas = mangas
                     }
                 }).disposed(by: disposeBag)
                 break
             case 3:
-                topAnimeVM.topFavoriteAnime.subscribe({[weak self] data in
+                topMangaVM.topFavoriteManga.subscribe({[weak self] data in
                     guard let self = self else { return }
-                    if let animes = data.element {
-                        self.topAnimes = animes
+                    if let mangas = data.element {
+                        self.topMangas = mangas
                     }
                 }).disposed(by: disposeBag)
                 break
@@ -147,5 +152,24 @@ extension TopAnimePagingView {
                 break
             }
         }
+    }
+    
+    private func refreshPopUp(message: String){
+        let vc = RefreshPopUp()
+        vc.delegate = self
+        vc.view.alpha = 0
+        vc.errorLabel.text = message
+        self.present(vc, animated: false, completion: nil)
+        
+        UIView.animate(withDuration: 0.5) {
+            vc.view.alpha = 1
+        }
+    }
+}
+
+extension TopMangaPagingViewController: RefreshPopUpDelegate {
+    func didTapRefresh() {
+        self.dismiss(animated: false)
+        loadData()
     }
 }

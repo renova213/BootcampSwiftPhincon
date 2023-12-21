@@ -29,6 +29,7 @@ class DetailAnimeViewController: UIViewController {
     
     private let detailAnimeVM = DetailAnimeViewModel()
     private let profileVM = ProfileViewModel()
+    private let favoriteVM = FavoriteViewModel()
     var id: String?
     var malId: Int?
     var animeDetail: AnimeDetailEntity? {
@@ -66,7 +67,7 @@ extension DetailAnimeViewController{
             guard let self = self else { return }
             
             if let anime = self.animeDetail {
-                self.detailAnimeVM.addToFavorite(for: FavoriteEnum.anime(entity: anime))
+                self.favoriteVM.addToFavorite(for: FavoriteEnum.anime(entity: anime))
                 self.favoriteButton.bounceAnimation()
             }
         }).disposed(by: disposeBag)
@@ -137,8 +138,8 @@ extension DetailAnimeViewController {
                 }
             }
             profileVM.fetchFavoriteList(for: FetchFavoriteEnum.anime)
-            profileVM.fetchFavoriteList(for: FetchFavoriteEnum.character)
-            profileVM.fetchFavoriteList(for: FetchFavoriteEnum.cast)
+            profileVM.fetchFavoriteList(for: FetchFavoriteEnum.animeCharacter)
+            profileVM.fetchFavoriteList(for: FetchFavoriteEnum.animeCast)
             detailAnimeVM.getAnimeCharacter(malId: id)
             DispatchQueue.main.asyncAfter(deadline: .now() + 2){
                 self.detailAnimeVM.getAnimeStaff(malId: id)
@@ -152,7 +153,7 @@ extension DetailAnimeViewController {
             .subscribe(onNext: { [weak self] i in
                 guard let self = self, let animeDetail = i else { return }
                 self.animeDetail = animeDetail
-                self.detailAnimeVM.isExistFavoriteAnimeList(for: FavoriteEnum.anime(entity: animeDetail))
+                self.favoriteVM.isExistFavoriteList(for: FavoriteEnum.anime(entity: animeDetail))
             })
             .disposed(by: disposeBag)
         detailAnimeVM.animeCharacter
@@ -173,7 +174,7 @@ extension DetailAnimeViewController {
                 self.animeRecommendation = i
             })
             .disposed(by: disposeBag)
-        detailAnimeVM.isExistAnimeFavorite.asObservable().subscribe(onNext: {[weak self] state in
+        favoriteVM.isExistAnimeFavorite.asObservable().subscribe(onNext: {[weak self] state in
             guard let self = self else { return }
             switch state {
             case true:

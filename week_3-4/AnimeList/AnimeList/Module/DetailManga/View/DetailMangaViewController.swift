@@ -25,6 +25,8 @@ class DetailMangaViewController: UIViewController {
     var malId: Int?
     private let disposeBag = DisposeBag()
     private let detailMangaVM = DetailMangaViewModel()
+    private let favoriteVM = FavoriteViewModel()
+    private let profileVM = ProfileViewModel()
 }
 
 extension DetailMangaViewController {
@@ -33,9 +35,13 @@ extension DetailMangaViewController {
             guard let self = self else { return }
             self.navigationController?.popViewController(animated: true)
         }).disposed(by: disposeBag)
-        favoriteButton.rx.tap.subscribe(onNext: {[weak self] _ in
+        favoriteButton.rx.tap.subscribe(onNext: {[weak self] in
             guard let self = self else { return }
-            self.navigationController?.popViewController(animated: true)
+            
+            if let manga = self.detailMangaVM.mangaDetail.value {
+                self.favoriteVM.addToFavorite(for: FavoriteEnum.manga(entity: manga))
+                self.favoriteButton.bounceAnimation()
+            }
         }).disposed(by: disposeBag)
         sourceButton.rx.tap.subscribe(onNext: {[weak self] _ in
             guard let self = self else { return }
@@ -60,6 +66,9 @@ extension DetailMangaViewController {
                 self.refreshPopUp(message: self.detailMangaVM.errorMessage.value)
                 break
             case .finished:
+                if let mangaDetail = self.detailMangaVM.mangaDetail.value{
+                    self.favoriteVM.isExistFavoriteList(for: FavoriteEnum.manga(entity: mangaDetail))
+                }
                 self.tableView.reloadData()
                 break
             }
@@ -79,6 +88,16 @@ extension DetailMangaViewController {
                 break
             }
         }).disposed(by: disposeBag)
+        
+        favoriteVM.isExistAnimeFavorite.asObservable().subscribe(onNext: {[weak self] state in
+            guard let self = self else { return }
+            switch state {
+            case true:
+                self.favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            case false:
+                self.favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            }
+        }).disposed(by: disposeBag)
     }
     
     private func loadData(){
@@ -91,6 +110,7 @@ extension DetailMangaViewController {
                 }
             }
         }
+        profileVM.fetchFavoriteList(for: FetchFavoriteEnum.manga)
     }
     
     private func configureTableView (){

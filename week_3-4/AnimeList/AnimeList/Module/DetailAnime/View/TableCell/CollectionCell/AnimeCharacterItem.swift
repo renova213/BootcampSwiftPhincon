@@ -33,6 +33,7 @@ class AnimeCharacterItem: UICollectionViewCell {
     var voiceActorMalUrl: String?
     var animeCharacter: AnimeCharacterEntity?
     private let detailAnimeVM = DetailAnimeViewModel()
+    private let favoriteVM = FavoriteViewModel()
     
 }
 
@@ -58,8 +59,8 @@ extension AnimeCharacterItem {
         }
         animeCharacter = data
         characterMalUrl = data.character?.url
-        detailAnimeVM.isExistFavoriteAnimeList(for: FavoriteEnum.character(entity: data))
-        detailAnimeVM.isExistFavoriteAnimeList(for: FavoriteEnum.cast(entity: data))
+        favoriteVM.isExistFavoriteList(for: FavoriteEnum.animeCharacter(entity: data))
+        favoriteVM.isExistFavoriteList(for: FavoriteEnum.animeCast(entity: data))
     }
     
     func configureGesture(){
@@ -88,20 +89,20 @@ extension AnimeCharacterItem {
         favoriteCastButton.rx.tap.subscribe(onNext: {[weak self] in
             guard let self = self else { return }
             if let animeCharacter = self.animeCharacter {
-                self.detailAnimeVM.addToFavorite(for: FavoriteEnum.cast(entity: animeCharacter))
+                self.favoriteVM.addToFavorite(for: FavoriteEnum.animeCast(entity: animeCharacter))
             }
         }).disposed(by: disposeBag)
         
         favoriteCharacterButton.rx.tap.subscribe(onNext: {[weak self] in
             guard let self = self else { return }
             if let animeCharacter = self.animeCharacter {
-                self.detailAnimeVM.addToFavorite(for: FavoriteEnum.character(entity: animeCharacter))
+                self.favoriteVM.addToFavorite(for: FavoriteEnum.animeCharacter(entity: animeCharacter))
             }
         }).disposed(by: disposeBag)
     }
     
     func bindData(){
-        detailAnimeVM.isExistAnimeCharacter.asObservable().subscribe(onNext: {[weak self] state in
+        favoriteVM.isExistAnimeCharacter.asObservable().subscribe(onNext: {[weak self] state in
             guard let self = self else { return }
             
             switch state {
@@ -114,7 +115,7 @@ extension AnimeCharacterItem {
             self.favoriteCharacterButton.bounceAnimation()
         }).disposed(by: disposeBag)
         
-        detailAnimeVM.isExistAnimeCast.asObservable().subscribe(onNext: {[weak self] state in
+        favoriteVM.isExistAnimeCast.asObservable().subscribe(onNext: {[weak self] state in
             guard let self = self else { return }
             switch state {
             case true:

@@ -9,6 +9,7 @@ class ProfileViewModel: BaseViewModel {
     var favoriteAnimeList = BehaviorRelay<[FavoriteAnimeEntity]>(value: [])
     var favoriteAnimeCharacterList = BehaviorRelay<[FavoriteAnimeCharacterEntity]>(value: [])
     var favoriteAnimeCastList = BehaviorRelay<[FavoriteAnimeCastEntity]>(value: [])
+    var favoriteMangaList = BehaviorRelay<[FavoriteMangaEntity]>(value: [])
     var userRecentUpdates = BehaviorRelay<[UserRecentUpdateEntity]>(value: [])
     var moreUserRecentUpdates = BehaviorRelay<[UserRecentUpdateEntity]>(value: [])
     var userAnimeStats = BehaviorRelay<UserStatsEntity?>(value: nil)
@@ -129,13 +130,17 @@ class ProfileViewModel: BaseViewModel {
                     let favoriteAnimeList: [FavoriteAnimeEntity] = try CoreDataHelper.shared.fetchFavoriteList( FavoriteAnimeEntity.self, userId: userId)
                     self.favoriteAnimeList.accept(favoriteAnimeList)
                     break
-                case .character:
+                case .animeCharacter:
                     let favoriteAnimeCharacter: [FavoriteAnimeCharacterEntity] = try CoreDataHelper.shared.fetchFavoriteList(FavoriteAnimeCharacterEntity.self, userId: userId)
                     self.favoriteAnimeCharacterList.accept(favoriteAnimeCharacter)
                     break
-                case .cast:
+                case .animeCast:
                     let favoriteAnimeCast: [FavoriteAnimeCastEntity] = try CoreDataHelper.shared.fetchFavoriteList(FavoriteAnimeCastEntity.self, userId: userId)
                     self.favoriteAnimeCastList.accept(favoriteAnimeCast)
+                    break
+                case .manga:
+                    let favoriteManga: [FavoriteMangaEntity] = try CoreDataHelper.shared.fetchFavoriteList(FavoriteMangaEntity.self, userId: userId)
+                    self.favoriteMangaList.accept(favoriteManga)
                     break
                 }
             }

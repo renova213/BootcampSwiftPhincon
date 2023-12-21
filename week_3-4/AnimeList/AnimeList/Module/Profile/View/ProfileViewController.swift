@@ -4,6 +4,7 @@ import RxCocoa
 import FloatingPanel
 import SkeletonView
 import Toast_Swift
+import Hero
 
 class ProfileViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -15,8 +16,8 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        bindData()
         loadData()
+        bindData()
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
@@ -50,6 +51,12 @@ class ProfileViewController: UIViewController {
     }
     
     var favoriteAnimeCastList: [FavoriteAnimeCastEntity] = [] {
+        didSet{
+            tableView.reloadData()
+        }
+    }
+    
+    var favoriteMangaList: [FavoriteMangaEntity] = [] {
         didSet{
             tableView.reloadData()
         }
@@ -130,6 +137,11 @@ extension ProfileViewController {
             self.favoriteAnimeCastList = animeCast
         }).disposed(by: disposeBag)
         
+        profileVM.favoriteMangaList.asObservable().subscribe(onNext: {[weak self] mangaFavorite in
+            guard let self = self else { return }
+            self.favoriteMangaList = mangaFavorite
+        }).disposed(by: disposeBag)
+        
         profileVM.userRecentUpdates.asObservable().subscribe(onNext: {[weak self] userUpdates in
             guard let self = self else { return }
             self.userRecentUpdates = userUpdates
@@ -153,15 +165,15 @@ extension ProfileViewController {
             profileVM.loadData(for: Endpoint.getUserStats(params: UserStatsParam(userId: userId, filter: "anime")), resultType: UserStatsResponse.self)
             profileVM.loadData(for: Endpoint.getUserStats(params: UserStatsParam(userId: userId, filter: "manga")), resultType: UserStatsResponse.self)
         }
-        profileVM.fetchFavoriteList(for: FetchFavoriteEnum.cast)
+        profileVM.fetchFavoriteList(for: FetchFavoriteEnum.manga)
+        profileVM.fetchFavoriteList(for: FetchFavoriteEnum.animeCast)
         profileVM.fetchFavoriteList(for: FetchFavoriteEnum.anime)
-        profileVM.fetchFavoriteList(for: FetchFavoriteEnum.character)
+        profileVM.fetchFavoriteList(for: FetchFavoriteEnum.animeCharacter)
     }
     
     func configureUI(){
         appBar.createAppBar()
         style.backgroundColor = UIColor(named: "Main Color") ?? UIColor.black
-        
     }
     
     func configureTableView(){
@@ -238,6 +250,7 @@ extension ProfileViewController: UITableViewDelegate, SkeletonTableViewDataSourc
             cell.favoriteAnimeList = self.favoriteAnimeList
             cell.favoriteAnimeCharacter = self.favoriteAnimeCharacterList
             cell.favoriteAnimeCast = self.favoriteAnimeCastList
+            cell.favoriteManga = self.favoriteMangaList
             cell.delegate = self
             return cell
         default:
@@ -266,41 +279,18 @@ extension ProfileViewController: FloatingPanelControllerDelegate{
 }
 
 extension ProfileViewController: ProfileStatsCellDelegate, ProfileFavoriteCellDegelate, ProfileInfoCellDelegate, ProfileSettingViewControllerDelegate, UpdateProfileViewControllerDelegate, ProfileRecentUpdateDelegate {
-    func didNavigationMoreRecentUpdate() {
-        let vc = MoreRecentUpdateViewController()
-        vc.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(vc, animated: true)
-        vc.navigationController?.isNavigationBarHidden = true
-    }
     
+    //UpdateProfileViewControllerDelegate
     func didLoadUserData() {
         loadData()
     }
     
-    func didTapFavoriteItem(url: String) {
-        guard let url = URL(string: url) else {return}
-        
-        let vc = WebKitViewController()
-        vc.url = url
-        navigationController?.pushViewController(vc, animated: true)
+    //ProfileSettingViewControllerDelegate
+    func didTapChangePassword() {
+        let vc = ChangePasswordViewController()
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: false, completion: nil)
     }
-    
-    func didTapGalleryImage() {
-        presentPicker(sourceType: .photoLibrary)
-    }
-    
-    func minimizeFavorite() {
-        toggleMinimizeFavorite = !toggleMinimizeFavorite
-    }
-    
-    func didTapTab(state: Bool) {
-        profileStatsTabState = state
-    }
-    
-    func didTapNavigationSetting() {
-        self.presentFloatingPanel()
-    }
-    
     func didTapSignOut() {
         UserDefaultHelper.shared.deleteUserIDFromUserDefaults()
         let vc = AuthViewController()
@@ -313,7 +303,6 @@ extension ProfileViewController: ProfileStatsCellDelegate, ProfileFavoriteCellDe
             }
         }
     }
-    
     func didTapUpdateProfile() {
         let vc = UpdateProfileViewController()
         vc.view.alpha = 0.0
@@ -331,10 +320,53 @@ extension ProfileViewController: ProfileStatsCellDelegate, ProfileFavoriteCellDe
         }
     }
     
-    func didTapChangePassword() {
-        let vc = ChangePasswordViewController()
-        vc.modalPresentationStyle = .overCurrentContext
-        present(vc, animated: false, completion: nil)
+    //ProfileRecentUpdateDelegate
+    func didNavigationMoreRecentUpdate() {
+        let vc = MoreRecentUpdateViewController()
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+        vc.navigationController?.isNavigationBarHidden = true
+    }
+    
+    //ProfileInfoCellDelegate
+    func didTapGalleryImage() {
+        presentPicker(sourceType: .photoLibrary)
+    }
+    func didTapNavigationSetting() {
+        self.presentFloatingPanel()
+    }
+    
+    //ProfileStatsCellDelegate
+    func didTapTab(state: Bool) {
+        profileStatsTabState = state
+    }
+    
+    //profileFavoriteDelegate
+    func didNavigateDetailAnime(malId: Int) {
+        let vc = DetailAnimeViewController()
+        vc.malId = malId
+        navigationController?.hero.isEnabled = true
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+        vc.navigationController?.isNavigationBarHidden = true
+    }
+    func didNavigateDetailManga(malId: Int) {
+        let vc = DetailMangaViewController()
+        vc.malId = malId
+        navigationController?.hero.isEnabled = true
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+        vc.navigationController?.isNavigationBarHidden = true
+    }
+    func minimizeFavorite() {
+        toggleMinimizeFavorite = !toggleMinimizeFavorite
+    }
+    func didTapFavoriteItem(url: String) {
+        guard let url = URL(string: url) else {return}
+        
+        let vc = WebKitViewController()
+        vc.url = url
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

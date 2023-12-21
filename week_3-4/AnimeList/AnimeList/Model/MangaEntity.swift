@@ -1,17 +1,20 @@
 import Foundation
 
 struct MangaEntity: Codable{
-    var malId: Int?
-    var title: String?
-    var images: MangaImageType?
-    var score: Double?
-    var type: String?
-    var chapters: Int?
-    var status: String?
-    var published: Published
+    let malId: Int
+    let title: String?
+    let url: String?
+    let images: MangaImageType?
+    let score: Double?
+    let type: String?
+    let chapters: Int?
+    let status: String?
+    let scoredBy: Int?
+    let published: Published
     
     enum CodingKeys: String, CodingKey {
         case malId = "mal_id"
+        case url = "url"
         case title = "title"
         case images = "images"
         case status = "status"
@@ -19,6 +22,7 @@ struct MangaEntity: Codable{
         case type = "type"
         case chapters = "chapters"
         case published = "published"
+        case scoredBy = "scored_by"
     }
 }
 

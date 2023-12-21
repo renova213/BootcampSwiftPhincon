@@ -21,4 +21,11 @@
         <attribute name="urlImage" optional="YES" attributeType="String"/>
         <attribute name="userId" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="FavoriteMangaEntity" representedClassName="FavoriteMangaEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="malId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <attribute name="urlImage" optional="YES" attributeType="String"/>
+        <attribute name="userId" optional="YES" attributeType="String"/>
+    </entity>
 </model>

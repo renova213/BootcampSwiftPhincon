@@ -10,7 +10,7 @@ class TopAnimeViewModel: BaseViewModel {
     let topPopularityAnime = BehaviorRelay<[AnimeEntity]>(value: [])
     let topFavoriteAnime = BehaviorRelay<[AnimeEntity]>(value: [])
     
-    func loadData <T: Codable>(for endpoint: Endpoint,with topAnime: TopAnimeEnum, resultType: T.Type){
+    func loadData <T: Codable>(for endpoint: Endpoint, with topAnime: TopAnimeEnum, resultType: T.Type){
         loadingState.accept(.loading)
         
         api.fetchRequest(endpoint: endpoint){ [weak self] (response: Result<T, Error>) in

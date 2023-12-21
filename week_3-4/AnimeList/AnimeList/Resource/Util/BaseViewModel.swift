@@ -3,25 +3,6 @@ import SystemConfiguration
 import RxSwift
 import RxCocoa
 
-enum StateLoading: Int {
-    case notLoad
-    case loading
-    case finished
-    case failed
-}
-
-enum FavoriteEnum {
-    case anime(entity: AnimeDetailEntity)
-    case character(entity: AnimeCharacterEntity)
-    case cast(entity: AnimeCharacterEntity)
-}
-
-enum FetchFavoriteEnum {
-    case anime
-    case character
-    case cast
-}
-
 class BaseViewModel {
     internal let bag: DisposeBag = DisposeBag()
     

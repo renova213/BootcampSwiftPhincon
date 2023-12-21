@@ -196,7 +196,7 @@ extension SearchViewController {
             searchVM.loadData(for: Endpoint.filterAnime(params:FilterAnimeParam(page: "1", limit: "16", q: self.searchField.text)), resultType: AnimeResponse.self)
         }else {
             searchVM.filteredManga.accept([])
-            searchVM.loadData(for: Endpoint.filterManga(params:FilterMangaParam(page: "1", limit: "16", q: self.searchField.text)), resultType: MangaResponse.self)
+            searchVM.loadData(for: Endpoint.filterManga(params:FilterMangaParam(page: "1", limit: "16", q: self.searchField.text, type: "manga")), resultType: MangaResponse.self)
         }
     }
 }

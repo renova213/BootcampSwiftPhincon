@@ -74,4 +74,4 @@ class DetailMangaViewModel: BaseViewModel{
             break
         }
     }
-}
+    }

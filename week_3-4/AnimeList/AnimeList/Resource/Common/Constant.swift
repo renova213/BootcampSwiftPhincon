@@ -22,6 +22,13 @@ enum TopAnimeEnum {
     case favorite
 }
 
+enum TopMangaEnum {
+    case publishing
+    case upcoming
+    case popularity
+    case favorite
+}
+
 enum AnimeCalendarEnum {
     case monday
     case tuesday
@@ -41,3 +48,23 @@ enum ValidationResult {
     case failure(CustomError)
 }
 
+enum StateLoading: Int {
+    case notLoad
+    case loading
+    case finished
+    case failed
+}
+
+enum FavoriteEnum {
+    case anime(entity: AnimeDetailEntity)
+    case animeCharacter(entity: AnimeCharacterEntity)
+    case animeCast(entity: AnimeCharacterEntity)
+    case manga(entity: DetailMangaEntity)
+}
+
+enum FetchFavoriteEnum {
+    case anime
+    case animeCharacter
+    case animeCast
+    case manga
+}
