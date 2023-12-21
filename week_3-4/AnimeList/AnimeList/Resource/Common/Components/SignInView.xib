@@ -12,7 +12,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignInView" customModule="AnimeList" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="XeW-Zb-YBo"/>
-                <outlet property="forgotPasswordButton" destination="vIU-HT-yji" id="VMK-DB-jpF"/>
                 <outlet property="googleBorder" destination="tTR-Vb-Vvd" id="ZEn-FA-tOQ"/>
                 <outlet property="passwordField" destination="qLx-am-HFH" id="jdL-Cp-x1e"/>
                 <outlet property="signInButton" destination="wGm-mv-KP0" id="Sek-MU-lhA"/>
@@ -40,12 +39,6 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vIU-HT-yji">
-                    <rect key="frame" x="190" y="98" width="160" height="34.333333333333343"/>
-                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Forgot Password?"/>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGm-mv-KP0">
                     <rect key="frame" x="0.0" y="168" width="350" height="45"/>
                     <constraints>
@@ -114,10 +107,8 @@
                 <constraint firstItem="P0r-DQ-EFS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="IHS-v7-aj6"/>
                 <constraint firstItem="wGm-mv-KP0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="JAD-Uw-pRR"/>
                 <constraint firstItem="qFl-7T-koa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="NdZ-wX-omg"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="vIU-HT-yji" secondAttribute="trailing" id="OGZ-QK-7sc"/>
                 <constraint firstItem="qFl-7T-koa" firstAttribute="top" secondItem="i7X-pg-LMV" secondAttribute="bottom" constant="12" id="P4s-Mg-3qZ"/>
                 <constraint firstItem="qLx-am-HFH" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="QCv-R9-Nla"/>
-                <constraint firstItem="vIU-HT-yji" firstAttribute="top" secondItem="qLx-am-HFH" secondAttribute="bottom" constant="16" id="Tgx-S7-FqO"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="i7X-pg-LMV" secondAttribute="trailing" id="UOa-3I-oCb"/>
                 <constraint firstItem="i7X-pg-LMV" firstAttribute="top" secondItem="wGm-mv-KP0" secondAttribute="bottom" constant="12" id="d2N-h0-OEh"/>
                 <constraint firstItem="P0r-DQ-EFS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="mTV-pI-47x"/>

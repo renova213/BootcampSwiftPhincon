@@ -210,8 +210,6 @@
 		368C16642B187B7000F44C4B /* AnimeSeasonTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368C16622B187B7000F44C4B /* AnimeSeasonTableCell.xib */; };
 		368C16682B187FD600F44C4B /* AnimeSeasonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368C16672B187FD600F44C4B /* AnimeSeasonViewModel.swift */; };
 		368FD43B2B21C58600BBA590 /* ExtTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368FD43A2B21C58600BBA590 /* ExtTextField.swift */; };
-		368FD43F2B21C9C200BBA590 /* ForgotPasswordPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368FD43D2B21C9C200BBA590 /* ForgotPasswordPopUp.swift */; };
-		368FD4402B21C9C200BBA590 /* ForgotPasswordPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368FD43E2B21C9C200BBA590 /* ForgotPasswordPopUp.xib */; };
 		3692C3F12B21679B00E0DE5B /* FilterPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3692C3EF2B21679B00E0DE5B /* FilterPopUp.swift */; };
 		3692C3F22B21679B00E0DE5B /* FilterPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3692C3F02B21679B00E0DE5B /* FilterPopUp.xib */; };
 		3692C3F62B216D1E00E0DE5B /* FilterPopUpTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3692C3F42B216D1E00E0DE5B /* FilterPopUpTableCell.swift */; };
@@ -511,8 +509,6 @@
 		368C16622B187B7000F44C4B /* AnimeSeasonTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimeSeasonTableCell.xib; sourceTree = "<group>"; };
 		368C16672B187FD600F44C4B /* AnimeSeasonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeSeasonViewModel.swift; sourceTree = "<group>"; };
 		368FD43A2B21C58600BBA590 /* ExtTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtTextField.swift; sourceTree = "<group>"; };
-		368FD43D2B21C9C200BBA590 /* ForgotPasswordPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPopUp.swift; sourceTree = "<group>"; };
-		368FD43E2B21C9C200BBA590 /* ForgotPasswordPopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgotPasswordPopUp.xib; sourceTree = "<group>"; };
 		3692C3EF2B21679B00E0DE5B /* FilterPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPopUp.swift; sourceTree = "<group>"; };
 		3692C3F02B21679B00E0DE5B /* FilterPopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterPopUp.xib; sourceTree = "<group>"; };
 		3692C3F42B216D1E00E0DE5B /* FilterPopUpTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPopUpTableCell.swift; sourceTree = "<group>"; };
@@ -1360,15 +1356,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		368FD43C2B21C99E00BBA590 /* PopUp */ = {
-			isa = PBXGroup;
-			children = (
-				368FD43D2B21C9C200BBA590 /* ForgotPasswordPopUp.swift */,
-				368FD43E2B21C9C200BBA590 /* ForgotPasswordPopUp.xib */,
-			);
-			path = PopUp;
-			sourceTree = "<group>";
-		};
 		3692C3EE2B21674800E0DE5B /* PopUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -1400,7 +1387,6 @@
 		3692C3FD2B21872800E0DE5B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				368FD43C2B21C99E00BBA590 /* PopUp */,
 				3692C3F92B217AC900E0DE5B /* AuthViewController.swift */,
 				3692C3FA2B217AC900E0DE5B /* AuthViewController.xib */,
 			);
@@ -1821,7 +1807,6 @@
 				3605F4152B1DB8DF00984C62 /* ProfileStatsCell.xib in Resources */,
 				3605F3FE2B1DB65D00984C62 /* Poppins-ExtraLight.ttf in Resources */,
 				3643ABCD2B18436E00195054 /* AnimeScheduleViewController.xib in Resources */,
-				368FD4402B21C9C200BBA590 /* ForgotPasswordPopUp.xib in Resources */,
 				3605F40B2B1DB65E00984C62 /* Poppins-Bold.ttf in Resources */,
 				36569ED92AFE05B700EDB6B9 /* DashboardViewController.xib in Resources */,
 				3606D4842B1723570097D6C5 /* TopAnimeTableCell.xib in Resources */,
@@ -2058,7 +2043,6 @@
 				3673F2262B20502000CD83E2 /* ProfileRecentUpdate.swift in Sources */,
 				360E82822B0DA5960011D844 /* UiViewController + Extension.swift in Sources */,
 				36A79ABE2B04AD6400471D5B /* AnimeGenreItem.swift in Sources */,
-				368FD43F2B21C9C200BBA590 /* ForgotPasswordPopUp.swift in Sources */,
 				36609A372B284A6100FED888 /* TokenHelper.swift in Sources */,
 				36F9D0B12B0F28B50056F40E /* SearchBar.swift in Sources */,
 				3660225E2B0B1AC200099DE3 /* AnimeStaffItem.swift in Sources */,

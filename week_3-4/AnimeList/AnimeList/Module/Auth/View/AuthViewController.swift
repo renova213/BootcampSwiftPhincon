@@ -132,11 +132,6 @@ extension AuthViewController {
             }
         }).disposed(by: disposeBag)
         
-        signInView.forgotPasswordButton.rx.tap.subscribe(onNext: {[weak self] _ in
-            guard let self = self else { return }
-            self.showForgotPasswordPopUp()
-        }).disposed(by: disposeBag)
-        
         signUpToggleView.rx.tapGesture().when(.recognized).subscribe(onNext: {[weak self] _ in
             guard let self = self else { return }
             self.showSignUpView()
@@ -176,17 +171,6 @@ extension AuthViewController {
             self.signInToggleTitle.textColor = UIColor(named: "Main Color")
             self.signUpView.isHidden = false
             self.signInView.isHidden = true
-        }
-    }
-    
-    func showForgotPasswordPopUp(){
-        let vc = ForgotPasswordPopUp()
-        
-        vc.view.alpha = 0.0
-        vc.modalPresentationStyle = .overCurrentContext
-        self.present(vc, animated: false, completion: nil)
-        UIView.animate(withDuration: 0.5) {
-            vc.view.alpha = 1.0
         }
     }
 }
