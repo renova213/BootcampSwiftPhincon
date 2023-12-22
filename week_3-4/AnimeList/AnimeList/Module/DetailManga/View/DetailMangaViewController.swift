@@ -23,8 +23,10 @@ class DetailMangaViewController: UIViewController {
     }
     
     var malId: Int?
+    var mangaId: String?
     private let disposeBag = DisposeBag()
     private let detailMangaVM = DetailMangaViewModel()
+    private let mangaVM = MangaViewModel()
     private let favoriteVM = FavoriteViewModel()
     private let profileVM = ProfileViewModel()
 }
@@ -105,7 +107,7 @@ extension DetailMangaViewController {
             detailMangaVM.loadData(for: Endpoint.getDetailManga(params:malId), resultType: DetailMangaResponse.self){title in
                 
                 self.detailMangaVM.loadData(for: Endpoint.getMangaMangadex(params: MangaParam(limit: 1, title: title)), resultType: MangaMangadexResponse.self){mangaId in
-                    
+                    self.mangaId = mangaId
                     self.detailMangaVM.loadData(for: Endpoint.getMangaChapters(params: MangaChaptersParam(orderChapter: "asc", mangaId: mangaId, translatedLanguage: "en")), resultType: MangaChaptersResponse.self)
                 }
             }
@@ -183,6 +185,10 @@ extension DetailMangaViewController: SkeletonTableViewDelegate, UITableViewDataS
                 cell.tableView.showAnimatedGradientSkeleton()
             }
             cell.mangaChapters = detailMangaVM.mangaChapters.value
+            if let malId = malId, let mangaId = mangaId{
+                cell.malId = malId
+                cell.mangaId = mangaId
+            }
             cell.viewHeight.constant = CGFloat((detailMangaVM.mangaChapters.value.count * 76) + 59)
             cell.selectionStyle = .none
             switch detailMangaVM.order.value {
@@ -205,8 +211,9 @@ extension DetailMangaViewController: RefreshPopUpDelegate, MangaChapterCellDeleg
         tableView.reloadData()
     }
     
-    func didTapNavigateReadChapter(chapterId: String, title: String) {
+    func didTapNavigateReadChapter(chapterId: String, title: String, createMangaListParam: CreateUserMangaParam) {
         let vc = ReadMangaViewController()
+        mangaVM.loadData(for: Endpoint.postUserManga(params: createMangaListParam), resultType: StatusResponse.self)
         vc.chapterId = chapterId
         vc.mangaTitle = title
         self.navigationController?.pushViewController(vc, animated: true)

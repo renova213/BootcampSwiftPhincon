@@ -5,7 +5,7 @@ import SkeletonView
 
 protocol MangaChapterCellDelegate: AnyObject {
     func didTapSortChapter()
-    func didTapNavigateReadChapter(chapterId: String, title: String)
+    func didTapNavigateReadChapter(chapterId: String, title: String, createMangaListParam: CreateUserMangaParam)
 }
 
 class MangaChapterCell: UITableViewCell {
@@ -24,7 +24,8 @@ class MangaChapterCell: UITableViewCell {
             tableView.reloadData()
         }
     }
-    
+    var mangaId: String?
+    var malId: Int?
     private let disposeBag = DisposeBag()
     private let detailMangaVM = DetailMangaViewModel()
     weak var delegate: MangaChapterCellDelegate?
@@ -68,6 +69,8 @@ extension MangaChapterCell: SkeletonTableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let data = mangaChapters[indexPath.row]
-        self.delegate?.didTapNavigateReadChapter(chapterId: data.id, title: data.attributes.title ?? "-")
+        if let userId = UserDefaultHelper.shared.getUserIDFromUserDefaults(), let chapter = data.attributes.chapter, let mangaId = mangaId, let malId = malId{
+            self.delegate?.didTapNavigateReadChapter(chapterId: data.id, title: data.attributes.title ?? "-", createMangaListParam: CreateUserMangaParam(malId: malId, mangaId: mangaId, userId: userId, userScore: 10, userEpisode: Int(chapter) ?? 0, watchStatus: 0))
+        }
     }
 }

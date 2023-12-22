@@ -60,7 +60,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="oE2-kN-L0A">
-                                        <rect key="frame" x="0.0" y="74.333333333333329" width="176" height="14.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="56.666666666666664" width="176" height="14.333333333333336"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TV, Spring 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="695-BU-y0O">
                                                 <rect key="frame" x="0.0" y="0.0" width="120.66666666666667" height="14.333333333333334"/>
@@ -181,9 +181,16 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kimi no Na WaKimi no Na WaKimi no Na WaKimi no Na WaKimi no Na WaKimi no Na Wa" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zc-xh-6Nu">
-                                        <rect key="frame" x="0.0" y="8.0000000000000036" width="123" height="50.333333333333343"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zc-xh-6Nu">
+                                        <rect key="frame" x="0.0" y="8" width="123" height="32.666666666666664"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Kimi no Na WaKimi no Na WaKimi no Na WaKimi no Na WaKimi no Na WaKimi no Na Wa">
+                                                <attributes>
+                                                    <color key="NSColor" systemColor="labelColor"/>
+                                                    <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
@@ -341,6 +348,9 @@
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square.and.pencil" catalog="system" width="128" height="113"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -93,7 +93,6 @@ extension AnimeViewController: UITableViewDelegate, UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as AnimeSearchFilterCell
             cell.selectionStyle = .none
             cell.delegate = self
-            cell.delegateFilterPopUp = self
             cell.filterButton.setTitle(userAnimeVM.filterData[selectedFilterIndex], for: .normal)
             return cell
         case 1:

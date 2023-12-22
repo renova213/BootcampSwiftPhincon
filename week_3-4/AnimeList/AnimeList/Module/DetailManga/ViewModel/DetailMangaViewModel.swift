@@ -58,6 +58,7 @@ class DetailMangaViewModel: BaseViewModel{
                     }
                 }
                 self.loadingState.accept(.failed)
+                break
             }
         }
     }

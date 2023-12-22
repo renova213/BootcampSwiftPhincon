@@ -11,17 +11,11 @@ struct MangaEntity: Codable{
     let status: String?
     let scoredBy: Int?
     let published: Published
+    let genres: [MangaGenre]
     
     enum CodingKeys: String, CodingKey {
+        case genres, url, title, images, status, score, type, chapters, published
         case malId = "mal_id"
-        case url = "url"
-        case title = "title"
-        case images = "images"
-        case status = "status"
-        case score = "score"
-        case type = "type"
-        case chapters = "chapters"
-        case published = "published"
         case scoredBy = "scored_by"
     }
 }
@@ -45,4 +39,8 @@ struct MangaImage:Codable{
 struct Published: Codable{
     var prop: Prop
     var string: String?
+}
+
+struct MangaGenre: Codable {
+    let name: String?
 }

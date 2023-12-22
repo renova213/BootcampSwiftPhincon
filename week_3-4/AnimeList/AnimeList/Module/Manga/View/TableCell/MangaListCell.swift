@@ -4,8 +4,9 @@ import RxCocoa
 import Kingfisher
 
 protocol MangaListCelllDelegate: AnyObject {
-    func didTap(data: UserAnimeEntity)
-    func increamentEpisode(data: UserAnimeEntity)
+    func didTapUpdate(userManga: CreateUserMangaParam, data: UserMangaEntity)
+    func increamentEpisode(userManga: CreateUserMangaParam)
+    func deleteUserManga(id: String)
 }
 
 class MangaListCell: UITableViewCell {
@@ -33,32 +34,32 @@ class MangaListCell: UITableViewCell {
     }
     
     weak var delegate: MangaListCelllDelegate?
-    private lazy var userAnimeVM = UserAnimeViewModel.shared
-    var userAnime: UserAnimeEntity?
+    private let mangaVM = MangaViewModel()
+    var userManga: UserMangaEntity?
     private let disposeBag = DisposeBag()
     
     func initialSetup(
-        data: UserAnimeEntity){
-            titleLabel.text = data.anime.title
-            airedLabel.text = data.anime.status
-            releaseDateLabel.text = "\(data.anime.type ?? ""), \(data.anime.season ?? "") \(data.anime.year.map { "\($0)" } ?? "")"
+        data: UserMangaEntity){
+            titleLabel.text = data.manga.title
+            airedLabel.text = data.manga.status
+            releaseDateLabel.text = "\(data.manga.type ?? ""), \(data.manga.published.prop.from?.year ?? 0)"
             statusWatchLabel.text = statusWatchSetup(status: data.watchStatus)
-            animeEpisode.text = data.anime.episodes.map { "\($0)" } ?? "??"
+            animeEpisode.text = "\(data.manga.chapters ?? 0) chapters"
             myEpisodeLabel.text = String(data.userEpisode)
             myScoreLabel.text = String(data.userScore)
-            let genres = data.anime.genres.compactMap {$0.name}
+            let genres = data.manga.genres.compactMap {$0.name}
             genreLabel.text = genres.joined(separator: " • ")
-            if let imageURL = URL(string: data.anime.images?.jpg?.imageUrl ?? "") {
+            if let imageURL = URL(string: data.manga.images?.jpg?.imageUrl ?? "") {
                 self.urlImage.kf.setImage(with: imageURL, placeholder: UIImage(named: "ImagePlaceholder"))
             }
-            if let episode = data.anime.episodes {
+            if let episode = data.manga.chapters {
                 let progressValue = Float(data.userEpisode) / Float(episode)
                 progressIndicator.progress = progressValue
             }else{
                 progressIndicator.progress = 0
             }
             
-            userAnime = data
+            userManga = data
         }
     
     func configureUI(){
@@ -74,40 +75,29 @@ class MangaListCell: UITableViewCell {
     }
     
     func configureButtonGesture(){
-        deleteButton.rx.tap.subscribe(onNext: {_ in
-            self.deleteButton.isEnabled = false
-            if let dataID = self.userAnime?.id {
-                self.deleteButton.bounceAnimation(duration: 0.5)
-                self.userAnimeVM.deleteUserAnime(id: dataID){result in
-                    switch result {
-                    case .success:
-                        if let userId = UserDefaultHelper.shared.getUserIDFromUserDefaults(){
-                            self.userAnimeVM.getUserAnime(userId: userId){finish in}
-                            self.deleteButton.isEnabled = true
-                            self.contentView.makeToast("Delete success")
-                        }
-                        break
-                    case .failure(let error):
-                        self.deleteButton.isEnabled = true
-                        if let error = error as? CustomError{
-                            self.contentView.makeToast(error.message)
-                        }
-                    }
-                }
+        deleteButton.rx.tap.subscribe(onNext: {[weak self]_ in
+            
+            guard let self = self else { return }
+            if let userManga = self.userManga {
+                self.delegate?.deleteUserManga(id: userManga.id)
             }
         }).disposed(by: disposeBag)
         
-        editButton.rx.tap.subscribe(onNext: {_ in
-            if let data = self.userAnime{
-                self.editButton.bounceAnimation(duration: 0.5)
-                self.delegate?.didTap(data: data)
-            }
-        }).disposed(by: disposeBag)
-        
-        increamentEpisodeButton.rx.tap.subscribe(onNext: {_ in
-            if let data = self.userAnime{
+        editButton.rx.tap.subscribe(onNext: {[weak self] _ in
+            guard let self = self else { return }
+            
+            if let data = self.userManga{
                 self.increamentEpisodeButton.bounceAnimation(duration: 0.5)
-                self.delegate?.increamentEpisode(data: data)
+                self.delegate?.didTapUpdate(userManga: CreateUserMangaParam(malId: data.manga.malId, mangaId: data.mangaId, userId: data.userId, userScore: data.userScore, userEpisode: data.userEpisode + 1, watchStatus: data.watchStatus), data: data)
+            }
+        }).disposed(by: disposeBag)
+        
+        increamentEpisodeButton.rx.tap.subscribe(onNext: {[weak self] _ in
+            guard let self = self else { return }
+            
+            if let data = self.userManga{
+                self.increamentEpisodeButton.bounceAnimation(duration: 0.5)
+                self.delegate?.increamentEpisode(userManga: CreateUserMangaParam(malId: data.manga.malId, mangaId: data.mangaId, userId: data.userId, userScore: data.userScore, userEpisode: data.userEpisode + 1, watchStatus: data.watchStatus))
             }
         }).disposed(by: disposeBag)
     }
@@ -117,7 +107,7 @@ class MangaListCell: UITableViewCell {
         case 0:
             statusWatchView.backgroundColor = UIColor.systemGreen
             progressIndicator.tintColor = UIColor.systemGreen
-            return "CW"
+            return "CR"
         case 1:
             statusWatchView.backgroundColor = UIColor.systemBlue
             progressIndicator.tintColor = UIColor.systemBlue

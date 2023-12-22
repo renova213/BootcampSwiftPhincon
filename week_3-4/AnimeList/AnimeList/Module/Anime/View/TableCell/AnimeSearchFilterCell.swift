@@ -19,7 +19,6 @@ class AnimeSearchFilterCell: UITableViewCell {
     }
     private let disposeBag = DisposeBag()
     weak var delegate: AnimeSearchFilterCellDelegate?
-    weak var delegateFilterPopUp: FilterPopUpDelegate?
     
     func configureUI(){
         searchBar.configureUI()
