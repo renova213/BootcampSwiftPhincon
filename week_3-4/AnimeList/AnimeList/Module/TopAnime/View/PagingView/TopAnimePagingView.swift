@@ -103,7 +103,7 @@ extension TopAnimePagingView {
             case .loading :
                 self.tableView.showAnimatedGradientSkeleton()
                 break
-            case .finished, .failed, .notLoad:
+            case .finished, .failed, .initial:
                 self.tableView.hideSkeleton()
                 break
             }

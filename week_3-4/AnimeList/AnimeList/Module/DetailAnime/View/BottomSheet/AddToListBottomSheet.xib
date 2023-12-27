@@ -32,7 +32,7 @@
             <subviews>
                 <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHW-i2-e9h">
                     <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QNj-9w-gTU">
                     <rect key="frame" x="0.0" y="497" width="396" height="355"/>
@@ -227,6 +227,7 @@
                     </constraints>
                 </view>
             </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="dHW-i2-e9h" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6SW-41-Hvw"/>
                 <constraint firstAttribute="bottom" secondItem="QNj-9w-gTU" secondAttribute="bottom" id="CrO-7S-zir"/>

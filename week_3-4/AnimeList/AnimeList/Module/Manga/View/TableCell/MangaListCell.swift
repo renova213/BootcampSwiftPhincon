@@ -2,12 +2,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Kingfisher
-
-protocol MangaListCelllDelegate: AnyObject {
-    func didTapUpdate(userManga: CreateUserMangaParam, data: UserMangaEntity)
-    func increamentEpisode(userManga: CreateUserMangaParam)
-    func deleteUserManga(id: String)
-}
+import Hero
 
 class MangaListCell: UITableViewCell {
     
@@ -33,8 +28,6 @@ class MangaListCell: UITableViewCell {
         configureButtonGesture()
     }
     
-    weak var delegate: MangaListCelllDelegate?
-    private let mangaVM = MangaViewModel()
     var userManga: UserMangaEntity?
     private let disposeBag = DisposeBag()
     
@@ -58,7 +51,7 @@ class MangaListCell: UITableViewCell {
             }else{
                 progressIndicator.progress = 0
             }
-            
+            urlImage.heroID = String(data.manga.malId)
             userManga = data
         }
     
@@ -77,27 +70,24 @@ class MangaListCell: UITableViewCell {
     func configureButtonGesture(){
         deleteButton.rx.tap.subscribe(onNext: {[weak self]_ in
             
-            guard let self = self else { return }
-            if let userManga = self.userManga {
-                self.delegate?.deleteUserManga(id: userManga.id)
-            }
+            guard let self = self, let userManga = self.userManga else { return }
+            
+            MangaViewModel.shared.deleteUserMAngaRelay.onNext(userManga.id)
+        }).disposed(by: disposeBag)
+        
+        increamentEpisodeButton.rx.tap.subscribe(onNext: {[weak self] _ in
+            guard let self = self, let data = self.userManga else { return }
+            
+            self.increamentEpisodeButton.bounceAnimation(duration: 0.5)
+            MangaViewModel.shared.increamentMangaChapterRelay.onNext(UpdateUserMangaParam(id: data.id, userEpisode: data.userEpisode + 1, watchStatus: data.watchStatus, userScore: data.userScore))
+            
         }).disposed(by: disposeBag)
         
         editButton.rx.tap.subscribe(onNext: {[weak self] _ in
             guard let self = self else { return }
             
-            if let data = self.userManga{
-                self.increamentEpisodeButton.bounceAnimation(duration: 0.5)
-                self.delegate?.didTapUpdate(userManga: CreateUserMangaParam(malId: data.manga.malId, mangaId: data.mangaId, userId: data.userId, userScore: data.userScore, userEpisode: data.userEpisode + 1, watchStatus: data.watchStatus), data: data)
-            }
-        }).disposed(by: disposeBag)
-        
-        increamentEpisodeButton.rx.tap.subscribe(onNext: {[weak self] _ in
-            guard let self = self else { return }
-            
-            if let data = self.userManga{
-                self.increamentEpisodeButton.bounceAnimation(duration: 0.5)
-                self.delegate?.increamentEpisode(userManga: CreateUserMangaParam(malId: data.manga.malId, mangaId: data.mangaId, userId: data.userId, userScore: data.userScore, userEpisode: data.userEpisode + 1, watchStatus: data.watchStatus))
+            if let userManga = self.userManga{
+                MangaViewModel.shared.showUpdateMangaListBottomSheetRelay.onNext(userManga)
             }
         }).disposed(by: disposeBag)
     }
@@ -126,7 +116,6 @@ class MangaListCell: UITableViewCell {
             return "PTW"
         default:
             return ""
-            
         }
     }
 }

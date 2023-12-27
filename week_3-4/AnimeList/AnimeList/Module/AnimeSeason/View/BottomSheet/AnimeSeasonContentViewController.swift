@@ -223,7 +223,7 @@ extension AnimeSeasonContentViewController{
             case .loading:
                 self.stackViewFilter.showAnimatedGradientSkeleton()
                 self.yearCollection.showAnimatedGradientSkeleton()
-            case .finished, .notLoad, .failed:
+            case .finished, .initial, .failed:
                 self.yearCollection.hideSkeleton()
             }
         }).disposed(by: disposeBag)

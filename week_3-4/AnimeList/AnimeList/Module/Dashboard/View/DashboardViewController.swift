@@ -102,7 +102,7 @@ extension DashboardViewController {
                 guard let self = self else { return }
                 
                 switch state {
-                case .notLoad, .loading:
+                case .initial, .loading:
                     self.dashboardTableView.showAnimatedGradientSkeleton()
                 case .finished:
                     self.dashboardTableView.hideSkeleton()

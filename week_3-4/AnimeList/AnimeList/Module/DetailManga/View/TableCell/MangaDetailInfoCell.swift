@@ -50,6 +50,7 @@ class MangaDetailInfoCell: UITableViewCell {
         statusLabel.text = data.status ?? "-"
         synopsisLabel.text = data.synopsis ?? "-"
         
+        
         if let imageURL = URL(string: data.images?.jpg?.imageURL ?? "") {
             self.urlImage.kf.setImage(with: imageURL, placeholder: UIImage(named: "ImagePlaceholder"))
         }

@@ -49,7 +49,7 @@ enum ValidationResult {
 }
 
 enum StateLoading: Int {
-    case notLoad
+    case initial
     case loading
     case finished
     case failed

@@ -8,6 +8,6 @@ extension UIViewController {
         contentViewController.modalPresentationStyle = .custom
         contentViewController.transitioningDelegate = bottomSheetTransitioningDelegate
 
-        present(contentViewController, animated: false, completion: nil)
+        present(contentViewController, animated: true, completion: nil)
     }
 }

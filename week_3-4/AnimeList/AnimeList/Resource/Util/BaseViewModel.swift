@@ -9,8 +9,8 @@ class BaseViewModel {
     let api = APIManager.shared
     let tokenHelper = TokenHelper()
     
-    var loadingState = BehaviorRelay<StateLoading>(value: .notLoad)
-    var loadingState2 = BehaviorRelay<StateLoading>(value: .notLoad)
+    var loadingState = BehaviorRelay<StateLoading>(value: .initial)
+    var loadingState2 = BehaviorRelay<StateLoading>(value: .initial)
     
     var toggle = BehaviorRelay<Bool>(value: false)
     var toggle2 = BehaviorRelay<Bool>(value: false)

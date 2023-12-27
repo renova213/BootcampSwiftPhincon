@@ -79,7 +79,7 @@ extension AddToListBottomSheet{
     
     func buttonGesture(){
         closeButton.rx.tap.subscribe(onNext: {[weak self] _ in
-            self?.dismiss(animated: false, completion: nil)
+            self?.dismiss(animated: true, completion: nil)
         }
         ).disposed(by: disposeBag)
         

@@ -109,7 +109,7 @@ extension TopMangaPagingViewController {
                 break
             case .failed:
                 self.refreshPopUp(message: self.topMangaVM.errorMessage.value)
-            case .notLoad:
+            case .initial:
                 break
             }
         }).disposed(by: disposeBag)

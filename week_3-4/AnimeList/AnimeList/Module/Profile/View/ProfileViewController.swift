@@ -109,7 +109,7 @@ extension ProfileViewController {
             case .loading, .failed:
                 self.tableView.showAnimatedGradientSkeleton()
                 break
-            case .finished, .notLoad:
+            case .finished, .initial:
                 self.tableView.hideSkeleton()
             }
         }).disposed(by: disposeBag)

@@ -51,10 +51,10 @@ extension ProfileStatsCell {
         case true:
             animeStatsTab.backgroundColor = UIColor(named: "SecondaryBackgroundColor")
             mangaStatsTab.backgroundColor = UIColor.white
-            showTitleLabel.text = "Shows"
-            episodeTitleLabel.text = "Episodes"
-            watchingTitleLabel.text = "Watching"
-            planToWatchTitleLabel.text = "Plan-to-Watch"
+            showTitleLabel.text = "Titles"
+            episodeTitleLabel.text = "Chapters"
+            watchingTitleLabel.text = "Reading"
+            planToWatchTitleLabel.text = "Plan-to-Read"
             
             
                 averageRatingLabel.text = String(mangaStats.averageRating)
@@ -76,10 +76,10 @@ extension ProfileStatsCell {
         case false:
             animeStatsTab.backgroundColor = UIColor.white
             mangaStatsTab.backgroundColor = UIColor(named: "SecondaryBackgroundColor")
-            showTitleLabel.text = "Titles"
-            watchingTitleLabel.text = "Reading"
-            episodeTitleLabel.text = "Chapters"
-            planToWatchTitleLabel.text = "Plan-to-Read"
+            showTitleLabel.text = "Shows"
+            watchingTitleLabel.text = "Watching"
+            episodeTitleLabel.text = "Episodes"
+            planToWatchTitleLabel.text = "Plan-to-Watch"
             
                 averageRatingLabel.text = String(animeStats.averageRating)
                 showLabel.text = animeStats.shows.formatAsDecimalString()

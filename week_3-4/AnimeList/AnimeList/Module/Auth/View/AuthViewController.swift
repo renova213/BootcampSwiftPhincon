@@ -72,7 +72,7 @@ extension AuthViewController {
                     self.navigationController?.setViewControllers([vc], animated: true)
                 }
                 break
-            case .failed, .notLoad:
+            case .failed, .initial:
                 if let errorMessage = self.authVM.errorMessage.value?.message {
                     self.view.makeToast(errorMessage, duration: 2, style: style)
                     self.signInView.signInButton.isEnabled = true
@@ -101,7 +101,7 @@ extension AuthViewController {
                 self.signUpView.signUpButton.isEnabled = true
                 self.signUpView.googleBorder.isUserInteractionEnabled = true
                 break
-            case .failed, .notLoad:
+            case .failed, .initial:
                 if let errorMessage = self.authVM.errorMessage.value?.message {
                     self.view.makeToast(errorMessage, duration: 2, style: self.style)
                     self.signUpView.signUpButton.isEnabled = true

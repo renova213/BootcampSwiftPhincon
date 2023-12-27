@@ -126,7 +126,7 @@ extension AnimeSeasonViewController{
                 case .loading:
                     self.filterButton.isHidden = true
                     self.tableView.showAnimatedGradientSkeleton()
-                case .notLoad, .failed:
+                case .initial, .failed:
                     self.tableView.hideSkeleton()
                 case .finished:
                     self.filterButton.isHidden = false

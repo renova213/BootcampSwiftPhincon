@@ -12,12 +12,13 @@ class AnimeViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         configureTableView()
+        bindData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: false)
         loadData()
-        bindData()
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        super.viewWillAppear(animated)
     }
     
     let disposeBag = DisposeBag()

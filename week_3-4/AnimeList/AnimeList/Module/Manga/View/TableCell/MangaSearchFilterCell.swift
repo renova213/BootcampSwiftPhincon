@@ -2,10 +2,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol MangaSearchFilterCellDelegate: AnyObject{
-    func didTapNavigation()
-}
-
 class MangaSearchFilterCell: UITableViewCell {
     
     @IBOutlet weak var searchBar: SearchBar!
@@ -17,7 +13,7 @@ class MangaSearchFilterCell: UITableViewCell {
         gestureButton()
     }
     private let disposeBag = DisposeBag()
-    weak var delegate: MangaSearchFilterCellDelegate?
+    var mangaVM: MangaViewModel?
     
     func configureUI(){
         searchBar.configureUI()
@@ -26,8 +22,8 @@ class MangaSearchFilterCell: UITableViewCell {
     }
     
     func gestureButton(){
-        searchBar.searchView.rx.tapGesture().when(.recognized).subscribe(onNext: { [weak self] _ in
-            self?.delegate?.didTapNavigation()
+        searchBar.searchView.rx.tapGesture().when(.recognized).subscribe(onNext: {_ in
+            MangaViewModel.shared.navigateSearchViewRelay.onNext(())
         }
         )
         .disposed(by: disposeBag)

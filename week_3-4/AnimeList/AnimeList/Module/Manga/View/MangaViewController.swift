@@ -14,16 +14,16 @@ class MangaViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         configureTableView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        loadData()
         bindData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        loadData()
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        super.viewWillAppear(animated)
+    }
+    
     private let disposeBag = DisposeBag()
-    private let mangaVM = MangaViewModel()
     private var style = ToastStyle()
     
     var selectedFilterIndex = 4 {
@@ -54,44 +54,78 @@ extension MangaViewController {
     
     func loadData(){
         if let userId = UserDefaultHelper.shared.getUserIDFromUserDefaults() {
-            mangaVM.loadData(for: Endpoint.getUserManga(params: userId), resultType: UserMangaResponse.self)
+            MangaViewModel.shared.loadData(for: Endpoint.getUserManga(params: userId), resultType: UserMangaResponse.self)
         }
     }
     
     func bindData(){
+        MangaViewModel.shared.reloadDataRelay.subscribe(onNext: {[weak self] userManga in
+            guard let self = self else { return }
+            MangaViewModel.shared.userMangaList.accept(userManga)
+            self.tableView.reloadData()
+        }).disposed(by: disposeBag)
         
-        mangaVM.loadingState.subscribe(onNext: {[weak self] state in
+        MangaViewModel.shared.loadingState.subscribe(onNext: {[weak self] state in
             guard let self = self else { return }
             
             switch state {
-            case .loading, .notLoad:
+            case .loading:
                 self.tableView.showAnimatedGradientSkeleton()
+                break
+            case .initial:
                 break
             case .finished:
                 self.tableView.hideSkeleton()
                 self.tableView.reloadData()
                 break
             case .failed:
-                self.refreshPopUp(message: self.mangaVM.errorMessage.value)
+                self.refreshPopUp(message: MangaViewModel.shared.errorMessage.value)
                 self.tableView.hideSkeleton()
                 break
             }
         }).disposed(by: disposeBag)
         
-        mangaVM.loadingState2.subscribe(onNext: {[weak self] state in
+        MangaViewModel.shared.loadingState2.subscribe(onNext: {[weak self] state in
             guard let self = self else { return }
             
             switch state {
-            case .loading, .notLoad:
+            case .loading:
+                break
+            case .initial:
                 break
             case .finished:
-                self.view.makeToast("Data deleted", duration: 2, style: self.style)
-                self.loadData()
+                self.tableView.reloadData()
                 break
             case .failed:
-                self.view.makeToast(self.mangaVM.errorMessage.value, duration: 2, style: self.style)
+                self.view.makeToast(MangaViewModel.shared.errorMessage.value, duration: 2, style: self.style)
                 break
             }
+        }).disposed(by: disposeBag)
+        
+        MangaViewModel.shared.showUpdateMangaListBottomSheetRelay.subscribe(onNext: {[weak self] userManga in
+            guard let self = self else { return }
+            let bottomSheetVC = UpdateMangaListBottomSheet()
+            bottomSheetVC.setContentHeight(bottomSheetVC.view.bounds.height)
+            bottomSheetVC.initialData(userManga: userManga)
+            bottomSheetVC.userManga = userManga
+            self.presentBottomSheet(contentViewController: bottomSheetVC)
+        }).disposed(by: disposeBag)
+        
+        MangaViewModel.shared.increamentMangaChapterRelay.subscribe(onNext: { updateUserMangaParam in
+            MangaViewModel.shared.loadData(for: Endpoint.putUserManga(params: updateUserMangaParam), resultType: UserMangaResponse.self)
+        }).disposed(by: disposeBag)
+        
+        MangaViewModel.shared.deleteUserMAngaRelay.subscribe(onNext: { id in
+            MangaViewModel.shared.loadData(for: Endpoint.deleteUserManga(params: id), resultType: UserMangaResponse.self)
+        }).disposed(by: disposeBag)
+        
+        MangaViewModel.shared.navigateSearchViewRelay.subscribe(onNext: {[weak self] in
+            guard let self = self else { return }
+            let vc = SearchViewController()
+            
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+            vc.navigationController?.isNavigationBarHidden = true
         }).disposed(by: disposeBag)
     }
     
@@ -118,7 +152,7 @@ extension MangaViewController: UITableViewDelegate, UITableViewDataSource{
         case 0:
             return 1
         case 1:
-            return mangaVM.userMangaList.value.count
+            return MangaViewModel.shared.userMangaList.value.count
         default:
             return 0
         }
@@ -129,17 +163,15 @@ extension MangaViewController: UITableViewDelegate, UITableViewDataSource{
         case 0:
             let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as MangaSearchFilterCell
             cell.selectionStyle = .none
-            cell.delegate = self
-            cell.filterButton.setTitle(mangaVM.filterData[selectedFilterIndex], for: .normal)
+            cell.filterButton.setTitle(MangaViewModel.shared.filterData[selectedFilterIndex], for: .normal)
             return cell
         case 1:
-            let data = mangaVM.userMangaList.value[indexPath.row]
+            let data = MangaViewModel.shared.userMangaList.value[indexPath.row]
             
             let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as MangaListCell
             cell.selectionStyle = .none
-                cell.urlImage.hero.id = String(data.manga.malId )
+            cell.urlImage.hero.id = String(data.manga.malId)
             cell.initialSetup(data: data)
-            cell.delegate = self
             return cell
         default:
             return UITableViewCell()
@@ -148,14 +180,13 @@ extension MangaViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(indexPath.section == 1){
-//            let data = mangaVM.userMangaList.value[indexPath.row]
-//            let vc = DetailAnimeViewController()
-//            vc.id = data.id
-//            vc.malId = data.manga.malId
-//            vc.hidesBottomBarWhenPushed = true
-//            navigationController?.hero.isEnabled = true
-//            navigationController?.pushViewController(vc, animated: true)
-//            vc.navigationController?.isNavigationBarHidden = true
+            let data = MangaViewModel.shared.userMangaList.value[indexPath.row]
+            let vc = DetailMangaViewController()
+            vc.malId = data.manga.malId
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.hero.isEnabled = true
+            navigationController?.pushViewController(vc, animated: true)
+            vc.navigationController?.isNavigationBarHidden = true
         }
     }
 }
@@ -188,42 +219,19 @@ extension MangaViewController: SkeletonTableViewDataSource{
     }
 }
 
-extension MangaViewController: RefreshPopUpDelegate, MangaListCelllDelegate, MangaSearchFilterCellDelegate, FilterPopUpDelegate{
-    // manga list cell
-    func didTap(data: UserMangaEntity) {
-        
-    }
-    
-    func increamentEpisode(userManga: CreateUserMangaParam) {
-        mangaVM.loadData(for: Endpoint.postUserManga(params: userManga), resultType: StatusResponse.self)
-    }
-    
-    func deleteUserManga(id: String) {
-        mangaVM.loadData(for: Endpoint.deleteUserManga(params: id), resultType: StatusResponse.self)
-    }
-    
+extension MangaViewController: RefreshPopUpDelegate, FilterPopUpDelegate{
     //refresh popup
     func didTapRefresh() {
         self.dismiss(animated: true)
         loadData()
     }
     
-    //manga filter
-
-    func didTapNavigation() {
-        let vc = SearchViewController()
-
-        vc.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(vc, animated: true)
-        vc.navigationController?.isNavigationBarHidden = true
-    }
-    
     // sort
     func didTapFilterIndex(index: Int) {
         selectedFilterIndex = index
-        mangaVM.sortUserManga(index: index)
+        MangaViewModel.shared.sortUserManga(index: index)
     }
-
+    
     func didTapFilterPopUp() {
         let vc = FilterPopUp()
         vc.delegate = self

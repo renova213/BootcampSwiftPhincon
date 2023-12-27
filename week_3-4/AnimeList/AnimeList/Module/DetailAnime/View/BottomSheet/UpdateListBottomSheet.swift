@@ -96,7 +96,7 @@ extension UpdateListBottomSheet{
         closeButton.rx.tap.subscribe(onNext: {[weak self] _ in
             guard let self = self else { return }
 
-            self.dismiss(animated: false, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
         ).disposed(by: disposeBag)
         

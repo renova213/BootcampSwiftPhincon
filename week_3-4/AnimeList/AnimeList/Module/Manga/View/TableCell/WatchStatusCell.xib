@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="37" id="KGk-i7-Jjw" customClass="WatchStatusCell" customModule="AnimeList" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uQA-Sp-712">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="24"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="EG4-4o-Rzh">
+                                <rect key="frame" x="16" y="0.0" width="288" height="24"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="radio_true" translatesAutoresizingMaskIntoConstraints="NO" id="z7w-fP-iOB">
+                                        <rect key="frame" x="0.0" y="0.0" width="20" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="tqB-J2-98s"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watching" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaL-C1-Ifk">
+                                        <rect key="frame" x="36" y="0.0" width="252" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="EG4-4o-Rzh" firstAttribute="top" secondItem="uQA-Sp-712" secondAttribute="top" id="7jC-A1-Nhq"/>
+                            <constraint firstAttribute="bottom" secondItem="EG4-4o-Rzh" secondAttribute="bottom" id="QEl-mG-3Gl"/>
+                            <constraint firstAttribute="trailing" secondItem="EG4-4o-Rzh" secondAttribute="trailing" constant="16" id="XNa-OQ-EnT"/>
+                            <constraint firstAttribute="height" constant="24" id="eYB-nQ-5UC"/>
+                            <constraint firstItem="EG4-4o-Rzh" firstAttribute="leading" secondItem="uQA-Sp-712" secondAttribute="leading" constant="16" id="jIY-Fr-ZmI"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="uQA-Sp-712" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="MRj-Wa-vpc"/>
+                    <constraint firstAttribute="bottom" secondItem="uQA-Sp-712" secondAttribute="bottom" constant="16" id="aQY-6b-LOT"/>
+                    <constraint firstItem="uQA-Sp-712" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="eNu-ix-MnJ"/>
+                    <constraint firstAttribute="trailing" secondItem="uQA-Sp-712" secondAttribute="trailing" id="tJP-sp-FQe"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="radioButton" destination="z7w-fP-iOB" id="nl0-tE-hyV"/>
+                <outlet property="title" destination="GaL-C1-Ifk" id="MMf-3e-sDs"/>
+            </connections>
+            <point key="canvasLocation" x="-3.0534351145038165" y="17.253521126760564"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="radio_true" width="64" height="64"/>
+    </resources>
+</document>

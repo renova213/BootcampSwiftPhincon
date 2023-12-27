@@ -61,7 +61,7 @@ extension DetailMangaViewController {
         detailMangaVM.loadingState.subscribe(onNext: {[weak self] state in
             guard let self = self else { return }
             switch state {
-            case .loading, .notLoad:
+            case .loading, .initial:
                 self.tableView.reloadData()
                 break
             case .failed:
@@ -79,7 +79,7 @@ extension DetailMangaViewController {
         detailMangaVM.loadingState2.subscribe(onNext: {[weak self] state in
             guard let self = self else { return }
             switch state {
-            case .loading, .notLoad:
+            case .loading, .initial:
                 self.tableView.reloadData()
                 break
             case .failed:
@@ -172,10 +172,11 @@ extension DetailMangaViewController: SkeletonTableViewDelegate, UITableViewDataS
             }else{
                 cell.showAnimatedGradientSkeleton()
             }
-            cell.selectionStyle = .none
-            if let detailManga = self.detailMangaVM.mangaDetail.value{
+            if let id = malId, let detailManga = self.detailMangaVM.mangaDetail.value{
+                cell.urlImage.hero.id = String(id)
                 cell.initialSetup(data: detailManga)
             }
+            cell.selectionStyle = .none
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as MangaChapterCell
