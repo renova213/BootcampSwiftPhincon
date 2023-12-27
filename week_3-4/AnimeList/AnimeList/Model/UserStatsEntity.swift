@@ -1,6 +1,11 @@
 import Foundation
 
-struct UserStatsEntity: Codable {
+struct UserStatsEntity: Codable{
+    let anime: UserStatsEntityItem
+    let manga: UserStatsEntityItem
+}
+
+struct UserStatsEntityItem: Codable {
     let watching: Int
     let drop: Int
     let completed: Int

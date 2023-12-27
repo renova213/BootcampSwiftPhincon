@@ -151,7 +151,7 @@ enum Endpoint {
         case .getUser(let param):
             return ["userId": param]
         case .getUserStats(let param):
-            return ["userId": param.userId, "filter": param.filter]
+            return ["userId": param.userId]
         case .getUserRecentUpdate(let param), .getUserAnime(let param), .getUserManga(let param):
             return ["user_id": param]
         case .getMangaChapters(let param):

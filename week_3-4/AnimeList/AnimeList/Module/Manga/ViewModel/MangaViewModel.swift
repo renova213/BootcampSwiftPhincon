@@ -18,11 +18,12 @@ class MangaViewModel: BaseViewModel {
     var messageRating = BehaviorRelay<String>(value: "Pilih rating")
     var selectedStatus = BehaviorRelay<String>(value: "Pilih status")
     
-    var showUpdateMangaListBottomSheetRelay = PublishSubject<UserMangaEntity>()
-    var increamentMangaChapterRelay = PublishSubject<UpdateUserMangaParam>()
-    var deleteUserMAngaRelay = PublishSubject<String>()
-    var navigateSearchViewRelay = PublishSubject<Void>()
-    var reloadDataRelay = PublishSubject<[UserMangaEntity]>()
+    var showUpdateMangaListBottomSheetRelay = PublishRelay<UserMangaEntity>()
+    var increamentMangaChapterRelay = PublishRelay<UpdateUserMangaParam>()
+    var deleteUserMAngaRelay = PublishRelay<String>()
+    var navigateSearchViewRelay = PublishRelay<Void>()
+    var showFilterPopUpRelay = PublishRelay<Void>()
+    var reloadDataRelay = PublishRelay<[UserMangaEntity]>()
     
     func loadData <T: Codable>(for endpoint: Endpoint, resultType: T.Type){
         switch endpoint {
@@ -31,6 +32,8 @@ class MangaViewModel: BaseViewModel {
         default:
             loadingState2.accept(.loading)
         }
+        
+        currentFilterIndex.accept(4)
         
         api.fetchRequest(endpoint: endpoint){[weak self] (response: Result<T, Error>) in
             guard let self = self else {return}

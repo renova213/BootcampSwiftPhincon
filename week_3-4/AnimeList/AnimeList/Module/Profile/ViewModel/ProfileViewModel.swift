@@ -12,8 +12,7 @@ class ProfileViewModel: BaseViewModel {
     var favoriteMangaList = BehaviorRelay<[FavoriteMangaEntity]>(value: [])
     var userRecentUpdates = BehaviorRelay<[UserRecentUpdateEntity]>(value: [])
     var moreUserRecentUpdates = BehaviorRelay<[UserRecentUpdateEntity]>(value: [])
-    var userAnimeStats = BehaviorRelay<UserStatsEntity?>(value: nil)
-    var userMangaStats = BehaviorRelay<UserStatsEntity?>(value: nil)
+    var userStats = BehaviorRelay<UserStatsEntity?>(value: nil)
     let userData = BehaviorRelay<UserEntity?>(value: nil)
     var errorMessage = BehaviorRelay<CustomError?>(value: nil)
     
@@ -71,13 +70,9 @@ class ProfileViewModel: BaseViewModel {
                     }
                     self.loadingState.accept(.finished)
                     break
-                case .getUserStats(let param):
+                case .getUserStats:
                     if let data = data as? UserStatsResponse{
-                        if (param.filter == "anime"){
-                            self.userAnimeStats.accept(data.data)
-                        }else{
-                            self.userMangaStats.accept(data.data)
-                        }
+                        self.userStats.accept(data.data)
                     }
                     self.loadingState.accept(.finished)
                 default:

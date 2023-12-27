@@ -111,12 +111,28 @@ extension MangaViewController {
             self.presentBottomSheet(contentViewController: bottomSheetVC)
         }).disposed(by: disposeBag)
         
+        MangaViewModel.shared.currentFilterIndex.subscribe(onNext: {[weak self] index in
+            guard let self = self else { return }
+            self.selectedFilterIndex = index
+        }).disposed(by: disposeBag)
+        
         MangaViewModel.shared.increamentMangaChapterRelay.subscribe(onNext: { updateUserMangaParam in
             MangaViewModel.shared.loadData(for: Endpoint.putUserManga(params: updateUserMangaParam), resultType: UserMangaResponse.self)
         }).disposed(by: disposeBag)
         
         MangaViewModel.shared.deleteUserMAngaRelay.subscribe(onNext: { id in
             MangaViewModel.shared.loadData(for: Endpoint.deleteUserManga(params: id), resultType: UserMangaResponse.self)
+        }).disposed(by: disposeBag)
+        
+        MangaViewModel.shared.showFilterPopUpRelay.subscribe(onNext: { id in
+            let vc = FilterPopUp()
+            vc.delegate = self
+            vc.view.alpha = 0.0
+            vc.modalPresentationStyle = .overCurrentContext
+            self.present(vc, animated: false, completion: nil)
+            UIView.animate(withDuration: 0.5) {
+                vc.view.alpha = 1.0
+            }
         }).disposed(by: disposeBag)
         
         MangaViewModel.shared.navigateSearchViewRelay.subscribe(onNext: {[weak self] in
@@ -230,16 +246,5 @@ extension MangaViewController: RefreshPopUpDelegate, FilterPopUpDelegate{
     func didTapFilterIndex(index: Int) {
         selectedFilterIndex = index
         MangaViewModel.shared.sortUserManga(index: index)
-    }
-    
-    func didTapFilterPopUp() {
-        let vc = FilterPopUp()
-        vc.delegate = self
-        vc.view.alpha = 0.0
-        vc.modalPresentationStyle = .overCurrentContext
-        present(vc, animated: false, completion: nil)
-        UIView.animate(withDuration: 0.5) {
-            vc.view.alpha = 1.0
-        }
     }
 }

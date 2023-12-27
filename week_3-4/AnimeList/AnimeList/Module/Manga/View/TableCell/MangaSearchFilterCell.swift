@@ -23,9 +23,12 @@ class MangaSearchFilterCell: UITableViewCell {
     
     func gestureButton(){
         searchBar.searchView.rx.tapGesture().when(.recognized).subscribe(onNext: {_ in
-            MangaViewModel.shared.navigateSearchViewRelay.onNext(())
+            MangaViewModel.shared.navigateSearchViewRelay.accept(())
         }
         )
         .disposed(by: disposeBag)
+        filterButton.rx.tap.subscribe(onNext: {_ in
+            MangaViewModel.shared.showFilterPopUpRelay.accept(())
+        }).disposed(by: disposeBag)
     }
 }

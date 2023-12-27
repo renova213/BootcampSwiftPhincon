@@ -68,13 +68,7 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    var userAnimeStats: UserStatsEntity? {
-        didSet{
-            tableView.reloadData()
-        }
-    }
-    
-    var userMangaStats: UserStatsEntity? {
+    var userStats: UserStatsEntity? {
         didSet{
             tableView.reloadData()
         }
@@ -147,14 +141,9 @@ extension ProfileViewController {
             self.userRecentUpdates = userUpdates
         }).disposed(by: disposeBag)
         
-        profileVM.userAnimeStats.asObservable().subscribe(onNext: {[weak self] animeStats in
-            guard let self = self, let animeStats = animeStats else { return }
-            self.userAnimeStats = animeStats
-        }).disposed(by: disposeBag)
-        
-        profileVM.userMangaStats.asObservable().subscribe(onNext: {[weak self] mangaStats in
-            guard let self = self, let mangaStats = mangaStats else { return }
-            self.userMangaStats = mangaStats
+        profileVM.userStats.asObservable().subscribe(onNext: {[weak self] userStats in
+            guard let self = self else { return }
+            self.userStats = userStats
         }).disposed(by: disposeBag)
     }
     
@@ -162,8 +151,7 @@ extension ProfileViewController {
         if let userId = UserDefaultHelper.shared.getUserIDFromUserDefaults(){
             profileVM.loadData(for: Endpoint.getUser(params: userId), resultType: UserResponse.self)
             profileVM.loadData(for: Endpoint.getUserRecentUpdate(params: userId), resultType: UserRecentUpdateResponse.self)
-            profileVM.loadData(for: Endpoint.getUserStats(params: UserStatsParam(userId: userId, filter: "anime")), resultType: UserStatsResponse.self)
-            profileVM.loadData(for: Endpoint.getUserStats(params: UserStatsParam(userId: userId, filter: "manga")), resultType: UserStatsResponse.self)
+            profileVM.loadData(for: Endpoint.getUserStats(params: UserStatsParam(userId: userId)), resultType: UserStatsResponse.self)
         }
         profileVM.fetchFavoriteList(for: FetchFavoriteEnum.manga)
         profileVM.fetchFavoriteList(for: FetchFavoriteEnum.animeCast)
@@ -225,8 +213,8 @@ extension ProfileViewController: UITableViewDelegate, SkeletonTableViewDataSourc
             let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as ProfileStatsCell
             cell.selectionStyle = .none
             cell.delegate = self
-            if let animeStats = userAnimeStats, let mangaStats = userMangaStats {
-                cell.initialSetup(tabBarState: profileStatsTabState, animeStats: animeStats, mangaStats: mangaStats)
+            if let userStats = userStats {
+                cell.initialSetup(tabBarState: profileStatsTabState, userStats: userStats)
             }
             return cell
         case 2:

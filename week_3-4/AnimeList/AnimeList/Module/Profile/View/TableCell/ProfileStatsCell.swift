@@ -43,7 +43,7 @@ extension ProfileStatsCell {
         profileStatsView.roundCornersAll(radius: 8)
     }
     
-    func initialSetup(tabBarState: Bool, animeStats: UserStatsEntity, mangaStats: UserStatsEntity){
+    func initialSetup(tabBarState: Bool, userStats: UserStatsEntity){
         let customFontBold = UIFont(name: "HelveticaNeue-Bold", size: 16.0)
         let customFontMedium = UIFont(name: "HelveticaNeue-Medium", size: 16.0)
         
@@ -57,15 +57,15 @@ extension ProfileStatsCell {
             planToWatchTitleLabel.text = "Plan-to-Read"
             
             
-                averageRatingLabel.text = String(mangaStats.averageRating)
-                showLabel.text = mangaStats.shows.formatAsDecimalString()
-                episodeLabel.text = mangaStats.episodes.formatAsDecimalString()
-                watchLabel.text = mangaStats.watching.formatAsDecimalString()
-                completeLabel.text = mangaStats.completed.formatAsDecimalString()
-                onHoldLabel.text = mangaStats.onHold.formatAsDecimalString()
-                droppedLabel.text = mangaStats.drop.formatAsDecimalString()
-                planToWatchLabel.text = mangaStats.planToWatch.formatAsDecimalString()
-                setPieChartData(data: mangaStats)
+            averageRatingLabel.text = String(userStats.manga.averageRating)
+                showLabel.text = userStats.manga.shows.formatAsDecimalString()
+                episodeLabel.text = userStats.manga.episodes.formatAsDecimalString()
+                watchLabel.text = userStats.manga.watching.formatAsDecimalString()
+                completeLabel.text = userStats.manga.completed.formatAsDecimalString()
+                onHoldLabel.text = userStats.manga.onHold.formatAsDecimalString()
+                droppedLabel.text = userStats.manga.drop.formatAsDecimalString()
+                planToWatchLabel.text = userStats.manga.planToWatch.formatAsDecimalString()
+            setPieChartData(data: userStats.manga)
             
             if let boldFont = customFontBold, let mediumFont = customFontMedium {
                 mangaStatsLabel.font = boldFont
@@ -81,16 +81,16 @@ extension ProfileStatsCell {
             episodeTitleLabel.text = "Episodes"
             planToWatchTitleLabel.text = "Plan-to-Watch"
             
-                averageRatingLabel.text = String(animeStats.averageRating)
-                showLabel.text = animeStats.shows.formatAsDecimalString()
-                episodeLabel.text = animeStats.episodes.formatAsDecimalString()
-                watchLabel.text = animeStats.watching.formatAsDecimalString()
-                completeLabel.text = animeStats.completed.formatAsDecimalString()
-                onHoldLabel.text = animeStats.onHold.formatAsDecimalString()
-                droppedLabel.text = animeStats.drop.formatAsDecimalString()
-                planToWatchLabel.text = animeStats.planToWatch.formatAsDecimalString()
+                averageRatingLabel.text = String(userStats.anime.averageRating)
+                showLabel.text = userStats.anime.shows.formatAsDecimalString()
+                episodeLabel.text = userStats.anime.episodes.formatAsDecimalString()
+                watchLabel.text = userStats.anime.watching.formatAsDecimalString()
+                completeLabel.text = userStats.anime.completed.formatAsDecimalString()
+                onHoldLabel.text = userStats.anime.onHold.formatAsDecimalString()
+                droppedLabel.text = userStats.anime.drop.formatAsDecimalString()
+                planToWatchLabel.text = userStats.anime.planToWatch.formatAsDecimalString()
                 
-                setPieChartData(data: animeStats)
+            setPieChartData(data: userStats.anime)
             }
             
             if let boldFont = customFontBold, let mediumFont = customFontMedium {
@@ -119,7 +119,7 @@ extension ProfileStatsCell {
             }).disposed(by: disposeBag)
     }
     
-    func setPieChartData(data: UserStatsEntity) {
+    func setPieChartData(data: UserStatsEntityItem) {
         let entries = [
             PieChartDataEntry(value: Double(data.watching), label: "Watching"),
             PieChartDataEntry(value: Double(data.completed), label: "Completed"),

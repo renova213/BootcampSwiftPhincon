@@ -72,14 +72,14 @@ class MangaListCell: UITableViewCell {
             
             guard let self = self, let userManga = self.userManga else { return }
             
-            MangaViewModel.shared.deleteUserMAngaRelay.onNext(userManga.id)
+            MangaViewModel.shared.deleteUserMAngaRelay.accept(userManga.id)
         }).disposed(by: disposeBag)
         
         increamentEpisodeButton.rx.tap.subscribe(onNext: {[weak self] _ in
             guard let self = self, let data = self.userManga else { return }
             
             self.increamentEpisodeButton.bounceAnimation(duration: 0.5)
-            MangaViewModel.shared.increamentMangaChapterRelay.onNext(UpdateUserMangaParam(id: data.id, userEpisode: data.userEpisode + 1, watchStatus: data.watchStatus, userScore: data.userScore))
+            MangaViewModel.shared.increamentMangaChapterRelay.accept(UpdateUserMangaParam(id: data.id, userEpisode: data.userEpisode + 1, watchStatus: data.watchStatus, userScore: data.userScore))
             
         }).disposed(by: disposeBag)
         
@@ -87,7 +87,7 @@ class MangaListCell: UITableViewCell {
             guard let self = self else { return }
             
             if let userManga = self.userManga{
-                MangaViewModel.shared.showUpdateMangaListBottomSheetRelay.onNext(userManga)
+                MangaViewModel.shared.showUpdateMangaListBottomSheetRelay.accept(userManga)
             }
         }).disposed(by: disposeBag)
     }

@@ -173,7 +173,7 @@ extension UpdateMangaListBottomSheet{
                 self.loadingIndicator.dismissImmediately()
                 self.updateButton.isEnabled = true
                 self.presentSuccessPopUp(message: "Data updated successfully")
-                MangaViewModel.shared.reloadDataRelay.onNext(MangaViewModel.shared.userMangaList.value)
+                MangaViewModel.shared.reloadDataRelay.accept(MangaViewModel.shared.userMangaList.value)
                 break
             case .failed:
                 self.loadingIndicator.dismissImmediately()
