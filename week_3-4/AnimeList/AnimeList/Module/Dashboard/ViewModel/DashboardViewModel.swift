@@ -7,7 +7,6 @@ class DashboardViewModel: BaseViewModel {
     
     let currentAnime = BehaviorRelay<[AnimeEntity]>(value: [])
     let currentSeasonAnime = BehaviorRelay<[AnimeEntity]>(value: [])
-    let errorMessage = BehaviorRelay<String>(value: "")
 
     func loadData <T: Codable>(for endpoint: Endpoint, resultType: T.Type){
         loadingState.accept(.loading)

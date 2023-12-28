@@ -79,25 +79,25 @@ extension AnimeSchedulePagingViewController {
     func loadData(){
         switch index {
         case 0:
-            animeCalendarVM.loadData(for: Endpoint.getScheduledAnime(params: ScheduleParam(filter: "monday", page: "1", limit: "15")), with: AnimeCalendarEnum.monday, resultType: AnimeResponse.self)
+            animeCalendarVM.loadData(for: Endpoint.getScheduledAnime(params: ScheduleParam(filter: "monday", limit: "15")), with: AnimeCalendarEnum.monday, resultType: AnimeResponse.self)
             break
         case 1:
-            animeCalendarVM.loadData(for: Endpoint.getScheduledAnime(params: ScheduleParam(filter: "tuesday", page: "1", limit: "15")), with: AnimeCalendarEnum.tuesday, resultType: AnimeResponse.self)
+            animeCalendarVM.loadData(for: Endpoint.getScheduledAnime(params: ScheduleParam(filter: "tuesday", limit: "15")), with: AnimeCalendarEnum.tuesday, resultType: AnimeResponse.self)
             break
         case 2:
-            animeCalendarVM.loadData(for: Endpoint.getScheduledAnime(params: ScheduleParam(filter: "wednesday", page: "1", limit: "15")), with: AnimeCalendarEnum.wednesday, resultType: AnimeResponse.self)
+            animeCalendarVM.loadData(for: Endpoint.getScheduledAnime(params: ScheduleParam(filter: "wednesday", limit: "15")), with: AnimeCalendarEnum.wednesday, resultType: AnimeResponse.self)
             break
         case 3:
-            animeCalendarVM.loadData(for: Endpoint.getScheduledAnime(params: ScheduleParam(filter: "thursday", page: "1", limit: "15")), with: AnimeCalendarEnum.thursday, resultType: AnimeResponse.self)
+            animeCalendarVM.loadData(for: Endpoint.getScheduledAnime(params: ScheduleParam(filter: "thursday", limit: "15")), with: AnimeCalendarEnum.thursday, resultType: AnimeResponse.self)
             break
         case 4:
-            animeCalendarVM.loadData(for: Endpoint.getScheduledAnime(params: ScheduleParam(filter: "friday", page: "1", limit: "15")), with: AnimeCalendarEnum.friday, resultType: AnimeResponse.self)
+            animeCalendarVM.loadData(for: Endpoint.getScheduledAnime(params: ScheduleParam(filter: "friday", limit: "15")), with: AnimeCalendarEnum.friday, resultType: AnimeResponse.self)
             break
         case 5:
-            animeCalendarVM.loadData(for: Endpoint.getScheduledAnime(params: ScheduleParam(filter: "unknown", page: "1", limit: "15")), with: AnimeCalendarEnum.unknown, resultType: AnimeResponse.self)
+            animeCalendarVM.loadData(for: Endpoint.getScheduledAnime(params: ScheduleParam(filter: "unknown", limit: "15")), with: AnimeCalendarEnum.unknown, resultType: AnimeResponse.self)
             break
         case 6:
-            animeCalendarVM.loadData(for: Endpoint.getScheduledAnime(params: ScheduleParam(filter: "other", page: "1", limit: "15")), with: AnimeCalendarEnum.other, resultType: AnimeResponse.self)
+            animeCalendarVM.loadData(for: Endpoint.getScheduledAnime(params: ScheduleParam(filter: "other", limit: "15")), with: AnimeCalendarEnum.other, resultType: AnimeResponse.self)
             break
         default:
             break

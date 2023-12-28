@@ -125,7 +125,6 @@ enum Endpoint {
         case .getScheduledAnime(let param):
             return [
                 "filter":param.filter,
-                "page":param.page,
                 "limit":param.limit
             ]
         case .getSeasonNow(let param):
@@ -145,7 +144,6 @@ enum Endpoint {
             return params
         case .getSeason(let param):
             var params = [String: Any]()
-            params["page"] = param.page
             params["limit"] = param.limit
             return params
         case .getUser(let param):
@@ -175,9 +173,6 @@ enum Endpoint {
                 params["limit"] = limit
             }
             
-            if let page = param.page {
-                params["page"] = page
-            }
             params["sfw"] = "true"
             
             return params
@@ -191,10 +186,6 @@ enum Endpoint {
             
             if let limit = param.limit {
                 params["limit"] = limit
-            }
-            
-            if let page = param.page {
-                params["page"] = page
             }
             
             params["type"] = param.type

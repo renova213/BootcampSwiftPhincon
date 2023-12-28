@@ -19,7 +19,10 @@ class ShowMoreViewModel: BaseViewModel {
                 self.showMoreAnime.accept(data?.data ?? [])
                 self.loadingState.accept(.finished)
                 break
-            case .failure:
+            case .failure(let error):
+                if let error = error as? CustomError {
+                    self.errorMessage.accept(error.message)
+                }
                 self.loadingState.accept(.failed)
                 break
             }

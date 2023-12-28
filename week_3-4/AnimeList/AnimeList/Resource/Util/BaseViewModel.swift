@@ -15,6 +15,8 @@ class BaseViewModel {
     var toggle = BehaviorRelay<Bool>(value: false)
     var toggle2 = BehaviorRelay<Bool>(value: false)
     
+    let errorMessage = BehaviorRelay<String>(value: "")
+    
     func storeToken(with token: String) {
         let tokenData = token.data(using: .utf8)
         

@@ -11,7 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AnimeViewController" customModule="AnimeList" customModuleProvider="target">
             <connections>
                 <outlet property="appBar" destination="eHd-4w-dMI" id="n5b-hD-vHK"/>
-                <outlet property="tableView" destination="gDk-zW-xTl" id="wT3-J2-OPZ"/>
+                <outlet property="tableView" destination="k03-xU-GNZ" id="rRC-qd-AtY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,12 +23,9 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8PV-fe-Qxr">
                     <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <subviews>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="gDk-zW-xTl">
-                            <rect key="frame" x="16" y="74" width="361" height="685"/>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="k03-xU-GNZ">
+                            <rect key="frame" x="16" y="66" width="361" height="693"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                            </userDefinedRuntimeAttributes>
                         </tableView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eHd-4w-dMI">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
@@ -40,13 +37,13 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstAttribute="bottom" secondItem="k03-xU-GNZ" secondAttribute="bottom" id="3GX-2p-qCy"/>
                         <constraint firstItem="eHd-4w-dMI" firstAttribute="top" secondItem="8PV-fe-Qxr" secondAttribute="top" id="Dnu-RI-meX"/>
-                        <constraint firstItem="gDk-zW-xTl" firstAttribute="top" secondItem="eHd-4w-dMI" secondAttribute="bottom" constant="24" id="Lqe-Si-2GF"/>
+                        <constraint firstItem="k03-xU-GNZ" firstAttribute="top" secondItem="eHd-4w-dMI" secondAttribute="bottom" constant="16" id="FH5-CO-o4j"/>
                         <constraint firstItem="eHd-4w-dMI" firstAttribute="leading" secondItem="8PV-fe-Qxr" secondAttribute="leading" id="OsQ-MY-CWV"/>
-                        <constraint firstAttribute="trailing" secondItem="gDk-zW-xTl" secondAttribute="trailing" constant="16" id="Wtm-bP-xMr"/>
-                        <constraint firstItem="gDk-zW-xTl" firstAttribute="leading" secondItem="8PV-fe-Qxr" secondAttribute="leading" constant="16" id="ZMR-n2-5wJ"/>
-                        <constraint firstAttribute="bottom" secondItem="gDk-zW-xTl" secondAttribute="bottom" id="gco-R4-r1a"/>
+                        <constraint firstAttribute="trailing" secondItem="k03-xU-GNZ" secondAttribute="trailing" constant="16" id="Xfd-4c-Zrx"/>
                         <constraint firstAttribute="trailing" secondItem="eHd-4w-dMI" secondAttribute="trailing" id="tXA-hx-5rU"/>
+                        <constraint firstItem="k03-xU-GNZ" firstAttribute="leading" secondItem="8PV-fe-Qxr" secondAttribute="leading" constant="16" id="wbl-wA-S6u"/>
                     </constraints>
                 </view>
             </subviews>

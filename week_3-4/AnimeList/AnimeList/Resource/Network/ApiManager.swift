@@ -52,9 +52,9 @@ class APIManager {
     public func fetchRequest<T: Codable>(endpoint: Endpoint, completion: @escaping(Result<T, Error>)-> Void){
         guard NetworkReachabilityManager()!.isReachable else {
             let noInternetError = CustomError(statusCode: HTTPStatusCode.serviceUnvaliable, message: "No internet connection")
-                completion(.failure(noInternetError))
-                return
-            }
+            completion(.failure(noInternetError))
+            return
+        }
         
         AF.request(endpoint.urlString(),
                    method: endpoint.method(),
@@ -72,8 +72,20 @@ class APIManager {
                    let data = response.data,
                    let errorResponse = try? JSONDecoder().decode(StatusResponse.self, from: data) {
                     
-                    let customError = CustomError(statusCode: httpStatusCode, message: errorResponse.message)
-                    completion(.failure(customError))
+                    var customError: CustomError?
+                    
+                    switch httpStatusCode {
+                    case HTTPStatusCode.serviceUnvaliable:
+                        customError = CustomError(statusCode: httpStatusCode, message: "Internet Unvailable")
+                        break
+                    case HTTPStatusCode.limit:
+                        customError = CustomError(statusCode: httpStatusCode, message: "Limit request, try again in a while")
+                        break
+                    default:
+                        customError = CustomError(statusCode: httpStatusCode, message: errorResponse.message)
+                        break
+                    }
+                    completion(.failure(customError!))
                 } else {
                     completion(.failure(error))
                 }

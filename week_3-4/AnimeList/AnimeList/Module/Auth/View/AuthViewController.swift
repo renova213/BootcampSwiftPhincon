@@ -31,11 +31,8 @@ class AuthViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         signUpView.isHidden = true
     }
-}
-
-extension AuthViewController {
     
-    func configureUI(){
+    private func configureUI(){
         signInView.configureUI()
         
         signUpView.configureUI()
@@ -55,8 +52,7 @@ extension AuthViewController {
         signUpLabel.text = .localized("signUp")
     }
     
-    func bindData(){
-        
+    private func bindData(){
         authVM.loadingState.asObservable().subscribe(onNext: {[weak self] state in
             guard let self = self else { return }
             
@@ -64,6 +60,8 @@ extension AuthViewController {
             style.backgroundColor = UIColor(named: "Main Color") ?? UIColor.black
             
             switch state {
+            case .initial:
+                break
             case .loading:
                 self.signInView.signInButton.isEnabled = false
                 self.signInView.googleBorder.isUserInteractionEnabled = false
@@ -77,12 +75,10 @@ extension AuthViewController {
                     self.navigationController?.setViewControllers([vc], animated: true)
                 }
                 break
-            case .failed, .initial:
-                if let errorMessage = self.authVM.errorMessage.value?.message {
-                    self.view.makeToast(errorMessage, duration: 2, style: style)
-                    self.signInView.signInButton.isEnabled = true
-                    self.signInView.googleBorder.isUserInteractionEnabled = true
-                }
+            case .failed:
+                self.view.makeToast(self.authVM.errorMessage.value, duration: 2, style: style)
+                self.signInView.signInButton.isEnabled = true
+                self.signInView.googleBorder.isUserInteractionEnabled = true
                 break
             }
         }).disposed(by: disposeBag)
@@ -107,17 +103,15 @@ extension AuthViewController {
                 self.signUpView.googleBorder.isUserInteractionEnabled = true
                 break
             case .failed, .initial:
-                if let errorMessage = self.authVM.errorMessage.value?.message {
-                    self.view.makeToast(errorMessage, duration: 2, style: self.style)
-                    self.signUpView.signUpButton.isEnabled = true
-                    self.signUpView.googleBorder.isUserInteractionEnabled = true
-                }
+                self.view.makeToast(self.authVM.errorMessage.value, duration: 2, style: self.style)
+                self.signUpView.signUpButton.isEnabled = true
+                self.signUpView.googleBorder.isUserInteractionEnabled = true
                 break
             }
         }).disposed(by: disposeBag)
     }
     
-    func configureGesture(){
+    private func configureGesture(){
         
         signUpView.googleBorder.rx.tapGesture().when(.recognized).subscribe(onNext: {[weak self] _ in
             guard let self = self else { return }
@@ -157,7 +151,7 @@ extension AuthViewController {
         }).disposed(by: disposeBag)
     }
     
-    func showSignInView(){
+    private func showSignInView(){
         UIView.animate(withDuration: 0.15) {
             self.signInToggleView.backgroundColor = UIColor(named: "Main Color")
             self.signUpToggleView.backgroundColor = UIColor.clear
@@ -168,7 +162,7 @@ extension AuthViewController {
         }
     }
     
-    func showSignUpView(){
+    private func showSignUpView(){
         UIView.animate(withDuration: 0.15) {
             self.signUpToggleView.backgroundColor = UIColor(named: "Main Color")
             self.signInToggleView.backgroundColor = UIColor.clear
@@ -179,4 +173,3 @@ extension AuthViewController {
         }
     }
 }
-

@@ -21,7 +21,7 @@ class DashboardCategoryItem: UICollectionViewCell {
     private let disposeBag = DisposeBag()
     var index: Int?
     
-    func configureComponentStyle(){
+    private func configureComponentStyle(){
         categoryItemView.roundCornersAll(radius: 12)
         categoryButton.backgroundColor = UIColor(named: "Main Color")
     }
@@ -31,8 +31,10 @@ class DashboardCategoryItem: UICollectionViewCell {
         categoryButton.setImage(icon, for: .normal)
     }
     
-    func buttonGesture(){
-        categoryButton.rx.tap.subscribe(onNext: {_ in
+    private func buttonGesture(){
+        categoryButton.rx.tap.subscribe(onNext: {[weak self] _ in
+            guard let self = self else { return }
+            
             if let currentIndex = self.index {
                 self.delegate?.didTapNavigateRankAnime(index: currentIndex)
             }

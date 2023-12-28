@@ -29,6 +29,21 @@ class TodayAnime: UITableViewCell {
             currentAnimeCollection.reloadData()
         }
     }
+    
+    private func tapMoreButton(){
+        showMoreButton.rx
+            .tap
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.delegate?.didTapNavigation()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func configureUI(){
+        showMoreButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        todayLabel.text = .localized("today")
+    }
 }
 
 
@@ -51,7 +66,7 @@ extension TodayAnime: SkeletonCollectionViewDelegate, SkeletonCollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let data = currentAnime[indexPath.row]
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TodayAnimeItem", for: indexPath) as! TodayAnimeItem
+        let cell = collectionView.dequeueReusableCell(forIndexPath: indexPath) as TodayAnimeItem
         if let id = data.malId{
             cell.urlImage.hero.id = String(id)
         }
@@ -71,21 +86,5 @@ extension TodayAnime: SkeletonCollectionViewDelegate, SkeletonCollectionViewData
         if let id = data.malId{
             delegate?.didTapTodayAnime(malId: id)
         }
-    }
-}
-
-extension TodayAnime {
-    func tapMoreButton(){
-        showMoreButton.rx
-            .tap
-            .subscribe(onNext: { [weak self] _ in
-                self?.delegate?.didTapNavigation()
-            })
-            .disposed(by: disposeBag)
-    }
-    
-    func configureUI(){
-        showMoreButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        todayLabel.text = .localized("today")
     }
 }

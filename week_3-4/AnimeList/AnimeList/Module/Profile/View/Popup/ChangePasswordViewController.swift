@@ -69,9 +69,7 @@ class ChangePasswordViewController: UIViewController {
                     self.dismiss(animated: true)
                 }
             case .initial, .failed:
-                if let errorMessage = self.profileVM.errorMessage.value?.message {
-                    self.view.makeToast(errorMessage, duration: 2, style: self.style)
-                }
+                self.view.makeToast(self.profileVM.errorMessage.value, duration: 2, style: self.style)
                 self.updatePasswordButton.isEnabled = true
             }
         }).disposed(by: disposeBag)

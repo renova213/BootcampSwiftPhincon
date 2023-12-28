@@ -12,13 +12,13 @@ class ShowMoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
-        setUpComponent()
-        clearAnimeData()
-        fetchData(typeGet: typeGet ?? "")
+        configureGesture()
+        loadData(typeGet: typeGet ?? "")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         bindData()
+        super.viewWillAppear(animated)
     }
     
     var animeData: [AnimeEntity] = []{
@@ -26,10 +26,65 @@ class ShowMoreViewController: UIViewController {
             showMoreCollection.reloadData()
         }
     }
-    let showMoreVM = ShowMoreViewModel.shared
+    
     var typeGet: String?
     
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
+    
+    private func configureGesture(){
+        backButton.rx.tap.subscribe(onNext:  {_  in
+            self.navigationController?.popToRootViewController(animated: true)
+        }).disposed(by: disposeBag)
+    }
+    
+    private func loadData(typeGet: String){
+        self.showMoreCollection.showAnimatedGradientSkeleton()
+        
+        switch typeGet {
+        case "seasonNow":
+            ShowMoreViewModel.shared.loadData(for: Endpoint.getSeasonNow(params: SeasonNowParam(page: "1", limit: "25")), resultType: AnimeResponse.self)
+            break
+        case "currentAnime":
+            let scheduledParams = ScheduleParam(filter: Date.getCurrentDay().lowercased(), limit: "25")
+            ShowMoreViewModel.shared.loadData(for: Endpoint.getScheduledAnime(params: scheduledParams), resultType: AnimeResponse.self)
+            break
+        default:
+            animeData = []
+        }
+    }
+    
+    private func bindData() {
+        ShowMoreViewModel.shared.showMoreAnime.asObservable()
+            .subscribe(onNext: { [weak self] i in
+                
+                self?.animeData = i
+            })
+            .disposed(by: disposeBag)
+        ShowMoreViewModel.shared.loadingState.asObservable().subscribe(onNext: {[weak self] state in
+            guard let self = self else { return }
+            switch state {
+            case .initial:
+                break
+            case .loading:
+                self.showMoreCollection.showAnimatedGradientSkeleton()
+            case .finished:
+                self.showMoreCollection.hideSkeleton()
+                break
+            case .failed:
+                self.refreshPopUp(message: ShowMoreViewModel.shared.errorMessage.value)
+            }
+        }
+        ).disposed(by: disposeBag)
+    }
+    
+    private func refreshPopUp(message: String){
+        let vc = RefreshPopUp()
+        vc.setContentHeight(vc.view.bounds.height)
+        vc.errorLabel.text = message
+        vc.delegate = self
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: false)
+    }
 }
 
 extension ShowMoreViewController: SkeletonCollectionViewDelegate, SkeletonCollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -39,7 +94,7 @@ extension ShowMoreViewController: SkeletonCollectionViewDelegate, SkeletonCollec
     }
     
     func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> SkeletonView.ReusableCellIdentifier {
-        return "ShowMoreItem"
+        return String(describing: ShowMoreItem.self)
     }
     
     func configureTableView(){
@@ -55,7 +110,7 @@ extension ShowMoreViewController: SkeletonCollectionViewDelegate, SkeletonCollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let data = animeData[indexPath.row]
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShowMoreItem", for: indexPath) as! ShowMoreItem
+        let cell = collectionView.dequeueReusableCell(forIndexPath: indexPath) as ShowMoreItem
         cell.animeCardItem.rankView.backgroundColor = UIColor.lightGray
         cell.initialSetupAnime(data: data)
         
@@ -63,7 +118,6 @@ extension ShowMoreViewController: SkeletonCollectionViewDelegate, SkeletonCollec
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         
         let width = (collectionView.bounds.width / 3) - 8
         let height = width * 1.8
@@ -80,53 +134,9 @@ extension ShowMoreViewController: SkeletonCollectionViewDelegate, SkeletonCollec
     }
 }
 
-extension ShowMoreViewController {
-    func setUpComponent(){
-        tapBackButton()
-    }
-    
-    func tapBackButton(){
-        backButton.rx.tap.subscribe(onNext:  {_  in
-            self.navigationController?.popToRootViewController(animated: true)
-        }).disposed(by: disposeBag)
-    }
-    
-    func fetchData(typeGet: String){
-        self.showMoreCollection.showAnimatedGradientSkeleton()
-        
-        switch typeGet {
-        case "seasonNow":
-            showMoreVM.loadData(for: Endpoint.getSeasonNow(params: SeasonNowParam(page: "1", limit: "25")), resultType: AnimeResponse.self)
-            
-        case "currentAnime":
-            showMoreVM.loadData(for: Endpoint.getSeasonNow(params: SeasonNowParam(page: "1", limit: "25")), resultType: AnimeResponse.self)
-        default:
-            animeData = []
-        }
-    }
-    
-    func bindData() {
-        showMoreVM.showMoreAnime.asObservable()
-            .subscribe(onNext: { [weak self] i in
-                
-                self?.animeData = i
-            })
-            .disposed(by: disposeBag)
-        showMoreVM.loadingState.asObservable().subscribe(onNext: {[weak self] state in
-            guard let self = self else { return }
-            switch state {
-            case .initial, .loading:
-                self.showMoreCollection.showAnimatedGradientSkeleton()
-            case .failed, .finished:
-                DispatchQueue.main.async {
-                    self.showMoreCollection.hideSkeleton()
-                }
-            }
-        }
-        ).disposed(by: disposeBag)
-    }
-    
-    func clearAnimeData(){
-        showMoreVM.showMoreAnime.accept([])
+extension ShowMoreViewController: RefreshPopUpDelegate{
+    func didTapRefresh() {
+        self.dismiss(animated: false)
+        loadData(typeGet: typeGet ?? "")
     }
 }

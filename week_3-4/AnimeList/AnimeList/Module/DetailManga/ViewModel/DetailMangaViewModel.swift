@@ -5,7 +5,6 @@ import RxCocoa
 class DetailMangaViewModel: BaseViewModel{
     
     let mangaDetail = BehaviorRelay<DetailMangaEntity?>(value: nil)
-    let errorMessage = BehaviorRelay<String>(value: "")
     let mangaChapters = BehaviorRelay<[MangaChaptersEntity]>(value: [])
     let order = BehaviorRelay<Bool>(value: true)
     

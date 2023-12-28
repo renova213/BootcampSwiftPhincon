@@ -5,7 +5,6 @@ import RxCocoa
 class MangaViewModel: BaseViewModel {
     static let shared = MangaViewModel()
 
-    let errorMessage = BehaviorRelay<String>(value: "")
     let userMangaList = BehaviorRelay<[UserMangaEntity]>(value: [])
     let findOneUserManga = BehaviorRelay<UserAnimeEntity?>(value: nil)
     var currentFilterIndex = BehaviorRelay<Int>(value: 4)

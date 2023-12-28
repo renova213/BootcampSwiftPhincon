@@ -24,13 +24,14 @@ class CurrentSeasonAnime: UITableViewCell {
             animeCategoryCollection.reloadData()
         }
     }
+    
     weak var delegate: CurrentAnimeDelegate?
     
     @IBAction func tapMoreButton(_ sender: Any) {
         delegate?.didTapShowMoreCurrentAnime()
     }
     
-    func configureUI() {
+    private func configureUI() {
         moreButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         currentSeasonLabel.text = .localized("currentSeason")
     }

@@ -8,7 +8,6 @@ class TopMangaViewModel: BaseViewModel {
     let topUpcomingManga = BehaviorRelay<[MangaEntity]>(value: [])
     let topPopularityManga = BehaviorRelay<[MangaEntity]>(value: [])
     let topFavoriteManga = BehaviorRelay<[MangaEntity]>(value: [])
-    let errorMessage = BehaviorRelay<String>(value: "")
     
     func loadData <T: Codable>(for endpoint: Endpoint, with topManga: TopMangaEnum, resultType: T.Type){
         loadingState.accept(.loading)

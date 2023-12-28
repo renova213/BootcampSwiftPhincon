@@ -3,8 +3,8 @@ import RxSwift
 import RxCocoa
 
 class AuthViewModel: BaseViewModel {
+    static let shared = AuthViewModel()
     var authToggle = BehaviorRelay<Bool>(value: true)
-    var errorMessage = BehaviorRelay<CustomError?>(value: nil)
     
     func postData <T: Codable>(for endpoint: Endpoint, resultType: T.Type){
         switch endpoint {
@@ -36,27 +36,20 @@ class AuthViewModel: BaseViewModel {
                             self.loadingState.accept(.finished)
                         }
                         break
-                    case .postRegister, .postRegisterGoogle:
-                        self.loadingState2.accept(.finished)
-                        break
                     default:
+                        self.loadingState2.accept(.finished)
                         break
                     }
                     break
                 case .failure(let error):
+                    if let error = error as? CustomError {
+                        self.errorMessage.accept(error.message)
+                    }
                     switch endpoint {
                     case .postLogin, .postLoginGoogle:
-                        if let error = error as? CustomError {
-                            self.errorMessage.accept(error)
-                        }
                         self.loadingState.accept(.failed)
-                    case .postRegister, .postRegisterGoogle:
-                        if let error = error as? CustomError {
-                            self.errorMessage.accept(error)
-                        }
-                        self.loadingState2.accept(.failed)
                     default:
-                        break
+                        self.loadingState2.accept(.failed)
                     }
                 }
             }

@@ -4,7 +4,6 @@ import RxCocoa
 
 class ReadMangaViewModel: BaseViewModel{
     let chapterImages = BehaviorRelay<MangaChapterImageResponse?>(value: nil)
-    let errorMessage = BehaviorRelay<String>(value: "")
     let viewState = BehaviorRelay<Bool>(value: true)
     let slideMode = BehaviorRelay<Bool>(value: true)
 

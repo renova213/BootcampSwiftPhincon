@@ -14,7 +14,6 @@ class ProfileViewModel: BaseViewModel {
     var moreUserRecentUpdates = BehaviorRelay<[UserRecentUpdateEntity]>(value: [])
     var userStats = BehaviorRelay<UserStatsEntity?>(value: nil)
     let userData = BehaviorRelay<UserEntity?>(value: nil)
-    var errorMessage = BehaviorRelay<CustomError?>(value: nil)
     
     func multipartData <T: Codable>(for endpoint: Endpoint, image: Data, resultType: T.Type){
         api.fetchMultipartRequest(endpoint: endpoint, image: image){ [weak self] (response: Result<T, Error>) in
@@ -35,7 +34,7 @@ class ProfileViewModel: BaseViewModel {
                 break
             case .failure(let error):
                 if let error = error as? CustomError {
-                    self.errorMessage.accept(error)
+                    self.errorMessage.accept(error.message)
                 }
                 self.loadingState.accept(.failed)
             }
@@ -82,7 +81,7 @@ class ProfileViewModel: BaseViewModel {
                 break
             case .failure(let error):
                 if let error = error as? CustomError {
-                    self.errorMessage.accept(error)
+                    self.errorMessage.accept(error.message)
                 }
                 self.loadingState.accept(.failed)
             }
@@ -110,7 +109,7 @@ class ProfileViewModel: BaseViewModel {
                 break
             case .failure(let error):
                 if let error = error as? CustomError {
-                    self.errorMessage.accept(error)
+                    self.errorMessage.accept(error.message)
                 }
                 self.loadingState.accept(.failed)
             }
