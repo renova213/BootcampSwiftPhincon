@@ -10,6 +10,7 @@ protocol TodayAnimeDelegate: AnyObject {
 
 class TodayAnime: UITableViewCell {
     
+    @IBOutlet weak var todayLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var currentAnimeCollection: UICollectionView!
     @IBOutlet weak var showMoreButton: UIButton!
@@ -18,7 +19,7 @@ class TodayAnime: UITableViewCell {
         super.awakeFromNib()
         configureTableView()
         tapMoreButton()
-        configureComponentStyle()
+        configureUI()
     }
     
     private let disposeBag = DisposeBag()
@@ -83,7 +84,8 @@ extension TodayAnime {
             .disposed(by: disposeBag)
     }
     
-    func configureComponentStyle(){
+    func configureUI(){
         showMoreButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        todayLabel.text = .localized("today")
     }
 }

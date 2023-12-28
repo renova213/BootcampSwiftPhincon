@@ -455,16 +455,20 @@
                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
             </userDefinedRuntimeAttributes>
             <connections>
-                <outlet property="animeStatsLabel" destination="tdn-bq-h99" id="SSg-Hu-1WV"/>
+                <outlet property="animeStatsLabel" destination="tdn-bq-h99" id="CGs-P1-vCi"/>
                 <outlet property="animeStatsTab" destination="3HL-5v-G4e" id="gkq-q6-jgP"/>
-                <outlet property="averageRatingLabel" destination="I9F-w9-zv0" id="cVU-eu-aTe"/>
-                <outlet property="completeLabel" destination="tfd-S9-tm0" id="yMg-nk-Okb"/>
-                <outlet property="droppedLabel" destination="sgv-UO-Naq" id="Uk0-Y5-p0T"/>
+                <outlet property="averageRatingLabel" destination="I9F-w9-zv0" id="30p-3q-hZ5"/>
+                <outlet property="averageTitleLabel" destination="HZE-Et-yQq" id="0BK-Fp-lOS"/>
+                <outlet property="completeLabel" destination="tfd-S9-tm0" id="VsL-Rw-jcL"/>
+                <outlet property="completeTitleLabel" destination="FuR-mZ-A3Z" id="LGf-Kz-3CS"/>
+                <outlet property="droppedLabel" destination="sgv-UO-Naq" id="lhH-HD-t0i"/>
+                <outlet property="droppedTitleLabel" destination="cHS-42-cfq" id="v5r-UL-5yZ"/>
                 <outlet property="episodeLabel" destination="m0Z-Bb-4Gw" id="p1s-FL-3Sa"/>
                 <outlet property="episodeTitleLabel" destination="Cf7-Co-967" id="fBO-a6-CJO"/>
-                <outlet property="mangaStatsLabel" destination="EGX-N1-SWm" id="f9C-Ix-2Js"/>
+                <outlet property="mangaStatsLabel" destination="EGX-N1-SWm" id="vyc-bh-otF"/>
                 <outlet property="mangaStatsTab" destination="C5K-tr-QNl" id="Yre-pw-I5J"/>
-                <outlet property="onHoldLabel" destination="BNc-LP-aZq" id="mp6-KQ-qYi"/>
+                <outlet property="onHoldLabel" destination="BNc-LP-aZq" id="9sH-KO-EjF"/>
+                <outlet property="onHoldTitleLabel" destination="v4w-uO-8c1" id="zN9-Tf-zSV"/>
                 <outlet property="pieChart" destination="xAO-14-oXT" id="DLe-Nw-Sak"/>
                 <outlet property="planToWatchLabel" destination="H7e-qT-NEm" id="rxx-mB-Ud9"/>
                 <outlet property="planToWatchTitleLabel" destination="m86-Td-KlW" id="XRJ-7E-YCv"/>

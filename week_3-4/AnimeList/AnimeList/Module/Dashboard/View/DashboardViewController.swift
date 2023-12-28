@@ -66,16 +66,13 @@ extension DashboardViewController {
         dashboardVM.loadData(for: Endpoint.getSeasonNow(params: SeasonNowParam(page: "1", limit: "6")), resultType: AnimeResponse.self)
     }
     
-    func refreshPopUp(message: String){
+    private func refreshPopUp(message: String){
         let vc = RefreshPopUp()
-        vc.delegate = self
-        vc.view.alpha = 0
+        vc.setContentHeight(vc.view.bounds.height)
         vc.errorLabel.text = message
-        self.present(vc, animated: false, completion: nil)
-
-        UIView.animate(withDuration: 0.5) {
-            vc.view.alpha = 1
-        }
+        vc.delegate = self
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: false)
     }
 }
 
@@ -104,10 +101,13 @@ extension DashboardViewController {
                 switch state {
                 case .initial, .loading:
                     self.dashboardTableView.showAnimatedGradientSkeleton()
+                    break
                 case .finished:
                     self.dashboardTableView.hideSkeleton()
+                    break
                 case .failed:
                     self.refreshPopUp(message: self.dashboardVM.errorMessage.value)
+                    break
                 }
                 
             })
@@ -150,11 +150,13 @@ extension DashboardViewController: UITableViewDelegate, SkeletonTableViewDataSou
         case 2:
             let cell: TodayAnime = tableView.dequeueReusableCell(forIndexPath: indexPath)
             cell.currentAnime = currentAnime
+            cell.showMoreButton.setTitle(.localized("others"), for: .normal)
             cell.delegate = self
             return cell
         case 3:
             let cell: CurrentSeasonAnime = tableView.dequeueReusableCell(forIndexPath: indexPath)
             cell.currentSeasonAnime = currentSeasonAnime
+            cell.moreButton.setTitle(.localized("others"), for: .normal)
             cell.delegate = self
             return cell
         default:

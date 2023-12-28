@@ -8,12 +8,17 @@ protocol ProfileStatsCellDelegate: AnyObject {
 }
 
 class ProfileStatsCell: UITableViewCell {
-    
+     
+    @IBOutlet weak var averageTitleLabel: UILabel!
+    @IBOutlet weak var droppedLabel: UILabel!
+    @IBOutlet weak var droppedTitleLabel: UILabel!
+    @IBOutlet weak var onHoldTitleLabel: UILabel!
+    @IBOutlet weak var completeLabel: UILabel!
+    @IBOutlet weak var completeTitleLabel: UILabel!
+    @IBOutlet weak var onHoldLabel: UILabel!
     @IBOutlet weak var mangaStatsLabel: UILabel!
     @IBOutlet weak var animeStatsLabel: UILabel!
     @IBOutlet weak var planToWatchLabel: UILabel!
-    @IBOutlet weak var droppedLabel: UILabel!
-    @IBOutlet weak var completeLabel: UILabel!
     @IBOutlet weak var watchLabel: UILabel!
     @IBOutlet weak var episodeLabel: UILabel!
     @IBOutlet weak var showLabel: UILabel!
@@ -25,13 +30,12 @@ class ProfileStatsCell: UITableViewCell {
     @IBOutlet weak var profileStatsView: UIView!
     @IBOutlet weak var mangaStatsTab: UIView!
     @IBOutlet weak var animeStatsTab: UIView!
-    @IBOutlet weak var onHoldLabel: UILabel!
     @IBOutlet weak var pieChart: PieChartView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        configureGesture()
         configureUI()
+        configureGesture()
     }
     
     private let disposeBag = DisposeBag()
@@ -41,6 +45,12 @@ class ProfileStatsCell: UITableViewCell {
 extension ProfileStatsCell {
     func configureUI(){
         profileStatsView.roundCornersAll(radius: 8)
+        onHoldTitleLabel.text = .localized("onHold")
+        completeTitleLabel.text = .localized("completed")
+        droppedTitleLabel.text = .localized("dropped")
+        animeStatsLabel.text = .localized("animeStats")
+        mangaStatsLabel.text = .localized("mangaStats")
+        averageTitleLabel.text = .localized("averageRating")
     }
     
     func initialSetup(tabBarState: Bool, userStats: UserStatsEntity){
@@ -51,20 +61,11 @@ extension ProfileStatsCell {
         case true:
             animeStatsTab.backgroundColor = UIColor(named: "SecondaryBackgroundColor")
             mangaStatsTab.backgroundColor = UIColor.white
-            showTitleLabel.text = "Titles"
+            showTitleLabel.text = .localized("titles")
             episodeTitleLabel.text = "Chapters"
-            watchingTitleLabel.text = "Reading"
-            planToWatchTitleLabel.text = "Plan-to-Read"
+            watchingTitleLabel.text = .localized("reading")
+            planToWatchTitleLabel.text = .localized("planToRead")
             
-            
-            averageRatingLabel.text = String(userStats.manga.averageRating)
-                showLabel.text = userStats.manga.shows.formatAsDecimalString()
-                episodeLabel.text = userStats.manga.episodes.formatAsDecimalString()
-                watchLabel.text = userStats.manga.watching.formatAsDecimalString()
-                completeLabel.text = userStats.manga.completed.formatAsDecimalString()
-                onHoldLabel.text = userStats.manga.onHold.formatAsDecimalString()
-                droppedLabel.text = userStats.manga.drop.formatAsDecimalString()
-                planToWatchLabel.text = userStats.manga.planToWatch.formatAsDecimalString()
             setPieChartData(data: userStats.manga)
             
             if let boldFont = customFontBold, let mediumFont = customFontMedium {
@@ -76,22 +77,12 @@ extension ProfileStatsCell {
         case false:
             animeStatsTab.backgroundColor = UIColor.white
             mangaStatsTab.backgroundColor = UIColor(named: "SecondaryBackgroundColor")
-            showTitleLabel.text = "Shows"
-            watchingTitleLabel.text = "Watching"
+            showTitleLabel.text = .localized("shows")
+            watchingTitleLabel.text = .localized("watching")
             episodeTitleLabel.text = "Episodes"
-            planToWatchTitleLabel.text = "Plan-to-Watch"
+            planToWatchTitleLabel.text = .localized("planToWatch")
             
-                averageRatingLabel.text = String(userStats.anime.averageRating)
-                showLabel.text = userStats.anime.shows.formatAsDecimalString()
-                episodeLabel.text = userStats.anime.episodes.formatAsDecimalString()
-                watchLabel.text = userStats.anime.watching.formatAsDecimalString()
-                completeLabel.text = userStats.anime.completed.formatAsDecimalString()
-                onHoldLabel.text = userStats.anime.onHold.formatAsDecimalString()
-                droppedLabel.text = userStats.anime.drop.formatAsDecimalString()
-                planToWatchLabel.text = userStats.anime.planToWatch.formatAsDecimalString()
-                
             setPieChartData(data: userStats.anime)
-            }
             
             if let boldFont = customFontBold, let mediumFont = customFontMedium {
                 mangaStatsLabel.font = mediumFont
@@ -99,6 +90,7 @@ extension ProfileStatsCell {
                 animeStatsLabel.textColor = UIColor.black
                 mangaStatsLabel.textColor = UIColor.darkGray
             }
+        }
     }
     
     func configureGesture(){
@@ -120,6 +112,16 @@ extension ProfileStatsCell {
     }
     
     func setPieChartData(data: UserStatsEntityItem) {
+        
+        averageRatingLabel.text = String(data.averageRating)
+        showLabel.text = data.shows.formatAsDecimalString()
+        episodeLabel.text = data.episodes.formatAsDecimalString()
+        watchLabel.text = data.watching.formatAsDecimalString()
+        completeLabel.text = data.completed.formatAsDecimalString()
+        onHoldLabel.text = data.onHold.formatAsDecimalString()
+        droppedLabel.text = data.drop.formatAsDecimalString()
+        planToWatchLabel.text = data.planToWatch.formatAsDecimalString()
+        
         let entries = [
             PieChartDataEntry(value: Double(data.watching), label: "Watching"),
             PieChartDataEntry(value: Double(data.completed), label: "Completed"),

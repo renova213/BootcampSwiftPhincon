@@ -34,10 +34,10 @@ extension MainTabBarViewController{
     }
     
     func configureTabBarItems(){
-        dashboardVC.tabBarItem = UITabBarItem(title: "Dashboard", image: SFSymbol.homeSymbol, tag: 0)
-        animeVC.tabBarItem = UITabBarItem(title: "Anime", image: SFSymbol.animeSymbol, tag: 1)
-        mangaVC.tabBarItem = UITabBarItem(title: "Manga", image: SFSymbol.mangaSymbol, tag: 2)
-        profileVC.tabBarItem = UITabBarItem(title: "Profile", image: SFSymbol.profileSymbol, tag: 3)
+        dashboardVC.tabBarItem = UITabBarItem(title: .localized("dashboard"), image: SFSymbol.homeSymbol, tag: 0)
+        animeVC.tabBarItem = UITabBarItem(title: .localized("anime"), image: SFSymbol.animeSymbol, tag: 1)
+        mangaVC.tabBarItem = UITabBarItem(title: .localized("manga"), image: SFSymbol.mangaSymbol, tag: 2)
+        profileVC.tabBarItem = UITabBarItem(title: .localized("profile"), image: SFSymbol.profileSymbol, tag: 3)
     }
     
     func configureTabBar(){

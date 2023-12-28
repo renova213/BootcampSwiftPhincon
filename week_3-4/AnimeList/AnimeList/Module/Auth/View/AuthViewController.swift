@@ -6,6 +6,8 @@ import GoogleSignIn
 
 class AuthViewController: UIViewController {
     
+    @IBOutlet weak var signUpLabel: UILabel!
+    @IBOutlet weak var signInLabel: UILabel!
     @IBOutlet weak var signUpView: SignUpView!
     @IBOutlet weak var signInView: SignInView!
     @IBOutlet weak var signUpToggleTitle: UILabel!
@@ -48,6 +50,9 @@ extension AuthViewController {
         
         signInToggleView.roundCornersAll(radius: 20)
         signUpToggleView.roundCornersAll(radius: 20)
+        
+        signInLabel.text = .localized("signIn")
+        signUpLabel.text = .localized("signUp")
     }
     
     func bindData(){

@@ -11,6 +11,9 @@ protocol ProfileFavoriteCellDegelate: AnyObject {
 
 class ProfileFavoriteCell: UITableViewCell {
     
+    @IBOutlet weak var castLabel: UILabel!
+    @IBOutlet weak var characterLabel: UILabel!
+    @IBOutlet weak var favoriteLabel: UILabel!
     @IBOutlet weak var minimizeStack: UIStackView!
     @IBOutlet weak var profileFavoriteView: UIView!
     @IBOutlet weak var characterCollection: UICollectionView!
@@ -59,6 +62,9 @@ extension ProfileFavoriteCell {
     
     func configureUI(){
         profileFavoriteView.roundCornersAll(radius: 8)
+        favoriteLabel.text = .localized("favorite")
+        characterLabel.text = .localized("character")
+        castLabel.text = .localized("cast")
     }
     
     func configureCollection(){

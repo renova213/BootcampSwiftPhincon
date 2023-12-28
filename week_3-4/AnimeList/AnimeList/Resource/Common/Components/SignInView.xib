@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="XeW-Zb-YBo"/>
                 <outlet property="googleBorder" destination="tTR-Vb-Vvd" id="ZEn-FA-tOQ"/>
+                <outlet property="orLabel" destination="i7X-pg-LMV" id="tEd-Eu-7Ft"/>
                 <outlet property="passwordField" destination="qLx-am-HFH" id="jdL-Cp-x1e"/>
                 <outlet property="signInButton" destination="wGm-mv-KP0" id="Sek-MU-lhA"/>
                 <outlet property="usernameField" destination="P0r-DQ-EFS" id="C0o-fz-WlC"/>

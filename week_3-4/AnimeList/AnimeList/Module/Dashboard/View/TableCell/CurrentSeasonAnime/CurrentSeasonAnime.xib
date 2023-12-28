@@ -83,6 +83,7 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="animeCategoryCollection" destination="Gia-Oj-YaZ" id="7t5-sv-DMK"/>
+                <outlet property="currentSeasonLabel" destination="Xge-Qa-450" id="wN4-sF-IEY"/>
                 <outlet property="moreButton" destination="oRt-3d-ebN" id="maC-fv-Fif"/>
             </connections>
             <point key="canvasLocation" x="122.13740458015266" y="92.605633802816911"/>

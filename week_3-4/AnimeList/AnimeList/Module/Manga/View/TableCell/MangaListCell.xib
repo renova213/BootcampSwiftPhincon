@@ -27,7 +27,7 @@
                                     <constraint firstAttribute="width" constant="100" id="oxQ-LP-N9d"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FoV-s4-OSr">
@@ -237,7 +237,7 @@
                                     <constraint firstAttribute="trailing" secondItem="8sp-Yk-5yP" secondAttribute="trailing" id="up5-qQ-KLz"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ggo-Xt-9lA">
@@ -302,7 +302,7 @@
                                     <constraint firstItem="Crn-r2-ZBw" firstAttribute="leading" secondItem="Ggo-Xt-9lA" secondAttribute="leading" id="uZC-ZV-dZN"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>

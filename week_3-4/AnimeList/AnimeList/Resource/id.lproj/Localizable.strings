@@ -1,0 +1,56 @@
+// tabbar
+"dashboard" = "Beranda";
+"anime" = "Anime";
+"manga" = "Manga";
+"profile" = "Profil";
+
+// Auth
+"signIn" = "Masuk";
+"signUp" = "Daftar";
+"or" = "ATAU";
+"usernameHintField" = "Masukan pengguna";
+"passwordHintField" = "Masukan kata sandi";
+"emailHintField" = "Masukan email";
+
+// dashboard
+"topAnime" = "Anime Terbaik";
+"topManga" = "Manga Terbaik";
+"animeSeason" = "Anime Musiman";
+"schedule" = "Jadwal";
+"others" = "Lainnya";
+"today" = "Hari ini";
+"currentSeason" = "Musim Sekarang";
+
+//anime, manga
+"sortBy" = "Sortir Dengan";
+"score" = "Nilai";
+"watchingStatus" = "Status Menonton";
+"readingStatus" = "Status Membaca";
+"watching" = "Menonton";
+"reading" = "Membaca";
+"completed" = "Selesai";
+"onHold" = "Menahan";
+"dropped" = "Berhenti";
+"planToWatch" = "Menonton nanti";
+"planToRead" = "Membaca nanti";
+"selectStatus" = "Pilih Status";
+"1" = "Sangat Mengerikan";
+"2" = "Mengerikan";
+"3" = "Sangat Buruk";
+"4" = "Buruk";
+"5" = "Rata-rata";
+"6" = "Baik";
+"7" = "Bagus";
+"8" = "Sangat Baik";
+"9" = "Hebat";
+"10" = "Karya Terbaik";
+"selectRating" = "Pilih Rating";
+"animeStats" = "Anime Statistik";
+"mangaStats" = "Manga Statistik";
+"averageRating" = "RATA-RATA";
+"shows" = "Acara";
+"titles" = "Judul";
+"favorite" = "Favorit";
+"character" = "Karakter";
+"cast" = "Pemeran";
+"recentUpdate" = "Pembaruan Terkini";

@@ -8,7 +8,7 @@ class UserAnimeViewModel {
     var userAnime = BehaviorRelay<[UserAnimeEntity]>(value: [])
     let findOneUserAnime = BehaviorRelay<UserAnimeEntity?>(value: nil)
     var currentFilterIndex = BehaviorRelay<Int>(value: 4)
-    let filterData = ["A-Z", "Z-A", "Score", "Watching Status", "Sort By"]
+    let filterData = ["A-Z", "Z-A", .localized("score"), .localized("watchingStatus"), .localized("sortBy")]
     
     func postUserAnime(body: UserAnimeParam, completion: @escaping((Result<StatusResponse, Error>)-> Void)) {
         let endpoint = Endpoint.postUserAnime(params: body)

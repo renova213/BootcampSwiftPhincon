@@ -9,9 +9,9 @@ class MangaViewModel: BaseViewModel {
     let userMangaList = BehaviorRelay<[UserMangaEntity]>(value: [])
     let findOneUserManga = BehaviorRelay<UserAnimeEntity?>(value: nil)
     var currentFilterIndex = BehaviorRelay<Int>(value: 4)
-    let filterData = ["A-Z", "Z-A", "Score", "Watching Status", "Sort By"]
+    let filterData = ["A-Z", "Z-A", .localized("score"), .localized("readingStatus"), .localized("sortBy")]
     let scoreList:[Int] = [1,2,3,4,5,6,7,8,9,10]
-    let watchStatus:[String] = ["Watching", "Completed", "On Hold", "Dropped", "Plan to Watch"]
+    let watchStatus:[String] = [.localized("reading"), .localized("completed"), .localized("onHold"), .localized("dropped"), .localized("planToRead")]
     var selectedIndexScore = BehaviorRelay<Int>(value: 9)
     var selectedSwatchStatusIndex = BehaviorRelay<Int>(value: 0)
     var episode = BehaviorRelay<Int>(value: 0)
@@ -152,54 +152,54 @@ class MangaViewModel: BaseViewModel {
     func changeTitleWatchStatus(){
         switch selectedSwatchStatusIndex.value{
         case 0:
-            selectedStatus.accept("Watching")
+            selectedStatus.accept(.localized("watching"))
         case 1:
-            selectedStatus.accept("Completed")
+            selectedStatus.accept(.localized("completed"))
         case 2:
-            selectedStatus.accept("On Hold")
+            selectedStatus.accept(.localized("onHold"))
         case 3:
-            selectedStatus.accept("Dropped")
+            selectedStatus.accept(.localized("dropped"))
         case 4:
-            selectedStatus.accept("Plan to Watch")
+            selectedStatus.accept(.localized("planToRead"))
         default:
-            selectedStatus.accept("Select status")
+            selectedStatus.accept(.localized("selectStatus"))
         }
     }
     
     func changeMessageRating(){
         switch selectedIndexScore.value{
         case 0:
-            messageRating.accept("Sangat Mengerikan")
+            messageRating.accept(.localized("1"))
             break
         case 1:
-            messageRating.accept("Mengerikan")
+            messageRating.accept(.localized("2"))
             break
         case 2:
-            messageRating.accept("Sangat Buruk")
+            messageRating.accept(.localized("3"))
             break
         case 3:
-            messageRating.accept("Buruk")
+            messageRating.accept(.localized("4"))
             break
         case 4:
-            messageRating.accept("Rata-rata")
+            messageRating.accept(.localized("5"))
             break
         case 5:
-            messageRating.accept("Baik")
+            messageRating.accept(.localized("6"))
             break
         case 6:
-            messageRating.accept("Bagus")
+            messageRating.accept(.localized("7"))
             break
         case 7:
-            messageRating.accept("Sangat Baik")
+            messageRating.accept(.localized("8"))
             break
         case 8:
-            messageRating.accept("Hebat")
+            messageRating.accept(.localized("9"))
             break
         case 9:
-            messageRating.accept("Karya Terbaik")
+            messageRating.accept(.localized("10"))
             break
         default:
-            messageRating.accept("Pilih rating")
+            messageRating.accept(.localized("selectRating"))
         }
     }
 }

@@ -204,8 +204,11 @@
             <connections>
                 <outlet property="animeCollection" destination="F3w-TO-4fh" id="bxA-Or-Tx9"/>
                 <outlet property="castCollection" destination="m3s-MX-oQr" id="uRS-8I-au4"/>
+                <outlet property="castLabel" destination="YeQ-bA-h78" id="aL8-Zk-YdD"/>
                 <outlet property="characterCollection" destination="yGN-jc-POZ" id="Rgh-LC-oxE"/>
+                <outlet property="characterLabel" destination="v92-AM-hOm" id="EDX-cO-bon"/>
                 <outlet property="chevronButton" destination="qDb-NL-cmd" id="aET-tt-fez"/>
+                <outlet property="favoriteLabel" destination="Mvr-eG-1ZH" id="MKi-x4-abc"/>
                 <outlet property="mangaCollection" destination="KSI-Vq-UJh" id="Wqr-oD-rmN"/>
                 <outlet property="minimizeStack" destination="I7V-gE-JhL" id="yq6-ef-PWW"/>
                 <outlet property="profileFavoriteView" destination="05R-oR-sG0" id="ebV-8R-bLf"/>

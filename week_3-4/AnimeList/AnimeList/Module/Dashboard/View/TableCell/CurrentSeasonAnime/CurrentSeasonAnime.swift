@@ -9,13 +9,14 @@ protocol CurrentAnimeDelegate: AnyObject {
 
 class CurrentSeasonAnime: UITableViewCell {
     
+    @IBOutlet weak var currentSeasonLabel: UILabel!
     @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var animeCategoryCollection: UICollectionView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         configureCollectionView()
-        configureComponentStyle()
+        configureUI()
     }
     
     var currentSeasonAnime: [AnimeEntity] = []{
@@ -27,6 +28,11 @@ class CurrentSeasonAnime: UITableViewCell {
     
     @IBAction func tapMoreButton(_ sender: Any) {
         delegate?.didTapShowMoreCurrentAnime()
+    }
+    
+    func configureUI() {
+        moreButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        currentSeasonLabel.text = .localized("currentSeason")
     }
 }
 
@@ -73,11 +79,5 @@ extension CurrentSeasonAnime: SkeletonCollectionViewDataSource, UICollectionView
         if let id = data.malId {
             delegate?.didTapCurrentAnime(malId: id)
         }
-    }
-}
-
-extension CurrentSeasonAnime {
-    func configureComponentStyle() {
-        moreButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
     }
 }

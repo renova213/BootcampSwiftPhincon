@@ -260,6 +260,7 @@
 		36ADD8C02B3C03C8009C09E7 /* MangaWatchStatusPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36ADD8BE2B3C03C8009C09E7 /* MangaWatchStatusPopUp.xib */; };
 		36ADD8C72B3C0649009C09E7 /* WatchStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36ADD8C52B3C0649009C09E7 /* WatchStatusCell.swift */; };
 		36ADD8C82B3C0649009C09E7 /* WatchStatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36ADD8C62B3C0649009C09E7 /* WatchStatusCell.xib */; };
+		36ADD8CB2B3C2849009C09E7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 36ADD8CD2B3C2849009C09E7 /* Localizable.strings */; };
 		36AF1C0D2B1046E400C8EB46 /* UserAnimeParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF1C0C2B1046E400C8EB46 /* UserAnimeParam.swift */; };
 		36AF1C0F2B10499100C8EB46 /* UserAnimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF1C0E2B10499100C8EB46 /* UserAnimeViewModel.swift */; };
 		36AF1C122B104B7500C8EB46 /* StatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF1C112B104B7500C8EB46 /* StatusResponse.swift */; };
@@ -572,6 +573,8 @@
 		36ADD8BE2B3C03C8009C09E7 /* MangaWatchStatusPopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MangaWatchStatusPopUp.xib; sourceTree = "<group>"; };
 		36ADD8C52B3C0649009C09E7 /* WatchStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStatusCell.swift; sourceTree = "<group>"; };
 		36ADD8C62B3C0649009C09E7 /* WatchStatusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WatchStatusCell.xib; sourceTree = "<group>"; };
+		36ADD8CC2B3C2849009C09E7 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
+		36ADD8CE2B3C284D009C09E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		36AF1C0C2B1046E400C8EB46 /* UserAnimeParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnimeParam.swift; sourceTree = "<group>"; };
 		36AF1C0E2B10499100C8EB46 /* UserAnimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnimeViewModel.swift; sourceTree = "<group>"; };
 		36AF1C112B104B7500C8EB46 /* StatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusResponse.swift; sourceTree = "<group>"; };
@@ -868,6 +871,7 @@
 				3605F4112B1DB69800984C62 /* Fonts */,
 				36569EC52AFE053300EDB6B9 /* Common */,
 				36AAB36E2B2C318100E181D0 /* DailyAnimeList.xcdatamodeld */,
+				36ADD8CD2B3C2849009C09E7 /* Localizable.strings */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -1862,6 +1866,7 @@
 			knownRegions = (
 				en,
 				Base,
+				id,
 			);
 			mainGroup = 36231CC02AFE041A008257C8;
 			productRefGroup = 36231CCA2AFE041A008257C8 /* Products */;
@@ -1913,6 +1918,7 @@
 				3605F40C2B1DB65E00984C62 /* Poppins-Black.ttf in Resources */,
 				3692C3FC2B217AC900E0DE5B /* AuthViewController.xib in Resources */,
 				36F9D0C02B0F44E40056F40E /* AnimeSearchFilterCell.xib in Resources */,
+				36ADD8CB2B3C2849009C09E7 /* Localizable.strings in Resources */,
 				36FE06592B3035F100DF87D3 /* MangaDetailInfoCell.xib in Resources */,
 				365A83692B3280250011C96D /* ReadMangaViewCell.xib in Resources */,
 				3605F3E92B1DA6CA00984C62 /* ProfileInfoCell.xib in Resources */,
@@ -2241,6 +2247,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		36ADD8CD2B3C2849009C09E7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				36ADD8CC2B3C2849009C09E7 /* id */,
+				36ADD8CE2B3C284D009C09E7 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		36231CDB2AFE041A008257C8 /* Debug */ = {

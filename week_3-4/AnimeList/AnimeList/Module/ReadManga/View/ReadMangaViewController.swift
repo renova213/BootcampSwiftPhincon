@@ -180,11 +180,10 @@ extension ReadMangaViewController {
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] value in
                 guard let self = self else { return }
-                
                 let currentIndex = Int(value)
                 self.episodeLabel.text = String("\(currentIndex + 1) / \(self.readMangaVM.chapterLength())")
                 let indexPath = IndexPath(item: currentIndex, section: 0)
-                self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+                self.collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
             })
             .disposed(by: disposeBag)
     }

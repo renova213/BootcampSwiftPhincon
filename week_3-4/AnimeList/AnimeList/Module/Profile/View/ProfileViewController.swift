@@ -281,6 +281,7 @@ extension ProfileViewController: ProfileStatsCellDelegate, ProfileFavoriteCellDe
     }
     func didTapSignOut() {
         UserDefaultHelper.shared.deleteUserIDFromUserDefaults()
+        TokenHelper.shared.deleteToken()
         let vc = AuthViewController()
         self.view.makeToast("Signout success", duration: 2, style: self.style)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2){

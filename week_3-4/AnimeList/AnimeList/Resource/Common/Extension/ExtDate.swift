@@ -6,10 +6,12 @@ extension Date {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"
+        dateFormatter.locale = Locale(identifier: "en_US")
         
         let dayOfWeekString = dateFormatter.string(from: currentDate)
         return dayOfWeekString
     }
+    
     static func getCurrentYear() -> Int {
         let calendar = Calendar.current
         let year = calendar.component(.year, from: Date())

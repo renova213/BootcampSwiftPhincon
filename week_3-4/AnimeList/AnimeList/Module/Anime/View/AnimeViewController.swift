@@ -12,11 +12,11 @@ class AnimeViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         configureTableView()
-        bindData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         loadData()
+        bindData()
         navigationController?.setNavigationBarHidden(true, animated: false)
         super.viewWillAppear(animated)
     }

@@ -147,14 +147,11 @@ extension MangaViewController {
     
     private func refreshPopUp(message: String){
         let vc = RefreshPopUp()
-        vc.delegate = self
-        vc.view.alpha = 0
+        vc.setContentHeight(vc.view.bounds.height)
         vc.errorLabel.text = message
-        self.present(vc, animated: false, completion: nil)
-        
-        UIView.animate(withDuration: 0.5) {
-            vc.view.alpha = 1
-        }
+        vc.delegate = self
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: false)
     }
 }
 
@@ -200,7 +197,6 @@ extension MangaViewController: UITableViewDelegate, UITableViewDataSource{
             let vc = DetailMangaViewController()
             vc.malId = data.manga.malId
             vc.hidesBottomBarWhenPushed = true
-            navigationController?.hero.isEnabled = true
             navigationController?.pushViewController(vc, animated: true)
             vc.navigationController?.isNavigationBarHidden = true
         }
@@ -238,7 +234,7 @@ extension MangaViewController: SkeletonTableViewDataSource{
 extension MangaViewController: RefreshPopUpDelegate, FilterPopUpDelegate{
     //refresh popup
     func didTapRefresh() {
-        self.dismiss(animated: true)
+        self.dismiss(animated: false)
         loadData()
     }
     

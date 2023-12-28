@@ -6,6 +6,7 @@ struct TokenKey{
 }
 
 class TokenHelper {
+    static let shared = TokenHelper()
     func storeToken(with token: String) {
         let tokenData = token.data(using: .utf8)
         

@@ -1,0 +1,56 @@
+// tabbar
+"dashboard" = "Dashboard";
+"anime" = "Anime";
+"manga" = "Manga";
+"profile" = "Profile";
+
+// Auth
+"signIn" = "Sign In";
+"signUp" = "Sign Up";
+"or" = "OR";
+"usernameHintField" = "Enter username";
+"passwordHintField" = "Enter password";
+"emailHintField" = "Enter email";
+
+// dashboard
+"topAnime" = "Top Anime";
+"topManga" = "Top Manga";
+"animeSeason" = "Seasonal Anime";
+"schedule" = "Schedule ";
+"others" = "Others";
+"today" = "Today";
+"currentSeason" = "Current Season";
+
+//anime, manga
+"sortBy" = "Sort By";
+"score" = "Score";
+"watchingStatus" = "Watching Status";
+"readingStatus" = "Reading Status";
+"watching" = "Watching";
+"reading" = "Reading";
+"completed" = "Completed";
+"onHold" = "On-Hold";
+"dropped" = "Dropped";
+"planToWatch" = "Plan-to-Watch";
+"planToRead" = "Plan-to-Read";
+"selectStatus" = "Select Status";
+"1" = "Very Terrible";
+"2" = "Terrible";
+"3" = "Very Bad";
+"4" = "Bad";
+"5" = "Average";
+"6" = "Good";
+"7" = "Excellent";
+"8" = "Very Good";
+"9" = "Great";
+"10" = "Masterpiece";
+"selectRating" = "Select Rating";
+"titles" = "Titles";
+"shows" = "Shows";
+"animeStats" = "Anime Stats";
+"mangaStats" = "Manga Stats";
+"averageRating" = "AVG. RATING";
+"favorite" = "Favorit";
+"character" = "Character";
+"cast" = "Cast";
+"recentUpdate" = "Recent Update";

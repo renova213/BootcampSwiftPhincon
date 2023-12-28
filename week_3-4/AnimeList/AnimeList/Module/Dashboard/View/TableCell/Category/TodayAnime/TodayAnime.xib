@@ -82,6 +82,7 @@
                 <outlet property="currentAnimeCollection" destination="K2v-2d-Jhr" id="1qz-b9-cMy"/>
                 <outlet property="showMoreButton" destination="ZqK-5F-9UL" id="8xD-z0-BZs"/>
                 <outlet property="titleLabel" destination="Yl4-AC-YQR" id="5tw-LP-krV"/>
+                <outlet property="todayLabel" destination="Yl4-AC-YQR" id="HQf-OQ-nl9"/>
             </connections>
             <point key="canvasLocation" x="138.93129770992365" y="84.154929577464799"/>
         </tableViewCell>

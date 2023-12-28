@@ -8,6 +8,7 @@ protocol ProfileRecentUpdateDelegate: AnyObject {
 
 class ProfileRecentUpdate: UITableViewCell {
     
+    @IBOutlet weak var recentUpdateLabel: UILabel!
     @IBOutlet weak var contentStackView: UIStackView!
     @IBOutlet weak var viewAllUpdate: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -34,6 +35,7 @@ extension ProfileRecentUpdate {
     
     func configureUI(){
         recentUpdateView.roundCornersAll(radius: 8)
+        recentUpdateLabel.text = .localized("recentUpdate")
     }
     
     func configureTableView(){

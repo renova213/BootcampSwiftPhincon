@@ -25,6 +25,10 @@ class RefreshPopUp: UIViewController {
         dismiss(animated: false, completion: nil)
     }
     
+    func setContentHeight(_ height: CGFloat) {
+        view.heightAnchor.constraint(equalToConstant: view.bounds.height).isActive = true
+    }
+    
     weak var delegate: RefreshPopUpDelegate?
     private let disposeBag = DisposeBag()
     

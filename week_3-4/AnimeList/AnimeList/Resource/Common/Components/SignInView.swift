@@ -8,6 +8,7 @@ protocol SignInViewDelegate: AnyObject {
 
 class SignInView: UIView {
     
+    @IBOutlet weak var orLabel: UILabel!
     @IBOutlet weak var googleBorder: UIView!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet var contentView: UIView!
@@ -37,12 +38,17 @@ class SignInView: UIView {
         googleBorder.layer.borderColor = UIColor.lightGray.cgColor
         googleBorder.layer.borderWidth = 0.5
         googleBorder.roundCornersAll(radius: 8)
+        
+        orLabel.text = .localized("or")
                 
         usernameField.addBottomBorderWithColor(color: UIColor.lightGray, thickness: 1, width: self.frame.width)
-        usernameField.setPlaceholder(text: "Enter username", color: UIColor.lightGray)
+        usernameField.setPlaceholder(text: .localized("usernameHintField"), color: UIColor.lightGray)
         
         passwordField.addBottomBorderWithColor(color: UIColor.lightGray, thickness: 1, width: self.frame.width)
-        passwordField.setPlaceholder(text: "Enter password", color: UIColor.lightGray)
+        passwordField.setPlaceholder(text: .localized("passwordHintField"), color: UIColor.lightGray)
         passwordField.isSecureTextEntry = true
+        
+        signInButton.setTitle(.localized("signIn"), for: .normal)
+        signInButton.setTitle(.localized("signIn"), for: .disabled)
     }
 }

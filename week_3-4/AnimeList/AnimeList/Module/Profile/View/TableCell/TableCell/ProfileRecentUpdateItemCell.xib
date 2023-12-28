@@ -77,6 +77,9 @@
                             <constraint firstAttribute="bottom" secondItem="Bhq-Mn-YoB" secondAttribute="bottom" constant="8" id="hQ1-cD-uu4"/>
                             <constraint firstItem="0GK-6W-DY9" firstAttribute="top" secondItem="nSR-8a-d9k" secondAttribute="top" id="qlf-a4-quR"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -86,9 +89,15 @@
                     <constraint firstAttribute="trailing" secondItem="nSR-8a-d9k" secondAttribute="trailing" id="UsT-Bd-0AO"/>
                     <constraint firstItem="nSR-8a-d9k" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="cxa-QL-9Iy"/>
                 </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="episodeLabel" destination="5gs-j8-1TA" id="YxG-aA-1wV"/>
                 <outlet property="progressIndicator" destination="HRr-J3-QUg" id="uvp-sk-Baq"/>

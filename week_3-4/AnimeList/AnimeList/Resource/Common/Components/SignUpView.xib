@@ -11,9 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpView" customModule="AnimeList" customModuleProvider="target">
             <connections>
-                <outlet property="contentView" destination="KPo-Cs-aX2" id="jGq-Nn-gaT"/>
+                <outlet property="contentView" destination="0Ss-we-ysQ" id="CXg-88-xZX"/>
                 <outlet property="emailField" destination="obz-wg-pvC" id="3d1-6z-FZs"/>
                 <outlet property="googleBorder" destination="aje-gJ-YJc" id="uLo-QI-RY7"/>
+                <outlet property="orLabel" destination="0Ss-we-ysQ" id="sVz-xt-eB2"/>
                 <outlet property="passwordField" destination="1ca-u1-0GO" id="6Ya-md-XGI"/>
                 <outlet property="signUpButton" destination="ncl-zE-gYr" id="aXe-Ox-46G"/>
                 <outlet property="usernameField" destination="bsb-5z-OES" id="O6S-t5-BeF"/>

@@ -12,9 +12,11 @@
             <connections>
                 <outlet property="authForm" destination="hC0-2B-wnB" id="MT2-Ly-Qj1"/>
                 <outlet property="loginImage" destination="1Ii-Kb-X2W" id="Sa8-CK-qFN"/>
+                <outlet property="signInLabel" destination="FfX-9e-7KH" id="Lkp-il-uVD"/>
                 <outlet property="signInToggleTitle" destination="FfX-9e-7KH" id="8Xg-ke-lmp"/>
                 <outlet property="signInToggleView" destination="Fr8-8b-0v6" id="5oE-Mp-VWC"/>
                 <outlet property="signInView" destination="7Pi-nn-cyc" id="DZ1-y3-MER"/>
+                <outlet property="signUpLabel" destination="t5r-b8-Sxe" id="c6v-yJ-fVO"/>
                 <outlet property="signUpToggleTitle" destination="t5r-b8-Sxe" id="kRp-oe-3k9"/>
                 <outlet property="signUpToggleView" destination="0cO-cM-fGg" id="b7Z-FC-MUV"/>
                 <outlet property="signUpView" destination="m9e-59-eoz" id="3UN-gZ-cwz"/>
@@ -49,7 +51,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fr8-8b-0v6">
                                                     <rect key="frame" x="0.0" y="0.0" width="130" height="40"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FfX-9e-7KH">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FfX-9e-7KH">
                                                             <rect key="frame" x="40.333333333333329" y="10.666666666666659" width="49.666666666666671" height="18.666666666666671"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
