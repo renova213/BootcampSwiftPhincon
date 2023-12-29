@@ -17,42 +17,156 @@ class AnimeSeasonContentViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
         configureUI()
         resetData()
         buttonGesture()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        bindData()
+        seasonLabel.fadeIn(duration: 0.3)
+        AnimeSeasonViewModel.shared.changeSelectedSeason(season: "Winter")
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         configureCollection()
-        seasonLabel.fadeIn(duration: 0.3)
-        animeSeasonVM.changeSelectedSeason(season: "Winter")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadData()
+        bindData()
     }
     
     private let disposeBag = DisposeBag()
-    private let animeSeasonVM = AnimeSeasonViewModel()
-    var seasonList: [SeasonListEntity] = [] {
+    private var seasonList: [SeasonListEntity] = [] {
         didSet{
             yearCollection.reloadData()
         }
     }
-    var selectedYearIndex: Int = 0{
+    private var selectedYearIndex: Int = 0{
         didSet{
             yearCollection.reloadData()
             seasonCollection.reloadData()
         }
     }
-    var selectedSeasonIndex: Int = 0{
+    private var selectedSeasonIndex: Int = 0{
         didSet{
             yearCollection.reloadData()
             seasonCollection.reloadData()
         }
     }
     weak var delegate: AnimeSeasonContentViewControllerDelegate?
+    
+    private func resetData(){
+        AnimeSeasonViewModel.shared.changeSelectedYearIndex(index: 0)
+        AnimeSeasonViewModel.shared.changeSelectedSeasonIndex(index: 0)
+        AnimeSeasonViewModel.shared.changeFilterStatus(index: 0)
+    }
+    
+    private func buttonGesture(){
+        filterButton.rx.tap.subscribe({_ in
+            let currentFilterIndex = AnimeSeasonViewModel.shared.filterIndex.value
+            if(currentFilterIndex == 0){
+                AnimeSeasonViewModel.shared.changeFilterStatus(index: 1)
+            }
+            if(currentFilterIndex == 1){
+                AnimeSeasonViewModel.shared.changeFilterStatus(index: 2)
+            }
+            if(currentFilterIndex == 2){
+                AnimeSeasonViewModel.shared.changeFilterStatus(index: 1)
+            }
+        }).disposed(by: disposeBag)
+        confirmButton.rx.tap.subscribe({[weak self] _ in
+            guard let self = self else { return }
+            self.delegate?.didConfirm(sortIndex: AnimeSeasonViewModel.shared.filterIndex.value, season: AnimeSeasonViewModel.shared.selectedSeason.value, year: AnimeSeasonViewModel.shared.selectedYear.value)
+            self.dismiss(animated: true)
+        }).disposed(by: disposeBag)
+        cancelButton.rx.tap.subscribe({[weak self] _ in
+            guard let self = self else { return }
+            self.resetData()
+        }).disposed(by: disposeBag)
+    }
+    
+    private func configureUI(){
+        cancelButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        confirmButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        confirmButton.roundCornersAll(radius: 12)
+        cancelButton.addBorder(width: 1, color: UIColor.white)
+        cancelButton.roundCornersAll(radius: 8)
+        filterButton.addBorder(width: 1, color: UIColor.white)
+        filterButton.roundCornersAll(radius: 8)
+    }
+    
+    private func configureCollection(){
+        seasonCollection.delegate = self
+        seasonCollection.dataSource = self
+        seasonCollection.registerCellWithNib(AnimeSeasonItemCell.self)
+        
+        yearCollection.delegate = self
+        yearCollection.dataSource = self
+        yearCollection.registerCellWithNib(AnimeSeasonYearCell.self)
+    }
+    
+    private func loadData(){
+        AnimeSeasonViewModel.shared.loadData(for: Endpoint.getSeasonList, resultType: SeasonListResponse.self, sortIndex: 0)
+    }
+    
+    private func bindData(){
+        AnimeSeasonViewModel.shared.seasonList.asObservable().subscribe(onNext: {[weak self] data in
+            guard let self = self else { return }
+            self.seasonList = data
+        }).disposed(by: disposeBag)
+        AnimeSeasonViewModel.shared.selectedYearIndex.asObservable().subscribe(onNext: {[weak self] i in
+            guard let self = self else { return }
+            self.selectedYearIndex = i
+        }).disposed(by: disposeBag)
+        AnimeSeasonViewModel.shared.selectedSeasonIndex.asObservable().subscribe(onNext: {[weak self] i in
+            guard let self = self else { return }
+            self.selectedSeasonIndex = i
+        }).disposed(by: disposeBag)
+        AnimeSeasonViewModel.shared.selectedSeason.asObservable().subscribe(onNext: {[weak self] season in
+            guard let self = self else { return }
+            self.seasonLabel.text = season
+        }).disposed(by: disposeBag)
+        AnimeSeasonViewModel.shared.filterIndex.subscribe({[weak self] index in
+            guard let self = self else { return }
+            switch index.element {
+            case 1:
+                self.filterButton.setTitle("A-Z", for: .normal)
+            case 2:
+                self.filterButton.setTitle("Z-A", for: .normal)
+            default:
+                self.filterButton.setTitle("Select", for: .normal)
+            }
+            
+        }).disposed(by: disposeBag)
+        AnimeSeasonViewModel.shared.loadingState.asObservable().subscribe(onNext: {[weak self] state in
+            guard let self = self else { return }
+            
+            switch state {
+            case .loading:
+                self.stackViewFilter.showAnimatedGradientSkeleton()
+                self.yearCollection.showAnimatedGradientSkeleton()
+            case .finished, .initial, .empty, .failed:
+                self.yearCollection.hideSkeleton()
+            }
+        }).disposed(by: disposeBag)
+    }
+}
+
+extension AnimeSeasonContentViewController: AnimeSeasonYearCellDelegate, AnimeSeasonItemCellDelegate {
+    func didTapYear(index: Int, year: Int) {
+        AnimeSeasonViewModel.shared.changeSelectedYearIndex(index: index)
+        AnimeSeasonViewModel.shared.changeSelectedSeasonIndex(index: 0)
+        AnimeSeasonViewModel.shared.changeSelectedYear(year: year)
+        AnimeSeasonViewModel.shared.changeSelectedSeason(season: AnimeSeasonViewModel.shared.selectedSeason.value)
+        AnimeSeasonViewModel.shared.changeSelectedSeason(season: "Winter")
+        seasonLabel.fadeIn(duration: 0.3)
+    }
+    
+    func didTapSeason(index: Int, season: String) {
+        AnimeSeasonViewModel.shared.changeSelectedSeasonIndex(index: index)
+        AnimeSeasonViewModel.shared.changeSelectedSeason(season: season.capitalized)
+        seasonLabel.fadeIn(duration: 0.3)
+    }
 }
 
 extension AnimeSeasonContentViewController: UICollectionViewDelegate, SkeletonCollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -129,120 +243,5 @@ extension AnimeSeasonContentViewController: UICollectionViewDelegate, SkeletonCo
             return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
         }
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    }
-}
-
-extension AnimeSeasonContentViewController{
-    func resetData(){
-        animeSeasonVM.changeSelectedYearIndex(index: 0)
-        animeSeasonVM.changeSelectedSeasonIndex(index: 0)
-        animeSeasonVM.changeFilterStatus(index: 0)
-    }
-    
-    func buttonGesture(){
-        filterButton.rx.tap.subscribe({[weak self] _ in
-            guard let self = self else { return }
-            let currentFilterIndex = self.animeSeasonVM.filterIndex.value
-            if(currentFilterIndex == 0){
-                self.animeSeasonVM.changeFilterStatus(index: 1)
-            }
-            if(currentFilterIndex == 1){
-                self.animeSeasonVM.changeFilterStatus(index: 2)
-            }
-            if(currentFilterIndex == 2){
-                self.animeSeasonVM.changeFilterStatus(index: 1)
-            }
-        }).disposed(by: disposeBag)
-        confirmButton.rx.tap.subscribe({[weak self] _ in
-            guard let self = self else { return }
-            self.delegate?.didConfirm(sortIndex: self.animeSeasonVM.filterIndex.value, season: self.animeSeasonVM.selectedSeason.value, year: self.animeSeasonVM.selectedYear.value)
-            self.dismiss(animated: true)
-        }).disposed(by: disposeBag)
-        cancelButton.rx.tap.subscribe({[weak self] _ in
-            guard let self = self else { return }
-            self.resetData()
-        }).disposed(by: disposeBag)
-    }
-    
-    func configureUI(){
-        cancelButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        confirmButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        confirmButton.roundCornersAll(radius: 12)
-        cancelButton.addBorder(width: 1, color: UIColor.white)
-        cancelButton.roundCornersAll(radius: 8)
-        filterButton.addBorder(width: 1, color: UIColor.white)
-        filterButton.roundCornersAll(radius: 8)
-    }
-    func configureCollection(){
-        seasonCollection.delegate = self
-        seasonCollection.dataSource = self
-        seasonCollection.registerCellWithNib(AnimeSeasonItemCell.self)
-        
-        yearCollection.delegate = self
-        yearCollection.dataSource = self
-        yearCollection.registerCellWithNib(AnimeSeasonYearCell.self)
-    }
-    func loadData(){
-        animeSeasonVM.loadData(for: Endpoint.getSeasonList, resultType: SeasonListResponse.self, sortIndex: 0)
-    }
-    func bindData(){
-        animeSeasonVM.seasonList.asObservable().subscribe(onNext: {[weak self] data in
-            guard let self = self else { return }
-            self.seasonList = data
-        }).disposed(by: disposeBag)
-        animeSeasonVM.selectedYearIndex.asObservable().subscribe(onNext: {[weak self] i in
-            guard let self = self else { return }
-            self.selectedYearIndex = i
-        }).disposed(by: disposeBag)
-        animeSeasonVM.selectedSeasonIndex.asObservable().subscribe(onNext: {[weak self] i in
-            guard let self = self else { return }
-            self.selectedSeasonIndex = i
-        }).disposed(by: disposeBag)
-        animeSeasonVM.selectedSeason.asObservable().subscribe(onNext: {[weak self] season in
-            guard let self = self else { return }
-            self.seasonLabel.text = season
-        }).disposed(by: disposeBag)
-        animeSeasonVM.filterIndex.subscribe({[weak self] index in
-            guard let self = self else { return }
-            switch index.element {
-            case 1:
-                self.filterButton.setTitle("A-Z", for: .normal)
-            case 2:
-                self.filterButton.setTitle("Z-A", for: .normal)
-            default:
-                self.filterButton.setTitle("Select", for: .normal)
-            }
-            
-        }).disposed(by: disposeBag)
-    }
-    func loadingState(){
-        animeSeasonVM.loadingState.asObservable().subscribe(onNext: {[weak self] state in
-            guard let self = self else { return }
-            
-            switch state {
-            case .loading:
-                self.stackViewFilter.showAnimatedGradientSkeleton()
-                self.yearCollection.showAnimatedGradientSkeleton()
-            case .finished, .initial, .failed:
-                self.yearCollection.hideSkeleton()
-            }
-        }).disposed(by: disposeBag)
-    }
-}
-
-extension AnimeSeasonContentViewController: AnimeSeasonYearCellDelegate, AnimeSeasonItemCellDelegate {
-    func didTapYear(index: Int, year: Int) {
-        animeSeasonVM.changeSelectedYearIndex(index: index)
-        animeSeasonVM.changeSelectedSeasonIndex(index: 0)
-        animeSeasonVM.changeSelectedYear(year: year)
-        animeSeasonVM.changeSelectedSeason(season: animeSeasonVM.selectedSeason.value)
-        animeSeasonVM.changeSelectedSeason(season: "Winter")
-        seasonLabel.fadeIn(duration: 0.3)
-    }
-    
-    func didTapSeason(index: Int, season: String) {
-        animeSeasonVM.changeSelectedSeasonIndex(index: index)
-        animeSeasonVM.changeSelectedSeason(season: season.capitalized)
-        seasonLabel.fadeIn(duration: 0.3)
     }
 }

@@ -3,6 +3,7 @@ import RxSwift
 import RxCocoa
 
 class AnimeScheduleViewModel:BaseViewModel {
+    static let shared = AnimeScheduleViewModel()
     
     let tabBarItem: [String] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Unknown", "Other"]
     
@@ -22,25 +23,25 @@ class AnimeScheduleViewModel:BaseViewModel {
             
             switch response{
             case .success(let data):
-                switch endpoint {
-                case .getScheduledAnime:
-                    if let data = data as? AnimeResponse {
-                        self.responseData(data: data, with: animeCalendar)
+                if let data = data as? AnimeResponse {
+                    self.responseData(data: data, with: animeCalendar)
+                    self.loadingState.accept(.finished)
+                    
+                    if(data.data.isEmpty){
+                        self.loadingState.accept(.empty)
                     }
-                    self.loadingState.accept(.finished)
-                    break
-                default:
-                    self.loadingState.accept(.finished)
-                    break
                 }
                 break
-            case .failure:
+            case .failure(let error):
+                if let error = error as? CustomError {
+                    self.errorMessage.accept(error.message)
+                }
                 self.loadingState.accept(.failed)
             }
         }
     }
     
-    func responseData(data: AnimeResponse, with animeCalendar: AnimeCalendarEnum){
+    private func responseData(data: AnimeResponse, with animeCalendar: AnimeCalendarEnum){
         switch animeCalendar {
         case .monday:
             self.mondayAnime.accept(data.data)

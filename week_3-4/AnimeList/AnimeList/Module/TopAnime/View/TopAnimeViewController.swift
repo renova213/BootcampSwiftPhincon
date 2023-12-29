@@ -10,11 +10,22 @@ class TopAnimeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpPagingVC()
-        buttonGesture()
+        configureGesture()
     }
-
+    
     private let disposeBag = DisposeBag()
     private let topAnimeVM = TopAnimeViewModel()
+    
+    func setUpPagingVC() {
+        let pagingVC = PagingViewController()
+        pagingVC.configure(parent: self, nslayoutTopAnchor: appBar.bottomAnchor)
+    }
+    
+    func configureGesture() {
+        backButton.rx.tap.subscribe(onNext: {_ in self.navigationController?.popToRootViewController(animated: true)
+        }
+        ).disposed(by: disposeBag)
+    }
 }
 
 extension TopAnimeViewController: PagingViewControllerDataSource, PagingViewControllerDelegate {
@@ -24,24 +35,13 @@ extension TopAnimeViewController: PagingViewControllerDataSource, PagingViewCont
     }
     
     func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
-        let vc = TopAnimePagingView(index: index)
+        let vc = TopAnimePagingView()
+        vc.index = index
         return vc
     }
     
     func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
         let data = topAnimeVM.tabBarItem[index]
         return PagingIndexItem(index: index, title: data)
-    }
-}
-
-extension TopAnimeViewController {
-    func setUpPagingVC() {
-        let pagingVC = PagingViewController(viewControllers: [TopAnimePagingView(index: 0), TopAnimePagingView(index: 1), TopAnimePagingView(index: 2), TopAnimePagingView(index: 3)])
-        pagingVC.configure(parent: self, nslayoutTopAnchor: appBar.bottomAnchor)
-    }
-    func buttonGesture() {
-        backButton.rx.tap.subscribe(onNext: {_ in self.navigationController?.popToRootViewController(animated: true)
-        }
-        ).disposed(by: disposeBag)
     }
 }

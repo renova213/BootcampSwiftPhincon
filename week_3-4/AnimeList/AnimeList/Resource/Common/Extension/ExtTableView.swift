@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import Lottie
 
 extension UITableView {
     
@@ -19,5 +20,43 @@ extension UITableView {
             fatalError("Error for cell if: \(identifier) at \(indexPath)")
         }
         return cell
+    }
+    
+    func showEmptyStateAnimation(animationView: LottieAnimationView) {
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(animationView)
+        
+        NSLayoutConstraint.activate([
+            animationView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            animationView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            animationView.widthAnchor.constraint(equalToConstant: bounds.width),
+            animationView.heightAnchor.constraint(equalToConstant: bounds.height),
+        ])
+        
+        animationView.play()
+    }
+    
+    func hideEmptyStateAnimation(animationView: LottieAnimationView) {
+        animationView.stop()
+        animationView.removeFromSuperview()
+    }
+    
+    func showEmptyStateLabel() {
+        let emptyStateLabel = UILabel()
+        emptyStateLabel.text = "No Data"
+        emptyStateLabel.textAlignment = .center
+        emptyStateLabel.textColor = .gray
+        
+        emptyStateLabel.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(emptyStateLabel)
+        
+        NSLayoutConstraint.activate([
+            emptyStateLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            emptyStateLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+        ])
+    }
+    
+    func hideEmptyStateLabel() {
+        subviews.filter { $0 is UILabel }.forEach { $0.removeFromSuperview() }
     }
 }

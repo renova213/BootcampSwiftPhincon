@@ -53,6 +53,7 @@ enum StateLoading: Int {
     case loading
     case finished
     case failed
+    case empty
 }
 
 enum FavoriteEnum {

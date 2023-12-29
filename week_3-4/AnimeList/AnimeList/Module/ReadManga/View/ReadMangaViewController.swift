@@ -123,7 +123,7 @@ extension ReadMangaViewController {
         readMangaVM.loadingState.subscribe(onNext: {[weak self] state in
             guard let self = self else { return }
             switch state {
-            case .loading, .initial:
+            case .loading, .initial, .empty:
                 break
             case .finished:
                 self.collectionView.reloadData()

@@ -63,7 +63,7 @@ class ShowMoreViewController: UIViewController {
         ShowMoreViewModel.shared.loadingState.asObservable().subscribe(onNext: {[weak self] state in
             guard let self = self else { return }
             switch state {
-            case .initial:
+            case .initial, .empty:
                 break
             case .loading:
                 self.showMoreCollection.showAnimatedGradientSkeleton()

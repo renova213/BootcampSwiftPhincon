@@ -20,23 +20,22 @@ class TopMangaViewModel: BaseViewModel {
                 if let data = data as? MangaResponse {
                     self.responseData(data: data, with: topManga)
                     self.loadingState.accept(.finished)
-                }
-                break
-            case .failure(let data):
-                if let data = data as? CustomError {
-                    if (data.statusCode == HTTPStatusCode.serviceUnvaliable){
-                        self.errorMessage.accept(data.message)
-                    }else{
-                        self.errorMessage.accept("Failed get data")
+                    
+                    if(data.data.isEmpty){
+                        self.loadingState.accept(.empty)
                     }
-                    self.loadingState.accept(.failed)
                 }
                 break
+            case .failure(let error):
+                if let error = error as? CustomError {
+                    self.errorMessage.accept(error.message)
+                }
+                self.loadingState.accept(.failed)
             }
         }
     }
     
-    func responseData(data: MangaResponse, with topManga: TopMangaEnum){
+    private func responseData(data: MangaResponse, with topManga: TopMangaEnum){
         switch topManga {
         case .publishing:
             self.topPublishingManga.accept(data.data)

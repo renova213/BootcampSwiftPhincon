@@ -17,15 +17,16 @@ class AnimeSeasonItemCell: UICollectionViewCell {
     private let disposeBag = DisposeBag()
     weak var delegate: AnimeSeasonItemCellDelegate?
     
-    func buttonGesture(){
+    var index: Int?
+    var season: String?
+    
+    private func buttonGesture(){
         seasonButton.rx.tap.subscribe(onNext: {_ in
             if let index = self.index, let season = self.season {
                 self.delegate?.didTapSeason(index: index, season: season)
             }
         }).disposed(by: disposeBag)
     }
-    var index: Int?
-    var season: String?
     
     func initialSetup(season: String, selectedSeasonIndex: Int, index: Int){
         self.index = index
@@ -55,7 +56,7 @@ class AnimeSeasonItemCell: UICollectionViewCell {
         }
     }
     
-    func configureUI(){
+    private func configureUI(){
         seasonButton.roundCornersAll(radius: 25)
     }
 }

@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import Lottie
 
 extension UICollectionView {
     func scrollToNearestVisibleCollectionViewCell() {
@@ -42,5 +43,43 @@ extension UICollectionView {
         let identifier = String(describing: cellClass)
         let nib = UINib(nibName: identifier, bundle: .main)
         register(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: identifier)
+    }
+    
+    func showEmptyStateAnimation(animationView: LottieAnimationView) {
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(animationView)
+        
+        NSLayoutConstraint.activate([
+            animationView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            animationView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            animationView.widthAnchor.constraint(equalToConstant: bounds.width),
+            animationView.heightAnchor.constraint(equalToConstant: bounds.height),
+        ])
+        
+        animationView.play()
+    }
+    
+    func hideEmptyStateAnimation(animationView: LottieAnimationView) {
+        animationView.stop()
+        animationView.removeFromSuperview()
+    }
+    
+    func showEmptyStateLabel() {
+        let emptyStateLabel = UILabel()
+        emptyStateLabel.text = "No Data"
+        emptyStateLabel.textAlignment = .center
+        emptyStateLabel.textColor = .black
+        
+        emptyStateLabel.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(emptyStateLabel)
+        
+        NSLayoutConstraint.activate([
+            emptyStateLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            emptyStateLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+        ])
+    }
+    
+    func hideEmptyStateLabel() {
+        subviews.filter { $0 is UILabel }.forEach { $0.removeFromSuperview() }
     }
 }

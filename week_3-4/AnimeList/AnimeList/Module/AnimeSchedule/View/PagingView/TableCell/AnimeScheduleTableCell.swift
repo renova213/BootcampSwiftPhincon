@@ -12,7 +12,7 @@ class AnimeScheduleTableCell: UITableViewCell {
         configureUI()
     }
     
-    func configureUI(){
+    private func configureUI(){
         cardView.roundCornersAll(radius: 10)
         urlImage.roundCornersAll(radius: 10)
     }

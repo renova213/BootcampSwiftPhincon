@@ -55,16 +55,12 @@ extension CurrentSeasonAnime: SkeletonCollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let data = currentSeasonAnime[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(forIndexPath: indexPath) as CurrentSeasonAnimeItem
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurrentSeasonAnimeItem", for: indexPath) as? CurrentSeasonAnimeItem else {
-            return UICollectionViewCell()
-        }
-        
-        cell.animeCardItem.rankView.backgroundColor = .lightGray
         if let id = data.malId {
             cell.animeCardItem.urlImage.hero.id = String(id)
         }
-        
+        cell.animeCardItem.rankView.backgroundColor = .lightGray
         cell.initialSetup(data: data)
         
         return cell

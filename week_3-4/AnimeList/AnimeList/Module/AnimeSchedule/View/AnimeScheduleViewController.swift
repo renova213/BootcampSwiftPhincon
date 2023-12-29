@@ -12,36 +12,35 @@ class AnimeScheduleViewController: UIViewController {
         buttonGesture()
         setUpPagingVC()
     }
-
+    
     private let disposeBag = DisposeBag()
-    private let animeCalendarVM = AnimeScheduleViewModel()
+    
+    private func setUpPagingVC() {
+        let pagingVC = PagingViewController(viewControllers: [AnimeSchedulePagingViewController(), AnimeSchedulePagingViewController(), AnimeSchedulePagingViewController(), AnimeSchedulePagingViewController(),AnimeSchedulePagingViewController(),AnimeSchedulePagingViewController(),AnimeSchedulePagingViewController()])
+        pagingVC.configure(parent: self, nslayoutTopAnchor: appBar.bottomAnchor)
+    }
+    
+    private func buttonGesture() {
+        backButton.rx.tap.subscribe(onNext: {_ in self.navigationController?.popToRootViewController(animated: true)
+        }
+        ).disposed(by: disposeBag)
+    }
 }
 
 extension AnimeScheduleViewController: PagingViewControllerDataSource, PagingViewControllerDelegate {
     
     func numberOfViewControllers(in pagingViewController: PagingViewController) -> Int {
-        return animeCalendarVM.tabBarItem.count
+        return AnimeScheduleViewModel.shared.tabBarItem.count
     }
     
     func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
-        let vc = AnimeSchedulePagingViewController(index: index)
+        let vc = AnimeSchedulePagingViewController()
+        vc.index = index
         return vc
     }
     
     func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
-        let data = animeCalendarVM.tabBarItem[index]
+        let data = AnimeScheduleViewModel.shared.tabBarItem[index]
         return PagingIndexItem(index: index, title: data)
-    }
-}
-
-extension AnimeScheduleViewController {
-    func setUpPagingVC() {
-        let pagingVC = PagingViewController(viewControllers: [AnimeSchedulePagingViewController(index: 0), AnimeSchedulePagingViewController(index: 1), AnimeSchedulePagingViewController(index: 2), AnimeSchedulePagingViewController(index: 3),AnimeSchedulePagingViewController(index: 4),AnimeSchedulePagingViewController(index: 5),AnimeSchedulePagingViewController(index: 6)])
-        pagingVC.configure(parent: self, nslayoutTopAnchor: appBar.bottomAnchor)
-    }
-    func buttonGesture() {
-        backButton.rx.tap.subscribe(onNext: {_ in self.navigationController?.popToRootViewController(animated: true)
-        }
-        ).disposed(by: disposeBag)
     }
 }

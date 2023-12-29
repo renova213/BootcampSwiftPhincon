@@ -98,7 +98,11 @@ class UpdateProfileViewController: UIViewController {
                     self.updateButton.isEnabled = true
                     self.dismiss(animated: true)
                 }
-            case .initial, .failed:
+            case .initial:
+                break
+            case .empty:
+                break
+            case .failed:
                 self.view.makeToast( self.profileVM.errorMessage.value, duration: 2, style: self.style)
                 self.updateButton.isEnabled = true
             }

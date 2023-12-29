@@ -181,7 +181,11 @@ extension SearchViewController {
             .subscribe(onNext: { [weak self] state in
                 guard let self = self else { return }
                 switch state {
-                case .initial, .loading:
+                case .initial:
+                    break
+                case .empty:
+                    break
+                case .loading:
                     self.tableView.showAnimatedGradientSkeleton()
                 case  .finished, .failed:
                     self.tableView.hideSkeleton()

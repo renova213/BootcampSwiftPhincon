@@ -74,6 +74,8 @@ extension MangaViewController {
                 break
             case .initial:
                 break
+            case .empty:
+                break
             case .finished:
                 self.tableView.hideSkeleton()
                 self.tableView.reloadData()
@@ -92,6 +94,8 @@ extension MangaViewController {
             case .loading:
                 break
             case .initial:
+                break
+            case .empty:
                 break
             case .finished:
                 self.tableView.reloadData()

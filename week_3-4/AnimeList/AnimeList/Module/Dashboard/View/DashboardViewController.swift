@@ -54,7 +54,9 @@ class DashboardViewController: UIViewController {
                 guard let self = self else { return }
                 
                 switch state {
-                case .initial, .loading:
+                case .empty, .initial:
+                    break
+                case .loading:
                     self.dashboardTableView.showAnimatedGradientSkeleton()
                     break
                 case .finished:

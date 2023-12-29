@@ -35,14 +35,14 @@ class AnimeSeasonYearCell: UICollectionViewCell {
         }
     }
     
-    func configureUI(){
+    private func configureUI(){
         itemView.isUserInteractionEnabled = true
         itemView.layer.borderWidth = 1.0
         itemView.layer.borderColor = UIColor.white.cgColor
         itemView.roundCornersAll(radius: 8)
     }
     
-    func buttonGesture(){
+    private func buttonGesture(){
         itemView.rx.tapGesture().when(.recognized).subscribe({[weak self] _ in
             guard let self = self else { return }
             if let index = self.index, let year = self.year {

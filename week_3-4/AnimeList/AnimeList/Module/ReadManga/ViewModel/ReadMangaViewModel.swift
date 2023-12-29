@@ -21,11 +21,7 @@ class ReadMangaViewModel: BaseViewModel{
                 }
             case .failure(let data):
                 if let data = data as? CustomError {
-                    if (data.statusCode == HTTPStatusCode.serviceUnvaliable){
-                        self.errorMessage.accept(data.message)
-                    }else{
-                        self.errorMessage.accept("Failed get data")
-                    }
+                    self.errorMessage.accept(data.message)
                 }
                 self.loadingState.accept(.failed)
             }

@@ -52,14 +52,14 @@ class MangaViewModel: BaseViewModel {
                 case .putUserManga:
                     if let data = data as? UserMangaResponse{
                         self.userMangaList.accept(data.data)
+                        self.loadingState2.accept(.finished)
                     }
-                    self.loadingState2.accept(.finished)
                     break
                 case .deleteUserManga:
                     if let data = data as? UserMangaResponse{
                         self.userMangaList.accept(data.data)
+                        self.loadingState2.accept(.finished)
                     }
-                    self.loadingState2.accept(.finished)
                 default:
                     break
                 }

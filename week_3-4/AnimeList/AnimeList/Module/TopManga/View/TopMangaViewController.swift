@@ -13,9 +13,22 @@ class TopMangaViewController: UIViewController {
         setUpPagingVC()
         buttonGesture()
     }
-
+    
     private let disposeBag = DisposeBag()
+    
     private let topMangaVM = TopMangaViewModel()
+    
+    private func setUpPagingVC() {
+        let pagingVC = PagingViewController()
+        pagingVC.configure(parent: self, nslayoutTopAnchor: appBar.bottomAnchor)
+    }
+    
+    private func buttonGesture() {
+        backButton.rx.tap.subscribe(onNext: {_ in
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+        ).disposed(by: disposeBag)
+    }
 }
 
 extension TopMangaViewController: PagingViewControllerDataSource, PagingViewControllerDelegate {
@@ -25,24 +38,13 @@ extension TopMangaViewController: PagingViewControllerDataSource, PagingViewCont
     }
     
     func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
-        let vc = TopMangaPagingViewController(index: index)
+        let vc = TopMangaPagingViewController()
+        vc.index = index
         return vc
     }
     
     func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
         let data = topMangaVM.tabBarItem[index]
         return PagingIndexItem(index: index, title: data)
-    }
-}
-
-extension TopMangaViewController {
-    func setUpPagingVC() {
-        let pagingVC = PagingViewController(viewControllers: [TopMangaPagingViewController(index: 0), TopMangaPagingViewController(index: 1), TopMangaPagingViewController(index: 2), TopMangaPagingViewController(index: 3)])
-        pagingVC.configure(parent: self, nslayoutTopAnchor: appBar.bottomAnchor)
-    }
-    func buttonGesture() {
-        backButton.rx.tap.subscribe(onNext: {_ in self.navigationController?.popToRootViewController(animated: true)
-        }
-        ).disposed(by: disposeBag)
     }
 }

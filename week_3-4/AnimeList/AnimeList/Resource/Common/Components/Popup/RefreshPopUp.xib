@@ -28,7 +28,7 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wjt-AH-jvK">
-                    <rect key="frame" x="81.666666666666686" y="322" width="230" height="233.33333333333337"/>
+                    <rect key="frame" x="81.666666666666686" y="322.33333333333331" width="230" height="232.66666666666669"/>
                     <subviews>
                         <view autoresizesSubviews="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="z9d-c8-dWt" customClass="LottieAnimationView" customModule="Lottie">
                             <rect key="frame" x="59.999999999999986" y="25" width="110.00000000000001" height="90"/>
@@ -39,13 +39,13 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7H-VS-IiJ">
-                            <rect key="frame" x="24" y="183" width="182" height="34.333333333333343"/>
+                            <rect key="frame" x="24" y="182.33333333333337" width="182" height="34.333333333333343"/>
                             <color key="tintColor" name="Main Color"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="filled" title="Refresh"/>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Failed get data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0EL-J9-MZU">
-                            <rect key="frame" x="24" y="139" width="182" height="20"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Failed get data" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0EL-J9-MZU">
+                            <rect key="frame" x="24" y="139" width="182" height="19.333333333333343"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                             <nil key="highlightedColor"/>
                         </label>

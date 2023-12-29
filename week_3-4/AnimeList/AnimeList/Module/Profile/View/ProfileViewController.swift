@@ -5,6 +5,7 @@ import FloatingPanel
 import SkeletonView
 import Toast_Swift
 import Hero
+import Lottie
 
 class ProfileViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -16,13 +17,13 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         loadData()
         bindData()
-        super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    var profileStatsTabState = false {
+    private var profileStatsTabState = false {
         didSet{
             tableView.reloadData()
         }
@@ -31,49 +32,13 @@ class ProfileViewController: UIViewController {
     private var style = ToastStyle()
     let pickerImage = UIImagePickerController()
     private let profileVM = ProfileViewModel()
-    
-    var userData: UserEntity? {
-        didSet{
-            tableView.reloadData()
-        }
-    }
-    
-    var favoriteAnimeList: [FavoriteAnimeEntity] = [] {
-        didSet{
-            tableView.reloadData()
-        }
-    }
-    
-    var favoriteAnimeCharacterList: [FavoriteAnimeCharacterEntity] = [] {
-        didSet{
-            tableView.reloadData()
-        }
-    }
-    
-    var favoriteAnimeCastList: [FavoriteAnimeCastEntity] = [] {
-        didSet{
-            tableView.reloadData()
-        }
-    }
-    
-    var favoriteMangaList: [FavoriteMangaEntity] = [] {
-        didSet{
-            tableView.reloadData()
-        }
-    }
-    
-    var userRecentUpdates: [UserRecentUpdateEntity] = [] {
-        didSet{
-            tableView.reloadData()
-        }
-    }
-    
-    var userStats: UserStatsEntity? {
-        didSet{
-            tableView.reloadData()
-        }
-    }
-    
+    private var userData: UserEntity?
+    private var favoriteAnimeList: [FavoriteAnimeEntity] = []
+    private var favoriteAnimeCharacterList: [FavoriteAnimeCharacterEntity] = []
+    private var favoriteAnimeCastList: [FavoriteAnimeCastEntity] = []
+    private var favoriteMangaList: [FavoriteMangaEntity] = []
+    private var userRecentUpdates: [UserRecentUpdateEntity] = []
+    private var userStats: UserStatsEntity?
     
     private var toggleMinimizeFavorite: Bool = false {
         didSet{
@@ -86,6 +51,13 @@ class ProfileViewController: UIViewController {
             tableView.reloadData()
         }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        emptyStateAnimationView.removeFromSuperview()
+    }
+    
+    private lazy var emptyStateAnimationView = LottieAnimationView(name: "empty")
     
     private let disposeBag = DisposeBag()
 }
@@ -100,10 +72,15 @@ extension ProfileViewController {
         profileVM.loadingState.asObservable().subscribe(onNext: {[weak self] state in
             guard let self = self else { return }
             switch state {
+            case .initial:
+                break
+            case .empty:
+                break
             case .loading, .failed:
                 self.tableView.showAnimatedGradientSkeleton()
                 break
-            case .finished, .initial:
+            case .finished:
+                self.tableView.reloadData()
                 self.tableView.hideSkeleton()
             }
         }).disposed(by: disposeBag)
@@ -112,7 +89,6 @@ extension ProfileViewController {
             guard let self = self else { return }
             if let responseData = data {
                 self.userData = responseData
-                self.tableView.reloadData()
             }
         }).disposed(by: disposeBag)
         
@@ -234,11 +210,38 @@ extension ProfileViewController: UITableViewDelegate, SkeletonTableViewDataSourc
         case 3:
             let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as ProfileFavoriteCell
             cell.selectionStyle = .none
+            
             cell.initialChevronButton(state: toggleMinimizeFavorite)
+            
+            if(self.favoriteAnimeList.isEmpty){
+                cell.animeCollection.showEmptyStateAnimation(animationView: emptyStateAnimationView)
+            }else{
+                cell.animeCollection.hideEmptyStateAnimation(animationView: emptyStateAnimationView)
+            }
+            
+            if(self.favoriteAnimeCharacterList.isEmpty){
+                cell.characterCollection.showEmptyStateAnimation(animationView: emptyStateAnimationView)
+            }else{
+                cell.characterCollection.hideEmptyStateAnimation(animationView: emptyStateAnimationView)
+            }
+            
+            if(self.favoriteAnimeCastList.isEmpty){
+                cell.castCollection.showEmptyStateAnimation(animationView: emptyStateAnimationView)
+            }else{
+                cell.castCollection.hideEmptyStateAnimation(animationView: emptyStateAnimationView)
+            }
+            
+            if(self.favoriteMangaList.isEmpty){
+                cell.mangaCollection.showEmptyStateAnimation(animationView: emptyStateAnimationView)
+            }else{
+                cell.mangaCollection.hideEmptyStateAnimation(animationView: emptyStateAnimationView)
+            }
+            
             cell.favoriteAnimeList = self.favoriteAnimeList
             cell.favoriteAnimeCharacter = self.favoriteAnimeCharacterList
             cell.favoriteAnimeCast = self.favoriteAnimeCastList
             cell.favoriteManga = self.favoriteMangaList
+            
             cell.delegate = self
             return cell
         default:

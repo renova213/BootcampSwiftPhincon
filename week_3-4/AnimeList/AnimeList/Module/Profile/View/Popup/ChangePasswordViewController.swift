@@ -60,6 +60,10 @@ class ChangePasswordViewController: UIViewController {
             guard let self = self else { return }
             
             switch state {
+            case .initial:
+                break
+            case .empty:
+                break
             case .loading:
                 self.updatePasswordButton.isEnabled = false
             case .finished:
@@ -68,7 +72,7 @@ class ChangePasswordViewController: UIViewController {
                     self.updatePasswordButton.isEnabled = true
                     self.dismiss(animated: true)
                 }
-            case .initial, .failed:
+            case .failed:
                 self.view.makeToast(self.profileVM.errorMessage.value, duration: 2, style: self.style)
                 self.updatePasswordButton.isEnabled = true
             }

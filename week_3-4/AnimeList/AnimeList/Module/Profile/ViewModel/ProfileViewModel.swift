@@ -5,6 +5,7 @@ import Kingfisher
 import CoreData
 
 class ProfileViewModel: BaseViewModel {
+    static let shared = ProfileViewModel()
     
     var favoriteAnimeList = BehaviorRelay<[FavoriteAnimeEntity]>(value: [])
     var favoriteAnimeCharacterList = BehaviorRelay<[FavoriteAnimeCharacterEntity]>(value: [])

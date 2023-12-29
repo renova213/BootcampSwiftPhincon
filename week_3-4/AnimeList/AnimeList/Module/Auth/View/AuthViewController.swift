@@ -62,6 +62,8 @@ class AuthViewController: UIViewController {
             switch state {
             case .initial:
                 break
+            case .empty:
+                break
             case .loading:
                 self.signInView.signInButton.isEnabled = false
                 self.signInView.googleBorder.isUserInteractionEnabled = false
@@ -93,6 +95,10 @@ class AuthViewController: UIViewController {
                 self.signUpView.signUpButton.isEnabled = false
                 self.signUpView.googleBorder.isUserInteractionEnabled = false
                 break
+            case .initial:
+                break
+            case .empty:
+                break
             case .finished:
                 self.showSignInView()
                 self.signUpView.usernameField.text = ""
@@ -102,7 +108,7 @@ class AuthViewController: UIViewController {
                 self.signUpView.signUpButton.isEnabled = true
                 self.signUpView.googleBorder.isUserInteractionEnabled = true
                 break
-            case .failed, .initial:
+            case .failed:
                 self.view.makeToast(self.authVM.errorMessage.value, duration: 2, style: self.style)
                 self.signUpView.signUpButton.isEnabled = true
                 self.signUpView.googleBorder.isUserInteractionEnabled = true

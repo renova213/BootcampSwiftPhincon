@@ -3,6 +3,7 @@ import RxSwift
 import RxCocoa
 
 class AnimeSeasonViewModel: BaseViewModel {
+    static let shared = AnimeSeasonViewModel()
     
     let titleAppBar = BehaviorRelay<String>(value: "")
     let animeSeasons = BehaviorRelay<[AnimeEntity]>(value: [])
@@ -34,7 +35,10 @@ class AnimeSeasonViewModel: BaseViewModel {
                     break
                 }
                 break
-            case .failure:
+            case .failure(let error):
+                if let error = error as? CustomError {
+                    self.errorMessage.accept(error.message)
+                }
                 self.loadingState.accept(.failed)
             }
         }

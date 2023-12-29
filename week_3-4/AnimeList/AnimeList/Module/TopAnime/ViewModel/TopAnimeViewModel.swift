@@ -3,6 +3,7 @@ import RxSwift
 import RxCocoa
 
 class TopAnimeViewModel: BaseViewModel {
+    static let shared = TopAnimeViewModel()
     
     let tabBarItem: [String] = ["Airing", "Upcoming", "By Popularity", "Favorite"]
     let topAiringAnime = BehaviorRelay<[AnimeEntity]>(value: [])
@@ -23,13 +24,16 @@ class TopAnimeViewModel: BaseViewModel {
                 }
                 self.loadingState.accept(.finished)
                 break
-            case .failure:
+            case .failure(let error):
+                if let error = error as? CustomError {
+                    self.errorMessage.accept(error.message)
+                }
                 self.loadingState.accept(.failed)
             }
         }
     }
     
-    func responseData(data: AnimeResponse, with topAnime: TopAnimeEnum){
+    private func responseData(data: AnimeResponse, with topAnime: TopAnimeEnum){
         switch topAnime {
         case .airing:
             self.topAiringAnime.accept(data.data)

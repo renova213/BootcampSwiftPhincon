@@ -16,18 +16,85 @@ class AnimeSeasonViewController: UIViewController {
         buttonGesture()
         configureTableView()
         loadData()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         bindData()
     }
     
     private let disposeBag = DisposeBag()
-    private let animeSeasonVM = AnimeSeasonViewModel()
-    var animeSeasons: [AnimeEntity] = [] {
-        didSet{
-            tableView.reloadData()
+    private var animeSeasons: [AnimeEntity] = []
+    
+    private func configureUI(){
+        filterButton.roundCornersAll(radius: 5)
+    }
+    
+    private func configureTableView(){
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.registerCellWithNib(AnimeSeasonTableCell.self)
+    }
+    
+    private func buttonGesture() {
+        backButton.rx.tap.subscribe(onNext: {_ in
+            self.navigationController?.popToRootViewController(animated: true)
         }
+        ).disposed(by: disposeBag)
+        filterButton.rx.tap.subscribe(onNext: {[weak self] _ in
+            guard let self = self else { return }
+            self.presentFloatingPanel()
+        }
+        ).disposed(by: disposeBag)
+    }
+    
+    private func loadData(){
+        let japanTimeZone = TimeZone(identifier: "Asia/Tokyo")!
+        let currentSeason = Date.currentSeason(in: japanTimeZone)
+        
+        AnimeSeasonViewModel.shared.loadData(
+            for: Endpoint.getSeason(params: AnimeSeasonParam(year: Date.getCurrentYear(), season: currentSeason)),
+            resultType: AnimeSeasonResponse.self,
+            sortIndex: 0
+        )
+        if let timeZone = TimeZone(identifier: "Asia/Tokyo"){
+            AnimeSeasonViewModel.shared.changeTitleAppBar(title: "\(Date.currentSeason(in: timeZone)) \(Date.getCurrentYear())".capitalized)
+        }
+    }
+    
+    private func bindData(){
+        AnimeSeasonViewModel.shared.loadingState.asObservable()
+            .subscribe(onNext: { [weak self] state in
+                guard let self = self else { return }
+                switch state {
+                case .loading :
+                    self.tableView.showAnimatedGradientSkeleton()
+                    break
+                case .finished:
+                    self.tableView.hideSkeleton()
+                    self.tableView.reloadData()
+                    break
+                case .failed:
+                    self.refreshPopUp(message: AnimeSeasonViewModel.shared.errorMessage.value)
+                    break
+                case .empty:
+                    break
+                case .initial:
+                    break
+                }
+            })
+            .disposed(by: disposeBag)
+        AnimeSeasonViewModel.shared.animeSeasons.asObservable().subscribe({[weak self] data in
+            guard let self = self else { return }
+            self.animeSeasons = data.element ?? []
+        }).disposed(by: disposeBag)
+        AnimeSeasonViewModel.shared.titleAppBar.subscribe(onNext: {[weak self] title in
+            guard let self = self else { return }
+            self.titleLabel.text = title
+        }).disposed(by: disposeBag)
+    }
+    
+    private func refreshPopUp(message: String){
+        let vc = RefreshPopUp()
+        vc.delegate = self
+        vc.errorLabel.text = message
+        self.present(vc, animated: false)
     }
 }
 
@@ -85,73 +152,20 @@ extension AnimeSeasonViewController: FloatingPanelControllerDelegate{
     }
 }
 
-extension AnimeSeasonViewController{
-    func configureUI(){
-        filterButton.roundCornersAll(radius: 5)
-    }
-    
-    func configureTableView(){
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.registerCellWithNib(AnimeSeasonTableCell.self)
-    }
-    func buttonGesture() {
-        backButton.rx.tap.subscribe(onNext: {_ in self.navigationController?.popToRootViewController(animated: true)
-        }
-        ).disposed(by: disposeBag)
-        filterButton.rx.tap.subscribe(onNext: {[weak self] _ in
-            guard let self = self else { return }
-            self.presentFloatingPanel()
-        }
-        ).disposed(by: disposeBag)
-    }
-    func loadData(){
-        let japanTimeZone = TimeZone(identifier: "Asia/Tokyo")!
-        let currentSeason = Date.currentSeason(in: japanTimeZone)
-        
-        animeSeasonVM.loadData(
-            for: Endpoint.getSeason(params: AnimeSeasonParam(year: Date.getCurrentYear(), season: currentSeason)),
-            resultType: AnimeSeasonResponse.self,
-            sortIndex: 0
-        )
-        if let timeZone = TimeZone(identifier: "Asia/Tokyo"){
-            animeSeasonVM.changeTitleAppBar(title: "\(Date.currentSeason(in: timeZone)) \(Date.getCurrentYear())".capitalized)
-        }
-    }
-    func bindData(){
-        animeSeasonVM.loadingState.asObservable()
-            .subscribe(onNext: { [weak self] state in
-                guard let self = self else { return }
-                switch state {
-                case .loading:
-                    self.filterButton.isHidden = true
-                    self.tableView.showAnimatedGradientSkeleton()
-                case .initial, .failed:
-                    self.tableView.hideSkeleton()
-                case .finished:
-                    self.filterButton.isHidden = false
-                    self.tableView.hideSkeleton()
-                }
-            })
-            .disposed(by: disposeBag)
-        animeSeasonVM.animeSeasons.asObservable().subscribe({[weak self] data in
-            guard let self = self else { return }
-            self.animeSeasons = data.element ?? []
-        }).disposed(by: disposeBag)
-        animeSeasonVM.titleAppBar.subscribe(onNext: {[weak self] title in
-            guard let self = self else { return }
-            self.titleLabel.text = title
-        }).disposed(by: disposeBag)
-    }
-}
-
 extension AnimeSeasonViewController: AnimeSeasonContentViewControllerDelegate{
     func didConfirm(sortIndex: Int, season: String, year: Int) {
-        animeSeasonVM.loadData(
+        AnimeSeasonViewModel.shared.loadData(
             for: Endpoint.getSeason(params: AnimeSeasonParam(year: year, season: season)),
             resultType: AnimeSeasonResponse.self,
             sortIndex: sortIndex
         )
-        animeSeasonVM.changeTitleAppBar(title: "\(season) \(year)".capitalized)
+        AnimeSeasonViewModel.shared.changeTitleAppBar(title: "\(season) \(year)".capitalized)
+    }
+}
+
+extension AnimeSeasonViewController: RefreshPopUpDelegate {
+    func didTapRefresh() {
+        loadData()
+        self.dismiss(animated: false)
     }
 }
