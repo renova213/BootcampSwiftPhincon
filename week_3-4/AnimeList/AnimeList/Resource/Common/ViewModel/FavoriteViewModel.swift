@@ -3,6 +3,7 @@ import RxSwift
 import RxCocoa
 
 class FavoriteViewModel {
+    static let shared = FavoriteViewModel()
     
     let isExistAnimeFavorite = BehaviorRelay<Bool>(value: false)
     let isExistAnimeCharacter = BehaviorRelay<Bool>(value: false)

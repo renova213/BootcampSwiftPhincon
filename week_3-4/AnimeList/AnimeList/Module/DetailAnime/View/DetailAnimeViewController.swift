@@ -27,36 +27,11 @@ class DetailAnimeViewController: UIViewController {
         bindData()
     }
     
-    private let detailAnimeVM = DetailAnimeViewModel()
-    private let profileVM = ProfileViewModel()
-    private let favoriteVM = FavoriteViewModel()
     var id: String?
     var malId: Int?
-    var animeDetail: AnimeDetailEntity? {
-        didSet{
-            tableView.reloadData()
-        }
-    }
-    var animeCharacter: [AnimeCharacterEntity] = [] {
-        didSet{
-            tableView.reloadData()
-        }
-    }
-    var animeStaff: [AnimeStaffEntity] = [] {
-        didSet{
-            tableView.reloadData()
-        }
-    }
-    var animeRecommendation: [AnimeRecommendationEntity] = [] {
-        didSet{
-            tableView.reloadData()
-        }
-    }
     
     private let disposeBag = DisposeBag()
-}
-
-extension DetailAnimeViewController{
+    
     private func configureUI() {
         configureTableView()
         addToListButton.roundCornersAll(radius: 10)
@@ -66,8 +41,8 @@ extension DetailAnimeViewController{
         favoriteButton.rx.tap.subscribe(onNext: {[weak self] in
             guard let self = self else { return }
             
-            if let anime = self.animeDetail {
-                self.favoriteVM.addToFavorite(for: FavoriteEnum.anime(entity: anime))
+            if let anime = DetailAnimeViewModel.shared.animeDetail.value {
+                FavoriteViewModel.shared.addToFavorite(for: FavoriteEnum.anime(entity: anime))
                 self.favoriteButton.bounceAnimation()
             }
         }).disposed(by: disposeBag)
@@ -77,8 +52,8 @@ extension DetailAnimeViewController{
             
             let bottomSheetVC = AddToListBottomSheet()
             bottomSheetVC.malId = self.malId ?? 0
-            bottomSheetVC.totalEpisode = self.animeDetail?.episodes ?? 0
-            bottomSheetVC.imageUrl = self.animeDetail?.images?.jpg?.imageUrl ?? ""
+            bottomSheetVC.totalEpisode = DetailAnimeViewModel.shared.animeDetail.value?.episodes ?? 0
+            bottomSheetVC.imageUrl = DetailAnimeViewModel.shared.animeDetail.value?.images?.jpg?.imageUrl ?? ""
             bottomSheetVC.setContentHeight(bottomSheetVC.view.bounds.height)
             self.presentBottomSheet(contentViewController: bottomSheetVC)
         }
@@ -90,8 +65,8 @@ extension DetailAnimeViewController{
             let bottomSheetVC = UpdateListBottomSheet()
             bottomSheetVC.malId = self.malId ?? 0
             bottomSheetVC.id = self.id
-            bottomSheetVC.totalEpisode = self.animeDetail?.episodes ?? 0
-            bottomSheetVC.imageUrl = self.animeDetail?.images?.jpg?.imageUrl ?? ""
+            bottomSheetVC.totalEpisode = DetailAnimeViewModel.shared.animeDetail.value?.episodes ?? 0
+            bottomSheetVC.imageUrl = DetailAnimeViewModel.shared.animeDetail.value?.images?.jpg?.imageUrl ?? ""
             bottomSheetVC.setContentHeight(bottomSheetVC.view.bounds.height)
             self.presentBottomSheet(contentViewController: bottomSheetVC)
         }
@@ -104,7 +79,7 @@ extension DetailAnimeViewController{
         
         sourceButton.rx.tap.subscribe(onNext: {[weak self] _ in
             guard let self = self else { return }
-            if let urlData = self.animeDetail?.url{
+            if let urlData = DetailAnimeViewModel.shared.animeDetail.value?.url{
                 if let url = URL(string: urlData) {
                     let vc = WebKitViewController()
                     vc.url = url
@@ -113,68 +88,63 @@ extension DetailAnimeViewController{
             }
         }).disposed(by: disposeBag)
     }
-}
-
-extension DetailAnimeViewController {
     
     func loadData(){
-        if let id = malId{
-            detailAnimeVM.getDetailAnime(malId: id){[weak self] finish in
-                guard let self = self else {return}
+        DispatchQueue.main.async {
+            if let id = self.malId{
+                DetailAnimeViewModel.shared.loadData(for: Endpoint.getDetailAnime(params: id), resultType: AnimeDetailResponse.self)
                 
-                if(finish){
-                    self.tableView.hideSkeleton()
-                    if let userId = UserDefaultHelper.shared.getUserIDFromUserDefaults() {
-                        UserAnimeViewModel.shared.findOneUserAnime(userId: userId, malId: id){[weak self] finish in
-                            guard let self = self else {return}
-                            
-                            if(finish){
-                                self.updateListButton.isHidden = false
-                            }else{
-                                self.addToListButton.isHidden = false
-                            }
+                ProfileViewModel.shared.fetchFavoriteList(for: FetchFavoriteEnum.anime)
+                ProfileViewModel.shared.fetchFavoriteList(for: FetchFavoriteEnum.animeCharacter)
+                ProfileViewModel.shared.fetchFavoriteList(for: FetchFavoriteEnum.animeCast)
+                DetailAnimeViewModel.shared.loadData(for: Endpoint.getAnimeCharacter(params: id), resultType: AnimeCharacterResponse.self)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                    DetailAnimeViewModel.shared.loadData(for: Endpoint.getAnimeStaff(params: id), resultType: AnimeStaffResponse.self)
+                    DetailAnimeViewModel.shared.loadData(for: Endpoint.getRecommendationAnime(params: id), resultType: AnimeRecommendationResponse.self)
+                }
+                
+                if let userId = UserDefaultHelper.shared.getUserIDFromUserDefaults() {
+                    UserAnimeViewModel.shared.findOneUserAnime(userId: userId, malId: id){[weak self] finish in
+                        guard let self = self else {return}
+                        
+                        if(finish){
+                            self.updateListButton.isHidden = false
+                        }else{
+                            self.addToListButton.isHidden = false
                         }
                     }
                 }
-            }
-            profileVM.fetchFavoriteList(for: FetchFavoriteEnum.anime)
-            profileVM.fetchFavoriteList(for: FetchFavoriteEnum.animeCharacter)
-            profileVM.fetchFavoriteList(for: FetchFavoriteEnum.animeCast)
-            detailAnimeVM.getAnimeCharacter(malId: id)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2){
-                self.detailAnimeVM.getAnimeStaff(malId: id)
-                self.detailAnimeVM.getAnimeRecommendations(malId: id)
+                
+                if let animeDetail = DetailAnimeViewModel.shared.animeDetail.value {
+                    FavoriteViewModel.shared.isExistFavoriteList(for: FavoriteEnum.anime(entity: animeDetail))
+                }
             }
         }
     }
     
     func bindData() {
-        detailAnimeVM.animeDetail
-            .subscribe(onNext: { [weak self] i in
-                guard let self = self, let animeDetail = i else { return }
-                self.animeDetail = animeDetail
-                self.favoriteVM.isExistFavoriteList(for: FavoriteEnum.anime(entity: animeDetail))
-            })
-            .disposed(by: disposeBag)
-        detailAnimeVM.animeCharacter
-            .subscribe(onNext: { [weak self] i in
+        DetailAnimeViewModel.shared.loadingState
+            .subscribe(onNext: { [weak self] state in
                 guard let self = self else { return }
-                self.animeCharacter = i
+                switch state {
+                case .initial, .empty:
+                    break
+                case .loading:
+                    self.tableView.showAnimatedGradientSkeleton()
+                    break
+                case .finished:
+                    self.tableView.reloadData()
+                    self.tableView.hideSkeleton()
+                    break
+                case .failed:
+                    self.refreshPopUp(message: DetailAnimeViewModel.shared.errorMessage.value)
+                    break
+                }
             })
             .disposed(by: disposeBag)
-        detailAnimeVM.animeStaff
-            .subscribe(onNext: { [weak self] i in
-                guard let self = self else { return }
-                self.animeStaff = i
-            })
-            .disposed(by: disposeBag)
-        detailAnimeVM.animeRecommendations
-            .subscribe(onNext: { [weak self] i in
-                guard let self = self else { return }
-                self.animeRecommendation = i
-            })
-            .disposed(by: disposeBag)
-        favoriteVM.isExistAnimeFavorite.asObservable().subscribe(onNext: {[weak self] state in
+        
+        FavoriteViewModel.shared.isExistAnimeFavorite.asObservable().subscribe(onNext: {[weak self] state in
             guard let self = self else { return }
             switch state {
             case true:
@@ -183,6 +153,15 @@ extension DetailAnimeViewController {
                 self.favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
             }
         }).disposed(by: disposeBag)
+    }
+    
+    private func refreshPopUp(message: String){
+        let vc = RefreshPopUp()
+        vc.setContentHeight(vc.view.bounds.height)
+        vc.errorLabel.text = message
+        vc.delegate = self
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: false)
     }
 }
 
@@ -223,7 +202,7 @@ extension DetailAnimeViewController: SkeletonTableViewDataSource, UITableViewDel
         case 5:
             return String(describing: DetailAnimeTheme.self)
         default:
-            return String(describing: DetailAnimeRecommendation.self)
+            return String(describing: UITableViewCell().self)
         }
     }
     
@@ -242,83 +221,97 @@ extension DetailAnimeViewController: SkeletonTableViewDataSource, UITableViewDel
             if let id = malId{
                 cell.urlImage.hero.id = String(id)
             }
-
-            if let data = animeDetail {
+            
+            if let data = DetailAnimeViewModel.shared.animeDetail.value {
                 cell.initialSetup(data: data)
             }
-
+            
             cell.selectionStyle = .none
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeTrailer
-            cell.initialYoutubeId(youtubeId: animeDetail?.trailer?.youtubeID ?? "")
+            cell.initialYoutubeId(youtubeId: DetailAnimeViewModel.shared.animeDetail.value?.trailer?.youtubeID ?? "")
             cell.selectionStyle = .none
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeMoreInfo
-            if let data = animeDetail {
+            if let data = DetailAnimeViewModel.shared.animeDetail.value {
                 cell.initialSetup(data: data)
             }
             cell.selectionStyle = .none
             return cell
         case 3:
-            if(animeStaff.isEmpty){
+            if(DetailAnimeViewModel.shared.animeCharacter.value.isEmpty){
                 return UITableViewCell()
+            }else{
+                let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeCharacter
+                cell.initialSetup(data: DetailAnimeViewModel.shared.animeCharacter.value)
+                cell.selectionStyle = .none
+                cell.delegate = self
+                return cell
             }
-
-            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeCharacter
-            cell.initialSetup(data: animeCharacter)
-            cell.selectionStyle = .none
-            cell.delegate = self
-            return cell
-        case 4:
-            if(animeStaff.isEmpty){
-                return UITableViewCell()
-            }
-
-            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeStaff
-            cell.initialSetup(data: animeStaff)
-            cell.selectionStyle = .none
-            cell.delegate = self
-            return cell
-        case 5:
-            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeTheme
-            if let data = animeDetail{
-                cell.initialSetup(data: data)
-            }
-            cell.selectionStyle = .none
-            return cell
-        case 6:
-            if(animeRecommendation.isEmpty){
-                return UITableViewCell()
-            }
-
-            let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeRecommendation
-            cell.initialSetup(data: animeRecommendation)
-            cell.selectionStyle = .none
-            cell.delegate = self
-            return cell
             
+        case 4:
+            if(DetailAnimeViewModel.shared.animeStaff.value.isEmpty){
+                return UITableViewCell()
+            }else{
+                let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeStaff
+                cell.initialSetup(data: DetailAnimeViewModel.shared.animeStaff.value)
+                cell.selectionStyle = .none
+                cell.delegate = self
+                return cell
+            }
+            
+        case 5:
+            if(DetailAnimeViewModel.shared.animeDetail.value == nil){
+                return UITableViewCell()
+            }else{
+                let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeTheme
+                if let data = DetailAnimeViewModel.shared.animeDetail.value{
+                    cell.initialSetup(data: data)
+                }
+                cell.selectionStyle = .none
+                return cell
+            }
+            
+        case 6:
+            if(DetailAnimeViewModel.shared.animeRecommendations.value.isEmpty){
+                return UITableViewCell()
+            }else{
+                
+                let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as DetailAnimeRecommendation
+                cell.initialSetup(data: DetailAnimeViewModel.shared.animeRecommendations.value)
+                cell.selectionStyle = .none
+                cell.delegate = self
+                return cell
+            }
         default:
             return UITableViewCell()
         }
     }
 }
 
-extension DetailAnimeViewController: DetailAnimeRecommendationDelegate, detailAnimeStaffDelegate, DetailAnimeCharacterDelegate{
+extension DetailAnimeViewController: DetailAnimeRecommendationDelegate, detailAnimeStaffDelegate, DetailAnimeCharacterDelegate, RefreshPopUpDelegate{
+    // refresh pop up
+    func didTapRefresh() {
+        loadData()
+    }
     
+    // detail anime staff
     func didTapWebKitStaff(url: URL) {
         let vc = WebKitViewController()
         vc.url = url
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    // detail anime character
     func didTapWebKitCharacter(url: URL) {
         let vc = WebKitViewController()
         vc.url = url
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    // detail anime recommendation
     func didTapNavigation(malId: Int) {
         let vc = DetailAnimeViewController()
         vc.malId = malId

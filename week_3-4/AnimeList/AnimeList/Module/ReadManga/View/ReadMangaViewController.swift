@@ -174,7 +174,6 @@ extension ReadMangaViewController {
         slider.minimumValue = 0
         slider.maximumValue = Float(readMangaVM.chapterLength() - 1)
         slider.value = 0
-        slider.isContinuous = false
         episodeLabel.text = String("1 / \(readMangaVM.chapterLength())")
         slider.rx.value
             .distinctUntilChanged()

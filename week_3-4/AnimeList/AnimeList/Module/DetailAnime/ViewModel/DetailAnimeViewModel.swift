@@ -18,62 +18,46 @@ class DetailAnimeViewModel: BaseViewModel {
     let animeStaff = BehaviorRelay<[AnimeStaffEntity]>(value: [])
     let animeRecommendations = BehaviorRelay<[AnimeRecommendationEntity]>(value: [])
     
-    
-    func getDetailAnime(malId: Int, completion: @escaping(Bool) -> Void) {
-        
-        APIManager.shared.fetchRequest(endpoint: Endpoint.getDetailAnime(params: malId)){[weak self] (result: Result<AnimeDetailResponse, Error>) in
+    func loadData <T: Codable> (for endpoint: Endpoint, resultType: T.Type, completion:  ((String) -> Void)? = nil){
+        self.loadingState.accept(.loading)
+
+        api.fetchRequest(endpoint: endpoint){[weak self] (response: Result<T, Error>) in
             guard let self = self else { return }
-            switch result {
+            switch response {
             case .success(let data):
-                self.animeDetail.accept(data.data)
-                completion(true)
-                break
-            case .failure:
-                completion(false)
-                break
-            }
-        }
-    }
-    
-    func getAnimeCharacter(malId: Int) {
-        
-        APIManager.shared.fetchRequest(endpoint: Endpoint.getAnimeCharacter(params: malId)){[weak self] (result: Result<AnimeCharacterResponse, Error>) in
-            guard let self = self else { return }
-            switch result {
-            case .success(let data):
-                self.animeCharacter.accept(data.data)
-                break
-            case .failure(let err):
-                print(err)
-                break
-            }
-        }
-    }
-    
-    func getAnimeStaff(malId: Int) {
-        
-        APIManager.shared.fetchRequest(endpoint: Endpoint.getAnimeStaff(params: malId)){[weak self] (result: Result<AnimeStaffResponse, Error>) in
-            guard let self = self else { return }
-            switch result {
-            case .success(let data):
-                self.animeStaff.accept(data.data)
-                break
-            case .failure(let err):
-                print(err)
-                break
-            }
-        }
-    }
-    
-    func getAnimeRecommendations(malId: Int) {
-        APIManager.shared.fetchRequest(endpoint: Endpoint.getRecommendationAnime(params: malId)){[weak self] (result: Result<AnimeRecommendationResponse, Error>) in
-            guard let self = self else { return }
-            switch result {
-            case .success(let data):
-                self.animeRecommendations.accept(data.data)
-                break
-            case .failure(let err):
-                print(err)
+                switch endpoint {
+                case .getDetailAnime:
+                    if let data = data as? AnimeDetailResponse {
+                        self.animeDetail.accept(data.data)
+                    }
+                    self.loadingState.accept(.finished)
+                    break
+                case .getAnimeCharacter:
+                    if let data = data as? AnimeCharacterResponse{
+                        self.animeCharacter.accept(data.data)
+                    }
+                    self.loadingState.accept(.finished)
+                    break
+                case .getAnimeStaff:
+                    if let data = data as? AnimeStaffResponse{
+                        self.animeStaff.accept(data.data)
+                    }
+                    self.loadingState.accept(.finished)
+                    break
+                case .getRecommendationAnime:
+                    if let data = data as? AnimeRecommendationResponse{
+                        self.animeRecommendations.accept(data.data)
+                    }
+                    self.loadingState.accept(.finished)
+                    break
+                default:
+                    break
+                }
+            case .failure(let data):
+                if let data = data as? CustomError {
+                    self.errorMessage.accept(data.message)
+                }
+                self.loadingState.accept(.failed)
                 break
             }
         }

@@ -139,9 +139,8 @@ extension AnimeDetailInfo: SkeletonCollectionViewDataSource, SkeletonCollectionV
             }
             
             label.sizeToFit()
-            let extraSpacing: CGFloat = 12
             
-            return CGSize(width: label.frame.width + extraSpacing, height: 40)
+            return CGSize(width: label.frame.width + 12, height: 40)
         }
         
         return CGSize(width: 70, height: 40)

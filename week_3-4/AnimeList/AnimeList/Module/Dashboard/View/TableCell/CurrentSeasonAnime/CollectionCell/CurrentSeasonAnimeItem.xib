@@ -20,10 +20,6 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vFl-SR-s9f" customClass="AnimeCardItem" customModule="AnimeList" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="120" height="200"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="120" id="Gfb-wl-3b3"/>
-                            <constraint firstAttribute="height" constant="200" id="aeq-s5-bau"/>
-                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                         </userDefinedRuntimeAttributes>

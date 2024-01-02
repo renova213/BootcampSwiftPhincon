@@ -132,14 +132,11 @@ extension DetailMangaViewController {
     
     private func refreshPopUp(message: String){
         let vc = RefreshPopUp()
-        vc.delegate = self
-        vc.view.alpha = 0
-        vc.errorLabel.text = message
-        self.present(vc, animated: false, completion: nil)
         
-        UIView.animate(withDuration: 0.5) {
-            vc.view.alpha = 1
-        }
+        vc.setContentHeight(vc.view.bounds.height)
+        vc.errorLabel.text = message
+        vc.delegate = self
+        vc.modalPresentationStyle = .overCurrentContext
     }
 }
 

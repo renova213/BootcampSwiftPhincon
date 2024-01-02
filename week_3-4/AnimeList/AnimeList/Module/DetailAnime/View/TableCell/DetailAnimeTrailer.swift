@@ -12,13 +12,13 @@ class DetailAnimeTrailer: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-            self.loadVideoPlayer()
+        self.loadVideoPlayer()
     }
     
     func loadVideoPlayer(){
-           youtubePlayer.loadVideoID(youtubeId ?? "")
-     
+        if let youtubeId = self.youtubeId{
+            self.youtubePlayer.loadVideoID(youtubeId)
+        }
     }
     
     func initialYoutubeId(youtubeId: String){

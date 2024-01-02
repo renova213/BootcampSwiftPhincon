@@ -289,7 +289,7 @@
                                 <rect key="frame" x="16" y="423" width="361" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="VpM-Hc-8J7"/>
+                                    <constraint firstAttribute="height" constant="40" id="ovv-tD-21C"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cJg-mm-xWI">
                                     <size key="itemSize" width="128" height="128"/>

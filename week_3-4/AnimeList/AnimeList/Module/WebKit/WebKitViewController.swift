@@ -2,7 +2,7 @@ import UIKit
 import WebKit
 
 class WebKitViewController: UIViewController, WKNavigationDelegate {
-
+    
     @IBOutlet weak var webKitView: WKWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -13,10 +13,12 @@ class WebKitViewController: UIViewController, WKNavigationDelegate {
     var url: URL?
     
     func loadWebKit(){
-        webKitView.navigationDelegate = self
-        if let url = self.url {
-            let request = URLRequest(url: url)
-            webKitView.load(request)
+        DispatchQueue.main.async {
+            self.webKitView.navigationDelegate = self
+            if let url = self.url {
+                let request = URLRequest(url: url)
+                self.webKitView.load(request)
+            }
         }
     }
 }
