@@ -251,11 +251,10 @@ enum Endpoint {
     var headers: HTTPHeaders {
         switch self {
         case .getUserAnime, .getUserManga, .getUser, .getUserRecentUpdate, .getUserStats, .findOneUserAnime, .postUserAnime, .postUploadProfileImage, .postUserManga, .putUser, .putUserManga, .putChangePassword, .putUserAnime, .deleteUserAnime, .deleteUserManga:
-            let token = TokenHelper().retrieveToken()
             
             let params: HTTPHeaders = [
                 "Content-Type": "application/json",
-                "Authorization": "Bearer \(token)"
+                "Authorization": "Bearer \(TokenHelper.shared.retrieveToken())"
             ]
             return params
         default:

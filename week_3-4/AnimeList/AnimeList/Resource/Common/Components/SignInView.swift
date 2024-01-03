@@ -43,6 +43,8 @@ class SignInView: UIView {
                 
         usernameField.addBottomBorderWithColor(color: UIColor.lightGray, thickness: 1, width: self.frame.width)
         usernameField.setPlaceholder(text: .localized("usernameHintField"), color: UIColor.lightGray)
+        usernameField.isUserInteractionEnabled = true
+            usernameField.keyboardType = .default
         
         passwordField.addBottomBorderWithColor(color: UIColor.lightGray, thickness: 1, width: self.frame.width)
         passwordField.setPlaceholder(text: .localized("passwordHintField"), color: UIColor.lightGray)

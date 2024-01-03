@@ -7,21 +7,25 @@ struct TokenKey{
 
 class TokenHelper {
     static let shared = TokenHelper()
+    
     func storeToken(with token: String) {
         let tokenData = token.data(using: .utf8)
         
         let query: [CFString: Any] = [
             kSecClass: kSecClassGenericPassword,
-            kSecAttrAccount: TokenKey.tokenAccess,
+            kSecAttrAccount: "access_token",
+        ]
+        
+        let attributes: [CFString: Any] = [
             kSecValueData: tokenData!,
         ]
         
-        let status = SecItemAdd(query as CFDictionary, nil)
+        let status = SecItemUpdate(query as CFDictionary, attributes as CFDictionary)
         
-        if status == errSecSuccess {
-            print("Token saved to Keychain")
-        } else {
-            print("Failed to save token to Keychain")
+        if status == errSecItemNotFound {
+            var newQuery = query
+            newQuery[kSecValueData] = tokenData
+            SecItemAdd(newQuery as CFDictionary, nil)
         }
     }
     
@@ -38,7 +42,6 @@ class TokenHelper {
         if status == errSecSuccess, let data = tokenData as? Data, let token = String(data: data, encoding: .utf8) {
             return token
         } else {
-            print("Token not found in Keychain")
             return ""
         }
     }
@@ -49,12 +52,6 @@ class TokenHelper {
             kSecAttrAccount: TokenKey.tokenAccess,
         ]
         
-        let status = SecItemDelete(query as CFDictionary)
-        
-        if status == errSecSuccess {
-            print("Token deleted from Keychain")
-        } else {
-            print("Failed to delete token from Keychain")
-        }
+        SecItemDelete(query as CFDictionary)
     }
 }

@@ -65,7 +65,7 @@ class APIManager {
             switch response.result {
             case .success(let decodedObject):
                 completion(.success(decodedObject))
-                
+            break
             case .failure:
                 if let statusCode = response.response?.statusCode,
                    let httpStatusCode = HTTPStatusCode(rawValue: statusCode),
@@ -89,6 +89,7 @@ class APIManager {
                 } else {
                     completion(.failure(CustomError(statusCode: HTTPStatusCode.internalServerError, message: "Server Error")))
                 }
+                break
             }
         }
     }

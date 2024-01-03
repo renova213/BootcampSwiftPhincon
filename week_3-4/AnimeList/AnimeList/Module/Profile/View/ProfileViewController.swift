@@ -5,7 +5,6 @@ import FloatingPanel
 import SkeletonView
 import Toast_Swift
 import Hero
-import Lottie
 
 class ProfileViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -51,13 +50,6 @@ class ProfileViewController: UIViewController {
             tableView.reloadData()
         }
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        emptyStateAnimationView.removeFromSuperview()
-    }
-    
-    private lazy var emptyStateAnimationView = LottieAnimationView(name: "empty")
     
     private let disposeBag = DisposeBag()
 }
@@ -214,27 +206,27 @@ extension ProfileViewController: UITableViewDelegate, SkeletonTableViewDataSourc
             cell.initialChevronButton(state: toggleMinimizeFavorite)
             
             if(self.favoriteAnimeList.isEmpty){
-                cell.animeCollection.showEmptyStateAnimation(animationView: emptyStateAnimationView)
+                cell.animeCollection.showEmptyStateLabel()
             }else{
-                cell.animeCollection.hideEmptyStateAnimation(animationView: emptyStateAnimationView)
+                cell.animeCollection.hideEmptyStateLabel()
             }
             
             if(self.favoriteAnimeCharacterList.isEmpty){
-                cell.characterCollection.showEmptyStateAnimation(animationView: emptyStateAnimationView)
+                cell.characterCollection.showEmptyStateLabel()
             }else{
-                cell.characterCollection.hideEmptyStateAnimation(animationView: emptyStateAnimationView)
+                cell.characterCollection.hideEmptyStateLabel()
             }
             
             if(self.favoriteAnimeCastList.isEmpty){
-                cell.castCollection.showEmptyStateAnimation(animationView: emptyStateAnimationView)
+                cell.castCollection.showEmptyStateLabel()
             }else{
-                cell.castCollection.hideEmptyStateAnimation(animationView: emptyStateAnimationView)
+                cell.castCollection.hideEmptyStateLabel()
             }
             
             if(self.favoriteMangaList.isEmpty){
-                cell.mangaCollection.showEmptyStateAnimation(animationView: emptyStateAnimationView)
+                cell.mangaCollection.showEmptyStateLabel()
             }else{
-                cell.mangaCollection.hideEmptyStateAnimation(animationView: emptyStateAnimationView)
+                cell.mangaCollection.hideEmptyStateLabel()
             }
             
             cell.favoriteAnimeList = self.favoriteAnimeList

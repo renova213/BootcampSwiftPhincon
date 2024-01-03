@@ -28,7 +28,7 @@ class AuthViewModel: BaseViewModel {
                     case .postLogin, .postLoginGoogle:
                         if let data = data as? LoginResponse{
                             if let token = data.token {
-                                self.storeToken(with: token)
+                                self.tokenHelper.storeToken(with: token)
                             }
                             if let userData = data.user{
                                 UserDefaultHelper.shared.saveUserIDToUserDefaults(userID: userData.id)
